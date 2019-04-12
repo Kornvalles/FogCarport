@@ -8,14 +8,14 @@ import java.util.Properties;
 /**
  * The purpose of Connector is to...
  *
- * @author kasper
+ * @authors Iben, Christian, Benjamin, Nicklas, Mikkel
  */
 public class Connector {
 
     //Constants
     private static final String IP = "localhost";
     private static final String PORT = "3306";
-    public static final String DATABASE = "LegoHouse";
+    public static final String DATABASE = "FogCarport";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
 
