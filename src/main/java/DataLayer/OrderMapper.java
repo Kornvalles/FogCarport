@@ -7,7 +7,7 @@ package DataLayer;
 
 /**
  *
- * @author benjaminbajrami
+ * @authors Iben, Christian, Benjamin, Nicklas, Mikkel
  */
 public class OrderMapper {
     

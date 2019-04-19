@@ -2,7 +2,8 @@ package FunctionLayer;
 
 /**
  * The purpose of LogicFacade is to...
- * @author kasper
+ * 
+ * @authors Iben, Christian, Benjamin, Nicklas, Mikkel
  */
 public class LogicFacade {
 
