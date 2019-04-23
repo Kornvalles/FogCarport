@@ -11,10 +11,31 @@ package FunctionLayer;
  */
 public class Carport {
     
-    private int height;
-    
-    public Carport() {
-        
+    private final int height; //measured in centimeters.
+    private final int length; //measured in centimeters.
+    private final boolean toolshed; //false when toolshed is not opted
+
+    public Carport(int height, int length, boolean toolshed) {
+        this.height = height;
+        this.length = length;
+        this.toolshed = toolshed;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public boolean hasToolshed() {
+        return toolshed;
+    }
+
+    @Override
+    public String toString() {
+        return "Carport: " + "height = " + height + ", length = " + length + ", toolshed = " + toolshed;
     }
     
 }
