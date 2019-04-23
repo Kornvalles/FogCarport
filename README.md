@@ -1,6 +1,6 @@
 # FogCarport
 
-** Collaborators **
+**Collaborators**
 - Nicklas Dupont
 - Benjamin Bajrami
 - Christian Wulff
