@@ -1,9 +1,9 @@
 # FogCarport
 
 **Collaborators**
-- Nicklas Dupont
-- Benjamin Bajrami
-- Christian Wulff
-- Iben Kühn Andersen
-- Mikkel Kornval Christoffersen
+- [Nicklas Dupont](https://github.com/TheDanishWonder)
+- [Benjamin Bajrami](https://github.com/Aeydin24)
+- [Christian Wulff](https://github.com/cwulfftorn)
+- [Iben Kühn Andersen](https://github.com/IbenKAndersen)
+- [Mikkel Kornval Christoffersen](https://github.com/Kornvalles)
 
