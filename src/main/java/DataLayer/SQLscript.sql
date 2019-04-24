@@ -19,11 +19,11 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- Schema mydb
 -- -----------------------------------------------------
 -- -----------------------------------------------------
--- Schema legohus
+-- Schema carport
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema legohus
+-- Schema carport
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `carport` DEFAULT CHARACTER SET latin1 ;
 USE `carport` ;
@@ -34,21 +34,21 @@ USE `carport` ;
 CREATE TABLE IF NOT EXISTS `carport`.`standard` (
   `Id` INT(11) NOT NULL AUTO_INCREMENT,
   `details` VARCHAR(245) NOT NULL,
-  `price` INT(11) NOT NULL,
+  `price` DOUBLE NOT NULL,
   PRIMARY KEY (`Id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 1
+
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `legohus`.`house_order`
+-- Table `carport`.`employee`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `carport`.`employee` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `password` INT(11) NULL NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
@@ -58,15 +58,15 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
-INSERT INTO 'standard' ('id', 'details', 'price') VALUES 
-('Enkelt 390x780 høj rejsning med skur 240x330', '18798.40')
-('Enkelt 360x720 høj rejsning med skur 320x220', '17198.40')
-('Enkelt 360x540 høj rejsning uden skur', '11198.40')
-('Dobbelt 600x780 høj rejsning med skur 210x510', '25598.40')
-('Dobbelt 600x870 høj rejsning med skur 530x300', '27198.40')
+INSERT INTO `standard` (`details`, `price`) VALUES 
+('Enkelt 390x780 høj rejsning med skur 240x330', '18798.40'),
+('Enkelt 360x720 høj rejsning med skur 320x220', '17198.40'),
+('Enkelt 360x540 høj rejsning uden skur', '11198.40'),
+('Dobbelt 600x780 høj rejsning med skur 210x510', '25598.40'),
+('Dobbelt 600x870 høj rejsning med skur 530x300', '27198.40'),
 ('Dobbelt 600x540 fladt tag med midterstolpe og skur 260x185', '9438.40');
 
 INSERT INTO `employee`
 VALUES
-('admin','1234');
+('1','admin','1234');
 
