@@ -13,7 +13,10 @@
     </head>
     <body>
 
-        HEADER
-        
+        <form method="post" action="/FogCarport/FrontController?command=back">
+            <input type="hidden" name="origin" value="back">
+            <input type="submit" value="Tilbage til forside">
+        </form>    
+
     </body>
 </html>
