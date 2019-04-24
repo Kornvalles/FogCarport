@@ -13,6 +13,25 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>FOG Trælast</h1>
+        
+        <br><br> Indsæt dropdown-liste
+        
+        <br><br> Indsæt checkbox
+        
+        <br><br>
+        <form method="post" action="/FogCarport/FrontController?command=">
+            <input type="hidden" name="origin" value="loginpage">
+            Navn og efternavn: <br>
+            <input type="text" name="name" value=""/><br>
+            Email:<br> 
+            <input type="password" name="email" value=""/> <br><br>
+            
+            
+            <input type="submit" value="Bestil">
+        </form>
+        
+        <br><br> Indsæt refresh-knap
+        
     </body>
 </html>
