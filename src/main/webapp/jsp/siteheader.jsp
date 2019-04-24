@@ -1,10 +1,9 @@
 <%-- 
-    Document   : shop
-    Created on : 12-04-2019, 11:45:37
-    Author     : mikkel
+    Document   : siteheader
+    Created on : Apr 24, 2019, 2:12:24 PM
+    Author     : ibenk
 --%>
-<jsp:include page='/jsp/siteheader.jsp'></jsp:include>
-    
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,6 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+
+        HEADER
+        
     </body>
 </html>
