@@ -19,9 +19,17 @@
         
         <br><br> Indsæt checkbox
         
-        <br><br> Indsæt felter til personlige oplysninger
-        
-        <br><br> Indsæt bestil-knap
+        <br><br>
+        <form method="post" action="/FogCarport/FrontController?command=">
+            <input type="hidden" name="origin" value="loginpage">
+            Navn og efternavn: <br>
+            <input type="text" name="name" value=""/><br>
+            Email:<br> 
+            <input type="password" name="email" value=""/> <br><br>
+            
+            
+            <input type="submit" value="Bestil">
+        </form>
         
         <br><br> Indsæt refresh-knap
         
