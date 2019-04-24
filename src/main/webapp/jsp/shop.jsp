@@ -13,6 +13,17 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>FOG Trælast</h1>
+        
+        <br><br> Indsæt dropdown-liste
+        
+        <br><br> Indsæt checkbox
+        
+        <br><br> Indsæt felter til personlige oplysninger
+        
+        <br><br> Indsæt bestil-knap
+        
+        <br><br> Indsæt refresh-knap
+        
     </body>
 </html>
