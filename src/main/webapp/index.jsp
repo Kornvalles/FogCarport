@@ -70,7 +70,7 @@ body {
 <div class="header">
   <a href="http://localhost:8084/FogCarport/index.jsp" class="logo">Fog Trælast</a>
   <div class="header-right">
-    <a class="active" href="http://localhost:8084/FogCarport/index.jsp">Hjem</a>
+    <a href="http://localhost:8084/FogCarport/index.jsp">Hjem</a>
     <a href="http://localhost:8084/FogCarport/jsp/shop.jsp">Bestilling af carport</a>
     <a href="http://localhost:8084/FogCarport/jsp/sortiment.jsp">Sortiment</a>
   </div>
