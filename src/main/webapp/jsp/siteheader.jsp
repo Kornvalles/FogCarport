@@ -69,7 +69,7 @@ body {
     <body>
 
         <div class="header">
-                <a href="http://localhost:8084/FogCarport/index.jsp" class="logo">Fog Trælast</a>
+                <a href="http://localhost:8084/FogCarport/index.jsp" class="logo"><img src="https://sgn-assets.imgix.net/resources/1229572831436603912/source.png?max-w=160&max-h=45&auto=format&s=01bc438ae1a10d71a40ce0dcd81cfbbc" class="img-thumbnail" alt="Fog"></a>
             <div class="header-right">
                 <a href="http://localhost:8084/FogCarport/index.jsp">Hjem</a>
                 <a href="http://localhost:8084/FogCarport/jsp/shop.jsp">Bestilling af carport</a>
