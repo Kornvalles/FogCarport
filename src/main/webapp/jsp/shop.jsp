@@ -49,9 +49,8 @@
                 </table>
        
         
-        <br><br> Med redskabsskur?
+                                    <br><br> Med redskabsskur? <br><br>
         <input type="checkbox" name="redskabsskur" value="Ja"><br>
-        <input type="checkbox" name="redskabsskur" value="Nej"><br>
         
         <br><br>
 
