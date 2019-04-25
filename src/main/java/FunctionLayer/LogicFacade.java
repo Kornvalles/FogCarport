@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class LogicFacade {
 
-    public static List<Carport> getOrders() throws FogException, ClassNotFoundException  {
+    public static List<Carport> getOrders( int id ) throws FogException, ClassNotFoundException  {
         return OrderMapper.getStandard();
     }
     
