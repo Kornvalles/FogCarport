@@ -9,7 +9,7 @@ package FunctionLayer;
  *
  * @author benjaminbajrami
  */
-public class Materials {
+public abstract class Materials {
     
 }
 

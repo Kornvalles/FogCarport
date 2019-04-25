@@ -16,7 +16,7 @@ public class Connector {
     //Constants
     private static final String IP = "localhost";
     private static final String PORT = "3306";
-    public static final String DATABASE = "FogCarport";
+    public static final String DATABASE = "fog";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
 
