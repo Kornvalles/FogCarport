@@ -16,7 +16,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>FOG Trælast</h1>
+    
         
         <% 
         
@@ -31,7 +31,7 @@
         <form method="POST" action="/FogCarport/FrontController?command=order" >
              <input type="hidden" name="origin" value="order">
                 <table class="table table-striped">
-                    <thead><tr><th>Bottom</th><th>Topping</th><th>Quantity</th><th></th><th></th></tr></thead>
+                    
                         <tbody>
                             <tr>
                                 <td><select name="standard" id="standardSelect">
@@ -49,9 +49,8 @@
                 </table>
        
         
-        <br><br> Med redskabsskur?
+                                    <br><br> Med redskabsskur? <br><br>
         <input type="checkbox" name="redskabsskur" value="Ja"><br>
-        <input type="checkbox" name="redskabsskur" value="Nej"><br>
         
         <br><br>
 
