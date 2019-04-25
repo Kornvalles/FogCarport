@@ -14,12 +14,12 @@
     <body>
         <h1>Sortiment</h1>
         
-        <img src="img/1.png" alt="" width="100"/><br>
-        <img src="img/2.png" alt="" width="100"/><br>
-        <img src="img/3.png" alt="" width="100"/><br>
-        <img src="img/4.png" alt="" width="100"/><br>
-        <img src="img/5.png" alt="" width="100"/><br>
-        <img src="img/6.png" alt="" width="100"/><br>
+        <img src="img/1.jpeg" alt="" width="100"/> <br>
+        <img src="img/2.jpeg" alt="" width="100"/> <br>
+        <img src="img/3.jpeg" alt="" width="100"/> <br>
+        <img src="img/4.jpeg" alt="" width="100"/> <br>
+        <img src="img/5.jpeg" alt="" width="100"/> <br>
+        <img src="img/6.jpeg" alt="" width="100"/> <br>
         
         
     </body>
