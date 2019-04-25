@@ -1,10 +1,9 @@
 <%-- 
-    Document   : siteheader
-    Created on : Apr 24, 2019, 2:12:24 PM
-    Author     : ibenk
+    Document   : index
+    Created on : Apr 25, 2019, 9:48:24 AM
+    Author     : ndupo
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
  <head>
@@ -65,16 +64,23 @@ body {
   }
 }
 </style>
-    </head>
-    <body>
+</head>
+<body>
 
-        <div class="header">
-                <a href="http://localhost:8084/FogCarport/index.jsp" class="logo">Fog TrÃ¦last</a>
-            <div class="header-right">
-                <a href="http://localhost:8084/FogCarport/index.jsp">Hjem</a>
-                <a href="http://localhost:8084/FogCarport/jsp/shop.jsp">Bestilling af carport</a>
-                <a href="http://localhost:8084/FogCarport/jsp/sortiment.jsp">Sortiment</a>
-            </div>
-        </div>
-    </body>
+<div class="header">
+  <a href="http://localhost:8084/FogCarport/index.jsp" class="logo">Fog Trælast</a>
+  <div class="header-right">
+    <a href="http://localhost:8084/FogCarport/index.jsp">Hjem</a>
+    <a href="http://localhost:8084/FogCarport/jsp/shop.jsp">Bestilling af carport</a>
+    <a href="http://localhost:8084/FogCarport/jsp/sortiment.jsp">Sortiment</a>
+  </div>
+</div>
+
+<div style="padding-left:20px">
+  <h1>Forside</h1>
+  <h2>Velkommen til Fog Trælast</h2>
+  <p>Vi har danmarks største sortiment af carporte.</p>
+</div>
+
+</body>
 </html>
