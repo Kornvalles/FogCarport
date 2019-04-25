@@ -23,7 +23,7 @@ public class OrderMapper {
     public static List<Carport> getStandard() throws FogException {
         List<Carport> standards = new ArrayList<>();
         try {
-            String SQL = "SELECT * FROM `Carport`.`standard`;";
+            String SQL = "SELECT * FROM `carport`.`standard`;";
 
             Connection con = Connector.connection();
             PreparedStatement ps = con.prepareStatement( SQL );
@@ -45,7 +45,7 @@ public class OrderMapper {
     public static void makeOrder( Carport carport) throws FogException {
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO Orders (details, price) VALUES (?, ?)";
+            String SQL = "INSERT INTO orders (details, price) VALUES (?, ?)";
             PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
             ps.setString( 1, carport.getDetails() );
             ps.setInt( 2, carport.getPrice() );
