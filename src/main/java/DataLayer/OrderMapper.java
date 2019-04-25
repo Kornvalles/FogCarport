@@ -1,7 +1,9 @@
 package DataLayer;
 
 import FunctionLayer.Carport;
+import FunctionLayer.FogException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,18 +20,19 @@ public class OrderMapper {
     private Connector conn;
     
 /** Returns a list of all toppings
-     * @return  */
-    public List<Carport> getStandard() throws ClassNotFoundException {
+     * @return
+     * @throws java.lang.ClassNotFoundException  
+     */
+    public static List<Carport> getStandard() throws ClassNotFoundException {
+        List<Carport> standards = new ArrayList<>();
         try {
-            conn = new Connector();
 
-            String query = "SELECT * FROM `Carport`.`standard`;";
+            String SQL = "SELECT * FROM `Carport`.`standard`;";
 
-            Connection connection = conn.connection();
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Connection con = Connector.connection();
+            PreparedStatement ps = con.prepareStatement( SQL );
+            ResultSet rs = ps.executeQuery();
 
-            List<Carport> standards = new ArrayList<>();
             int id = 0;
             String details = "";
             int price = 0;

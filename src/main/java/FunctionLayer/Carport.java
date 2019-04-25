@@ -27,6 +27,10 @@ public class Carport {
         return height;
     }
 
+    public String getDetails() {
+        return details;
+    }
+
     public int getLength() {
         return length;
     }
