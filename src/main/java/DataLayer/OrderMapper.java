@@ -15,39 +15,43 @@ import java.util.List;
  * @authors Iben, Christian, Benjamin, Nicklas, Mikkel
  */
 public class OrderMapper {
-//establish database connection
-    
-    private Connector conn;
     
 /** Returns a list of all toppings
      * @return
-     * @throws java.lang.ClassNotFoundException  
+     * @throws FunctionLayer.FogException
      */
-    public static List<Carport> getStandard() throws ClassNotFoundException {
+    public static List<Carport> getStandard() throws FogException {
         List<Carport> standards = new ArrayList<>();
         try {
-
             String SQL = "SELECT * FROM `Carport`.`standard`;";
 
             Connection con = Connector.connection();
             PreparedStatement ps = con.prepareStatement( SQL );
             ResultSet rs = ps.executeQuery();
 
-            int id = 0;
-            String details = "";
-            int price = 0;
-
-            while (rs.next()) {
-                details = rs.getString("details");
-                price = rs.getInt("price");
-                id = rs.getInt("id");
-                Carport standard = new Carport(id, price, false, details);
+            while ( rs.next() ) {
+                String details = rs.getString("details");
+                int price = rs.getInt("price");
+                int id = rs.getInt("id");
+                Carport standard = new Carport(id, false, details, price);
                 standards.add(standard);
             }
-            return standards;
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        return null;
+        return standards;
+    }
+
+    public static void makeOrder( Carport carport) throws FogException {
+        try {
+            Connection con = Connector.connection();
+            String SQL = "INSERT INTO Orders (details, price) VALUES (?, ?)";
+            PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
+            ps.setString( 1, carport.getDetails() );
+            ps.setInt( 2, carport.getPrice() );
+            ps.executeUpdate();
+        } catch ( SQLException ex ) {
+            throw new FogException( ex.getMessage() );
+        }
     }
 }
