@@ -11,12 +11,12 @@ package FunctionLayer;
  */
 public class Wood extends Materials{
     
-    private int length;
-    private int width;
-    private double price;
-    private int qty;
+    private int length; //length of board   
+    private int width; //width of board
+    private double price; 
+    private int qty; //amount of boards
 
-    public Wood(int length, int width, double price, int qty) {
+    public Wood(int length, int width, double price, int qty) { //constructor
         this.length = length;
         this.width = width;
         this.price = price;
