@@ -1,11 +1,11 @@
 <%-- 
-    Document   : sortiment
-    Created on : Apr 24, 2019, 3:28:19 PM
+    Document   : index
+    Created on : Apr 25, 2019, 9:48:24 AM
     Author     : ndupo
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<html>
  <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -68,7 +68,7 @@ body {
 <body>
 
 <div class="header">
-  <a href="http://localhost:8084/FogCarport/index.jsp" class="logo">Fog TrÃ¦last</a>
+  <a href="http://localhost:8084/FogCarport/index.jsp" class="logo">Fog Trælast</a>
   <div class="header-right">
     <a class="active" href="http://localhost:8084/FogCarport/index.jsp">Hjem</a>
     <a href="http://localhost:8084/FogCarport/jsp/shop.jsp">Bestilling af carport</a>
@@ -77,8 +77,9 @@ body {
 </div>
 
 <div style="padding-left:20px">
-  <h1>Carport Sortiment</h1>
-  <p>VÃ¦lg din nye carport her</p>
+  <h1>Forside</h1>
+  <h2>Velkommen til Fog Trælast</h2>
+  <p>Vi har danmarks største sortiment af carporte.</p>
 </div>
 
 </body>
