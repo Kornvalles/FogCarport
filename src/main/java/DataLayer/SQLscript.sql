@@ -7,65 +7,109 @@
  * Author:  ndupo
  * Created: Apr 24, 2019
  */
-
 -- MySQL Workbench Forward Engineering
 
-DROP SCHEMA IF EXISTS carport;
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
--- -----------------------------------------------------
--- Schema carport
+-- Schema fog
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema carport
+-- Schema fog
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `carport` DEFAULT CHARACTER SET latin1 ;
-USE `carport` ;
+CREATE SCHEMA IF NOT EXISTS `fog` DEFAULT CHARACTER SET utf8 ;
+USE `fog` ;
 
 -- -----------------------------------------------------
--- Table `carport`.`standard`
+-- Table `fog`.`employee`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `carport`.`standard` (
-  `Id` INT(11) NOT NULL AUTO_INCREMENT,
-  `toolshed` BOOLEAN,
-  `details` VARCHAR(245) NOT NULL,
-  `price` DOUBLE NOT NULL,
-  PRIMARY KEY (`Id`))
-ENGINE = InnoDB
-
-DEFAULT CHARACTER SET = latin1;
+CREATE TABLE IF NOT EXISTS `fog`.`employee` (
+  `employeeID` VARCHAR(16) NOT NULL,
+  `name` VARCHAR(255) NULL,
+  `password` VARCHAR(45) NULL,
+  PRIMARY KEY (`employeeID`));
 
 
 -- -----------------------------------------------------
--- Table `carport`.`employee`
+-- Table `fog`.`customer`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `carport`.`employee` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
-  `password` INT(11) NULL NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+CREATE TABLE IF NOT EXISTS `fog`.`customer` (
+  `name` VARCHAR(16) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`email`));
+
+
+-- -----------------------------------------------------
+-- Table `fog`.`order`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `fog`.`order` (
+  `orderID` INT NOT NULL,
+  `employeeID` VARCHAR(255) NOT NULL,
+  `customerEmail` VARCHAR(255) NOT NULL,
+  `carportHeight` VARCHAR(45) NOT NULL,
+  `carportWidth` VARCHAR(45) NOT NULL,
+  `carportLength` VARCHAR(45) NOT NULL,
+  `rooftopType` VARCHAR(45) NOT NULL,
+  `shedLength` VARCHAR(45) NULL,
+  `shedWidth` VARCHAR(45) NULL,
+  `totalPrice` DOUBLE NOT NULL,
+  PRIMARY KEY (`orderID`),
+  INDEX `employeeID_idx` (`employeeID` ASC) VISIBLE,
+  INDEX `customerEmail_idx` (`customerEmail` ASC) VISIBLE,
+  CONSTRAINT `employeeID`
+    FOREIGN KEY (`employeeID`)
+    REFERENCES `fog`.`employee` (`employeeID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `customerEmail`
+    FOREIGN KEY (`customerEmail`)
+    REFERENCES `fog`.`customer` (`email`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+-- -----------------------------------------------------
+-- Table `fog`.`material`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `fog`.`material` (
+  `materialID` INT NOT NULL,
+  `name` VARCHAR(255) NOT NULL,
+  `MSRP` DOUBLE NOT NULL,
+  `costPrice` DOUBLE NOT NULL,
+  `quantity` DOUBLE NOT NULL,
+  PRIMARY KEY (`materialID`));
+
+
+-- -----------------------------------------------------
+-- Table `fog`.`category`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `fog`.`carport` (
+  `carportWS` INT NOT NULL AUTO_INCREMENT,
+  `materialID` INT NOT NULL,
+  `orderID` INT NOT NULL,
+  `quantity` INT NOT NULL,
+  `length` INT NOT NULL,
+  `width` INT NOT NULL,
+  `height` INT NOT NULL,
+  `comment` VARCHAR(45) NULL,
+  PRIMARY KEY (`carportWS`),
+  INDEX `materialID_idx` (`materialID` ASC) VISIBLE,
+  INDEX `orderID_idx` (`orderID` ASC) VISIBLE,
+  CONSTRAINT `materialID`
+    FOREIGN KEY (`materialID`)
+    REFERENCES `fog`.`material` (`materialID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `orderID`
+    FOREIGN KEY (`orderID`)
+    REFERENCES `fog`.`order` (`orderID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
-
-INSERT INTO `standard` (`details`, `price`) VALUES 
-('Enkelt b 300 l 480 h 225 fladt tag uden skur', '3795.00'),
-('Enkelt b 390 l 720 h 310 høj rejsning med skur b 330 l 240', '22495.00'),
-('Dobbelt b 600 l 480 h 225 fladt tag', '9995.00'),
-('Dobbelt b 600 l 870 h 380 høj rejsning med skur b 530 l 310', '31995.00'),
-
-INSERT INTO `employee`
-VALUES
-('1','admin','1234');
-
