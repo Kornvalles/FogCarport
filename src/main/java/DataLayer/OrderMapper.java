@@ -20,7 +20,9 @@ public class OrderMapper {
     private Connector conn;
     
 /** Returns a list of all toppings
-     * @return  */
+     * @return
+     * @throws java.lang.ClassNotFoundException  
+     */
     public static List<Carport> getStandard() throws ClassNotFoundException {
         List<Carport> standards = new ArrayList<>();
         try {
