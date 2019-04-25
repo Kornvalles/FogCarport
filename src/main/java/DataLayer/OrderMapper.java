@@ -21,7 +21,7 @@ public class OrderMapper {
     public static List<Carport> getStandard() throws FogException {
         List<Carport> standards = new ArrayList<>();
         try {
-            String SQL = "SELECT * FROM `carport`.`standard`;";
+            String SQL = "SELECT * FROM `fog`.`carport`;";
 
             Connection con = Connector.connection();
             PreparedStatement ps = con.prepareStatement( SQL );
