@@ -33,12 +33,25 @@ public class OrderMapper {
                 String details = rs.getString("details");
                 int price = rs.getInt("price");
                 int id = rs.getInt("id");
-                Carport standard = new Carport(id, price, false, details);
+                Carport standard = new Carport(id, false, details, price);
                 standards.add(standard);
             }
         } catch (SQLException ex) {
             System.out.println(ex);
         }
         return standards;
+    }
+
+    public static void makeOrder( Carport carport) throws FogException {
+        try {
+            Connection con = Connector.connection();
+            String SQL = "INSERT INTO Orders (details, price) VALUES (?, ?)";
+            PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
+            ps.setString( 1, carport.getDetails() );
+            ps.setInt( 2, carport.getPrice() );
+            ps.executeUpdate();
+        } catch ( SQLException ex ) {
+            throw new FogException( ex.getMessage() );
+        }
     }
 }

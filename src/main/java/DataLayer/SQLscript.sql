@@ -33,6 +33,7 @@ USE `carport` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `carport`.`standard` (
   `Id` INT(11) NOT NULL AUTO_INCREMENT,
+  `toolshed` BOOLEAN,
   `details` VARCHAR(245) NOT NULL,
   `price` DOUBLE NOT NULL,
   PRIMARY KEY (`Id`))
