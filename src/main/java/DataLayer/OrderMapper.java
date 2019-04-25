@@ -27,7 +27,7 @@ public class OrderMapper {
 
             Connection con = Connector.connection();
             PreparedStatement ps = con.prepareStatement( SQL );
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery(SQL);
 
             while ( rs.next() ) {
                 String details = rs.getString("details");
