@@ -27,7 +27,6 @@ public class Order extends Command {
     private String ShowOrders(HttpServletRequest request) {
         HttpSession session = request.getSession();
         return null;
-        
     }
         
 }
