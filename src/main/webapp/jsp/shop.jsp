@@ -3,6 +3,7 @@
     Created on : 12-04-2019, 11:45:37
     Author     : mikkel
 --%>
+<%@page import="FunctionLayer.LogicFacade"%>
 <%@page import="java.util.List"%>
 <%@page import="FunctionLayer.Carport"%>
 <%@page import="DataLayer.OrderMapper"%>
@@ -20,10 +21,10 @@
         
         <% 
         
-            OrderMapper mapper = new OrderMapper();
+            LogicFacade lf = new LogicFacade();
             
             /* Add dropdown-list with carports  */
-            List<Carport> standard = mapper.getStandard();
+            List<Carport> standard = lf.getOrders();
 
         %>
         <br><br> Vælg carport
