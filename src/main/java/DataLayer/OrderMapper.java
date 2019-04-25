@@ -18,9 +18,9 @@ public class OrderMapper {
     
 /** Returns a list of all toppings
      * @return
-     * @throws java.lang.ClassNotFoundException  
+     * @throws FunctionLayer.FogException
      */
-    public static List<Carport> getStandard() throws ClassNotFoundException {
+    public static List<Carport> getStandard() throws FogException {
         List<Carport> standards = new ArrayList<>();
         try {
             String SQL = "SELECT * FROM `Carport`.`standard`;";
