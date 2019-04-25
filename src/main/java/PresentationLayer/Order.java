@@ -26,8 +26,9 @@ public class Order extends Command {
 
     private String createOrder(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        return null;
-        
+        User user = (User) session.getAttribute("user");
+        //LogicFacade.createOrder();
+        return "";
     }
         
 }
