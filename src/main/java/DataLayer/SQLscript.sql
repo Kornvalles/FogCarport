@@ -59,12 +59,10 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 INSERT INTO `standard` (`details`, `price`) VALUES 
-('Enkelt 390x780 høj rejsning med skur 240x330', '18798.40'),
-('Enkelt 360x720 høj rejsning med skur 320x220', '17198.40'),
-('Enkelt 360x540 høj rejsning uden skur', '11198.40'),
-('Dobbelt 600x780 høj rejsning med skur 210x510', '25598.40'),
-('Dobbelt 600x870 høj rejsning med skur 530x300', '27198.40'),
-('Dobbelt 600x540 fladt tag med midterstolpe og skur 260x185', '9438.40');
+('Enkelt b 300 l 480 h 225 fladt tag uden skur', '3795.00'),
+('Enkelt b 390 l 720 h 310 høj rejsning med skur b 330 l 240', '22495.00'),
+('Dobbelt b 600 l 480 h 225 fladt tag', '9995.00'),
+('Dobbelt b 600 l 870 h 380 høj rejsning med skur b 530 l 310', '31995.00'),
 
 INSERT INTO `employee`
 VALUES
