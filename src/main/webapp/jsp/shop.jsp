@@ -42,7 +42,7 @@
 
                                             out.print("<select>\n");
                                     %>
-                                    </select>
+                                </td></select>
 
                             </tr>
                         </tbody>

@@ -1,5 +1,6 @@
 package DataLayer;
 
+import DataLayer.Connector;
 import FunctionLayer.Carport;
 import FunctionLayer.FogException;
 import java.sql.Connection;
@@ -15,11 +16,7 @@ import java.util.List;
  * @authors Iben, Christian, Benjamin, Nicklas, Mikkel
  */
 public class OrderMapper {
-    
-/** Returns a list of all toppings
-     * @return
-     * @throws FunctionLayer.FogException
-     */
+
     public static List<Carport> getStandard() throws FogException {
         List<Carport> standards = new ArrayList<>();
         try {
@@ -54,5 +51,4 @@ public class OrderMapper {
             throw new FogException( ex.getMessage() );
         }
     }
-    //hej med dig
 }
