@@ -27,8 +27,8 @@ public class Order extends Command {
     private String createOrder(HttpServletRequest request) {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        String empty;
-        return empty;
+        
+        return null;
     }
 
 }

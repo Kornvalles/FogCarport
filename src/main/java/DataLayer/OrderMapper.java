@@ -40,7 +40,7 @@ public class OrderMapper {
         return standards;
     }
 
-    public static Order makeOrder( Carport carport ) throws FogException {
+    public static Order makeOrder( Carport carport, String name, String email ) throws FogException {
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO orders (details, price) VALUES (?, ?)";
