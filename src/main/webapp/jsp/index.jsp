@@ -3,6 +3,7 @@
     Created on : Apr 25, 2019, 9:48:24 AM
     Author     : ndupo
 --%>
+<jsp:include page='/jsp/siteheader.jsp'></jsp:include>
 
 <!DOCTYPE html>
 <html>
@@ -67,14 +68,7 @@ body {
 </head>
 <body>
 
-<div class="header">
-  <a href="http://localhost:8084/FogCarport/index.jsp" class="logo"><img src="https://sgn-assets.imgix.net/resources/1229572831436603912/source.png?max-w=160&max-h=45&auto=format&s=01bc438ae1a10d71a40ce0dcd81cfbbc" class="img-thumbnail" alt=""></a>
-  <div class="header-right">
-    <a href="http://localhost:8084/FogCarport/index.jsp">Hjem</a>
-    <a href="http://localhost:8084/FogCarport/jsp/shop.jsp">Bestilling af carport</a>
-    <a href="http://localhost:8084/FogCarport/jsp/sortiment.jsp">Sortiment</a>
-  </div>
-</div>
+
 
 <div style="padding-left:20px">
   <h1>Forside</h1>
