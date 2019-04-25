@@ -16,18 +16,19 @@ public class Order extends Command {
         String origin = (String) request.getParameter("origin");
         String view = "";
         switch (origin) {
-            case "ShowOrders": {
-                view = ShowOrders(request);
+            case "createOrder": {
+                view = createOrder(request);
                 break;
             }
         }
         return view;
     }
 
-    private String ShowOrders(HttpServletRequest request) {
+    private String createOrder(HttpServletRequest request) {
         HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        
         return null;
-        
     }
-        
+
 }
