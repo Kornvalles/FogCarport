@@ -43,35 +43,6 @@ CREATE TABLE IF NOT EXISTS `fog`.`customer` (
 
 
 -- -----------------------------------------------------
--- Table `fog`.`order`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `fog`.`order` (
-  `orderID` INT NOT NULL,
-  `employeeID` VARCHAR(255) NOT NULL,
-  `customerEmail` VARCHAR(255) NOT NULL,
-  `carportHeight` VARCHAR(45) NOT NULL,
-  `carportWidth` VARCHAR(45) NOT NULL,
-  `carportLength` VARCHAR(45) NOT NULL,
-  `rooftopType` VARCHAR(45) NOT NULL,
-  `shedLength` VARCHAR(45) NULL,
-  `shedWidth` VARCHAR(45) NULL,
-  `totalPrice` DOUBLE NOT NULL,
-  PRIMARY KEY (`orderID`),
-  INDEX `employeeID_idx` (`employeeID` ASC) VISIBLE,
-  INDEX `customerEmail_idx` (`customerEmail` ASC) VISIBLE,
-  CONSTRAINT `employeeID`
-    FOREIGN KEY (`employeeID`)
-    REFERENCES `fog`.`employee` (`employeeID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `customerEmail`
-    FOREIGN KEY (`customerEmail`)
-    REFERENCES `fog`.`customer` (`email`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-
-
--- -----------------------------------------------------
 -- Table `fog`.`material`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `fog`.`material` (
@@ -84,10 +55,11 @@ CREATE TABLE IF NOT EXISTS `fog`.`material` (
 
 
 -- -----------------------------------------------------
--- Table `fog`.`category`
+-- Table `fog`.`carport`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `fog`.`carport` (
-  `carportWS` INT NOT NULL AUTO_INCREMENT,
+  `carportID` INT NOT NULL AUTO_INCREMENT,
+  `carportWS` TINYINT NOT NULL,
   `materialID` INT NOT NULL,
   `orderID` INT NOT NULL,
   `quantity` INT NOT NULL,
@@ -95,17 +67,53 @@ CREATE TABLE IF NOT EXISTS `fog`.`carport` (
   `width` INT NOT NULL,
   `height` INT NOT NULL,
   `comment` VARCHAR(45) NULL,
-  PRIMARY KEY (`carportWS`),
-  INDEX `materialID_idx` (`materialID` ASC) VISIBLE,
-  INDEX `orderID_idx` (`orderID` ASC) VISIBLE,
-  CONSTRAINT `materialID`
+  PRIMARY KEY (`carportID`),
+  INDEX `material_ID_idx` (`materialID` ASC) VISIBLE,
+  INDEX `order_ID_idx` (`orderID` ASC) VISIBLE,
+  CONSTRAINT `material_ID`
     FOREIGN KEY (`materialID`)
     REFERENCES `fog`.`material` (`materialID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `orderID`
+  CONSTRAINT `order_ID`
     FOREIGN KEY (`orderID`)
     REFERENCES `fog`.`order` (`orderID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+-- -----------------------------------------------------
+-- Table `fog`.`order`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `fog`.`order` (
+  `orderID` INT NOT NULL AUTO_INCREMENT,
+  `carportID` INT NOT NULL,
+  `employeeID` INT NOT NULL,
+  `customerEmail` VARCHAR(255) NOT NULL,
+  `carportHeight` INT NOT NULL,
+  `carportWidth` INT NOT NULL,
+  `carportLength` INT NOT NULL,
+  `rooftopType` VARCHAR(45) NOT NULL,
+  `shedLength` INT NULL,
+  `shedWidth` INT NULL,
+  `totalPrice` DOUBLE NOT NULL,
+  PRIMARY KEY (`orderID`),
+  INDEX `employeeID_idx` (`employeeID` ASC) VISIBLE,
+  INDEX `customerEmail_idx` (`customerEmail` ASC) VISIBLE,
+  INDEX `carportID_idx` (`carportID` ASC) VISIBLE,
+  CONSTRAINT `employeeID`
+    FOREIGN KEY (`employeeID`)
+    REFERENCES `fog`.`employee` (`employeeID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `customerEmail`
+    FOREIGN KEY (`customerEmail`)
+    REFERENCES `fog`.`customer` (`email`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `carportID`
+    FOREIGN KEY (`carportID`)
+    REFERENCES `fog`.`carport` (`carportID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
