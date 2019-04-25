@@ -49,7 +49,9 @@
                 </table>
        
         
-        <br><br> Indsæt checkbox
+        <br><br> Med redskabsskur?
+        <input type="checkbox" name="redskabsskur" value="Ja"><br>
+        <input type="checkbox" name="redskabsskur" value="Nej"><br>
         
         <br><br>
 
