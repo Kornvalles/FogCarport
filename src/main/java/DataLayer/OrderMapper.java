@@ -2,6 +2,7 @@ package DataLayer;
 
 import DataLayer.Connector;
 import FunctionLayer.Carport;
+import FunctionLayer.Customer;
 import FunctionLayer.FogException;
 import PresentationLayer.Order;
 import java.sql.Connection;
@@ -40,7 +41,7 @@ public class OrderMapper {
         return standards;
     }
 
-    public static Order makeOrder( Carport carport, String name, String email ) throws FogException {
+    public static void makeOrder( Carport carport, Customer customer ) throws FogException {
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO orders (details, price) VALUES (?, ?)";
@@ -51,6 +52,5 @@ public class OrderMapper {
         } catch ( SQLException ex ) {
             throw new FogException( ex.getMessage() );
         }
-        return null;
     }
 }
