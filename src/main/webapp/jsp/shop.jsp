@@ -3,6 +3,9 @@
     Created on : 12-04-2019, 11:45:37
     Author     : mikkel
 --%>
+<%@page import="java.util.List"%>
+<%@page import="FunctionLayer.Carport"%>
+<%@page import="DataLayer.OrderMapper"%>
 <jsp:include page='/jsp/siteheader.jsp'></jsp:include>
     
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,25 +16,54 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>FOG Trælast</h1>
+    
         
-        <br><br> Indsæt dropdown-liste
+        <% 
         
-        <br><br> Indsæt checkbox
+            OrderMapper mapper = new OrderMapper();
+            
+            /* Add dropdown-list with carports  */
+            List<Carport> standard = mapper.getStandard();
+
+        %>
+        <br><br> Vælg carport
+        
+        <form method="POST" action="/FogCarport/FrontController?command=order" >
+             <input type="hidden" name="origin" value="order">
+                <table class="table table-striped">
+                    
+                        <tbody>
+                            <tr>
+                                <td><select name="standard" id="standardSelect">
+                                    <%  for (Carport stand : standard) {
+                                            out.print("<option value=\"" + stand.getDetails()
+                                            + "\">" + stand.getDetails() + "</option>\n");
+                                        }
+
+                                            out.print("<select>\n");
+                                    %>
+                                </td></select>
+
+                            </tr>
+                        </tbody>
+                </table>
+       
+        
+                                    <br><br> Med redskabsskur? <br><br>
+        <input type="checkbox" name="redskabsskur" value="Ja"><br> 
+        
+        
         
         <br><br>
-        <form method="post" action="/FogCarport/FrontController?command=">
-            <input type="hidden" name="origin" value="loginpage">
-            Navn og efternavn: <br>
+
+            Fulde navn: <br>
             <input type="text" name="name" value=""/><br>
             Email:<br> 
             <input type="password" name="email" value=""/> <br><br>
             
             
-            <input type="submit" value="Bestil">
+            <td><input type="submit" name="order" value="Bestil"></td><td><span id="errorContainer"></span></td>
         </form>
-        
-        <br><br> Indsæt refresh-knap
         
     </body>
 </html>

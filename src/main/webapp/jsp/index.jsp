@@ -1,10 +1,10 @@
 <%-- 
-    Document   : siteheader
-    Created on : Apr 24, 2019, 2:12:24 PM
-    Author     : ibenk
+    Document   : index
+    Created on : Apr 25, 2019, 9:48:24 AM
+    Author     : ndupo
 --%>
+<jsp:include page='/jsp/siteheader.jsp'></jsp:include>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
  <head>
@@ -65,16 +65,16 @@ body {
   }
 }
 </style>
-    </head>
-    <body>
+</head>
+<body>
 
-        <div class="header">
-                <a href="index.jsp" class="logo"><img src="https://sgn-assets.imgix.net/resources/1229572831436603912/source.png?max-w=160&max-h=45&auto=format&s=01bc438ae1a10d71a40ce0dcd81cfbbc" class="img-thumbnail" alt="Fog"></a>
-            <div class="header-right">
-                <a href="index.jsp">Hjem</a>
-                <a href="shop.jsp">Bestilling af carport</a>
-                <a href="sortiment.jsp">Sortiment</a>
-            </div>
-        </div>
-    </body>
+
+
+<div style="padding-left:20px">
+  <h1>Forside</h1>
+  <h2>Velkommen til Fog Trælast</h2>
+  <p>Vi har danmarks største sortiment af carporte.</p>
+</div>
+
+</body>
 </html>

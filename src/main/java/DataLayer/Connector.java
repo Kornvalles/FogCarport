@@ -1,5 +1,6 @@
 package DataLayer;
 
+import FunctionLayer.FogException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -15,7 +16,7 @@ public class Connector {
     //Constants
     private static final String IP = "localhost";
     private static final String PORT = "3306";
-    public static final String DATABASE = "FogCarport";
+    public static final String DATABASE = "fog";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
 
@@ -25,7 +26,7 @@ public class Connector {
         singleton = con;
     }
 
-    public static synchronized Connection connection() throws SQLException, ClassNotFoundException {
+    public static synchronized Connection connection() throws SQLException, FogException {
         if (singleton == null) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
