@@ -9,7 +9,7 @@ package FunctionLayer;
  *
  * @author benjaminbajrami
  */
-public class Wood extends Materials{
+public class Wood {
     
     private int length; //length of board   
     private int width; //width of board
