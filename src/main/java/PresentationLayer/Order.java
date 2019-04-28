@@ -1,7 +1,9 @@
 package PresentationLayer;
 
 
+import FunctionLayer.Carport;
 import FunctionLayer.FogException;
+import FunctionLayer.LogicFacade;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -25,8 +27,9 @@ public class Order extends Command {
         return view;
     }
 
-    private String createOrder(HttpServletRequest request) {
+    private String createOrder(HttpServletRequest request) throws FogException {
         
+        HttpSession session = request.getSession();
         
         String reqLength = request.getParameter("length");
         String reqWidth = request.getParameter("width");
@@ -50,10 +53,12 @@ public class Order extends Command {
         String reqEmail = request.getParameter("email");
         int length = Integer.parseInt(reqLength);
         int width = Integer.parseInt(reqWidth);
-        
+        Carport carport = new Carport(230, length, width, shed, roof, wall, "");
+        session.setAttribute("carport", carport);
+//        LogicFacade.createOrder(carport, reqName, reqEmail);
         
        
-        return null;
+        return "confirmation";
     }
 
 }
