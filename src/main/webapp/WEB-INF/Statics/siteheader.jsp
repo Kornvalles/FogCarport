@@ -19,6 +19,8 @@
             }
 
             .header {
+                position: relative;
+                width: 100%;
                 overflow: hidden;
                 background-color: #f1f1f1;
                 padding: 20px 10px;

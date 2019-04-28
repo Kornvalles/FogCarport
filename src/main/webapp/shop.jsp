@@ -5,6 +5,7 @@
 --%>
 <%@page import="java.util.List"%>
 <jsp:include page='/WEB-INF/Statics/siteheader.jsp'></jsp:include>
+<jsp:include page='/WEB-INF/Statics/sitefooter.jsp'></jsp:include>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -75,6 +76,9 @@
                 </div>
                 </form>
             </div>
+        </div>
+        <div class="footer">
+            <p>Footer</p>
         </div>
     </body>
 </html>
