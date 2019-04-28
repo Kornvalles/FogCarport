@@ -32,16 +32,16 @@
                             <p><input type="text" name="width" placeholder="" id="widthInput"></p>
                         </div>
                         <div class="form-group">
-                            <label for="shedInput">Skur</label>
                             <input type="checkbox" name="shed" value="true" id="shedInput">
+                            <label for="shedInput">Skur</label>      
                         </div>
                         <div class="form-group">
-                            <label for="roofInput">Spids tag</label>
                             <input type="checkbox" name="roof" value="true" id="roofInput">
+                            <label for="roofInput">Spids tag</label>
                         </div>
                         <div class="form-group">
-                            <label for="wallsInput">Vægge</label>
                             <input type="checkbox" name="wall" value="true" id="wallsInput">
+                            <label for="wallsInput">Vægge</label>
                         </div>
                 </div>
                         <div class="col">
