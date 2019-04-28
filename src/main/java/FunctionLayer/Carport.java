@@ -1,59 +1,62 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package FunctionLayer;
 
-/**
- *
- * @author Benjamin
- */
 public class Carport {
     
-    //private final int height; //measured in centimeters.
-    //private final int length; //measured in centimeters.
-    private final int id;
+    private final int height; //measured in centimeters.
+    private final int length; //measured in centimeters.
+    private final int width; //measured in centimeters.
     private final boolean toolshed; //false when toolshed is not opted
+    private final boolean pointyRoof; //false when roof is not pointy
+    private final boolean sides; //false when there are only posts on sides
     private final String details; //details on carport
-    private final int price; //price of carport
 
-    public Carport(int id, boolean toolshed, String details, int price) {
-        //this.height = height;
-        //this.length = length;
-        this.id = id;
+    public Carport(int height, int length, int width, boolean toolshed, boolean pointyRoof, boolean sides, String details) {
+        this.height = height;
+        this.length = length;
+        this.width = width;
         this.toolshed = toolshed;
+        this.pointyRoof = pointyRoof;
+        this.sides = sides;
         this.details = details;
-        this.price = price;
     }
     
-    public int getId() {
-        return id;
+    public Carport(int height, int length, int width) {
+        this.height = height;
+        this.length = length;
+        this.width = width;
+        toolshed = false;
+        pointyRoof = false;
+        sides = true;
+        details = "";
     }
 
-//    public int getHeight() {
-//        return height;
-//    }
-
-    public String getDetails() {
-        return details;
+    public int getHeight() {
+        return height;
+    }
+    
+    public int getLength() {
+        return length;
     }
 
-//    public int getLength() {
-//        return length;
-//    }
-
+    public int getWidth() {
+        return width;
+    }
+    
     public boolean hasToolshed() {
         return toolshed;
     }
 
-    @Override
-    public String toString() {
-        return "Carport{" + "toolshed=" + toolshed + ", details=" + details + ", price=" + price + '}';
+    public boolean hasPointyRoof() {
+        return pointyRoof;
+    }
+    
+    public String getDetails() {
+        return details;
     }
 
-    public int getPrice() {
-        return price;
+    @Override
+    public String toString() {
+        return "Carport ";
     }
     
 }

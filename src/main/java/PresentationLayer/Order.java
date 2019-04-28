@@ -1,7 +1,9 @@
 package PresentationLayer;
 
+
 import FunctionLayer.Carport;
 import FunctionLayer.FogException;
+import FunctionLayer.LogicFacade;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -25,15 +27,31 @@ public class Order extends Command {
         return view;
     }
 
-    private String createOrder(HttpServletRequest request) {
-//        //HttpSession session = request.getSession();
-//        try {
-//            Carport carport = new Carport((String)request.getParameter("id"), false, 
-//                    (String)request.getParameter("details"), (Integer)request.getParameter("id"));
-//        } catch(FogException e) {
-//            System.out.println("failed to create order= " + e);
-//        }
-        return null;
+    private String createOrder(HttpServletRequest request) throws FogException {
+        
+        HttpSession session = request.getSession();
+        
+        String reqLength = request.getParameter("length");
+        String reqWidth = request.getParameter("width");
+        boolean shed;
+        boolean roof;
+        boolean wall;
+            String reqShed = request.getParameter("shed");
+            shed = Boolean.parseBoolean(reqShed);  
+            String reqRoof = request.getParameter("roof");
+             roof = Boolean.parseBoolean(reqRoof);
+            String reqWall = request.getParameter("wall");
+             wall = Boolean.parseBoolean(reqWall);
+        String reqName = request.getParameter("name");
+        String reqEmail = request.getParameter("email");
+        int length = Integer.parseInt(reqLength);
+        int width = Integer.parseInt(reqWidth);
+        Carport carport = new Carport(230, length, width, shed, roof, wall, "");
+        session.setAttribute("carport", carport);
+//        LogicFacade.createOrder(carport, reqName, reqEmail);
+        
+       
+        return "confirmation";
     }
 
 }

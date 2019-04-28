@@ -1,8 +1,6 @@
 package FunctionLayer;
 
 import DataLayer.OrderMapper;
-import PresentationLayer.Order;
-import java.util.List;
 
 /**
  * The purpose of LogicFacade is to...
@@ -11,12 +9,18 @@ import java.util.List;
  */
 public class LogicFacade {
 
-    public static List<Carport> getOrders( int id ) throws FogException, ClassNotFoundException  {
-        return OrderMapper.getStandard();
-    }
+//    public static List<Carport> getOrders( int id ) throws FogException, ClassNotFoundException  {
+//        return OrderMapper.getStandard();
+//    }
+//    
+
+//    public static void createOrder( Carport carport, String name, String email ) throws FogException {
+//        OrderMapper.makeOrder(carport, name, email);
+//    }
+
     
-    public static void createOrder( Carport carport, Customer customer ) throws FogException {
-        OrderMapper.makeOrder(carport, customer);
+    public static double getMaterialPrice(String name) throws FogException {
+        return OrderMapper.getMaterialPrice(name);
     }
     
 }

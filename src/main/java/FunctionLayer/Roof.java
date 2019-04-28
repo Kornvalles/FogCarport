@@ -9,7 +9,7 @@ package FunctionLayer;
  *
  * @author benjaminbajrami
  */
-public class Roof extends Materials {
+public class Roof {
     
     private int price; //added price
     private boolean tall; //if roof is tall or not
