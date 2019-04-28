@@ -1,6 +1,6 @@
 package FunctionLayer;
 
-public class CarportWithSides {
+public class Carport {
     
     private final int height; //measured in centimeters.
     private final int length; //measured in centimeters.
@@ -10,7 +10,7 @@ public class CarportWithSides {
     private final boolean sides; //false when there are only posts on sides
     private final String details; //details on carport
 
-    public CarportWithSides(int height, int length, int width, boolean toolshed, boolean pointyRoof, boolean sides, String details) {
+    public Carport(int height, int length, int width, boolean toolshed, boolean pointyRoof, boolean sides, String details) {
         this.height = height;
         this.length = length;
         this.width = width;
@@ -20,7 +20,7 @@ public class CarportWithSides {
         this.details = details;
     }
     
-    public CarportWithSides(int height, int length, int width) {
+    public Carport(int height, int length, int width) {
         this.height = height;
         this.length = length;
         this.width = width;

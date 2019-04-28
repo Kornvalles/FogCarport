@@ -4,8 +4,6 @@
     Author     : mikkel
 --%>
 <%@page import="java.util.List"%>
-<%@page import="FunctionLayer.CarportWithSides"%>
-<%@page import="DataLayer.OrderMapper"%>
 <jsp:include page='/WEB-INF/Statics/siteheader.jsp'></jsp:include>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,42 +14,48 @@
         <title>Shop</title>
     </head>
     <body>
-
-
-        <%
-
-            OrderMapper mapper = new OrderMapper();
-            //missing method import
-
-        %>
-        <br><br> Bestilling af carport
+        <div class="text-center">
+            <h1>Bestilling af carport</h1>
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col">    
                     <form method="POST" action="/FogCarport/FrontController?command=order" >
-                        <input type="hidden" name="origin" value="order"> <br>
-                       <br><br> Length <br><br>
-                        <td><input type="text" name="length" placeholder="Insert carport length?" id="lengthInput"></td>
-                        <br><br>Width<br><br>
-                        <td><input type="text" name="width" placeholder="How wide would you like the carport?" id="widthInput"></td>
-                        <br><br> With toolshed?? <br><br>
-                        <input type="checkbox" name="redskabsskur" value="Ja">
-                        <br><br> With a pointy roof? <br><br>
-                        <input type="checkbox" name="spidstag" value="Ja">
-                        <br><br> With walls? <br><br>
-                        <input type="checkbox" name="beklædning" value="Ja">
-                        
-
-                        Fulde navn: <br>
-                        <input type="text" name="name" value=""/><br>
-                        Email:<br> 
-                        <input type="password" name="email" value=""/> <br><br>
-
-
-                        <td><input type="submit" name="order" value="Bestil"></td><td><span id="errorContainer"></span></td>
+                        <input type="hidden" name="origin" value="order">
+                        <div class="form-group">
+                            <label for="lengthInput">Length:</label>
+                            <input type="text" name="length" placeholder="Insert carport length?" id="lengthInput">
+                        </div>
+                        <div class="form-group">
+                            <label for="widthInput">Width:</label>
+                            <input type="text" name="width" placeholder="How wide would you like the carport?" id="widthInput">
+                        </div>
+                        <div class="form-group">
+                            <label for="shedInput">With toolshed?</label>
+                            <input type="checkbox" name="redskabsskur" value="true" id="shedInput">
+                        </div>
+                        <div class="form-group">
+                            <label for="roofInput">With a pointy roof?</label>
+                            <input type="checkbox" name="spidstag" value="true" id="roofInput">
+                        </div>
+                        <div class="form-group">
+                            <label for="wallsInput">With walls?</label>
+                            <input type="checkbox" name="beklædning" value="true" id="wallsInput">
+                        </div>
+                </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="nameInput">Fulde navn:</label>
+                                <input type="text" name="name" value="" id="nameInput">
+                            </div>
+                            <div class="form-group">
+                                <label for="emailInput">Email:</label>
+                                <input type="text" name="email" value="" id="emailInput">
+                            </div>
+                            <input type="submit" name="order" value="Bestil">
+                        </div>
                     </form>
                 </div>
             </div>
-        </div>
     </body>
 </html>
