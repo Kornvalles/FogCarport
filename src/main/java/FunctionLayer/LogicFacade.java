@@ -13,9 +13,9 @@ public class LogicFacade {
 //        return OrderMapper.getStandard();
 //    }
 //    
-    public static void createOrder( Carport carport, Customer customer ) throws FogException {
-        OrderMapper.makeOrder(carport, customer);
-    }
+//    public static void createOrder( Carport carport, String name, String email ) throws FogException {
+//        OrderMapper.makeOrder(carport, name, email);
+//    }
     
     public static double getMaterialPrice(String name) throws FogException {
         return OrderMapper.getMaterialPrice(name);
