@@ -25,11 +25,11 @@
                         <input type="hidden" name="command" value="order">
                         <div class="form-group">
                             <label for="lengthInput">Længde</label>
-                            <p><input type="text" name="length" placeholder="" id="lengthInput"></p>
+                            <p><input type="text" name="length" placeholder="Indtast carportens længde" id="lengthInput"></p>
                         </div>
                         <div class="form-group">
                             <label for="widthInput">Bredde</label>
-                            <p><input type="text" name="width" placeholder="" id="widthInput"></p>
+                            <p><input type="text" name="width" placeholder="Indtast carportens bredde" id="widthInput"></p>
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="shed" value="true" id="shedInput">
@@ -47,11 +47,11 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="nameInput">Fulde navn</label>
-                                <p><input type="text" name="name" value="" id="nameInput"></p>
+                                <p><input type="text" name="name" value="Indtast dit fulde navn" id="nameInput"></p>
                             </div>
                             <div class="form-group">
                                 <label for="emailInput">Email</label>
-                                <p><input type="text" name="email" value="" id="emailInput"></p>
+                                <p><input type="text" name="email" value="Indtast din email" id="emailInput"></p>
                             </div>
                             <input type="submit" name="order" value="Bestil">
                         </div>
