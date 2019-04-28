@@ -47,11 +47,11 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="nameInput">Fulde navn</label>
-                                <p><input type="text" name="name" value="Indtast dit fulde navn" id="nameInput"></p>
+                                <p><input type="text" name="name" placeholder="Indtast dit fulde navn" id="nameInput"></p>
                             </div>
                             <div class="form-group">
                                 <label for="emailInput">Email</label>
-                                <p><input type="text" name="email" value="Indtast din email" id="emailInput"></p>
+                                <p><input type="text" name="email" placeholder="Indtast din email" id="emailInput"></p>
                             </div>
                             <input type="submit" name="order" value="Bestil">
                         </div>
