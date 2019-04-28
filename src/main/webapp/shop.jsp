@@ -21,42 +21,26 @@
         <%
 
             OrderMapper mapper = new OrderMapper();
-
-            /* Add dropdown-list with carports  */
-            List<Carport> standard = mapper.getStandard();
+            //missing method import
 
         %>
-        <br><br> Vælg carport
+        <br><br> Bestilling af carport
         <div class="container">
             <div class="row">
                 <div class="col">    
                     <form method="POST" action="/FogCarport/FrontController?command=order" >
-                        <input type="hidden" name="origin" value="order">
-                        <table class="table table-striped">
-
-                            <tbody>
-                                <tr>
-                                    <td><select name="standard" id="standardSelect">
-                                            <%  for (Carport stand : standard) {
-                                                    out.print("<option value=\"" + stand.getDetails()
-                                                            + "\">" + stand.getDetails() + "</option>\n");
-                                                }
-
-                                                out.print("<select>\n");
-                                            %>
-                                    </td></select>
-
-                                </tr>
-                            </tbody>
-                        </table>
-
-
-                        <br><br> Med redskabsskur? <br><br>
-                        <input type="checkbox" name="redskabsskur" value="Ja"><br> 
-
-
-
-                        <br><br>
+                        <input type="hidden" name="origin" value="order"> <br>
+                       <br><br> Length <br><br>
+                        <td><input type="text" name="length" placeholder="Insert carport length?" id="lengthInput"></td>
+                        <br><br>Width<br><br>
+                        <td><input type="text" name="width" placeholder="How wide would you like the carport?" id="widthInput"></td>
+                        <br><br> With toolshed?? <br><br>
+                        <input type="checkbox" name="redskabsskur" value="Ja">
+                        <br><br> With a pointy roof? <br><br>
+                        <input type="checkbox" name="spidstag" value="Ja">
+                        <br><br> With walls? <br><br>
+                        <input type="checkbox" name="beklædning" value="Ja">
+                        
 
                         Fulde navn: <br>
                         <input type="text" name="name" value=""/><br>
