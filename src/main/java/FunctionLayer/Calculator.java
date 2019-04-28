@@ -13,7 +13,7 @@ public class Calculator {
      * This method returns the number of posts needed to make the input carport.
      * Calculates for 1 longside, multiplies in the end and adds backside.
      */
-    public static int getAllPosts(Carport carport) {
+    public static int getAllPosts(CarportWithSides carport) {
         /* One side of the carport automatically has 1 post at each end */
         int auto = 2;
 
@@ -26,7 +26,7 @@ public class Calculator {
     /**
      * This method returns the number of posts on 1 side of the input carport.
      */
-    public static int getPostsOnLongside(Carport carport) {
+    public static int getPostsOnLongside(CarportWithSides carport) {
         /* Dividing by 100 gives the number of spaces, by substracting 1 you get
         the number of splitters/poles between the poles in the ends.
         Math.max makes sure that posts cannot be negative. */
@@ -41,7 +41,7 @@ public class Calculator {
      * of the input carport. For each post on 1 side there has to be on wooden
      * board across the roof.
      */
-    public static int getRoof(Carport carport) {
+    public static int getRoof(CarportWithSides carport) {
         /* This if statement runs if the carport has a pointy roof*/
         if (carport.hasPointyRoof()) {
             return 0;
@@ -91,7 +91,7 @@ public class Calculator {
      * This method returns the number of wooden boards needed to make all sides
      * of the input carport.
      */
-    public static int getSides(Carport carport) {
+    public static int getSides(CarportWithSides carport) {
         int longsides = 2 * (calcRectangle(carport.getLength(), carport.getHeight()));
         int backside = calcRectangle(carport.getWidth(), carport.getHeight());
 
@@ -103,7 +103,7 @@ public class Calculator {
      * across the roof. We put the battens where the posts is on the longside of
      * the carport.
      */
-    public static int getRoofBattens(Carport carport) {
+    public static int getRoofBattens(CarportWithSides carport) {
         return getPostsOnLongside(carport) * carport.getWidth();
     }
 
@@ -111,14 +111,14 @@ public class Calculator {
      * This method returns the number of centimeters in wooden battens needed
      * along the 2 sides of the roof.
      */
-    public static int getSideBattens(Carport carport) {
+    public static int getSideBattens(CarportWithSides carport) {
         return 2 * carport.getLength();
     }
 
     /**
      * This method returns the number of screws needed for 1 wooden board.
      */
-    public static int getScrews(Carport carport) {
+    public static int getScrews(CarportWithSides carport) {
         int screwsOnSides = getSides(carport) * 6;
         int screwsOnRoof = getRoof(carport) * 6;
 
@@ -134,7 +134,7 @@ public class Calculator {
     /**
      * This method returns a list of all material needed for the input carport.
      */
-    public static List<Material> getAllMaterial(Carport carport) throws FogException {
+    public static List<Material> getAllMaterial(CarportWithSides carport) throws FogException {
         List material = new ArrayList<>();
 
         /* Get name and price from sql database */
@@ -157,7 +157,7 @@ public class Calculator {
      * This method returns the total price of the input carport. Material prices
      * are in the database.
      */
-    public static double getTotalPrice(Carport carport) throws FogException {
+    public static double getTotalPrice(CarportWithSides carport) throws FogException {
         List<Material> materials = getAllMaterial(carport);
         
         double totalPrice = 0;

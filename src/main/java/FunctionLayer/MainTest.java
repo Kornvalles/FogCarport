@@ -11,7 +11,7 @@ public class MainTest {
     public static void main(String[] args) throws FogException {
     
         /* Test carport with height, length, width */
-        Carport carport = new Carport(230, 400, 200);
+        CarportWithSides carport = new CarportWithSides(230, 400, 200);
         
         //This works
         //System.out.println(Calculator.getPosts(carport));
