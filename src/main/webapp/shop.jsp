@@ -37,7 +37,7 @@
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="roof" value="true" id="roofInput">
-                            <label for="roofInput">Tilføj højt tag?</label>
+                            <label for="roofInput">Tilføj vinkeltag?</label>
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="wall" value="true" id="wallsInput">
