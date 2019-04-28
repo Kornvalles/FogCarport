@@ -13,5 +13,10 @@
     </head>
     <body>
         <h1>Tak for din bestilling!</h1>
+        
+        Her er din stykliste:
+        
+        
+        
     </body>
 </html>
