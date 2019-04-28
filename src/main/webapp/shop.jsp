@@ -25,11 +25,29 @@
                         <input type="hidden" name="command" value="order">
                         <div class="form-group">
                             <label for="lengthInput">Carportens længde</label>
-                            <p><input type="text" name="length" placeholder="Indtast længde" id="lengthInput"></p>
+                            <p><select name="length" id="lengthInput">
+                                    <option value="240">240 cm</option>
+                                    <option value="270">270 cm</option>
+                                    <option value="300">300 cm</option>
+                                    <option value="330">330 cm</option>
+                                    <option value="360">360 cm</option>
+                                    <option value="390">390 cm</option>
+                                    <option value="420">420 cm</option>
+                                    <option value="450">450 cm</option>
+                                </select></p>
                         </div>
                         <div class="form-group">
                             <label for="widthInput">Carportens bredde</label>
-                            <p><input type="text" name="width" placeholder="Indtast bredde" id="widthInput"></p>
+                            <p><select name="width" id="widthInput">
+                                    <option value="240">240 cm</option>
+                                    <option value="270">270 cm</option>
+                                    <option value="300">300 cm</option>
+                                    <option value="330">330 cm</option>
+                                    <option value="360">360 cm</option>
+                                    <option value="390">390 cm</option>
+                                    <option value="420">420 cm</option>
+                                    <option value="450">450 cm</option>
+                                </select></p>
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="shed" value="true" id="shedInput">
@@ -44,19 +62,19 @@
                             <label for="wallsInput">Tilføj vægge?</label>
                         </div>
                 </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="nameInput">Fulde navn</label>
-                                <p><input type="text" name="name" placeholder="Indtast dit fulde navn" id="nameInput"></p>
-                            </div>
-                            <div class="form-group">
-                                <label for="emailInput">Email</label>
-                                <p><input type="text" name="email" placeholder="Indtast din email" id="emailInput"></p>
-                            </div>
-                            <input type="submit" name="order" value="Bestil">
-                        </div>
-                    </form>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="nameInput">Fulde navn</label>
+                        <p><input type="text" name="name" placeholder="Indtast dit fulde navn" id="nameInput"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailInput">Email</label>
+                        <p><input type="text" name="email" placeholder="Indtast din email" id="emailInput"></p>
+                    </div>
+                    <input type="submit" name="order" value="Bestil">
                 </div>
+                </form>
             </div>
+        </div>
     </body>
 </html>
