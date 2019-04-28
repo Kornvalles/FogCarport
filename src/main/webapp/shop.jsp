@@ -4,7 +4,7 @@
     Author     : mikkel
 --%>
 <%@page import="java.util.List"%>
-<%@page import="FunctionLayer.Carport"%>
+<%@page import="FunctionLayer.CarportWithSides"%>
 <%@page import="DataLayer.OrderMapper"%>
 <jsp:include page='/WEB-INF/Statics/siteheader.jsp'></jsp:include>
 
