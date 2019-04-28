@@ -32,15 +32,15 @@
                         </div>
                         <div class="form-group">
                             <label for="shedInput">With toolshed?</label>
-                            <input type="checkbox" name="redskabsskur" value="true" id="shedInput">
+                            <input type="checkbox" name="shed" value="true" id="shedInput">
                         </div>
                         <div class="form-group">
                             <label for="roofInput">With a pointy roof?</label>
-                            <input type="checkbox" name="spidstag" value="true" id="roofInput">
+                            <input type="checkbox" name="roof" value="true" id="roofInput">
                         </div>
                         <div class="form-group">
                             <label for="wallsInput">With walls?</label>
-                            <input type="checkbox" name="beklædning" value="true" id="wallsInput">
+                            <input type="checkbox" name="wall" value="true" id="wallsInput">
                         </div>
                 </div>
                         <div class="col">
