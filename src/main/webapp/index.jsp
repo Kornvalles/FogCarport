@@ -12,7 +12,13 @@
 </head>
 <body>
 
-
+    <div class="col-sm-6">
+<%
+    if (session.getAttribute("error") != null) {
+        out.print(session.getAttribute("error"));
+    }
+%>
+    </div>
 
 <div style="padding-left:20px">
   <h1>Forside</h1>

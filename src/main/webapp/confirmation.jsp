@@ -19,8 +19,10 @@
         Her er din stykliste:
         <%
             Carport carport = (Carport) session.getAttribute("carport");
-            System.out.println(Calculator.getAllMaterial(carport));
-        System.out.println(Calculator.getTotalPrice(carport));%>
+            out.print(carport);
+            //System.out.println(Calculator.getAllMaterial(carport));
+            //System.out.println(Calculator.getTotalPrice(carport));
+        %>
         
         
     </body>

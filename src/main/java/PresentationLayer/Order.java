@@ -33,22 +33,15 @@ public class Order extends Command {
         
         String reqLength = request.getParameter("length");
         String reqWidth = request.getParameter("width");
-        boolean shed = false;
-        boolean roof = false;
-        boolean wall = false;
-        
-        if (!request.getParameter("shed").isEmpty()) {
+        boolean shed;
+        boolean roof;
+        boolean wall;
             String reqShed = request.getParameter("shed");
             shed = Boolean.parseBoolean(reqShed);  
-        }
-        if (!request.getParameter("roof").isEmpty()) {
             String reqRoof = request.getParameter("roof");
              roof = Boolean.parseBoolean(reqRoof);
-        }
-        if (!request.getParameter("wall").isEmpty()) {
             String reqWall = request.getParameter("wall");
              wall = Boolean.parseBoolean(reqWall);
-        }
         String reqName = request.getParameter("name");
         String reqEmail = request.getParameter("email");
         int length = Integer.parseInt(reqLength);
