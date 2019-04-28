@@ -20,8 +20,9 @@
         <div class="container">
             <div class="row">
                 <div class="col">    
-                    <form method="POST" action="/FogCarport/FrontController?command=order" >
-                        <input type="hidden" name="origin" value="order">
+                    <form method="POST" action="FrontController">
+                        <input type="hidden" name="origin" value="createOrder">
+                        <input type="hidden" name="command" value="order">
                         <div class="form-group">
                             <label for="lengthInput">Length:</label>
                             <input type="text" name="length" placeholder="Insert carport length?" id="lengthInput">
