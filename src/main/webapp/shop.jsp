@@ -24,34 +24,34 @@
                         <input type="hidden" name="origin" value="createOrder">
                         <input type="hidden" name="command" value="order">
                         <div class="form-group">
-                            <label for="lengthInput">Length:</label>
-                            <input type="text" name="length" placeholder="Insert carport length?" id="lengthInput">
+                            <label for="lengthInput">Længde</label>
+                            <p><input type="text" name="length" placeholder="" id="lengthInput"></p>
                         </div>
                         <div class="form-group">
-                            <label for="widthInput">Width:</label>
-                            <input type="text" name="width" placeholder="How wide would you like the carport?" id="widthInput">
+                            <label for="widthInput">Bredde</label>
+                            <p><input type="text" name="width" placeholder="" id="widthInput"></p>
                         </div>
                         <div class="form-group">
-                            <label for="shedInput">With toolshed?</label>
+                            <label for="shedInput">Skur</label>
                             <input type="checkbox" name="shed" value="true" id="shedInput">
                         </div>
                         <div class="form-group">
-                            <label for="roofInput">With a pointy roof?</label>
+                            <label for="roofInput">Spids tag</label>
                             <input type="checkbox" name="roof" value="true" id="roofInput">
                         </div>
                         <div class="form-group">
-                            <label for="wallsInput">With walls?</label>
+                            <label for="wallsInput">Vægge</label>
                             <input type="checkbox" name="wall" value="true" id="wallsInput">
                         </div>
                 </div>
                         <div class="col">
                             <div class="form-group">
-                                <label for="nameInput">Fulde navn:</label>
-                                <input type="text" name="name" value="" id="nameInput">
+                                <label for="nameInput">Fulde navn</label>
+                                <p><input type="text" name="name" value="" id="nameInput"></p>
                             </div>
                             <div class="form-group">
-                                <label for="emailInput">Email:</label>
-                                <input type="text" name="email" value="" id="emailInput">
+                                <label for="emailInput">Email</label>
+                                <p><input type="text" name="email" value="" id="emailInput"></p>
                             </div>
                             <input type="submit" name="order" value="Bestil">
                         </div>
