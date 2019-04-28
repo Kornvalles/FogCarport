@@ -3,7 +3,7 @@
     Created on : Apr 25, 2019, 9:48:24 AM
     Author     : ndupo
 --%>
-<jsp:include page='/jsp/siteheader.jsp'></jsp:include>
+<jsp:include page='/WEB-INF/Statics/siteheader.jsp'></jsp:include>
 
 <!DOCTYPE html>
 <html>

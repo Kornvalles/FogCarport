@@ -6,7 +6,7 @@
 <%@page import="java.util.List"%>
 <%@page import="FunctionLayer.Carport"%>
 <%@page import="DataLayer.OrderMapper"%>
-<jsp:include page='/jsp/siteheader.jsp'></jsp:include>
+<jsp:include page='/WEB-INF/Statics/siteheader.jsp'></jsp:include>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
