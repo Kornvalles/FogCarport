@@ -26,13 +26,33 @@ public class Order extends Command {
     }
 
     private String createOrder(HttpServletRequest request) {
-//        //HttpSession session = request.getSession();
-//        try {
-//            Carport carport = new Carport((String)request.getParameter("id"), false, 
-//                    (String)request.getParameter("details"), (Integer)request.getParameter("id"));
-//        } catch(FogException e) {
-//            System.out.println("failed to create order= " + e);
-//        }
+        
+        
+        String reqLength = request.getParameter("length");
+        String reqWidth = request.getParameter("width");
+        boolean shed = false;
+        boolean roof = false;
+        boolean wall = false;
+        
+        if (!request.getParameter("shed").isEmpty()) {
+            String reqShed = request.getParameter("shed");
+            shed = Boolean.parseBoolean(reqShed);  
+        }
+        if (!request.getParameter("roof").isEmpty()) {
+            String reqRoof = request.getParameter("roof");
+             roof = Boolean.parseBoolean(reqRoof);
+        }
+        if (!request.getParameter("wall").isEmpty()) {
+            String reqWall = request.getParameter("wall");
+             wall = Boolean.parseBoolean(reqWall);
+        }
+        String reqName = request.getParameter("name");
+        String reqEmail = request.getParameter("email");
+        int length = Integer.parseInt(reqLength);
+        int width = Integer.parseInt(reqWidth);
+        
+        
+       
         return null;
     }
 
