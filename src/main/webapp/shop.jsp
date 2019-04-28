@@ -25,11 +25,11 @@
                         <input type="hidden" name="command" value="order">
                         <div class="form-group">
                             <label for="lengthInput">Længde</label>
-                            <p><input type="text" name="length" placeholder="Indtast carportens længde" id="lengthInput"></p>
+                            <p><input type="text" name="length" placeholder="Indtast længde" id="lengthInput"></p>
                         </div>
                         <div class="form-group">
                             <label for="widthInput">Bredde</label>
-                            <p><input type="text" name="width" placeholder="Indtast carportens bredde" id="widthInput"></p>
+                            <p><input type="text" name="width" placeholder="Indtast bredde" id="widthInput"></p>
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="shed" value="true" id="shedInput">
