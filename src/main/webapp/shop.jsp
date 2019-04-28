@@ -24,24 +24,24 @@
                         <input type="hidden" name="origin" value="createOrder">
                         <input type="hidden" name="command" value="order">
                         <div class="form-group">
-                            <label for="lengthInput">Længde</label>
+                            <label for="lengthInput">Carportens længde</label>
                             <p><input type="text" name="length" placeholder="Indtast længde" id="lengthInput"></p>
                         </div>
                         <div class="form-group">
-                            <label for="widthInput">Bredde</label>
+                            <label for="widthInput">Carportens bredde</label>
                             <p><input type="text" name="width" placeholder="Indtast bredde" id="widthInput"></p>
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="shed" value="true" id="shedInput">
-                            <label for="shedInput">Skur</label>      
+                            <label for="shedInput">Tilføj redskabsskur?</label>      
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="roof" value="true" id="roofInput">
-                            <label for="roofInput">Spids tag</label>
+                            <label for="roofInput">Tilføj højt tag?</label>
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="wall" value="true" id="wallsInput">
-                            <label for="wallsInput">Vægge</label>
+                            <label for="wallsInput">Tilføj vægge?</label>
                         </div>
                 </div>
                         <div class="col">
