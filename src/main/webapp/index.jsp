@@ -17,7 +17,7 @@
 <div style="padding-left:20px">
   <h1>Forside</h1>
   <h2>Velkommen til Fog Trælast</h2>
-  <p>Vi har danmarks største sortiment af carporte.</p>
+  <p>Vi har Danmarks største sortiment af carporte</p>
 </div>
 
 </body>
