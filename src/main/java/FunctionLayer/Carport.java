@@ -50,13 +50,19 @@ public class Carport {
         return pointyRoof;
     }
     
+    public boolean hasSides() {
+        return sides;
+    }
+    
     public String getDetails() {
         return details;
     }
 
     @Override
     public String toString() {
-        return "Carport ";
+        return "Længde= " + length + " cm\nBredde= " + width + " cm\nHøjde= " + height
+                + " cm\nSkur= " + toolshed + "\nHøj Rejsning= " + pointyRoof 
+                + "\nSider= " + sides + "\nEvt kommentar= " + details; 
     }
     
 }
