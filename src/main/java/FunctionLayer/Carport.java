@@ -19,16 +19,6 @@ public class Carport {
         this.sides = sides;
         this.details = details;
     }
-    
-    public Carport(int height, int length, int width) {
-        this.height = height;
-        this.length = length;
-        this.width = width;
-        toolshed = false;
-        pointyRoof = false;
-        sides = true;
-        details = "";
-    }
 
     public int getHeight() {
         return height;

@@ -8,11 +8,15 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
+-- -----------------------------------------------------
+-- Drop FogCarport
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `FogCarport`;
 
 -- -----------------------------------------------------
 -- Schema FogCarport
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `FogCarport` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `FogCarport`;
 USE `FogCarport` ;
 
 
@@ -20,9 +24,13 @@ USE `FogCarport` ;
 -- Table `FogCarport`.`customer`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `FogCarport`.`customer` (
-  `name` VARCHAR(16) NOT NULL,
-  `email` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`email`));
+`id` INT(11) NOT NULL auto_increment,
+`name` VARCHAR(16) NOT NULL,
+`email` VARCHAR(255) NOT NULL,
+`address` VARCHAR(255),
+`zipcode` INT(4),
+`phoneNumber` VARCHAR(15),
+  PRIMARY KEY (`id`));
 
 
 -- -----------------------------------------------------
@@ -48,13 +56,13 @@ CREATE TABLE IF NOT EXISTS `FogCarport`.`order` (
   `customerName` VARCHAR(255) NOT NULL,
   `carportHeight` INT NOT NULL,
   `carportWidth` INT NOT NULL,
-  `carportLength` INT NOT NULL DEFAULT 230,
-  `rooftopType` VARCHAR(45) NOT NULL,
+  `carportLength` INT NOT NULL,
+  `rooftopType` BOOLEAN,
   `shed` BOOLEAN,
   `totalPrice` DOUBLE NOT NULL,
   PRIMARY KEY (`orderID`),
-    FOREIGN KEY (`employeeId`)
-    REFERENCES `employee` (`id`)
+    FOREIGN KEY (`customerId`)
+    REFERENCES `customer` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
@@ -68,6 +76,7 @@ CREATE TABLE IF NOT EXISTS `FogCarport`.`employee` (
   `password` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
 
+INSERT INTO `employee` (`id`,`name`,`password`) VALUES (1,'Martin', '1234');
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

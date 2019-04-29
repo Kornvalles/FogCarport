@@ -2,6 +2,7 @@ package PresentationLayer;
 
 
 import FunctionLayer.Carport;
+import FunctionLayer.Customer;
 import FunctionLayer.FogException;
 import FunctionLayer.LogicFacade;
 import javax.servlet.http.HttpServletRequest;
@@ -46,9 +47,11 @@ public class Order extends Command {
         String reqEmail = request.getParameter("email");
         int length = Integer.parseInt(reqLength);
         int width = Integer.parseInt(reqWidth);
+        Customer customer = new Customer(reqName, reqEmail, "", 0, "+4512345678");
         Carport carport = new Carport(230, length, width, shed, roof, wall, "");
         session.setAttribute("carport", carport);
-//        LogicFacade.createOrder(carport, reqName, reqEmail);
+        LogicFacade.addCustomer(customer);
+        LogicFacade.createOrder(carport, customer);
         
        
         return "confirmation";

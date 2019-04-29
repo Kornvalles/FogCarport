@@ -15,8 +15,7 @@ public class Customer {
     private int zipcode;
     private String phoneNumber;
 
-    public Customer(int id, String name, String email, String address, int zipcode, String phoneNumber) {
-        this.id = id;
+    public Customer(String name, String email, String address, int zipcode, String phoneNumber) {
         this.name = name;
         this.email = email;
         this.address = address;
