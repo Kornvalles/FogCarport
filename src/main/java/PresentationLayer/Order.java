@@ -5,6 +5,7 @@ import FunctionLayer.Carport;
 import FunctionLayer.Customer;
 import FunctionLayer.FogException;
 import FunctionLayer.LogicFacade;
+import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -50,8 +51,12 @@ public class Order extends Command {
         Customer customer = new Customer(reqName, reqEmail, "", 0, "+4512345678");
         Carport carport = new Carport(230, length, width, shed, roof, wall, "");
         session.setAttribute("carport", carport);
-        LogicFacade.addCustomer(customer);
-        LogicFacade.createOrder(carport, customer);
+        try {
+            LogicFacade.addCustomer(customer);
+            LogicFacade.createOrder(carport, customer);
+        } catch (SQLException ex) {
+            System.out.println(ex.getLocalizedMessage());
+        }
         
        
         return "confirmation";

@@ -15,7 +15,7 @@ import java.sql.Statement;
  */
 public class OrderMapper {
 
-    
+    private static Connection con;
     
     /** Returns the price of a material 
     * @param name
@@ -25,8 +25,8 @@ public class OrderMapper {
             String query = "SELECT price FROM `carport`.`material` "
                     + "WHERE `carport`.`material`.`name` = '" + name + "';";
 
-            Connection connection = Connector.connection();
-            Statement stmt = connection.createStatement();
+            con = Connector.connection();
+            Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 
             double price = 0;
@@ -66,7 +66,7 @@ public class OrderMapper {
 //
     public static void makeOrder(Carport carport, Customer customer ) throws FogException, SQLException {
         try {
-            Connection con = Connector.connection();
+            con = Connector.connection();
             String SQL = "INSERT INTO order (employeeId, customerId, customerEmail, customerName, carportHeight, carportWidth, carportLength, rooftopType, shed, totalPrice) VALUES (?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
             ps.setInt( 1, 1 );
@@ -83,6 +83,8 @@ public class OrderMapper {
         } catch ( SQLException ex ) {
             System.out.println(ex.getSQLState());
             System.out.println(ex.getLocalizedMessage());
+        } finally {
+           // con.close();
         }
     }
 }

@@ -11,10 +11,6 @@ import java.sql.SQLException;
  */
 public class LogicFacade {
 
-//    public static List<Carport> getOrders( int id ) throws FogException, ClassNotFoundException  {
-//        return OrderMapper.getStandard();
-//    }
-//    
     public static void addCustomer( Customer customer ) throws FogException {
         UserMapper.addCustomer(customer);
     }
