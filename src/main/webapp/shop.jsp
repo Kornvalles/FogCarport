@@ -5,6 +5,7 @@
 --%>
 <%@page import="java.util.List"%>
 <jsp:include page='/WEB-INF/Statics/siteheader.jsp'></jsp:include>
+<jsp:include page='/WEB-INF/Statics/sitefooter.jsp'></jsp:include>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,39 +25,60 @@
                         <input type="hidden" name="origin" value="createOrder">
                         <input type="hidden" name="command" value="order">
                         <div class="form-group">
-                            <label for="lengthInput">Længde</label>
-                            <p><input type="text" name="length" placeholder="" id="lengthInput"></p>
+                            <label for="lengthInput">Carportens længde</label>
+                            <p><select name="length" id="lengthInput">
+                                    <option value="240">240 cm</option>
+                                    <option value="270">270 cm</option>
+                                    <option value="300">300 cm</option>
+                                    <option value="330">330 cm</option>
+                                    <option value="360">360 cm</option>
+                                    <option value="390">390 cm</option>
+                                    <option value="420">420 cm</option>
+                                    <option value="450">450 cm</option>
+                                </select></p>
                         </div>
                         <div class="form-group">
-                            <label for="widthInput">Bredde</label>
-                            <p><input type="text" name="width" placeholder="" id="widthInput"></p>
+                            <label for="widthInput">Carportens bredde</label>
+                            <p><select name="width" id="widthInput">
+                                    <option value="240">240 cm</option>
+                                    <option value="270">270 cm</option>
+                                    <option value="300">300 cm</option>
+                                    <option value="330">330 cm</option>
+                                    <option value="360">360 cm</option>
+                                    <option value="390">390 cm</option>
+                                    <option value="420">420 cm</option>
+                                    <option value="450">450 cm</option>
+                                </select></p>
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="shed" value="true" id="shedInput">
-                            <label for="shedInput">Skur</label>      
+                            <label for="shedInput">Tilføj redskabsskur?</label>      
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="roof" value="true" id="roofInput">
-                            <label for="roofInput">Spids tag</label>
+                            <label for="roofInput">Tilføj vinkeltag?</label>
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="wall" value="true" id="wallsInput">
-                            <label for="wallsInput">Vægge</label>
+                            <label for="wallsInput">Tilføj vægge?</label>
                         </div>
                 </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="nameInput">Fulde navn</label>
-                                <p><input type="text" name="name" value="" id="nameInput"></p>
-                            </div>
-                            <div class="form-group">
-                                <label for="emailInput">Email</label>
-                                <p><input type="text" name="email" value="" id="emailInput"></p>
-                            </div>
-                            <input type="submit" name="order" value="Bestil">
-                        </div>
-                    </form>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="nameInput">Fulde navn</label>
+                        <p><input type="text" name="name" placeholder="Indtast dit fulde navn" id="nameInput"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailInput">Email</label>
+                        <p><input type="text" name="email" placeholder="Indtast din email" id="emailInput"></p>
+                    </div>
+                    <input type="submit" name="order" value="Bestil">
                 </div>
+                </form>
             </div>
+        </div>
+        <div class="footer">
+            <p>Footer</p>
+        </div>
     </body>
 </html>

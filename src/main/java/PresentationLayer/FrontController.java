@@ -1,5 +1,6 @@
 package PresentationLayer;
 
+import FunctionLayer.FogException;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +30,7 @@ public class FrontController extends HttpServlet {
             Command action = Command.from( request );
             String view = action.execute( request, response );
             request.getRequestDispatcher( view + ".jsp" ).forward( request, response );
-        } catch ( Exception ex ) {
+        } catch ( FogException | IOException | ServletException ex ) {
             request.setAttribute( "error", ex.getMessage() );
             request.getRequestDispatcher( "index.jsp" ).forward( request, response );
         }

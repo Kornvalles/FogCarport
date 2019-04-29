@@ -1,5 +1,6 @@
 package PresentationLayer;
 
+import FunctionLayer.FogException;
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,6 +23,6 @@ abstract class Command {
     }
 
     abstract String execute( HttpServletRequest request, HttpServletResponse response ) 
-            throws Exception; //Der skal laves en custom exception.
+            throws FogException; //Der skal laves en custom exception.
 
 }
