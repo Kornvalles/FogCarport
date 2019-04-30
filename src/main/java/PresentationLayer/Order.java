@@ -5,6 +5,8 @@ import FunctionLayer.Customer;
 import FunctionLayer.FogException;
 import FunctionLayer.LogicFacade;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -45,14 +47,21 @@ public class Order extends Command {
         String reqEmail = request.getParameter("email");
         int length = Integer.parseInt(reqLength);
         int width = Integer.parseInt(reqWidth);
-        Customer customer = new Customer(reqName, reqEmail, "", 0, "+4512345678");
-        Carport carport = new Carport(230, length, width, shed, roof, wall, "");
-        session.setAttribute("carport", carport);
+        Customer customer = new Customer(reqName, reqEmail, "", 2800, "");
         try {
             LogicFacade.addCustomer(customer);
-            LogicFacade.createOrder(carport, customer);
         } catch (SQLException ex) {
+            Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Carport carport = new Carport(230, length, width, shed, roof, wall, "");
+        session.setAttribute("carport", carport);
+        session.setAttribute("customer", customer);
+        try {
+            //LogicFacade.addCustomer(customer);
+            LogicFacade.createOrder(carport, customer);
+        } catch (SQLException | FogException ex) {
             System.out.println(ex.getLocalizedMessage());
+            System.out.println(ex.getMessage());
         }
         return "confirmation";
     }

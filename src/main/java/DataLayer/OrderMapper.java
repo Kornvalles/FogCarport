@@ -15,7 +15,7 @@ import java.sql.Statement;
  */
 public class OrderMapper {
 
-    private static Connection con;
+    
     
     /** Returns the price of a material 
     * @param name
@@ -25,7 +25,7 @@ public class OrderMapper {
             String query = "SELECT price FROM `carport`.`material` "
                     + "WHERE `carport`.`material`.`name` = '" + name + "';";
 
-            con = Connector.connection();
+            Connection con = Connector.connection();
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 
@@ -66,25 +66,24 @@ public class OrderMapper {
 //
     public static void makeOrder(Carport carport, Customer customer ) throws FogException, SQLException {
         try {
-            con = Connector.connection();
-            String SQL = "INSERT INTO order (employeeId, customerId, customerEmail, customerName, carportHeight, carportWidth, carportLength, rooftopType, shed, totalPrice) VALUES (?,?,?,?,?,?,?,?,?,?);";
+            Connection con = Connector.connection();
+            String SQL = "INSERT INTO `FogCarport`.`order` (employeeId, customerId, customerEmail, customerName, carportHeight"
+                    + ", carportWidth, carportLength, rooftopType, shed, totalPrice) VALUES (?,?,?,?,?,?,?,?,?,?);";
             PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
             ps.setInt( 1 , 1 );
-            ps.setInt( 2 , 1 );
+            ps.setInt( 2 , 12 );
             ps.setString( 3 , customer.getEmail() );
             ps.setString( 4 , customer.getName() );
-            ps.setInt( 5 , 100 );
-            ps.setInt( 6 , 100 );
-            ps.setInt( 7 , 100 );
-            ps.setBoolean( 8 , true );
-            ps.setBoolean( 9 , true );
+            ps.setInt( 5 , carport.getHeight() );
+            ps.setInt( 6 , carport.getWidth() );
+            ps.setInt( 7 , carport.getLength() );
+            ps.setBoolean( 8 , carport.hasPointyRoof() );
+            ps.setBoolean( 9 , carport.hasToolshed() );
             ps.setDouble( 10 , 0 );
             ps.executeUpdate();
         } catch ( SQLException ex ) {
             System.out.println(ex.getSQLState());
             System.out.println(ex.getLocalizedMessage());
-        } finally {
-           // con.close();
         }
     }
 }

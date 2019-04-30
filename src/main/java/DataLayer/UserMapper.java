@@ -21,12 +21,11 @@ import java.sql.Statement;
  */
 public class UserMapper {
     
-    private static Connection con;
     
     public static void addCustomer(Customer customer) throws FogException, SQLException {
         try {
-            con = Connector.connection();
-            String SQL = "INSERT INTO customer ( name, email ) VALUES (?, ?);";
+            Connection con = Connector.connection();
+            String SQL = "INSERT INTO `FogCarport`.`customer` ( name, email ) VALUES (?, ?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, customer.getName());
             ps.setString(2, customer.getEmail());
@@ -34,8 +33,6 @@ public class UserMapper {
         } catch (SQLException ex) {
             System.out.println(ex.getSQLState());
             System.out.println(ex.getLocalizedMessage());
-        } finally {
-            //con.close();
         }
     }
 
