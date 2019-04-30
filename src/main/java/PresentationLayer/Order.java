@@ -26,44 +26,62 @@ public class Order extends Command {
                 view = createOrder(request);
                 break;
             }
+            case "getOrder": {
+                view = getOrder(request);
+                break;
+            }
         }
         return view;
     }
 
+    /**
+     * 
+     * @param request
+     * @return
+     * @throws FogException 
+     */
     private String createOrder(HttpServletRequest request) throws FogException {
         HttpSession session = request.getSession();
+        
+        //Fanger inputs fra jsp som ligger på requestet.
         String reqLength = request.getParameter("length");
         String reqWidth = request.getParameter("width");
-        boolean shed;
-        boolean roof;
-        boolean wall;
         String reqShed = request.getParameter("shed");
-        shed = Boolean.parseBoolean(reqShed);
         String reqRoof = request.getParameter("roof");
-        roof = Boolean.parseBoolean(reqRoof);
         String reqWall = request.getParameter("wall");
-        wall = Boolean.parseBoolean(reqWall);
         String reqName = request.getParameter("name");
         String reqEmail = request.getParameter("email");
+        
+        //Konveterer inputs som ikke skal være String.
+        boolean shed = Boolean.parseBoolean(reqShed);
+        boolean roof = Boolean.parseBoolean(reqRoof);
+        boolean wall = Boolean.parseBoolean(reqWall);
         int length = Integer.parseInt(reqLength);
         int width = Integer.parseInt(reqWidth);
+        
+        //Instancerer objekter og putter dem på session
         Customer customer = new Customer(reqName, reqEmail, "", 2800, "");
-        try {
-            LogicFacade.addCustomer(customer);
-        } catch (SQLException ex) {
-            Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
-        }
         Carport carport = new Carport(230, length, width, shed, roof, wall, "");
         session.setAttribute("carport", carport);
         session.setAttribute("customer", customer);
+        
+        //Kører logikken. Forsøger at putte ting i database.
         try {
-            //LogicFacade.addCustomer(customer);
+            LogicFacade.addCustomer(customer);
             LogicFacade.createOrder(carport, customer);
-        } catch (SQLException | FogException ex) {
+        } catch (SQLException ex) {
             System.out.println(ex.getLocalizedMessage());
             System.out.println(ex.getMessage());
         }
+        
+        //Sender en String tilbage til Frontcontrolleren om hvilken jsp side vi skal omdirigeres til.
         return "confirmation";
+    }
+
+    //Skal laves og retunere en String som angiver hvilken side man skal omdirigeres til.
+    private String getOrder(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        return "";
     }
 
 }
