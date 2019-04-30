@@ -11,7 +11,7 @@ import java.sql.SQLException;
  */
 public class LogicFacade {
 
-    public static void addCustomer( Customer customer ) throws FogException {
+    public static void addCustomer( Customer customer ) throws FogException, SQLException {
         UserMapper.addCustomer(customer);
     }
 
