@@ -68,10 +68,10 @@ public class OrderMapper {
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO `FogCarport`.`order` (employeeId, customerId, customerEmail, customerName, carportHeight"
-                    + ", carportWidth, carportLength, rooftopType, shed, totalPrice) VALUES (?,?,?,?,?,?,?,?,?,?);";
+                    + ", carportWidth, carportLength, hasRoof, hasShed, hasWall, totalPrice) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
             PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
             ps.setInt( 1 , 1 );
-            ps.setInt( 2 , 12 );
+            ps.setInt( 2 , customer.getId() );
             ps.setString( 3 , customer.getEmail() );
             ps.setString( 4 , customer.getName() );
             ps.setInt( 5 , carport.getHeight() );
@@ -79,7 +79,8 @@ public class OrderMapper {
             ps.setInt( 7 , carport.getLength() );
             ps.setBoolean( 8 , carport.hasPointyRoof() );
             ps.setBoolean( 9 , carport.hasToolshed() );
-            ps.setDouble( 10 , 0 );
+            ps.setBoolean( 10 , carport.hasWall() );
+            ps.setDouble( 11 , 0 );
             ps.executeUpdate();
         } catch ( SQLException ex ) {
             System.out.println(ex.getSQLState());

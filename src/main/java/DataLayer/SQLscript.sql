@@ -57,8 +57,9 @@ CREATE TABLE IF NOT EXISTS `FogCarport`.`order` (
   `carportHeight` INT NOT NULL,
   `carportWidth` INT NOT NULL,
   `carportLength` INT NOT NULL,
-  `rooftopType` BOOLEAN,
-  `shed` BOOLEAN,
+  `hasRoof` BOOLEAN,
+  `hasShed` BOOLEAN,
+  `hasWall` BOOLEAN,
   `totalPrice` DOUBLE NOT NULL,
   PRIMARY KEY (`orderID`),
     FOREIGN KEY (`customerId`)
