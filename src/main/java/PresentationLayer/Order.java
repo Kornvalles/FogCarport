@@ -1,6 +1,5 @@
 package PresentationLayer;
 
-
 import FunctionLayer.Carport;
 import FunctionLayer.Customer;
 import FunctionLayer.FogException;
@@ -30,20 +29,18 @@ public class Order extends Command {
     }
 
     private String createOrder(HttpServletRequest request) throws FogException {
-        
         HttpSession session = request.getSession();
-        
         String reqLength = request.getParameter("length");
         String reqWidth = request.getParameter("width");
         boolean shed;
         boolean roof;
         boolean wall;
-            String reqShed = request.getParameter("shed");
-            shed = Boolean.parseBoolean(reqShed);  
-            String reqRoof = request.getParameter("roof");
-             roof = Boolean.parseBoolean(reqRoof);
-            String reqWall = request.getParameter("wall");
-             wall = Boolean.parseBoolean(reqWall);
+        String reqShed = request.getParameter("shed");
+        shed = Boolean.parseBoolean(reqShed);
+        String reqRoof = request.getParameter("roof");
+        roof = Boolean.parseBoolean(reqRoof);
+        String reqWall = request.getParameter("wall");
+        wall = Boolean.parseBoolean(reqWall);
         String reqName = request.getParameter("name");
         String reqEmail = request.getParameter("email");
         int length = Integer.parseInt(reqLength);
@@ -57,8 +54,6 @@ public class Order extends Command {
         } catch (SQLException ex) {
             System.out.println(ex.getLocalizedMessage());
         }
-        
-       
         return "confirmation";
     }
 
