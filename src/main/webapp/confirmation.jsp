@@ -49,7 +49,7 @@
                             <%}
                             %>
                         </tbody>
-                        <td>Subtotal: <%=construction.getTotalPrice()%> DKK inkl. Moms</td>
+                        <td colspan="3">Subtotal: <%=construction.getTotalPrice()%> DKK inkl. Moms</td>
                     </table>
                 </div>
             </div>
