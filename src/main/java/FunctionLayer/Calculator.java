@@ -163,17 +163,17 @@ public class Calculator {
     /**
      * This method returns a list of all material needed for the input carport.
      */
-    public static List<Material> getAllMaterial(Carport carport) throws FogException {
-        List material = new ArrayList<>();
+    public static Construction constructCarport(Carport carport, LogicFacade logic) throws FogException {
+        List<Material> material = new ArrayList<>();
 
         /* Get name and price from sql database */
-        Material post = new Material("post", getAllPosts(carport), "pcs", LogicFacade.getMaterialPrice("post"));
-        Material wood = new Material("wood board 10x100cm", getSides(carport) + getRoof(carport), "pcs", LogicFacade.getMaterialPrice("wood board 10x100cm"));
-        Material roofBatten = new Material("roof battens", getRoofBattens(carport) / 100, "m", LogicFacade.getMaterialPrice("roof battens"));
-        Material sideBatten = new Material("side battens", getSideBattens(carport) / 100, "m", LogicFacade.getMaterialPrice("side battens"));
-        Material screw = new Material("screw", getScrews(carport), "pcs", LogicFacade.getMaterialPrice("screw"));
-        Material roofTile = new Material("roof tile",getRoof(carport), "pcs", LogicFacade.getMaterialPrice("roof tile"));
-        Material pvcRoofSheet = new Material("pvc roof sheet",getRoof(carport), "pcs", LogicFacade.getMaterialPrice("pvc roof sheet"));
+        Material post = new Material("post", getAllPosts(carport), "pcs", logic.getMaterialPrice("post"));
+        Material wood = new Material("wood board 10x100cm", getSides(carport) + getRoof(carport), "pcs", logic.getMaterialPrice("wood board 10x100cm"));
+        Material roofBatten = new Material("roof battens", getRoofBattens(carport) / 100, "m", logic.getMaterialPrice("roof battens"));
+        Material sideBatten = new Material("side battens", getSideBattens(carport) / 100, "m", logic.getMaterialPrice("side battens"));
+        Material screw = new Material("screw", getScrews(carport), "pcs", logic.getMaterialPrice("screw"));
+        Material roofTile = new Material("roof tile",getRoof(carport), "pcs", logic.getMaterialPrice("roof tile"));
+        Material pvcRoofSheet = new Material("pvc roof sheet",getRoof(carport), "pcs", logic.getMaterialPrice("pvc roof sheet"));
         
         material.add(post);
         material.add(wood);
@@ -182,26 +182,15 @@ public class Calculator {
         material.add(screw);
         material.add(roofTile);
         material.add(pvcRoofSheet);
-
-        return material;
-    }
-
-    /**
-     * This method returns the total price of the input carport. Material prices
-     * are in the database.
-     */
-    public static double getTotalPrice(Carport carport) throws FogException {
-        List<Material> materials = getAllMaterial(carport);
-
+        
         double totalPrice = 0;
         double totalItemPrice;
 
-        for (int i = 0; i < materials.size(); i++) {
-            totalItemPrice = materials.get(i).getPrice() * materials.get(i).getQty();
+        for (int i = 0; i < material.size(); i++) {
+            totalItemPrice = material.get(i).getPrice() * material.get(i).getQty();
             totalPrice += totalItemPrice;
         }
 
-        return Double.parseDouble(String.format("%.2f", totalPrice));
+        return new Construction(carport, material, totalPrice);
     }
-
 }

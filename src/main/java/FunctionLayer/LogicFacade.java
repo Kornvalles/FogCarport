@@ -1,27 +1,22 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package FunctionLayer;
 
-import DataLayer.OrderMapper;
-import DataLayer.UserMapper;
 import java.sql.SQLException;
 
 /**
- * The purpose of LogicFacade is to...
- * 
- * @authors Iben, Christian, Benjamin, Nicklas, Mikkel
+ *
+ * @author ibenk
  */
-public class LogicFacade {
-
-    public static void addCustomer( Customer customer ) throws FogException, SQLException {
-        UserMapper.addCustomer(customer);
-    }
-
-    public static void createOrder( Carport carport, Customer customer ) throws FogException, SQLException {
-        OrderMapper.makeOrder(carport, customer);
-    }
-
+public interface LogicFacade {
     
-    public static double getMaterialPrice(String name) throws FogException {
-        return OrderMapper.getMaterialPrice(name);
-    }
+    void addCustomer( Customer customer ) throws FogException, SQLException ;
+
+    void createOrder( Carport carport, Customer customer ) throws FogException, SQLException ;
+
+    double getMaterialPrice(String name) throws FogException ;
     
 }

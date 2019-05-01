@@ -3,6 +3,8 @@
     Created on : Apr 25, 2019, 12:14:20 PM
     Author     : ibenk
 --%>
+<%@page import="FunctionLayer.Construction"%>
+<%@page import="FunctionLayer.Material"%>
 <%@page import="FunctionLayer.Carport"%>
 <%@page import="FunctionLayer.Calculator"%>
 <jsp:include page='/WEB-INF/Statics/siteheader.jsp'></jsp:include>
@@ -20,14 +22,26 @@
                 <div class="col-sm-6">
                     <h1>Tak for din bestilling!</h1>
 
-                    <p><%Carport carport = (Carport) session.getAttribute("carport");
-                            out.print(carport.toString());%></p>
+                        <p><%Construction construction = (Construction) session.getAttribute("construction");
+                            out.print(construction.getCarport().toString());%></p>
 
                     <p>Her er din stykliste:</p>
 
-                    <p><%= Calculator.getAllMaterial(carport)%></p>
-
-                    <p><%="Totalpris " + Calculator.getTotalPrice(carport) + " kr."%></p>
+                    <table>
+                        <tr>
+                            <th>Navn</th>
+                            <th>Pris</th>
+                        </tr>
+                        <%
+                            for (Material m : construction.getMaterials()) {%>
+                        <tr>
+                            <td><%=m.getName()%></td>
+                            <td style="text-align: right"><%=String.format("%.2f",m.getPrice())%></td>
+                        </tr>    
+                        <%}
+                        %>
+                    </table>
+                    <p><%="Totalpris " + construction.getTotalPrice() + " kr."%></p>
                 </div>
             </div>
         </div>

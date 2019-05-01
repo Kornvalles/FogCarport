@@ -1,6 +1,8 @@
 package PresentationLayer;
 
+import FunctionLayer.DatabaseLogicFacade;
 import FunctionLayer.FogException;
+import FunctionLayer.LogicFacade;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet( name = "FrontController", urlPatterns = { "/FrontController" } )
 public class FrontController extends HttpServlet {
 
+    private LogicFacade logic = new DatabaseLogicFacade();
+    
     /**
      Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      methods.
@@ -28,7 +32,7 @@ public class FrontController extends HttpServlet {
             throws ServletException, IOException {
         try {
             Command action = Command.from( request );
-            String view = action.execute( request, response );
+            String view = action.execute( request, logic );
             request.getRequestDispatcher( view + ".jsp" ).forward( request, response );
         } catch ( FogException | IOException | ServletException ex ) {
             request.setAttribute( "error", ex.getMessage() );

@@ -1,6 +1,8 @@
 package PresentationLayer;
 
+import FunctionLayer.Calculator;
 import FunctionLayer.Carport;
+import FunctionLayer.Construction;
 import FunctionLayer.Customer;
 import FunctionLayer.FogException;
 import FunctionLayer.LogicFacade;
@@ -15,32 +17,11 @@ import javax.servlet.http.HttpSession;
  *
  * @author mikkel
  */
-public class Order extends Command {
+public class CreateOrderCommand extends Command {
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws FogException {
-        String origin = (String) request.getParameter("origin");
-        String view = "";
-        switch (origin) {
-            case "createOrder": {
-                view = createOrder(request);
-                break;
-            }
-            case "getOrder": {
-                view = getOrder(request);
-                break;
-            }
-        }
-        return view;
-    }
-
-    /**
-     * 
-     * @param request
-     * @return
-     * @throws FogException 
-     */
-    private String createOrder(HttpServletRequest request) throws FogException {
+    String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
+        
         HttpSession session = request.getSession();
         
         //Fanger inputs fra jsp som ligger på requestet.
@@ -62,13 +43,14 @@ public class Order extends Command {
         //Instancerer objekter og putter dem på session
         Customer customer = new Customer(reqName, reqEmail, "", 2800, "");
         Carport carport = new Carport(230, length, width, shed, roof, wall, "");
-        session.setAttribute("carport", carport);
+        Construction construction = Calculator.constructCarport(carport, logic);
+        session.setAttribute("construction", construction);
         session.setAttribute("customer", customer);
         
         //Kører logikken. Forsøger at putte ting i database.
         try {
-            LogicFacade.addCustomer(customer);
-            LogicFacade.createOrder(carport, customer);
+            logic.addCustomer(customer);
+            logic.createOrder(carport, customer);
         } catch (SQLException ex) {
             System.out.println(ex.getLocalizedMessage());
             System.out.println(ex.getMessage());
@@ -77,11 +59,4 @@ public class Order extends Command {
         //Sender en String tilbage til Frontcontrolleren om hvilken jsp side vi skal omdirigeres til.
         return "confirmation";
     }
-
-    //Skal laves og retunere en String som angiver hvilken side man skal omdirigeres til.
-    private String getOrder(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        return "";
-    }
-
 }

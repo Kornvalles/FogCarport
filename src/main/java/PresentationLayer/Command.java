@@ -1,9 +1,9 @@
 package PresentationLayer;
 
 import FunctionLayer.FogException;
+import FunctionLayer.LogicFacade;
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 abstract class Command {
 
@@ -11,7 +11,7 @@ abstract class Command {
 
     private static void initCommands() {
         commands = new HashMap<>();
-        commands.put( "order", new Order() );
+        commands.put( "order", new CreateOrderCommand() );
     }
 
     static Command from( HttpServletRequest request ) {
@@ -22,7 +22,7 @@ abstract class Command {
         return commands.getOrDefault(commandName, new UnknownCommand() );
     }
 
-    abstract String execute( HttpServletRequest request, HttpServletResponse response ) 
+    abstract String execute( HttpServletRequest request, LogicFacade logic ) 
             throws FogException; //Der skal laves en custom exception.
 
 }
