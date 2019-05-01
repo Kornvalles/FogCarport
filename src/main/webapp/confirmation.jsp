@@ -19,12 +19,12 @@
             <div class="row">
                 <div class="col-sm-6">
                     <p><h1>Tak for din bestilling!</h1></p>
-
+                <p>
                     <%
                         Carport carport = (Carport) session.getAttribute("carport");
                         out.print(carport.toString());
                     %>
-
+                </p>
                     <p>Her er din stykliste:</p>
                     <%
                         out.print(Calculator.getAllMaterial(carport));
