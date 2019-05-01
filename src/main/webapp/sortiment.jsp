@@ -47,7 +47,7 @@
         <img src="img/mellemcarport.jpeg" title="Mellem Carport" width="400" height="400" /></a>
   </div>
   <div class="column">
-    <a href="shop.jsp">
+    <a href="mellemmskur.jsp">
         <img src="img/mellemmskur.jpeg" title="Mellem Carport m/ skur" width="400" height="400" /></a>
   </div>
 </div>
