@@ -1,7 +1,10 @@
 package DataLayer;
 
+import FunctionLayer.Carport;
+import FunctionLayer.Customer;
 import FunctionLayer.FogException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,16 +17,16 @@ public class OrderMapper {
 
     
     
-         /** Returns the price of a material 
-     * @param name
-     * @return  */
+    /** Returns the price of a material 
+    * @param name
+    * @return  */
     public static double getMaterialPrice(String name) throws FogException {
         try {
             String query = "SELECT price FROM `carport`.`material` "
                     + "WHERE `carport`.`material`.`name` = '" + name + "';";
 
-            Connection connection = Connector.connection();
-            Statement stmt = connection.createStatement();
+            Connection con = Connector.connection();
+            Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 
             double price = 0;
@@ -61,16 +64,27 @@ public class OrderMapper {
 //        return standards;
 //    }
 //
-//    public static void makeOrder(Carport carport, Customer customer ) throws FogException {
-//        try {
-//            Connection con = Connector.connection();
-//            String SQL = "INSERT INTO orders (details, price) VALUES (?, ?)";
-//            PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
-//            ps.setString( 1, carport.getDetails() );
-//            ps.setInt( 2, carport.getPrice() );
-//            ps.executeUpdate();
-//        } catch ( SQLException ex ) {
-//            throw new FogException( ex.getMessage() );
-//        }
-//    }
+    public static void makeOrder(Carport carport, Customer customer ) throws FogException, SQLException {
+        try {
+            Connection con = Connector.connection();
+            String SQL = "INSERT INTO `FogCarport`.`order` (employeeId, customerId, customerEmail, customerName, carportHeight"
+                    + ", carportWidth, carportLength, hasRoof, hasShed, hasWall, totalPrice) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
+            PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
+            ps.setInt( 1 , 1 );
+            ps.setInt( 2 , customer.getId() );
+            ps.setString( 3 , customer.getEmail() );
+            ps.setString( 4 , customer.getName() );
+            ps.setInt( 5 , carport.getHeight() );
+            ps.setInt( 6 , carport.getWidth() );
+            ps.setInt( 7 , carport.getLength() );
+            ps.setBoolean( 8 , carport.hasPointyRoof() );
+            ps.setBoolean( 9 , carport.hasToolshed() );
+            ps.setBoolean( 10 , carport.hasWall() );
+            ps.setDouble( 11 , 0 );
+            ps.executeUpdate();
+        } catch ( SQLException ex ) {
+            System.out.println(ex.getSQLState());
+            System.out.println(ex.getLocalizedMessage());
+        }
+    }
 }
