@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <head>
         <style>
             .footer {
@@ -37,5 +37,5 @@ window.cookieconsent.initialise({
   "theme": "classic"
 })});
 </script>
-</head>
+</head> 
 </html>
