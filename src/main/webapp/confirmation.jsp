@@ -19,9 +19,9 @@
             <div class="row">
                 <div class="col-sm-6">
                     <p><h1>Tak for din bestilling!</h1></p>
-                
+
                     <p><%Carport carport = (Carport) session.getAttribute("carport");
-                         out.print(carport.toString());%></p>
+                            out.print(carport.toString());%></p>
 
                     <p>Her er din stykliste:</p>
 
@@ -31,8 +31,18 @@
                 </div>
             </div>
         </div>
+
+        <svg x="10">
+        <rect x="135" y="10" height="200" width="1"
+              style="stroke:#000000; fill: #000000"/>
+        <rect x="235" y="10" height="200" width="1"
+              style="stroke:#000000; fill: #000000"/>
+        <rect x="135" y="10" height="1" width="100"
+              style="stroke:#000000; fill: #000000"/>
+        </svg>
+
         <div class="footer">
             <p><p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p></p>
-        </div>
-    </body>
+    </div>
+</body>
 </html>
