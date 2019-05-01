@@ -139,9 +139,9 @@ public class Calculator {
 
         /* Get name and price from sql database */
         Material post = new Material("post", getAllPosts(carport),"pcs", LogicFacade.getMaterialPrice("post"));
-        Material wood = new Material("wood board", getSides(carport) + getRoof(carport),"pcs", LogicFacade.getMaterialPrice("wood board"));
-        Material roofBatten = new Material("roof batten", getRoofBattens(carport)/100,"m", LogicFacade.getMaterialPrice("roof batten"));
-        Material sideBatten = new Material("side batten", getSideBattens(carport)/100,"m", LogicFacade.getMaterialPrice("side batten"));
+        Material wood = new Material("wood board 10x100cm", getSides(carport) + getRoof(carport),"pcs", LogicFacade.getMaterialPrice("wood board 10x100cm"));
+        Material roofBatten = new Material("roof battens", getRoofBattens(carport)/100,"m", LogicFacade.getMaterialPrice("roof battens"));
+        Material sideBatten = new Material("side battens", getSideBattens(carport)/100,"m", LogicFacade.getMaterialPrice("side battens"));
         Material screw = new Material("screw", getScrews(carport),"pcs", LogicFacade.getMaterialPrice("screw"));
         
         material.add(post);
