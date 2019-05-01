@@ -17,6 +17,8 @@
         <title>Bestilling Godkendt</title>
     </head>
     <body>
+        <style>
+        </style>
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
@@ -25,23 +27,30 @@
                         <p><%Construction construction = (Construction) session.getAttribute("construction");
                             out.print(construction.getCarport().toString());%></p>
 
+
                     <p>Her er din stykliste:</p>
 
-                    <table>
-                        <tr>
-                            <th>Navn</th>
-                            <th>Pris</th>
-                        </tr>
-                        <%
-                            for (Material m : construction.getMaterials()) {%>
-                        <tr>
-                            <td><%=m.getName()%></td>
-                            <td style="text-align: right"><%=String.format("%.2f",m.getPrice())%></td>
-                        </tr>    
-                        <%}
-                        %>
+                    <table class="table-hover">
+                        <thead>
+                            <tr>
+                                <th style="text-align:left">Navn</th>
+                                <th style="text-align:right">Antal</th>
+                                <th style="text-align:right">Pris</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%
+                                for (Material m : construction.getMaterials()) {%>
+                            <tr>
+                                <td style="text-align:left"><%=m.getName()%></td>
+                                <td style="text-align:right"><%=m.getQty()%></td>
+                                <td style="text-align:right"><%=String.format("%.2f", m.getPrice())%></td>
+                            </tr>    
+                            <%}
+                            %>
+                        </tbody>
+                        <td>Subtotal: <%=construction.getTotalPrice()%> DKK inkl. Moms</td>
                     </table>
-                    <p><%="Totalpris " + construction.getTotalPrice() + " kr."%></p>
                 </div>
             </div>
         </div>

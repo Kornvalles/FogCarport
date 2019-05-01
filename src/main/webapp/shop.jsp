@@ -22,8 +22,7 @@
             <div class="row">
                 <div class="col">    
                     <form method="POST" action="FrontController">
-                        <input type="hidden" name="origin" value="createOrder">
-                        <input type="hidden" name="command" value="order">
+                        <input type="hidden" name="command" value="CreateOrder">
                         <div class="form-group">
                             <label for="lengthInput">Carportens længde</label>
                             <p><select name="length" id="lengthInput">
