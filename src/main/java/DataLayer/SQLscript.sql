@@ -58,7 +58,6 @@ INSERT INTO FogCarport.material (`materialID`,`name`,`MSRP`, `costPrice`,`quanti
 CREATE TABLE IF NOT EXISTS `FogCarport`.`order` (
   `orderId` INT NOT NULL AUTO_INCREMENT,
   `employeeId` INT NOT NULL,
-  `customerId` INT NOT NULL,
   `customerEmail` VARCHAR(255) NOT NULL,
   `customerName` VARCHAR(255) NOT NULL,
   `carportHeight` INT NOT NULL,

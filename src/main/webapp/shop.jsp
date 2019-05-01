@@ -72,6 +72,18 @@
                         <label for="emailInput">Email</label>
                         <p><input type="email" name="email" placeholder="Indtast din email" id="emailInput"></p>
                     </div>
+                    <div class="form-group">
+                        <label for="addressInput">Adresse</label>
+                        <p><input type="text" name="adresse" placeholder="Indtast din adresse" id="adresseInput"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="zipcodeInput">Postnummer</label>
+                        <p><input type="number" name="zipcode" placeholder="Indtast dit postnr" id="zipcodeInput"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="telInput">Telefon</label>
+                        <p><input type="tel" name="telephone" placeholder="Indtast tlf nr" id="telInput"></p>
+                    </div>
                     <input type="submit" name="order" value="Bestil" onclick="return empty()">
                 </div>
                 </form>
@@ -79,6 +91,6 @@
         </div>
         <div class="footer">
             <p><p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p></p>
-        </div>
-    </body>
+    </div>
+</body>
 </html>
