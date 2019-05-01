@@ -18,16 +18,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <p><h1>Tak for din bestilling!</h1></p>
+                    <h1>Tak for din bestilling!</h1>
 
                     <p><%Carport carport = (Carport) session.getAttribute("carport");
                             out.print(carport.toString());%></p>
 
                     <p>Her er din stykliste:</p>
 
-                    <p><%out.print(Calculator.getAllMaterial(carport));%></p>
+                    <p><%= Calculator.getAllMaterial(carport)%></p>
 
-                    <p><%out.print("Totalpris " + Calculator.getTotalPrice(carport) + " kr.");%></p>
+                    <p><%="Totalpris " + Calculator.getTotalPrice(carport) + " kr."%></p>
                 </div>
             </div>
         </div>
