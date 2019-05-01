@@ -67,20 +67,19 @@ public class OrderMapper {
     public static void makeOrder(Carport carport, Customer customer ) throws FogException, SQLException {
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO `FogCarport`.`order` (employeeId, customerId, customerEmail, customerName, carportHeight"
-                    + ", carportWidth, carportLength, hasRoof, hasShed, hasWall, totalPrice) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
+            String SQL = "INSERT INTO `FogCarport`.`order` (employeeId, customerEmail, customerName, carportHeight"
+                    + ", carportWidth, carportLength, hasRoof, hasShed, hasWall, totalPrice) VALUES (?,?,?,?,?,?,?,?,?,?);";
             PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
             ps.setInt( 1 , 1 );
-            ps.setInt( 2 , customer.getId() );
-            ps.setString( 3 , customer.getEmail() );
-            ps.setString( 4 , customer.getName() );
-            ps.setInt( 5 , carport.getHeight() );
-            ps.setInt( 6 , carport.getWidth() );
-            ps.setInt( 7 , carport.getLength() );
-            ps.setBoolean( 8 , carport.hasPointyRoof() );
-            ps.setBoolean( 9 , carport.hasToolshed() );
-            ps.setBoolean( 10 , carport.hasWall() );
-            ps.setDouble( 11 , 0 );
+            ps.setString( 2 , customer.getEmail() );
+            ps.setString( 3 , customer.getName() );
+            ps.setInt( 4 , carport.getHeight() );
+            ps.setInt( 5 , carport.getWidth() );
+            ps.setInt( 6 , carport.getLength() );
+            ps.setBoolean( 7 , carport.hasPointyRoof() );
+            ps.setBoolean( 8 , carport.hasToolshed() );
+            ps.setBoolean( 9 , carport.hasWall() );
+            ps.setDouble( 10 , 0 );
             ps.executeUpdate();
         } catch ( SQLException ex ) {
             System.out.println(ex.getSQLState());
