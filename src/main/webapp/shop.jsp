@@ -72,7 +72,7 @@
                         <label for="emailInput">Email</label>
                         <p><input type="text" name="email" placeholder="Indtast din email" id="emailInput"></p>
                     </div>
-                    <input type="submit" name="order" value="Bestil">
+                    <input type="submit" name="order" value="Bestil" onclick="return empty()">
                 </div>
                 </form>
             </div>
