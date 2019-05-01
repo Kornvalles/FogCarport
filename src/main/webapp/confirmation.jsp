@@ -20,10 +20,13 @@
                 <div class="col-sm-6">
                     <p><h1>Tak for din bestilling!</h1></p>
 
-                    Her er din stykliste:
                     <%
                         Carport carport = (Carport) session.getAttribute("carport");
                         out.print(carport.toString());
+                    %>
+
+                    <p>Her er din stykliste:</p>
+                    <%
                         out.print(Calculator.getAllMaterial(carport));
                         out.print(Calculator.getTotalPrice(carport));
                     %>
