@@ -24,27 +24,35 @@
                 <div class="col-sm-6">
                     <h1>Tak for din bestilling!</h1>
 
-                        <p><%Construction construction = (Construction) session.getAttribute("construction");
-                        out.print(construction.getCarport().toString());%></p>
+                    <p><%Construction construction = (Construction) session.getAttribute("construction");
+                            out.print(construction.getCarport().toString());%></p>
 
 
                     <p>Her er din stykliste:</p>
 
                     <table class="table-hover">
+
                         <thead>
-                            <tr>
-                                <th style="text-align:left">Navn</th>
-                                <th style="text-align:right">Antal</th>
-                                <th style="text-align:right">Pris</th>
-                            </tr>
+                        <col width="50">
+                        <col width="50">
+                        <col width="200">
+                        <col width="50">
+
+                        <tr>
+
+                            <th style="text-align:center" colspan="2" >Antal</th>
+                            <th style="text-align:left">Navn</th>
+                            <th style="text-align:left">PPU</th>
+                        </tr>
                         </thead>
                         <tbody>
                             <%
                                 for (Material m : construction.getMaterials()) {%>
                             <tr>
-                                <td style="text-align:left"><%=m.getName()%></td>
                                 <td style="text-align:right"><%=m.getQty()%></td>
-                                <td style="text-align:right"><%=String.format("%.2f", m.getPrice())%></td>
+                                <td style="text-align:left"><%=m.getUnit()%></td>
+                                <td style="text-align:left"><%=m.getName()%></td>
+                                <td style="text-align:left"><%=String.format("%.2f", m.getPrice())%></td>
                             </tr>    
                             <%}
                             %>
@@ -52,10 +60,10 @@
                     </table>
                 </div>
             </div>
-                            <br><p>Totalpris: <%=String.format("%.2f",construction.getTotalPrice())%> kr. inkl. moms</p>
+            <br><p>Totalpris: <%=String.format("%.2f", construction.getTotalPrice())%> kr. inkl. moms</p>
         </div>
-                        
-                        
+
+
 
         <svg x="10">
         <rect x="135" y="10" height="200" width="1"

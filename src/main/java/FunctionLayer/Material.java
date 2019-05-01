@@ -52,6 +52,12 @@ public class Material {
         this.price = price;
     }
 
+    public double getTotalprice() {
+        return price*qty;
+    }
+    
+    
+
     @Override
     public String toString() {
         return "\nMaterial: " + name + 
