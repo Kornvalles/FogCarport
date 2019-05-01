@@ -25,7 +25,7 @@
                     <h1>Tak for din bestilling!</h1>
 
                         <p><%Construction construction = (Construction) session.getAttribute("construction");
-                            out.print(construction.getCarport().toString());%></p>
+                        out.print(construction.getCarport().toString());%></p>
 
 
                     <p>Her er din stykliste:</p>
@@ -49,11 +49,13 @@
                             <%}
                             %>
                         </tbody>
-                        <td colspan="3">Subtotal: <%=construction.getTotalPrice()%> DKK inkl. Moms</td>
                     </table>
                 </div>
             </div>
+                            <br><p>Totalpris: <%=String.format("%.2f",construction.getTotalPrice())%> kr. inkl. moms</p>
         </div>
+                        
+                        
 
         <svg x="10">
         <rect x="135" y="10" height="200" width="1"
