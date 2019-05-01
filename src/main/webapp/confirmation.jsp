@@ -24,13 +24,13 @@
                 <div class="col-sm-6">
                     <h1>Tak for din bestilling!</h1>
 
-                        <p><%Construction construction = (Construction) session.getAttribute("construction");
+                    <p><%Construction construction = (Construction) session.getAttribute("construction");
                             out.print(construction.getCarport().toString());%></p>
 
 
                     <p>Her er din stykliste:</p>
 
-                    <table class="table-hover">
+                    <table>
                         <thead>
                             <tr>
                                 <th style="text-align:left">Navn</th>
