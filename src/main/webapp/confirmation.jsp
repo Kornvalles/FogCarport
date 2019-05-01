@@ -24,8 +24,8 @@
                     <%
                         Carport carport = (Carport) session.getAttribute("carport");
                         out.print(carport.toString());
-                        System.out.println(Calculator.getAllMaterial(carport));
-                        System.out.println(Calculator.getTotalPrice(carport));
+                        out.print(Calculator.getAllMaterial(carport));
+                        out.print(Calculator.getTotalPrice(carport));
                     %>
                 </div>
             </div>
