@@ -197,7 +197,7 @@ public class Calculator {
             totalPrice += totalItemPrice;
         }
 
-        return Double.parseDouble(String.format("%.2f", totalPrice));
+        return totalPrice; //Double.parseDouble(String.format("%.2f", totalPrice));
     }
 
 }

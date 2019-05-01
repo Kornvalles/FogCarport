@@ -24,13 +24,12 @@ USE `FogCarport` ;
 -- Table `FogCarport`.`customer`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `FogCarport`.`customer` (
-`id` INT(11) NOT NULL auto_increment,
 `name` VARCHAR(16) NOT NULL,
 `email` VARCHAR(255) NOT NULL,
 `address` VARCHAR(255),
 `zipcode` INT(4),
 `phoneNumber` VARCHAR(15),
-  PRIMARY KEY (`id`));
+  PRIMARY KEY (`email`));
 
 
 -- -----------------------------------------------------
@@ -45,11 +44,11 @@ CREATE TABLE IF NOT EXISTS `FogCarport`.`material` (
   PRIMARY KEY (`materialID`));
 
 INSERT INTO FogCarport.material (`materialID`,`name`,`MSRP`, `costPrice`,`quantity`) VALUES 
-("1000","post","240.95","90.50","9999"), 
-("1010","wood board 10x100cm","45.50","15.50","9999"), 
-("1020","roof battens", "90.95","30.50","9999"), 
-("1030","side battens","90.95","30.50","9999"), 
-("2000","screw","0.10","0.01","9999");
+(1000,'post',240.95,90.50,9999), 
+(1010,'wood board 10x100cm',45.50,15.50,9999), 
+(1020,'roof battens', 90.95,30.50,9999), 
+(1030,'side battens',90.95,30.50,9999), 
+(2000,'screw',0.10,0.01,9999);
 
 
 -- -----------------------------------------------------
@@ -58,7 +57,6 @@ INSERT INTO FogCarport.material (`materialID`,`name`,`MSRP`, `costPrice`,`quanti
 CREATE TABLE IF NOT EXISTS `FogCarport`.`order` (
   `orderId` INT NOT NULL AUTO_INCREMENT,
   `employeeId` INT NOT NULL,
-  `customerId` INT NOT NULL,
   `customerEmail` VARCHAR(255) NOT NULL,
   `customerName` VARCHAR(255) NOT NULL,
   `carportHeight` INT NOT NULL,
