@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <p><h1>Tak for din bestilling!</h1>
+                    <p><h1>Tak for din bestilling!</h1></p>
 
                     Her er din stykliste:
                     <%

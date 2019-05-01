@@ -50,9 +50,9 @@ public class Carport {
 
     @Override
     public String toString() {
-        return "Længde= " + length + " cm\nBredde= " + width + " cm\nHøjde= " + height
-                + " cm\nSkur= " + toolshed + "\nHøj Rejsning= " + pointyRoof 
-                + "\nSider= " + wall + "\nEvt kommentar= " + details; 
+        return "Længde: " + length + " cm\n\nBredde: " + width + " cm\n\nHøjde: " + height
+                + " cm\n\n Skur: " + toolshed + "\n\n Høj rejsning: " + pointyRoof 
+                + "\n\nVægbeklædning: " + wall + "\n\nEvt kommentar: " + details; 
     }
     
 }
