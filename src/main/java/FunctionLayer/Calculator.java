@@ -17,14 +17,12 @@ public class Calculator {
         /* One side of the carport automatically has 1 post at each end */
         int auto = 2;
 
-        double postsOnWidth = Math.max(((double) carport.getWidth() / 100) - 1, 0);
-        int roundedWidth = (int) Math.ceil(postsOnWidth);
-
-        return ((auto + getPostsOnLongside(carport)) * 2) + roundedWidth;
+        return ((auto + getPostsOnLongside(carport)) * 2) + getPostsOnBackside(carport);
     }
 
     /**
-     * This method returns the number of posts on 1 side of the input carport.
+     * This method returns the number of posts on 1 longside of the input
+     * carport.
      */
     public static int getPostsOnLongside(Carport carport) {
         /* Dividing by 100 gives the number of spaces, by substracting 1 you get
@@ -34,6 +32,20 @@ public class Calculator {
 
         /* Making sure that you get a pole for each beginning meter */
         return (int) Math.ceil(postsOnLength);
+    }
+
+    /**
+     * This method returns the number of posts on 1 backside of the input
+     * carport.
+     */
+    public static int getPostsOnBackside(Carport carport) {
+        /* Dividing by 100 gives the number of spaces, by substracting 1 you get
+        the number of splitters/poles between the poles in the ends.
+        Math.max makes sure that posts cannot be negative. */
+        double postsOnWidth = Math.max(((double) carport.getWidth() / 100) - 1, 0);
+
+        /* Making sure that you get a pole for each beginning meter */
+        return (int) Math.ceil(postsOnWidth);
     }
 
     /**
@@ -99,6 +111,23 @@ public class Calculator {
     }
 
     /**
+     * This method returns...
+     */
+    public static int makeShed(Carport carport) {
+
+        return 0;
+    }
+    
+    /**
+     * This method returns the number of tiles used on a pointy roof. 
+     */
+    public static int makePointyRoof(Carport carport) {
+
+        return 0;
+    }
+    
+
+    /**
      * This method returns the number of centimeters in wooden battens needed
      * across the roof. We put the battens where the posts is on the longside of
      * the carport.
@@ -138,18 +167,18 @@ public class Calculator {
         List material = new ArrayList<>();
 
         /* Get name and price from sql database */
-        Material post = new Material("post", getAllPosts(carport),"pcs", LogicFacade.getMaterialPrice("post"));
-        Material wood = new Material("wood board", getSides(carport) + getRoof(carport),"pcs", LogicFacade.getMaterialPrice("wood board"));
-        Material roofBatten = new Material("roof batten", getRoofBattens(carport)/100,"m", LogicFacade.getMaterialPrice("roof batten"));
-        Material sideBatten = new Material("side batten", getSideBattens(carport)/100,"m", LogicFacade.getMaterialPrice("side batten"));
-        Material screw = new Material("screw", getScrews(carport),"pcs", LogicFacade.getMaterialPrice("screw"));
-        
+        Material post = new Material("post", getAllPosts(carport), "pcs", LogicFacade.getMaterialPrice("post"));
+        Material wood = new Material("wood board 10x100cm", getSides(carport) + getRoof(carport), "pcs", LogicFacade.getMaterialPrice("wood board 10x100cm"));
+        Material roofBatten = new Material("roof battens", getRoofBattens(carport) / 100, "m", LogicFacade.getMaterialPrice("roof battens"));
+        Material sideBatten = new Material("side battens", getSideBattens(carport) / 100, "m", LogicFacade.getMaterialPrice("side battens"));
+        Material screw = new Material("screw", getScrews(carport), "pcs", LogicFacade.getMaterialPrice("screw"));
+
         material.add(post);
         material.add(wood);
         material.add(roofBatten);
         material.add(sideBatten);
         material.add(screw);
-        
+
         return material;
     }
 
@@ -159,16 +188,16 @@ public class Calculator {
      */
     public static double getTotalPrice(Carport carport) throws FogException {
         List<Material> materials = getAllMaterial(carport);
-        
+
         double totalPrice = 0;
         double totalItemPrice;
-        
+
         for (int i = 0; i < materials.size(); i++) {
             totalItemPrice = materials.get(i).getPrice() * materials.get(i).getQty();
             totalPrice += totalItemPrice;
         }
-         
-        return Double.parseDouble(String.format("%.2f",totalPrice));
+
+        return Double.parseDouble(String.format("%.2f", totalPrice));
     }
 
 }

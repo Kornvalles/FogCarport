@@ -19,19 +19,20 @@
             <div class="row">
                 <div class="col-sm-6">
                     <p><h1>Tak for din bestilling!</h1></p>
+                
+                    <p><%Carport carport = (Carport) session.getAttribute("carport");
+                         out.print(carport.toString());%></p>
 
-                    Her er din stykliste:
-                    <%
-                        Carport carport = (Carport) session.getAttribute("carport");
-                        out.print(carport.toString());
-                        //System.out.println(Calculator.getAllMaterial(carport));
-                        //System.out.println(Calculator.getTotalPrice(carport));
-                    %>
+                    <p>Her er din stykliste:</p>
+
+                    <p><%out.print(Calculator.getAllMaterial(carport));%></p>
+
+                    <p><%out.print("Totalpris " + Calculator.getTotalPrice(carport) + " kr.");%></p>
                 </div>
             </div>
         </div>
         <div class="footer">
-            <p>Footer</p>
+            <p><p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p></p>
         </div>
     </body>
 </html>
