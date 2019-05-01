@@ -172,12 +172,16 @@ public class Calculator {
         Material roofBatten = new Material("roof battens", getRoofBattens(carport) / 100, "m", LogicFacade.getMaterialPrice("roof battens"));
         Material sideBatten = new Material("side battens", getSideBattens(carport) / 100, "m", LogicFacade.getMaterialPrice("side battens"));
         Material screw = new Material("screw", getScrews(carport), "pcs", LogicFacade.getMaterialPrice("screw"));
-
+        Material roofTile = new Material("roof tile",getRoof(carport), "pcs", LogicFacade.getMaterialPrice("roof tile"));
+        Material pvcRoofSheet = new Material("pvc roof sheet",getRoof(carport), "pcs", LogicFacade.getMaterialPrice("pvc roof sheet"));
+        
         material.add(post);
         material.add(wood);
         material.add(roofBatten);
         material.add(sideBatten);
         material.add(screw);
+        material.add(roofTile);
+        material.add(pvcRoofSheet);
 
         return material;
     }
@@ -197,7 +201,7 @@ public class Calculator {
             totalPrice += totalItemPrice;
         }
 
-        return totalPrice; //Double.parseDouble(String.format("%.2f", totalPrice));
+        return Double.parseDouble(String.format("%.2f", totalPrice));
     }
 
 }

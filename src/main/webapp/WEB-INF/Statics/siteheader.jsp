@@ -77,10 +77,16 @@
                     function empty() {
                 var x;
                 var y;
+                var z;
+                var c;
+                var b;
                 x = document.getElementById("nameInput").value;
                 y = document.getElementById("emailInput").value;
-                if (x == "" || y == "") {
-                    alert("Venligst indtast fulde navn og-eller email");
+                z = document.getElementById("zipcodeInput").value;
+                c = document.getElementById("telInput").value;
+                b = document.getElementById("adresseInput").value;
+                if (x == "" || y == "" || c == "" || b == "") {
+                    alert("Venligst indtast gyldig information");
                     return false;
                 }
                 ;
