@@ -25,7 +25,7 @@ USE `FogCarport` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `FogCarport`.`customer` (
 `name` VARCHAR(16) NOT NULL,
-`email` VARCHAR(255) NOT NULL UNIQUE,
+`email` VARCHAR(255) NOT NULL,
 `address` VARCHAR(255),
 `zipcode` INT(4),
 `phoneNumber` VARCHAR(15),
