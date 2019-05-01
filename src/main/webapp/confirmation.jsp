@@ -28,7 +28,7 @@
                     <p>Her er din stykliste:</p>
                     <%
                         out.print(Calculator.getAllMaterial(carport));
-                        out.print(Calculator.getTotalPrice(carport));
+                        out.print("Totalpris "+Calculator.getTotalPrice(carport)+" kr.");
                     %>
                 </div>
             </div>
