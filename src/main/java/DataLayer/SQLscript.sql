@@ -45,10 +45,10 @@ CREATE TABLE IF NOT EXISTS `FogCarport`.`material` (
   PRIMARY KEY (`materialID`));
 
 INSERT INTO FogCarport.material (`materialID`,`name`,`MSRP`, `costPrice`,`quantity`) VALUES 
-("1000","post","24.95","10","9999"), 
-("1010","wood board 10x100cm","4.50","1.50","9999"), 
-("1020","roof battens", "9.95","6","9999"), 
-("1030","side battens","9.95","6","9999"), 
+("1000","post","240.95","90.50","9999"), 
+("1010","wood board 10x100cm","45.50","15.50","9999"), 
+("1020","roof battens", "90.95","30.50","9999"), 
+("1030","side battens","90.95","30.50","9999"), 
 ("2000","screw","0.10","0.01","9999");
 
 

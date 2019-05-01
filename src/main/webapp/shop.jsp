@@ -70,7 +70,7 @@
                     </div>
                     <div class="form-group">
                         <label for="emailInput">Email</label>
-                        <p><input type="text" name="email" placeholder="Indtast din email" id="emailInput"></p>
+                        <p><input type="email" name="email" placeholder="Indtast din email" id="emailInput"></p>
                     </div>
                     <input type="submit" name="order" value="Bestil" onclick="return empty()">
                 </div>
