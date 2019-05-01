@@ -48,7 +48,9 @@ INSERT INTO FogCarport.material (`materialID`,`name`,`MSRP`, `costPrice`,`quanti
 (1010,'wood board 10x100cm',45.50,15.50,9999), 
 (1020,'roof battens', 90.95,30.50,9999), 
 (1030,'side battens',90.95,30.50,9999), 
-(2000,'screw',0.10,0.01,9999);
+(2000,'screw',0.10,0.01,9999),
+(3000,'roof tile',29.95,9.95,9999),
+(3010,'pvc roof sheet',9.95,3.50,9999);
 
 
 -- -----------------------------------------------------
