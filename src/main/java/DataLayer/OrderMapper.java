@@ -22,8 +22,8 @@ public class OrderMapper {
     * @return  */
     public static double getMaterialPrice(String name) throws FogException {
         try {
-            String query = "SELECT price FROM `carport`.`material` "
-                    + "WHERE `carport`.`material`.`name` = '" + name + "';";
+            String query = "SELECT MSRP FROM `FogCarport`.`material` "
+                    + "WHERE `material`.`name` = '" + name + "';";
 
             Connection con = Connector.connection();
             Statement stmt = con.createStatement();
@@ -32,7 +32,7 @@ public class OrderMapper {
             double price = 0;
 
             while (rs.next()) {
-                price = rs.getDouble("price");
+                price = rs.getDouble("MSRP");
             }
             return price;
             
