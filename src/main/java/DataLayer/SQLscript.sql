@@ -51,6 +51,7 @@ INSERT INTO FogCarport.material (`materialID`,`name`,`MSRP`, `costPrice`,`quanti
 ("1030","side battens","90.95","30.50","9999"), 
 ("2000","screw","0.10","0.01","9999");
 
+
 -- -----------------------------------------------------
 -- Table `FogCarport`.`order`
 -- -----------------------------------------------------
@@ -67,11 +68,7 @@ CREATE TABLE IF NOT EXISTS `FogCarport`.`order` (
   `hasShed` BOOLEAN,
   `hasWall` BOOLEAN,
   `totalPrice` DOUBLE NOT NULL,
-  PRIMARY KEY (`orderID`),
-    FOREIGN KEY (`customerId`)
-    REFERENCES `customer` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+  PRIMARY KEY (`orderID`));
 
 
 -- -----------------------------------------------------
