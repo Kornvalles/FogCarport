@@ -56,11 +56,13 @@
                             </tr>    
                             <%}
                             %>
+                            <tr>
+                                <td colspan="4">Totalpris: <%=String.format("%.2f", construction.getTotalPrice())%> kr. inkl. moms</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <br><p>Totalpris: <%=String.format("%.2f", construction.getTotalPrice())%> kr. inkl. moms</p>
         </div>
 
 
