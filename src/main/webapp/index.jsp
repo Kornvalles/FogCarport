@@ -114,7 +114,7 @@ img {vertical-align: middle;}
 
 <div class="mySlides fade">
   <div class="numbertext">3 / 3</div>
-  <a href="mellemmskur.jsp">
+  <a href="shop.jsp">
         <img src="img/mellemmskur.jpeg" title="Mellem Carport m/ skur" width="700" height="700" /></a>
   <div class="text">Mellem Carport m Skur</div>
 </div>
