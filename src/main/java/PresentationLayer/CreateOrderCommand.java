@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author mikkel & benni
+ * @author mikkel & benni & nicklas
  */
 public class CreateOrderCommand extends Command {
 
