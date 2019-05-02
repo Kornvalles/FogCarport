@@ -1,5 +1,4 @@
 package FunctionLayer;
-
 import DataLayer.OrderMapper;
 
 /**
@@ -9,7 +8,7 @@ import DataLayer.OrderMapper;
 public class MainTest {
     
     public static void main(String[] args) throws FogException {
-    
+        
         /* Test carport with height, length, width */
 //        Carport carport = new Carport(230,400,200,false,false,true,"");
 //        

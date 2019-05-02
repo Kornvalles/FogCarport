@@ -67,7 +67,7 @@
 
         <%
             SVGCarport svg = new SVGCarport();
-            String drawing = svg.drawCarport(construction.getCarport().getWidth(), construction.getCarport().getWidth(), new Dimension(1000, 1000));
+            String drawing = svg.drawCarport(1000,1000, new Dimension(construction.getCarport().getWidth(), construction.getCarport().getWidth()));
         %>
 
         <p>SVGCarport</p>

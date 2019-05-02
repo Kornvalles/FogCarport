@@ -11,10 +11,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <style>.fadeIn {
+  display: none;
+}</style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Shop</title>
     </head>
     <body>
+        
         <div class="text-center">
             <h1>Bestilling af carport</h1>
         </div>
@@ -49,13 +53,26 @@
                                     <option value="450">450 cm</option>
                                 </select></p>
                         </div>
-                        <div class="form-group">
-                            <input type="checkbox" name="shed" value="true" id="shedInput">
-                            <label for="shedInput">Tilføj redskabsskur?</label>      
+                        
+                            <input type="checkbox" name="shedInput" id="shedInput">
+                            <label for="shedInput">Tilføj redskabsskur?</label>
+                            <div class="form-group, fadeIn" id="display">
+                            Vælg venligst længden på dit skur:
+                            <p><select name="shedWidth" id="widthInput">
+                                    <option value="240">100 cm</option>
+                                    <option value="270">150 cm</option>
+                                </select></p>
                         </div>
-                        <div class="form-group">
+                            <br>
+                        
                             <input type="checkbox" name="roof" value="true" id="roofInput">
                             <label for="roofInput">Tilføj vinkeltag?</label>
+                            <div class="form-group, fadeIn" id="display1">
+                                Vælg venligst den ønskede vinkel på deres tag:
+                                <p><select name="roofAngle" id="roofAngle">
+                                        <option value="20">20°</option>
+                                        <option value="45">45°</option>
+                                </select></p>
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="wall" value="true" id="wallsInput">
@@ -91,5 +108,33 @@
         <div class="footer">
             <p><p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p></p>
     </div>
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+<script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+document.getElementById("shedInput").checked = false;
+document.getElementById('shedInput').onclick = function() {
+
+  if (document.getElementById("shedInput").checked === false) {
+    $('#display').fadeOut(200);
+  }
+  if (document.getElementById("shedInput").checked === true) {
+    $('#display').fadeIn(200);
+
+  }
+};
+</script>
+<script>
+document.getElementById("roofInput").checked = false;
+document.getElementById('roofInput').onclick = function() {
+
+  if (document.getElementById("roofInput").checked === false) {
+    $('#display1').fadeOut(200);
+  }
+  if (document.getElementById("roofInput").checked === true) {
+    $('#display1').fadeIn(200);
+
+  }
+};
+</script>
 </body>
 </html>
