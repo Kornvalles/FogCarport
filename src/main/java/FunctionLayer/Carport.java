@@ -5,22 +5,17 @@ public class Carport {
     private final int height; //measured in centimeters.
     private final int length; //measured in centimeters.
     private final int width; //measured in centimeters.
-    private final int roofLength; //measured in centimeters.
-    private final int roofWidth; //measured in centimeters.
     private final boolean toolshed; //false when toolshed is not opted
     private final boolean pointyRoof; //false when roof is not pointy
     private final boolean wall; //false when there are only posts on wall
     private final String details; //details on carport
 
-    public Carport( int height, int length, int width, int rLength,
-                    int rWidth, boolean toolshed, boolean pointyRoof, 
+    public Carport( int height, int length, int width, boolean toolshed, boolean pointyRoof, 
                     boolean wall, String details) 
     {
         this.height = height;
         this.length = length;
         this.width = width;
-        this.roofLength = rLength;
-        this.roofWidth = rWidth;
         this.toolshed = toolshed;
         this.pointyRoof = pointyRoof;
         this.wall = wall;
@@ -53,14 +48,6 @@ public class Carport {
 
     public String getDetails() {
         return details;
-    }
-
-    public int getRoofLength() {
-        return roofLength;
-    }
-
-    public int getRoofWidth() {
-        return roofWidth;
     }
 
     @Override

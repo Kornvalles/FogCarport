@@ -55,16 +55,18 @@ public class Calculator {
      */
     public static int getRoof(Carport carport) {
         /* This if statement runs if the carport has a pointy roof*/
-        int roofTileLength = 10;
-        int roofTileWidth = 10;
         int pvcSheetLength = 10;
         int pvcSheetWidth = 10;
+        int degrees = 0;
 
-        if (carport.hasPointyRoof()) {
+        if (!carport.hasPointyRoof()) {
             
-            return 0;
-        } else {
             return calcMaterial(carport.getLength(), carport.getWidth(), pvcSheetLength, pvcSheetWidth);
+        } else {
+            int a = carport.getWidth() / 2;
+            int b = 0;
+            return 0;
+            
         }
     }
 
