@@ -51,7 +51,20 @@
         <img src="img/mellemmskur.jpeg" title="Mellem Carport m/ skur" width="400" height="400" /></a>
   </div>
 </div>
-       
+  <div class="row" align="center">
+  <div class="column">
+      <a href="shop.jsp">
+        <img src="img/lillecarport.jpeg" title="Lille Carport" width="400" height="400" /></a>
+  </div>
+  <div class="column img-with-text">
+    <a href="shop.jsp">
+        <img src="img/mellemcarport.jpeg" title="Mellem Carport" width="400" height="400" /></a>
+  </div>
+  <div class="column">
+    <a href="shop.jsp">
+        <img src="img/mellemmskur.jpeg" title="Mellem Carport m/ skur" width="400" height="400" /></a>
+  </div>
+</div>
         <div class="footer">
             <p><p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p></p>
         </div>
