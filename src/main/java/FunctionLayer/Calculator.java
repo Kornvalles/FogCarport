@@ -55,10 +55,16 @@ public class Calculator {
      */
     public static int getRoof(Carport carport) {
         /* This if statement runs if the carport has a pointy roof*/
+        int roofTileLength = 10;
+        int roofTileWidth = 10;
+        int pvcSheetLength = 10;
+        int pvcSheetWidth = 10;
+
         if (carport.hasPointyRoof()) {
+            
             return 0;
         } else {
-            return calcRectangle(carport.getLength(), carport.getWidth());
+            return calcMaterial(carport.getLength(), carport.getWidth(), pvcSheetLength, pvcSheetWidth);
         }
     }
 
@@ -69,34 +75,31 @@ public class Calculator {
      * sides input1 is the length and input2 is the height -- At the backside
      * input1 is the width and input2 is the height
      */
-    public static int calcRectangle(int input1, int input2) {
-        int totalBoards;
+    public static int calcMaterial(int input1, int input2, int materialLength, int materialWidth) {
+        int totalMaterial;
 
-        /* Defining the size of a wooden board, get numbers from database */
-        int woodLength = 100;
-        int woodWidth = 10;
 
         /* How many wooden boards can fit in the length? */
-        int boardsInLength = input1 / woodLength;
+        int materialInLength = input1 / materialLength;
 
         /* How many wooden boards can fit in the width? */
-        int boardsInWidth = input2 / woodWidth;
+        int materialInWidth = input2 / materialWidth;
 
-        int rest = input1 % woodLength;
+        int rest = input1 % materialLength;
 
         /* The number of wooden boards on a flat roof using as little wood 
             as possible */
         if (rest == 0) {
-            totalBoards = boardsInWidth * boardsInLength;
+            totalMaterial = materialInWidth * materialInLength;
         } else {
             /* Making sure that you get a whole wood board even though you 
                 might only need a fraction of it */
-            double reuseBoards = (double) (rest * boardsInWidth) / woodLength;
+            double reuseBoards = (double) (rest * materialInWidth) / materialLength;
             int rounded = (int) Math.ceil(reuseBoards);
 
-            totalBoards = boardsInWidth * boardsInLength + rounded;
+            totalMaterial = materialInWidth * materialInLength + rounded;
         }
-        return totalBoards;
+        return totalMaterial;
     }
 
     /**
@@ -104,8 +107,11 @@ public class Calculator {
      * of the input carport.
      */
     public static int getSides(Carport carport) {
-        int longsides = 2 * (calcRectangle(carport.getLength(), carport.getHeight()));
-        int backside = calcRectangle(carport.getWidth(), carport.getHeight());
+
+        int woodLength = 100;
+        int woodWidth = 10;
+        int longsides = 2 * (calcMaterial(carport.getLength(), carport.getHeight(), woodLength, woodWidth));
+        int backside = calcMaterial(carport.getWidth(), carport.getHeight(), woodLength, woodWidth);
 
         return longsides + backside;
     }
@@ -116,7 +122,7 @@ public class Calculator {
     public static int makeShed(Carport carport) {
 
         return 0;
-    }    
+    }
 
     /**
      * This method returns the number of centimeters in wooden battens needed
@@ -140,7 +146,6 @@ public class Calculator {
      */
     public static int getScrews(Carport carport) {
         int screwsOnSides = getSides(carport) * 6;
-        int screwsOnRoof = getRoof(carport) * 6;
 
         /* The getBattens-method returns the number of meters in wooden battens
         and not the number of battens. To get the number of screws we calculate 
@@ -148,7 +153,7 @@ public class Calculator {
         the side battens and the roof battens in all 6 screws for each post*/
         int screwsOnBattens = 2 * getPostsOnLongside(carport) * 6;
 
-        return screwsOnSides + screwsOnRoof + screwsOnBattens;
+        return screwsOnSides + screwsOnBattens;
     }
 
     /**
@@ -163,9 +168,9 @@ public class Calculator {
         Material roofBatten = new Material("roof battens", getRoofBattens(carport) / 100, "m", logic.getMaterialPrice("roof battens"));
         Material sideBatten = new Material("side battens", getSideBattens(carport) / 100, "m", logic.getMaterialPrice("side battens"));
         Material screw = new Material("screw", getScrews(carport), "pcs", logic.getMaterialPrice("screw"));
-        Material roofTile = new Material("roof tile",getRoof(carport), "pcs", logic.getMaterialPrice("roof tile"));
-        Material pvcRoofSheet = new Material("pvc roof sheet",getRoof(carport), "pcs", logic.getMaterialPrice("pvc roof sheet"));
-        
+        Material roofTile = new Material("roof tile", getRoof(carport), "pcs", logic.getMaterialPrice("roof tile"));
+        Material pvcRoofSheet = new Material("pvc roof sheet", getRoof(carport), "pcs", logic.getMaterialPrice("pvc roof sheet"));
+
         material.add(post);
         material.add(wood);
         material.add(roofBatten);
@@ -173,7 +178,7 @@ public class Calculator {
         material.add(screw);
         material.add(roofTile);
         material.add(pvcRoofSheet);
-        
+
         double totalPrice = 0;
         double totalItemPrice;
 
