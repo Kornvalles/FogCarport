@@ -49,16 +49,14 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <%
-                                for (Material m : construction.getMaterials()) {%>
+                            <%for (Material m : construction.getMaterials()) {%>
                             <tr>
                                 <td style="text-align:right"><%=m.getQty()%></td>
                                 <td style="text-align:left"><%=m.getUnit()%></td>
                                 <td style="text-align:left"><%=m.getName()%></td>
                                 <td style="text-align:left"><%=String.format("%.2f", m.getPrice())%></td>
                             </tr>    
-                            <%}
-                            %>
+                            <%}%>
                         </tbody>
                     </table>
                 </div>
@@ -69,17 +67,12 @@
 
         <%
             SVGCarport svg = new SVGCarport();
-            String drawing1 = svg.drawCarport(100, 100, new Dimension(800, 800));
-
-            SVGFog svgFOG = new SVGFog(200, 200, 200);
-            svgFOG.setAngles(30);
-
-            String drawing2 = svgFOG.drawTop();
+            String drawing = svg.drawCarport(construction.getCarport().getWidth(), construction.getCarport().getWidth(), new Dimension(1000, 1000));
         %>
 
         <p>SVGCarport</p>
 
-        <%= drawing1%>
+        <%= drawing%>
 
     </div>
 
