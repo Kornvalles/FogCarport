@@ -3,6 +3,9 @@
     Created on : Apr 25, 2019, 12:14:20 PM
     Author     : ibenk
 --%>
+<%@page import="FunctionLayer.SVGFog"%>
+<%@page import="FunctionLayer.Dimension"%>
+<%@page import="FunctionLayer.SVGCarport"%>
 <%@page import="FunctionLayer.Construction"%>
 <%@page import="FunctionLayer.Material"%>
 <%@page import="FunctionLayer.Carport"%>
@@ -24,8 +27,8 @@
                 <div class="col-sm-6">
                     <h1>Tak for din bestilling!</h1>
 
-                    <p><%Construction construction = (Construction) session.getAttribute("construction");
-                            out.print(construction.getCarport().toString());%></p>
+                        <p><%Construction construction = (Construction) session.getAttribute("construction");
+                        out.print(construction.getCarport().toString());%></p>
 
 
                     <p>Her er din stykliste:</p>
@@ -46,38 +49,37 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <%
-                                for (Material m : construction.getMaterials()) {%>
+                            <%for (Material m : construction.getMaterials()) {%>
                             <tr>
                                 <td style="text-align:right"><%=m.getQty()%></td>
                                 <td style="text-align:left"><%=m.getUnit()%></td>
                                 <td style="text-align:left"><%=m.getName()%></td>
                                 <td style="text-align:left"><%=String.format("%.2f", m.getPrice())%></td>
                             </tr>    
-                            <%}
-                            %>
-                            <tr>
-                                <td colspan="4">Totalpris: <%=String.format("%.2f", construction.getTotalPrice())%> kr. inkl. moms</td>
-                            </tr>
+                            <%}%>
                         </tbody>
                     </table>
                 </div>
             </div>
-        </div>
+                    
 
+        <br><p>Totalpris: <%=String.format("%.2f", construction.getTotalPrice())%> kr. inkl. moms</p>
 
+        <%
+            SVGCarport svg = new SVGCarport();
+            String drawing = svg.drawCarport(1000,1000, new Dimension(construction.getCarport().getWidth(), construction.getCarport().getWidth()));
+        %>
 
-        <svg x="10">
-        <rect x="135" y="10" height="200" width="1"
-              style="stroke:#000000; fill: #000000"/>
-        <rect x="235" y="10" height="200" width="1"
-              style="stroke:#000000; fill: #000000"/>
-        <rect x="135" y="10" height="1" width="100"
-              style="stroke:#000000; fill: #000000"/>
-        </svg>
+        <p>SVGCarport</p>
 
-        <div class="footer">
-            <p><p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p></p>
+        <%= drawing%>
+
     </div>
+
+
+
+    <div class="footer">
+        <p><p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p></p>
+</div>
 </body>
 </html>

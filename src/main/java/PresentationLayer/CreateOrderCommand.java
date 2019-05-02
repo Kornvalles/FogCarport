@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author mikkel
+ * @author mikkel & benni
  */
 public class CreateOrderCommand extends Command {
 
@@ -32,6 +32,9 @@ public class CreateOrderCommand extends Command {
         String reqWall = request.getParameter("wall");
         String reqName = request.getParameter("name");
         String reqEmail = request.getParameter("email");
+        String reqAddress = request.getParameter("address");
+        String reqZipcode = request.getParameter("zipcode");
+        String reqPhonenumber = request.getParameter("phonenumber");
         
         //Konveterer inputs som ikke skal være String.
         boolean shed = Boolean.parseBoolean(reqShed);
@@ -41,7 +44,7 @@ public class CreateOrderCommand extends Command {
         int width = Integer.parseInt(reqWidth);
         
         //Instancerer objekter og putter dem på session
-        Customer customer = new Customer(reqName, reqEmail, "", 2800, "");
+        Customer customer = new Customer(reqName, reqEmail, reqAddress, reqZipcode, reqPhonenumber);
         Carport carport = new Carport(230, length, width, shed, roof, wall, "");
         Construction construction = Calculator.constructCarport(carport, logic);
         session.setAttribute("construction", construction);
