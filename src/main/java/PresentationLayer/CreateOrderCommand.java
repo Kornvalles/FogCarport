@@ -46,7 +46,12 @@ public class CreateOrderCommand extends Command {
         //Instancerer objekter og putter dem på session
         Customer customer = new Customer(reqName, reqEmail, reqAddress, reqZipcode, reqPhonenumber);
         Carport carport = new Carport(230, length, width, shed, roof, wall, "");
-        Construction construction = Calculator.constructCarport(carport, logic);
+        Construction construction = null;
+        try {
+            construction = Calculator.constructCarport(carport, logic);
+        } catch (SQLException ex) {
+            Logger.getLogger(CreateOrderCommand.class.getName()).log(Level.SEVERE, null, ex);
+        }
         session.setAttribute("construction", construction);
         session.setAttribute("customer", customer);
         
