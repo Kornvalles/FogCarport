@@ -116,16 +116,7 @@ public class Calculator {
     public static int makeShed(Carport carport) {
 
         return 0;
-    }
-    
-    /**
-     * This method returns the number of tiles used on a pointy roof. 
-     */
-    public static int makePointyRoof(Carport carport) {
-
-        return 0;
-    }
-    
+    }    
 
     /**
      * This method returns the number of centimeters in wooden battens needed
