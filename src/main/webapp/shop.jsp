@@ -66,12 +66,17 @@
                             <br>
                         
                             <input type="checkbox" name="roof" value="true" id="roofInput">
-                            <label for="roofInput">Tilføj vinkeltag?</label>
+                            <label for="roofInput">Tilføj taghældning?</label>
                             <div class="form-group, fadeIn" id="display1">
-                                Vælg venligst den ønskede vinkel på deres tag:
+                                Vælg venligst den ønskede hældning på deres tag:
                                 <p><select name="roofAngle" id="roofAngle">
+                                        <option value="15">15°</option
                                         <option value="20">20°</option>
-                                        <option value="45">45°</option>
+                                        <option value="25">25°</option>
+                                        <option value="30">30°</option
+                                        <option value="35">35°</option
+                                        <option value="40">40°</option
+                                        <option value="45">45°</option
                                 </select></p>
                         </div>
                         <div class="form-group">
