@@ -11,15 +11,38 @@ import java.sql.SQLException;
  */
 public class DatabaseLogicFacade implements LogicFacade {
 
+    /**
+     *
+     * @param customer
+     * @throws FogException
+     * @throws SQLException
+     */
+    @Override
     public void addCustomer( Customer customer ) throws FogException, SQLException {
         UserMapper.addCustomer(customer);
     }
 
+    /**
+     *
+     * @param carport
+     * @param customer
+     * @throws FogException
+     * @throws SQLException
+     */
+    @Override
     public void createOrder( Carport carport, Customer customer ) throws FogException, SQLException {
         OrderMapper.makeOrder(carport, customer);
     }
 
-    public double getMaterialPrice(String name) throws FogException {
+    /**
+     *
+     * @param name
+     * @return
+     * @throws FogException
+     * @throws SQLException
+     */
+    @Override
+    public double getMaterialPrice(String name) throws FogException, SQLException {
         return OrderMapper.getMaterialPrice(name);
     }
     
