@@ -25,10 +25,14 @@ public class UserMapper {
     public static void addCustomer(Customer customer) throws FogException, SQLException {
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO `FogCarport`.`customer` ( name, email ) VALUES (?, ?);";
+            String SQL = "INSERT INTO `FogCarport`.`customer` ( name, email, address, zipcode, phoneNumber ) "
+                    + "VALUES (?, ?, ?, ?, ?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, customer.getName());
             ps.setString(2, customer.getEmail());
+            ps.setString(3, customer.getAddress());
+            ps.setString(4, customer.getZipcode());
+            ps.setString(5, customer.getPhoneNumber());
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getSQLState());

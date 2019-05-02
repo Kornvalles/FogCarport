@@ -1,5 +1,6 @@
 package DataLayer;
 
+import FunctionLayer.Construction;
 import FunctionLayer.Carport;
 import FunctionLayer.Customer;
 import FunctionLayer.FogException;
@@ -79,7 +80,7 @@ public class OrderMapper {
             ps.setBoolean( 7 , carport.hasPointyRoof() );
             ps.setBoolean( 8 , carport.hasToolshed() );
             ps.setBoolean( 9 , carport.hasWall() );
-            ps.setDouble( 10 , 0 );
+            ps.setDouble( 10 , 0);
             ps.executeUpdate();
         } catch ( SQLException ex ) {
             System.out.println(ex.getSQLState());
