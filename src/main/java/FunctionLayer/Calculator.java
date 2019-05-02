@@ -58,15 +58,24 @@ public class Calculator {
         /* This if statement runs if the carport has a pointy roof*/
         int pvcSheetLength = 10;
         int pvcSheetWidth = 10;
-        int degrees = 0;
+        double degrees = 0;
 
         if (!carport.hasPointyRoof()) {
             
             return calcMaterial(carport.getLength(), carport.getWidth(), pvcSheetLength, pvcSheetWidth);
         } else {
+            int vinkelC = 90; // statisk fordi denne vinkel altid er 90 grader.
+            int vinkelB = 20; // skal laves om til variable (hentes fra jsp)
+            int vinkelA = vinkelB - vinkelC;
+
             int a = carport.getWidth() / 2;
-            int b = 0;
-            return 0;
+            int b = (int) (a * Math.sin(20) / Math.sin(vinkelA));
+            int c = (int) (Math.sqrt(Math.pow(2, a) + Math.pow(2, b)));
+            
+            int pvcSheetL = pvcSheetLength;
+            int pvcSheetW = pvcSheetWidth;
+            
+            return 0; //calcMaterial(a, c, pvcSheetL, pvcSheetW);
             
         }
     }
