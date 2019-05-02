@@ -55,6 +55,7 @@ public class Calculator {
      * board across the roof.
      */
     public static int getRoof(Carport carport) {
+        
         /* This if statement runs if the carport has a pointy roof*/
         int pvcSheetLength = 10;
         int pvcSheetWidth = 10;
