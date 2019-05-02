@@ -78,14 +78,7 @@
             <p>SVGCarport</p>
 
             <%= drawing1%>
-
-            <svg width="50%" viewbox="0 0 100 100" style="background: gray">
-            <svg x="20%" y="20%" width="80%" height="80%">
-            <rect width="100%" height="100%" fill="purple" />
-            <%= drawing2%>                
-            </svg>
-            </svg>
-
+            
         </div>
 
 
