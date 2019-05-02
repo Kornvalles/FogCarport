@@ -1,5 +1,6 @@
 package FunctionLayer;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -161,7 +162,7 @@ public class Calculator {
     /**
      * This method returns a list of all material needed for the input carport.
      */
-    public static Construction constructCarport(Carport carport, LogicFacade logic) throws FogException {
+    public static Construction constructCarport(Carport carport, LogicFacade logic) throws FogException, SQLException {
         List<Material> material = new ArrayList<>();
 
         /* Get name and price from sql database */
