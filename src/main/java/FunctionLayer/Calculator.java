@@ -58,15 +58,25 @@ public class Calculator {
         /* This if statement runs if the carport has a pointy roof*/
         int pvcSheetLength = 10;
         int pvcSheetWidth = 10;
-        int degrees = 0;
 
         if (!carport.hasPointyRoof()) {
             
             return calcMaterial(carport.getLength(), carport.getWidth(), pvcSheetLength, pvcSheetWidth);
         } else {
-            int a = carport.getWidth() / 2;
-            int b = 0;
-            return 0;
+            double vinkelC = 90; // statisk fordi denne vinkel altid er 90 grader.
+            double vinkelB = 20; // skal laves om til variable (hentes fra jsp)
+            double vinkelA = vinkelB - vinkelC;
+
+            double a = carport.getWidth() / 2;
+            double sinB = (Math.sin(20) / Math.sin(vinkelA));
+            double b = sinB * 120;
+            double c2 = ((Math.pow(a, 2) + Math.pow(b, 2) - (2 * a * b * Math.cos(vinkelC))));
+            int c = (int) Math.sqrt(c2);
+            
+            int pvcSheetL = pvcSheetLength;
+            int pvcSheetW = pvcSheetWidth;
+            
+            return calcMaterial(carport.getLength(), c, pvcSheetL, pvcSheetW);
             
         }
     }
@@ -97,7 +107,7 @@ public class Calculator {
         } else {
             /* Making sure that you get a whole wood board even though you 
                 might only need a fraction of it */
-            double reuseBoards = (double) (rest * materialInWidth) / materialLength;
+            int reuseBoards = (rest * materialInWidth) / materialLength;
             int rounded = (int) Math.ceil(reuseBoards);
 
             totalMaterial = materialInWidth * materialInLength + rounded;
@@ -167,7 +177,7 @@ public class Calculator {
 
         /* Get name and price from sql database */
         Material post = new Material("post", getAllPosts(carport), "pcs", logic.getMaterialPrice("post"));
-        Material wood = new Material("wood board 10x100cm", getSides(carport) + getRoof(carport), "pcs", logic.getMaterialPrice("wood board 10x100cm"));
+        Material wood = new Material("wood board 10x100cm", getSides(carport), "pcs", logic.getMaterialPrice("wood board 10x100cm"));
         Material roofBatten = new Material("roof battens", getRoofBattens(carport) / 100, "m", logic.getMaterialPrice("roof battens"));
         Material sideBatten = new Material("side battens", getSideBattens(carport) / 100, "m", logic.getMaterialPrice("side battens"));
         Material screw = new Material("screw", getScrews(carport), "pcs", logic.getMaterialPrice("screw"));
@@ -179,7 +189,6 @@ public class Calculator {
         material.add(roofBatten);
         material.add(sideBatten);
         material.add(screw);
-        material.add(roofTile);
         material.add(pvcRoofSheet);
 
         double totalPrice = 0;
