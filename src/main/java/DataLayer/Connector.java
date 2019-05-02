@@ -14,11 +14,11 @@ import java.util.Properties;
 public class Connector {
 
     //Constants
-    private static final String IP = "localhost";
+    private static final String IP = "165.227.175.89";
     private static final String PORT = "3306";
     public static final String DATABASE = "FogCarport";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
+    private static final String USERNAME = "FogGroup";
+    private static final String PASSWORD = "FogCarport1234.";
 
     private static Connection singleton;
 
