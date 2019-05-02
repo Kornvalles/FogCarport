@@ -67,12 +67,12 @@
 
         <%
             SVGCarport svg = new SVGCarport();
-            String drawing = svg.drawCarport(1000,1000, new Dimension(construction.getCarport().getWidth(), construction.getCarport().getWidth()));
+            String drawing = svg.drawCarport(new Dimension(construction.getCarport().getWidth(), construction.getCarport().getWidth()));
         %>
 
-        <p>SVGCarport</p>
+        <p>SVGCarport <%= construction.getCarport().getLength()%> cm lang og <%= construction.getCarport().getWidth()%> cm bred</p>
 
-        <%= drawing%>
+        <p><%= drawing%></p>
 
     </div>
 
