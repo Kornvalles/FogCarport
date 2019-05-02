@@ -10,20 +10,20 @@ public class Carport {
     private final boolean wall; //false when there are only posts on wall
     private final String details; //details on carport
 
-    public Carport(int height, int length, int width, boolean toolshed, boolean pointyRoof, boolean sides, String details) {
+    public Carport(int height, int length, int width, boolean toolshed, boolean pointyRoof, boolean wall, String details) {
         this.height = height;
         this.length = length;
         this.width = width;
         this.toolshed = toolshed;
         this.pointyRoof = pointyRoof;
-        this.wall = sides;
+        this.wall = wall;
         this.details = details;
     }
 
     public int getHeight() {
         return height;
     }
-    
+
     public int getLength() {
         return length;
     }
@@ -31,7 +31,7 @@ public class Carport {
     public int getWidth() {
         return width;
     }
-    
+
     public boolean hasToolshed() {
         return toolshed;
     }
@@ -39,14 +39,16 @@ public class Carport {
     public boolean hasPointyRoof() {
         return pointyRoof;
     }
-    
+
     public boolean hasWall() {
         return wall;
     }
-    
+
     public String getDetails() {
         return details;
     }
+
+    public enum roofType {pvcRoofSheet, roofTile}
 
     @Override
     public String toString() {
