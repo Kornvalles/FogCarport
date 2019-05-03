@@ -12,7 +12,7 @@
         <style>
             .footer {
                 display: block;
-                position: relative;
+                position: absolute;
                 height: 100px;
                 left: 0;
                 bottom: 0;
