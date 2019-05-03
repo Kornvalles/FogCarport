@@ -12,22 +12,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" type="text/css" href="main.css/main.css" />
         </head>
-        
-        <body>
-
-            <div class="col-sm-6">
-            <%
-                if (session.getAttribute("error") != null) {
-                    out.print(session.getAttribute("error"));
-                }
-            %>
-        </div>
-
-
-            <h1>Forside</h1>
-            <h2>Velkommen til Fog Trælast</h2>
-            
-            <div class="bd-example">
+        <header><div class="bd-example">
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 700px; margin:0 auto;">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -36,13 +21,22 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="img/lillecarport.jpeg" class="h-50 d-block w-100" alt="...">
+      <img src="img/1.png" class="h-50 d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="img/mellemcarport.jpeg" class="h-50 d-block w-100" alt="...">
+      <img src="img/2.png" class="h-50 d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="img/mellemmskur.jpeg" class="h-50 d-block w-100" alt="...">
+      <img src="img/3.png" class="h-50 d-block w-100" alt="...">
+    </div>
+      <div class="carousel-item">
+      <img src="img/4.png" class="h-50 d-block w-100" alt="...">
+    </div>
+      <div class="carousel-item">
+      <img src="img/5.png" class="h-50 d-block w-100" alt="...">
+    </div>
+      <div class="carousel-item">
+      <img src="img/6.png" class="h-50 d-block w-100" alt="...">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -54,6 +48,16 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+        </header>
+        <body>
+
+            <div class="col-sm-6">
+            <%
+                if (session.getAttribute("error") != null) {
+                    out.print(session.getAttribute("error"));
+                }
+            %>
+        </div>
       <script>
         $('.carousel').carousel({
             interval: 2000

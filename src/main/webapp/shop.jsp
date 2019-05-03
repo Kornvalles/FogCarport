@@ -110,7 +110,7 @@
                 </form>
             </div>
         </div>
-        <div class="footer">
+        <div class="#footer">
             <p><p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p></p>
     </div>
 <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>

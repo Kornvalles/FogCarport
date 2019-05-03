@@ -78,7 +78,7 @@
 
 
 
-    <div class="footer">
+    <div class="#footer">
         <p><p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p></p>
 </div>
 </body>
