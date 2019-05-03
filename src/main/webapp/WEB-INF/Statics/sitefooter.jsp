@@ -13,13 +13,12 @@
             .footer {
                 display: block;
                 position: absolute;
-                height: 100px;
-                left: 0;
-                bottom: 0;
-                width: 100%;
                 background-color: #f1f1f1;
                 color: #000000;
                 text-align: center;
+                bottom: 0;
+                width: 100%;
+                height: 2.5rem; 
             }
         </style>
         <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />

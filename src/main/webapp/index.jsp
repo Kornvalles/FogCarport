@@ -10,79 +10,9 @@
     <html>
         <head>
             <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" type="text/css" href="main.css/main.css" />
         </head>
-        <style>
-            * {box-sizing: border-box;}
-            body {font-family: Verdana, sans-serif;}
-            .mySlides {display: none;}
-            img {vertical-align: middle;}
-
-            /* Slideshow container */
-            .slideshow-container {
-                max-width: 1000px;
-                position: relative;
-                margin: auto;
-            }
-
-            /* Caption text */
-            .text {
-                color: #f2f2f2;
-                font-size: 15px;
-                padding: 8px 12px;
-                position: absolute;
-                bottom: 8px;
-                width: 100%;
-                text-align: center;
-            }
-
-            /* Number text (1/3 etc) */
-            .numbertext {
-                color: #f2f2f2;
-                font-size: 12px;
-                padding: 8px 12px;
-                position: absolute;
-                top: 0;
-            }
-
-            /* The dots/bullets/indicators */
-            .dot {
-                height: 15px;
-                width: 15px;
-                margin: 0 2px;
-                background-color: #bbb;
-                border-radius: 50%;
-                display: inline-block;
-                transition: background-color 0.6s ease;
-            }
-
-            .active {
-                background-color: #717171;
-            }
-
-            /* Fading animation */
-            .fade {
-                -webkit-animation-name: fade;
-                -webkit-animation-duration: 5s;
-                animation-name: fade;
-                animation-duration: 5s;
-                animation-direction: normal;
-            }
-
-            @-webkit-keyframes fade {
-                from {opacity: .6} 
-                to {opacity: 1}
-            }
-
-            @keyframes fade {
-                from {opacity: .6} 
-                to {opacity: 1}
-            }
-
-            /* On smaller screens, decrease text size */
-            @media only screen and (max-width: 300px) {
-                .text {font-size: 11px}
-            }
-        </style>
+        
         <body>
 
             <div class="col-sm-6">
@@ -93,72 +23,57 @@
             %>
         </div>
 
-        <div style="padding-left:20px">
+
             <h1>Forside</h1>
             <h2>Velkommen til Fog Trælast</h2>
-            <p>
-            <div class="slideshow-container" align="center">
-
-                <div class="mySlides fade">
-                    <div class="numbertext">1 / 3</div>
-                    <a href="shop.jsp">
-                        <img src="img/lillecarport.jpeg" title="Mellem Carport m/ skur" width="700" height="700" /></a>
-                    <div class="text">Lille carport</div>
-                </div>
-
-                <div class="mySlides fade">
-                    <div class="numbertext">2 / 3</div>
-                    <a href="shop.jsp">
-                        <img src="img/mellemcarport.jpeg" title="Mellem Carport m/ skur" width="700" height="700" /></a>
-                    <div class="text">Mellem Carport</div>
-                </div>
-
-                <div class="mySlides fade">
-                    <div class="numbertext">3 / 3</div>
-                    <a href="shop.jsp">
-                        <img src="img/mellemmskur.jpeg" title="Mellem Carport m/ skur" width="700" height="700" /></a>
-                    <div class="text">Mellem Carport m Skur</div>
-                </div>
-
-            </div>
-            <br>
-            </p>
-            <div style="text-align:center">
-                <span class="dot"></span> 
-                <span class="dot"></span> 
-                <span class="dot"></span> 
-            </div>
-
-            <script>
-                var slideIndex = 0;
-                showSlides();
-
-                function showSlides() {
-                    var i;
-                    var slides = document.getElementsByClassName("mySlides");
-                    var dots = document.getElementsByClassName("dot");
-                    for (i = 0; i < slides.length; i++) {
-                        slides[i].style.display = "none";
-                    }
-                    slideIndex++;
-                    if (slideIndex > slides.length) {
-                        slideIndex = 1
-                    }
-                    for (i = 0; i < dots.length; i++) {
-                        dots[i].className = dots[i].className.replace(" active", "");
-                    }
-                    slides[slideIndex - 1].style.display = "block";
-                    dots[slideIndex - 1].className += " active";
-                    setTimeout(showSlides, 5000); // Change image every 2 seconds
-                }
-            </script>
+            
+            <div class="bd-example">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 700px; margin:0 auto;">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="img/lillecarport.jpeg" class="h-50 d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="img/mellemcarport.jpeg" class="h-50 d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="img/mellemmskur.jpeg" class="h-50 d-block w-100" alt="...">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+      <script>
+        $('.carousel').carousel({
+            interval: 2000
+            }) 
+      </script>
+  </div>
 
     </body>
 </html>
 
 </div>
-<div class="footer">
+<div class="#footer">
     <p><p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p></p>
 </div>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </body>
 </html>
