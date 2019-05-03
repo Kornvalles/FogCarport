@@ -65,13 +65,12 @@ public class Calculator {
             return calcMaterial(carport.getLength(), carport.getWidth(), pvcSheetLength, pvcSheetWidth);
         } else {
             double vinkelC = 90; // statisk fordi denne vinkel altid er 90 grader.
-            double vinkelB = 20; // skal laves om til variable (hentes fra jsp)
-            double vinkelA = vinkelB - vinkelC;
+            double vinkelA = carport.getRoofAngle(); // skal laves om til variable (hentes fra jsp)
+            double vinkelB = vinkelC - vinkelA;
 
             double a = carport.getWidth() / 2;
-            double sinB = (Math.sin(20) / Math.sin(vinkelA));
-            double b = sinB * 120;
-            double c2 = ((Math.pow(a, 2) + Math.pow(b, 2) - (2 * a * b * Math.cos(vinkelC))));
+            double b = ((Math.sin(vinkelA) * a) / Math.sin(vinkelB)); //regner ikke rigtigt. **det går galt her.
+            double c2 = Math.pow(a, 2.00) + Math.pow(b, 2.00); // - 2.00 * a * b * Math.cos(vinkelC); //regner ikke rigtigt.
             int c = (int) Math.sqrt(c2);
             
             int pvcSheetL = pvcSheetLength;

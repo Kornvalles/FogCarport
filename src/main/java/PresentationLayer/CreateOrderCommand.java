@@ -30,6 +30,7 @@ public class CreateOrderCommand extends Command {
         String reqShed = request.getParameter("shed");
         String reqRoof = request.getParameter("roof");
         String reqWall = request.getParameter("wall");
+        String reqRoofAngle = request.getParameter("roofAngle");
         String reqName = request.getParameter("name");
         String reqEmail = request.getParameter("email");
         String reqAddress = request.getParameter("address");
@@ -42,12 +43,13 @@ public class CreateOrderCommand extends Command {
         boolean wall = Boolean.parseBoolean(reqWall);
         int length = Integer.parseInt(reqLength);
         int width = Integer.parseInt(reqWidth);
+        int roofAngle = Integer.parseInt(reqRoofAngle);
 
         //Instancerer objekter og putter dem på session
         //Kører logikken. Forsøger at putte ting i database.
         try {
             Customer customer = new Customer(reqName, reqEmail, reqAddress, reqZipcode, reqPhonenumber);
-            Carport carport = new Carport(230, length, width, shed, roof, wall, "");
+            Carport carport = new Carport(230, length, width, shed, roof, roofAngle, wall, "");
             Construction construction = Calculator.constructCarport(carport, logic);
             session.setAttribute("construction", construction);
             session.setAttribute("customer", customer);
