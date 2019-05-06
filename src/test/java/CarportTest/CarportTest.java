@@ -1,4 +1,4 @@
-package Test_Carport;
+package CarportTest;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -7,9 +7,9 @@ import static org.junit.Assert.*;
  *
  * @author ibenk
  */
-public class MakeCarport {
+public class CarportTest {
     
-    public MakeCarport() {
+    public CarportTest() {
     }
 
     @Test
