@@ -1,6 +1,5 @@
 package DataLayer;
 
-import FunctionLayer.Construction;
 import FunctionLayer.Carport;
 import FunctionLayer.Customer;
 import FunctionLayer.FogException;
@@ -43,28 +42,6 @@ public class OrderMapper {
         return 0;
     }
     
-//    public static List<Carport> getStandard() throws FogException {
-//        List<Carport> standards = new ArrayList<>();
-//        try {
-//            String SQL = "SELECT * FROM `fog`.`carport`;";
-//
-//            Connection con = Connector.connection();
-//            PreparedStatement ps = con.prepareStatement( SQL );
-//            ResultSet rs = ps.executeQuery(SQL);
-//
-//            while ( rs.next() ) {
-//                String details = rs.getString("details");
-//                int price = rs.getInt("price");
-//                int id = rs.getInt("id");
-//                Carport standard = new Carport(id, false, details, price);
-//                standards.add(standard);
-//            }
-//        } catch (SQLException ex) {
-//            System.out.println(ex);
-//        }
-//        return standards;
-//    }
-//
     public static void makeOrder(Carport carport, Customer customer ) throws FogException, SQLException {
         try {
             Connection con = Connector.connection();
