@@ -5,13 +5,10 @@
  */
 package DataLayer;
 
-import static DataLayer.Connector.connection;
-import FunctionLayer.Carport;
 import FunctionLayer.Customer;
 import FunctionLayer.FogException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 

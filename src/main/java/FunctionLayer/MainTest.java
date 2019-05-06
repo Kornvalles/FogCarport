@@ -1,5 +1,7 @@
 package FunctionLayer;
 import DataLayer.OrderMapper;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -8,6 +10,17 @@ import DataLayer.OrderMapper;
 public class MainTest {
     
     public static void main(String[] args) throws FogException {
+        
+        OrderMapper mapper = new OrderMapper();
+        
+        Customer c = new Customer("Mikkel", "", "", "", "");
+        Carport cp = new Carport(300, 200, 500, true, true, 0, true, "");
+        Material m = new Material("Screw", 0, "", 10.0);
+        List<Material> list = new ArrayList();
+        list.add(m);
+        Construction o = new Construction(cp, list, 0);
+        Invoice i = new Invoice(c, o);
+        i.makeInvoice(c, o);
         
         /* Test carport with height, length, width */
 //        Carport carport = new Carport(230,400,200,false,false,true,"");
