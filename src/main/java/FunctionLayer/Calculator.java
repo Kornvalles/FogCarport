@@ -132,45 +132,47 @@ public class Calculator {
     }
 
     /**
-     * This method either returns all sides of a shed if the carport 
-     * doesnt have wall or the remaining of a shed if the carport do have walls,
-     * or returns nothing if the carport is without one.
+     * This method either returns all sides of a shed if the carport doesnt have
+     * wall or the remaining of a shed if the carport do have walls, or returns
+     * nothing if the carport is without one.
      */
     public static int makeShed(Carport carport, Shed shed) {
-        int totalShedMaterials; 
-        
+        int totalShedMaterials;
+
         /**
-        * If the carport doesnt have a toolshed it returns 0, 
-        * which is the number of wood required to build it. 
-        */
+         * If the carport doesnt have a toolshed it returns 0, which is the
+         * number of wood required to build it.
+         */
         if (!carport.hasToolshed()) {
             return 0;
-        
+
         /**
-        * If the carport have walls the first part of the if statement
-        * returns the remaining sides to complete a fully functional shed.
-        */
+         * If the carport have walls the first part of the if-statement
+         * returns the remaining sides to complete a fully functional shed.
+         */
         }
         if (carport.hasWall() && carport.hasToolshed()) {
             int woodLength = 100;
             int woodWidth = 10;
             int shedInnerSide = calcMaterial(shed.getLength(), carport.getHeight(), woodLength, woodWidth);
             int shedInnerBackSide = calcMaterial(carport.getWidth(), carport.getHeight(), woodLength, woodWidth);
-            
+
             return shedInnerSide + shedInnerBackSide;
-        }
+        } 
         
-        else
-        {
-            
+        /**
+         * If the carport doesnt have walls the second part of this if-statement
+         * returns all four sides of a fully functional shed.
+         */
+        else {
             int woodLength = 100;
             int woodWidth = 10;
-            int shedWidth = calcMaterial(shed.getLength(), carport.getHeight(), woodLength, woodWidth);
-            int shedLength = calcMaterial(carport.getWidth(), carport.getHeight(), woodLength, woodWidth);
-            
+            int shedWidth = 2 * calcMaterial(shed.getLength(), carport.getHeight(), woodLength, woodWidth);
+            int shedLength = 2 * calcMaterial(carport.getWidth(), carport.getHeight(), woodLength, woodWidth);
+
             totalShedMaterials = shedWidth + shedLength;
-        }    
-           return totalShedMaterials;
+        }
+        return totalShedMaterials;
 
     }
 
