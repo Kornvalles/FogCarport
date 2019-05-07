@@ -20,7 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Invoice {
-    
+
     private final Customer customer;
     private final Construction order;
 
@@ -65,7 +65,7 @@ public class Invoice {
         }
         return true;
     }
-    
+
     public Document makeInvoice(Customer customer, Construction order) {
         FileOutputStream out = null;
         Document invoice = new Document(PageSize.A4, 36, 36, 90, 36);
@@ -73,25 +73,32 @@ public class Invoice {
             LocalDate date = LocalDate.now();
             DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("ddMMyyyy");
             //File file = new File(customer.getName().toLowerCase()+date.format(dateFormatter)+".pdf");
-            PdfWriter.getInstance(invoice, new FileOutputStream(customer.getName().toLowerCase()+date.format(dateFormatter)+".pdf"));
+            PdfWriter.getInstance(invoice, new FileOutputStream(customer.getName().toLowerCase() + date.format(dateFormatter) + ".pdf"));
             Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
             invoice.open();
             //invoice.newPage();
             invoice.addTitle("Fog faktura");
-            for ( Material m : order.getMaterials() ) {
-                invoice.add( new Paragraph(m.getName()+" : "+m.getQty(), font) );
+            Paragraph p1 = new Paragraph();
+            Chunk name = new Chunk(customer.getName(), font);
+            Chunk email = new Chunk(customer.getEmail(), font);
+            Chunk phone = new Chunk(customer.getPhoneNumber(), font);
+            Chunk address = new Chunk(customer.getAddress(), font);
+            Chunk zip = new Chunk(customer.getZipcode(), font);
+            p1.add(name);
+            p1.add(email);
+            p1.add(phone);
+            p1.add(address);
+            p1.add(zip);
+            invoice.add(p1);
+            for (Material m : order.getMaterials()) {
+                invoice.add(new Paragraph(m.getName() + " : " + m.getQty(), font));
             }
         } catch (FileNotFoundException | DocumentException ex) {
             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            try {
-                invoice.close();
-                out.close();
-            } catch (IOException ex) {
-                Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            invoice.close();
         }
         return invoice;
     }
-    
+
 }
