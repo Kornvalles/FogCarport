@@ -36,8 +36,8 @@
                     <table class="table-hover">
 
                         <thead>
-                        <col width="50">
-                        <col width="50">
+                        <col width="60">
+                        <col width="60">
                         <col width="200">
                         <col width="50">
 
