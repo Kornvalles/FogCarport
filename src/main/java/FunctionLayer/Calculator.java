@@ -55,31 +55,31 @@ public class Calculator {
      * board across the roof.
      */
     public static int getRoof(Carport carport) {
-        
+
         /* This if statement runs if the carport has a pointy roof*/
         int pvcSheetLength = 10;
         int pvcSheetWidth = 10;
 
         if (!carport.hasPointyRoof()) {
-            
+
             return calcMaterial(carport.getLength(), carport.getWidth(), pvcSheetLength, pvcSheetWidth);
         } else {
             double vinkelC = 90; // statisk fordi denne vinkel altid er 90 grader.
             double vinkelA = carport.getRoofAngle();
             double vinkelB = vinkelC - vinkelA;
-            
+
             double vinkelA_inRadians = Math.toRadians(vinkelA);
             double vinkelB_inRadians = Math.toRadians(vinkelB);
 
             double a = carport.getWidth() / 2;
-            double b = ((a *Math.sin(vinkelB_inRadians)) / (Math.sin(vinkelA_inRadians)));
+            double b = ((a * Math.sin(vinkelB_inRadians)) / (Math.sin(vinkelA_inRadians)));
             double c = Math.sqrt(Math.pow(a, 2.00) + Math.pow(b, 2.00)) - 2.00 * a * b * Math.cos(vinkelC);
-            
+
             int pvcSheetL = pvcSheetLength;
             int pvcSheetW = pvcSheetWidth;
-            
-            return calcMaterial(carport.getLength(), (int) c ,pvcSheetW, pvcSheetL);
-            
+
+            return calcMaterial(carport.getLength(), (int) c, pvcSheetW, pvcSheetL);
+
         }
     }
 
@@ -132,11 +132,46 @@ public class Calculator {
     }
 
     /**
-     * This method returns...
+     * This method either returns all sides of a shed if the carport 
+     * doesnt have wall or the remaining of a shed if the carport do have walls,
+     * or returns nothing if the carport is without one.
      */
-    public static int makeShed(Carport carport) {
+    public static int makeShed(Carport carport, Shed shed) {
+        int totalShedMaterials; 
+        
+        /**
+        * If the carport doesnt have a toolshed it returns 0, 
+        * which is the number of wood required to build it. 
+        */
+        if (!carport.hasToolshed()) {
+            return 0;
+        
+        /**
+        * If the carport have walls the first part of the if statement
+        * returns the remaining sides to complete a fully functional shed.
+        */
+        }
+        if (carport.hasWall() && carport.hasToolshed()) {
+            int woodLength = 100;
+            int woodWidth = 10;
+            int shedInnerSide = calcMaterial(shed.getLength(), carport.getHeight(), woodLength, woodWidth);
+            int shedInnerBackSide = calcMaterial(carport.getWidth(), carport.getHeight(), woodLength, woodWidth);
+            
+            return shedInnerSide + shedInnerBackSide;
+        }
+        
+        else
+        {
+            
+            int woodLength = 100;
+            int woodWidth = 10;
+            int shedWidth = calcMaterial(shed.getLength(), carport.getHeight(), woodLength, woodWidth);
+            int shedLength = calcMaterial(carport.getWidth(), carport.getHeight(), woodLength, woodWidth);
+            
+            totalShedMaterials = shedWidth + shedLength;
+        }    
+           return totalShedMaterials;
 
-        return 0;
     }
 
     /**
@@ -182,7 +217,7 @@ public class Calculator {
         Material wood = new Material("planke(r) 10x100cm", getSides(carport), "pcs", logic.getMaterialPrice("planke(r) 10x100cm"));
         Material roofBatten = new Material("taglaegte(r)", getRoofBattens(carport) / 100, "m", logic.getMaterialPrice("taglaegte(r)"));
         Material sideBatten = new Material("sidelaegte(r)", getSideBattens(carport) / 100, "m", logic.getMaterialPrice("sidelaegte(r)"));
-        Material screw = new Material("skruer 200 stk", getScrews(carport)/200, "pakker", logic.getMaterialPrice("skruer 200 stk"));
+        Material screw = new Material("skruer 200 stk", getScrews(carport) / 200, "pakker", logic.getMaterialPrice("skruer 200 stk"));
         Material roofTile = new Material("tagsten", getRoof(carport), "pcs", logic.getMaterialPrice("tagsten"));
         Material pvcRoofSheet = new Material("tagplade(r)", getRoof(carport), "pcs", logic.getMaterialPrice("tagplade(r)"));
 

@@ -22,7 +22,7 @@ public class Carport {
         this.roofAngle = roofAngle;
         this.wall = wall;
         this.details = details;
-    }
+    }    
 
     public int getHeight() {
         return height;
@@ -55,6 +55,8 @@ public class Carport {
     public int getRoofAngle() {
         return roofAngle;
     }
+    
+    
 
     @Override
     public String toString() {
