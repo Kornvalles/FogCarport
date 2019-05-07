@@ -54,6 +54,28 @@ INSERT INTO FogCarport.material (`materialID`,`name`,`MSRP`, `costPrice`,`quanti
 
 
 -- -----------------------------------------------------
+-- Table `FogCarport`.`standard`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `FogCarport`.`standard` (
+  `standardID` INT NOT NULL,
+  `length` INT NOT NULL,
+  `width` INT NOT NULL,
+  `toolshed` BOOLEAN, 
+  `pointyRoof` BOOLEAN,
+  `roofAngle` INT,
+  `wall` BOOLEAN,
+  PRIMARY KEY (`standardID`));
+
+INSERT INTO FogCarport.standard (`standardID`,`length`,`width`,`toolshed`,`pointyRoof`,`roofAngle`,`wall`) VALUES 
+(001,720,360,true,true,30,false),
+(002,540,360,false,true,30,false),
+(003,780,390,true,true,30,false),
+(004,810,360,true,true,30,false),
+(005,480,300,false,false,0,false),
+(006,600,300,true,false,30,false);
+
+
+-- -----------------------------------------------------
 -- Table `FogCarport`.`order`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `FogCarport`.`order` (
