@@ -26,6 +26,7 @@
   <div class="row">
     <div class="col-lg-4 col-sm-6 mb-4">
       <div class="card h-100">
+          <form action="FrontController">
           <a href="#"><img class="card-img-top" src="img/1.png" alt=""></a>
         <div class="card-body">
           <h4 class="card-title">
@@ -37,8 +38,14 @@ Leveres med: søm, skruer beslag og betontagstens tag.
 Udførlig byggevejledning til carport og spær medfølger.
 Betontagsten i sort med 30 års garanti.
 NB! Leveres som Byg-selv sæt - usamlet og ubehandlet!  Pr. stk. 21.498,-
-<br><button onclick="window.location.href = 'shop.jsp';">Bestil!</button></p>
-        </div>
+<br>
+        <input type="hidden" name="width" value="360" />
+        <input type="hidden" name="length" value="720" />
+        <input type="hidden" name="shedWidth" value="225" />
+        <input type="hidden" name="shedLenght" value="320" />
+        <button name="command" value="order">Bestil!</button></p>
+        </div>          </form>
+
       </div>
     </div>
     <div class="col-lg-4 col-sm-6 mb-4">

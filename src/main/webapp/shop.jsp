@@ -31,7 +31,11 @@
                             <label for="lengthInput">Carportens længde</label>
                             <p><select name="length" id="lengthInput">
                                     <option value="240">240 cm</option>
-                                    <option value="270">270 cm</option>
+                                    <% if (request.getParameter("width").equals("270")) { %>
+                                       <option value="270" selected="selected">270 cm</option>
+                                    <% } else { %>
+                                        <option value="270">270 cm</option>
+                                    <% } %>
                                     <option value="300">300 cm</option>
                                     <option value="330">330 cm</option>
                                     <option value="360">360 cm</option>
