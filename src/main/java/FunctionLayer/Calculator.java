@@ -72,8 +72,8 @@ public class Calculator {
             double vinkelB_inRadians = Math.toRadians(vinkelB);
 
             double a = carport.getWidth() / 2;
-            double b = ((a *Math.sin(vinkelB_inRadians)) / (Math.sin(vinkelA_inRadians))); //regner ikke rigtigt. **det går galt her.
-            double c = Math.sqrt(Math.pow(a, 2.00) + Math.pow(b, 2.00)) - 2.00 * a * b * Math.cos(vinkelC); //regner ikke rigtigt.
+            double b = ((a *Math.sin(vinkelB_inRadians)) / (Math.sin(vinkelA_inRadians)));
+            double c = Math.sqrt(Math.pow(a, 2.00) + Math.pow(b, 2.00)) - 2.00 * a * b * Math.cos(vinkelC);
             
             int pvcSheetL = pvcSheetLength;
             int pvcSheetW = pvcSheetWidth;
