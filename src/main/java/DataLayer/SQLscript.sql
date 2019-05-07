@@ -46,8 +46,8 @@ CREATE TABLE IF NOT EXISTS `FogCarport`.`material` (
 INSERT INTO FogCarport.material (`materialID`,`name`,`MSRP`, `costPrice`,`quantity`) VALUES 
 (1000,'stolpe(r)',240.95,90.50,9999), 
 (1010,'planke(r) 10x100cm',45.50,15.50,9999), 
-(1020,'taglægte(r)', 90.95,30.50,9999), 
-(1030,'sidelægte(r)',90.95,30.50,9999), 
+(1020,'taglaegte(r)', 90.95,30.50,9999), 
+(1030,'sidelaegte(r)',90.95,30.50,9999), 
 (2000,'skruer 200 stk',0.10,0.01,9999),
 (3000,'tagsten',29.95,9.95,9999),
 (3010,'tagplade(r)',9.95,3.50,9999);

@@ -180,8 +180,8 @@ public class Calculator {
         /* Get name and price from sql database */
         Material post = new Material("post", getAllPosts(carport), "pcs", logic.getMaterialPrice("stolper(r)"));
         Material wood = new Material("wood board 10x100cm", getSides(carport), "pcs", logic.getMaterialPrice("planke(r) 10x100cm"));
-        Material roofBatten = new Material("roof battens", getRoofBattens(carport) / 100, "m", logic.getMaterialPrice("taglægte(r)"));
-        Material sideBatten = new Material("side battens", getSideBattens(carport) / 100, "m", logic.getMaterialPrice("sidelægte(r)"));
+        Material roofBatten = new Material("roof battens", getRoofBattens(carport) / 100, "m", logic.getMaterialPrice("taglaegte(r)"));
+        Material sideBatten = new Material("side battens", getSideBattens(carport) / 100, "m", logic.getMaterialPrice("sidelaegte(r)"));
         Material screw = new Material("screw", getScrews(carport), "pcs", logic.getMaterialPrice("skruer 200 stk"));
         Material roofTile = new Material("roof tile", getRoof(carport), "pcs", logic.getMaterialPrice("tagsten"));
         Material pvcRoofSheet = new Material("pvc roof sheet", getRoof(carport), "pcs", logic.getMaterialPrice("tagplade(r)"));
