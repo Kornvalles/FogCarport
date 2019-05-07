@@ -68,7 +68,6 @@ public class Calculator {
             double vinkelA = carport.getRoofAngle();
             double vinkelB = vinkelC - vinkelA;
             
-            double vinkelC_inRadians = Math.toRadians(vinkelC);
             double vinkelA_inRadians = Math.toRadians(vinkelA);
             double vinkelB_inRadians = Math.toRadians(vinkelB);
 
