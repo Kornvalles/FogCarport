@@ -17,12 +17,15 @@ public class OrderCarportCommand extends Command{
 
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
-        /*
-        int length = Integer.parseInt(request.getParameter("length"));
-        int width = Integer.parseInt(request.getParameter("width"));
+        
+        String length = request.getParameter("length");
+        HTMLSelect lengthSelect = new HTMLSelect("length",length," cm",240,720);
+        /*int width = Integer.parseInt(request.getParameter("width"));
         int shedLength = Integer.parseInt(request.getParameter("shedLength"));
         int shedWidth = Integer.parseInt(request.getParameter("shedWidth"));
         */
+        
+        request.setAttribute("lengthSelect", lengthSelect);
         return "shop";
 
     }

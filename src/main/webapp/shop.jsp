@@ -29,17 +29,7 @@
                         <input type="hidden" name="command" value="CreateOrder">
                         <div class="form-group">
                             <label for="lengthInput">Carportens længde</label>
-                            <p><select name="length" id="lengthInput">
-                                    <option value="240">240 cm</option>
-                                    <option value="270">270 cm</option>
-                                    <option value="270">270 cm</option>
-                                    <option value="300">300 cm</option>
-                                    <option value="330">330 cm</option>
-                                    <option value="360">360 cm</option>
-                                    <option value="390">390 cm</option>
-                                    <option value="420">420 cm</option>
-                                    <option value="450">450 cm</option>
-                                </select></p>
+                            <p> ${lengthSelect}</p>
                         </div>
                         <div class="form-group">
                             <label for="widthInput">Carportens bredde</label>

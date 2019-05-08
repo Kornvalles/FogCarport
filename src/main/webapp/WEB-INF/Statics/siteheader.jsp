@@ -100,7 +100,7 @@
             </a>
             <div class="header-right">
                 <a href="index.jsp">Hjem</a>
-                <a href="shop.jsp">Bestilling af carport</a>
+                <a href="FrontController?command=order">Bestilling af carport</a>
                 <a href="sortiment.jsp">Sortiment</a>
             </div>
         </div>
