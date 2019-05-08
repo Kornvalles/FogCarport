@@ -8,15 +8,17 @@ import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.IBlockElement;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.ExceptionConverter;
 import com.itextpdf.text.Font;
-import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -73,9 +75,13 @@ public class Invoice {
         return true;
     }
     
-    public Document makeInvoiceTemplate() throws MalformedURLException {
-        Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
-        Font fontBold = FontFactory.getFont(FontFactory.COURIER_BOLD, 16, BaseColor.BLACK);
+    private void addHeader(PdfWriter writer){
+        
+    }
+    
+    public Document makeInvoiceTemplate() throws MalformedURLException, IOException {
+        PdfFont fontBold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
+        PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
         LocalDate date = LocalDate.now();
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("ddMMyyyy");
         String dest = customer.getName().toLowerCase() + date.format(dateFormatter) + ".pdf";
