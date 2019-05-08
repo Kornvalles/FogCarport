@@ -69,23 +69,23 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="nameInput">Fulde navn</label>
-                        <p><input type="text" name="name" placeholder="Indtast dit fulde navn" id="nameInput"></p>
+                        <p><input type="text" name="name" placeholder="Indtast dit fulde navn" id="nameInput" value="Test"></p>
                     </div>
                     <div class="form-group">
                         <label for="emailInput">Email</label>
-                        <p><input type="email" name="email" placeholder="Indtast din email" id="emailInput"></p>
+                        <p><input type="email" name="email" placeholder="Indtast din email" id="emailInput" value="Test@Test.dk"></p>
                     </div>
                     <div class="form-group">
                         <label for="addressInput">Adresse</label>
-                        <p><input type="text" name="adresse" placeholder="Indtast din adresse" id="adresseInput"></p>
+                        <p><input type="text" name="adresse" placeholder="Indtast din adresse" id="adresseInput" value="Test"></p>
                     </div>
                     <div class="form-group">
                         <label for="zipcodeInput">Postnummer</label>
-                        <p><input type="number" name="zipcode" placeholder="Indtast dit postnr" id="zipcodeInput"></p>
+                        <p><input type="number" name="zipcode" placeholder="Indtast dit postnr" id="zipcodeInput" value="1234"></p>
                     </div>
                     <div class="form-group">
                         <label for="telInput">Telefon</label>
-                        <p><input type="tel" name="telephone" placeholder="Indtast tlf nr" id="telInput" value="Test"></p>
+                        <p><input type="tel" name="telephone" placeholder="Indtast tlf nr" id="telInput" value="1234 1234"></p>
                     </div>
                     <input type="submit" name="order" value="Bestil" onclick="return empty()">
                 </div>
