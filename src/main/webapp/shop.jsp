@@ -12,13 +12,13 @@
 <html>
     <head>
         <style>.fadeIn {
-  display: none;
-}</style>
+                display: none;
+            }</style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Shop</title>
     </head>
     <body>
-        
+
         <div class="text-center">
             <h1>Bestilling af carport</h1>
         </div>
@@ -31,11 +31,8 @@
                             <label for="lengthInput">Carportens længde</label>
                             <p><select name="length" id="lengthInput">
                                     <option value="240">240 cm</option>
-                                    <% if (request.getParameter("width").equals("270")) { %>
-                                       <option value="270" selected="selected">270 cm</option>
-                                    <% } else { %>
-                                        <option value="270">270 cm</option>
-                                    <% } %>
+                                    <option value="270">270 cm</option>
+                                    <option value="270">270 cm</option>
                                     <option value="300">300 cm</option>
                                     <option value="330">330 cm</option>
                                     <option value="360">360 cm</option>
@@ -57,30 +54,30 @@
                                     <option value="450">450 cm</option>
                                 </select></p>
                         </div>
-                        
-                            <input type="checkbox" name="shedInput" id="shedInput">
-                            <label for="shedInput">Tilføj redskabsskur?</label>
-                            <div class="form-group, fadeIn" id="display">
+
+                        <input type="checkbox" name="shedInput" id="shedInput">
+                        <label for="shedInput">Tilføj redskabsskur?</label>
+                        <div class="form-group, fadeIn" id="display">
                             Vælg venligst længden på dit skur:
                             <p><select name="shedWidth" id="widthInput">
                                     <option value="240">100 cm</option>
                                     <option value="270">150 cm</option>
                                 </select></p>
                         </div>
-                            <br>
-                        
-                            <input type="checkbox" name="roof" value="true" id="roofInput">
-                            <label for="roofInput">Tilføj taghældning?</label>
-                            <div class="form-group, fadeIn" id="display1">
-                                Vælg venligst den ønskede hældning på deres tag:
-                                <p><select name="roofAngle" id="roofAngle">
-                                        <option value="15">15°</option>
-                                        <option value="20">20°</option>
-                                        <option value="25">25°</option>
-                                        <option value="30">30°</option>
-                                        <option value="35">35°</option>
-                                        <option value="40">40°</option>
-                                        <option value="45">45°</option>
+                        <br>
+
+                        <input type="checkbox" name="roof" value="true" id="roofInput">
+                        <label for="roofInput">Tilføj taghældning?</label>
+                        <div class="form-group, fadeIn" id="display1">
+                            Vælg venligst den ønskede hældning på deres tag:
+                            <p><select name="roofAngle" id="roofAngle">
+                                    <option value="15">15°</option>
+                                    <option value="20">20°</option>
+                                    <option value="25">25°</option>
+                                    <option value="30">30°</option>
+                                    <option value="35">35°</option>
+                                    <option value="40">40°</option>
+                                    <option value="45">45°</option>
                                 </select></p>
                         </div>
                         <div class="form-group">
@@ -107,7 +104,7 @@
                     </div>
                     <div class="form-group">
                         <label for="telInput">Telefon</label>
-                        <p><input type="tel" name="telephone" placeholder="Indtast tlf nr" id="telInput"></p>
+                        <p><input type="tel" name="telephone" placeholder="Indtast tlf nr" id="telInput" value="Test"></p>
                     </div>
                     <input type="submit" name="order" value="Bestil" onclick="return empty()">
                 </div>
@@ -117,41 +114,41 @@
         <div class="footer">
             <p><p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p></p>
     </div>
-<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
-<script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script>
-document.getElementById("shedInput").checked = false;
-document.getElementById('shedInput').onclick = function() {
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+    <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+                            document.getElementById("shedInput").checked = false;
+                            document.getElementById('shedInput').onclick = function () {
 
-  if (document.getElementById("shedInput").checked === false) {
-    $('#display').fadeOut(200);
-  }
-  if (document.getElementById("shedInput").checked === true) {
-    $('#display').fadeIn(200);
+                                if (document.getElementById("shedInput").checked === false) {
+                                    $('#display').fadeOut(200);
+                                }
+                                if (document.getElementById("shedInput").checked === true) {
+                                    $('#display').fadeIn(200);
 
-  }
-};
-</script>
-<script>
-document.getElementById("roofInput").checked = false;
-document.getElementById('roofInput').onclick = function() {
+                                }
+                            };
+    </script>
+    <script>
+        document.getElementById("roofInput").checked = false;
+        document.getElementById('roofInput').onclick = function () {
 
-  if (document.getElementById("roofInput").checked === false) {
-    $('#display1').fadeOut(200);
-  }
-  if (document.getElementById("roofInput").checked === true) {
-    $('#display1').fadeIn(200);
+            if (document.getElementById("roofInput").checked === false) {
+                $('#display1').fadeOut(200);
+            }
+            if (document.getElementById("roofInput").checked === true) {
+                $('#display1').fadeIn(200);
 
-  }
-};
-</script>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+            }
+        };
+    </script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </body>
 </html>
