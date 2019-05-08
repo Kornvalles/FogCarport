@@ -33,16 +33,7 @@
                         </div>
                         <div class="form-group">
                             <label for="widthInput">Carportens bredde</label>
-                            <p><select name="width" id="widthInput">
-                                    <option value="240">240 cm</option>
-                                    <option value="270">270 cm</option>
-                                    <option value="300">300 cm</option>
-                                    <option value="330">330 cm</option>
-                                    <option value="360">360 cm</option>
-                                    <option value="390">390 cm</option>
-                                    <option value="420">420 cm</option>
-                                    <option value="450">450 cm</option>
-                                </select></p>
+                            <p> ${widthSelect}</p>
                         </div>
 
                         <input type="checkbox" name="shedInput" id="shedInput">
@@ -107,17 +98,17 @@
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
     <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
-                            document.getElementById("shedInput").checked = false;
-                            document.getElementById('shedInput').onclick = function () {
+                        document.getElementById("shedInput").checked = false;
+                        document.getElementById('shedInput').onclick = function () {
 
-                                if (document.getElementById("shedInput").checked === false) {
-                                    $('#display').fadeOut(200);
-                                }
-                                if (document.getElementById("shedInput").checked === true) {
-                                    $('#display').fadeIn(200);
+                            if (document.getElementById("shedInput").checked === false) {
+                                $('#display').fadeOut(200);
+                            }
+                            if (document.getElementById("shedInput").checked === true) {
+                                $('#display').fadeIn(200);
 
-                                }
-                            };
+                            }
+                        };
     </script>
     <script>
         document.getElementById("roofInput").checked = false;

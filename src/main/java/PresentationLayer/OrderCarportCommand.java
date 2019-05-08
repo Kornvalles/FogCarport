@@ -20,12 +20,16 @@ public class OrderCarportCommand extends Command{
         
         String length = request.getParameter("length");
         HTMLSelect lengthSelect = new HTMLSelect("length",length," cm",240,720);
-        /*int width = Integer.parseInt(request.getParameter("width"));
-        int shedLength = Integer.parseInt(request.getParameter("shedLength"));
+        
+        String width = request.getParameter("width");
+        HTMLSelect widthSelect = new HTMLSelect("width",width," cm",240,600);
+        
+        /*int shedLength = Integer.parseInt(request.getParameter("shedLength"));
         int shedWidth = Integer.parseInt(request.getParameter("shedWidth"));
         */
         
         request.setAttribute("lengthSelect", lengthSelect);
+        request.setAttribute("widthSelect", widthSelect);
         return "shop";
 
     }
