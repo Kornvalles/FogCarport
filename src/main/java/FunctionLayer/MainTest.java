@@ -1,5 +1,6 @@
 package FunctionLayer;
 import DataLayer.OrderMapper;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  */
 public class MainTest {
     
-    public static void main(String[] args) throws FogException, MalformedURLException {
+    public static void main(String[] args) throws FogException, MalformedURLException, IOException {
         
         OrderMapper mapper = new OrderMapper();
         
