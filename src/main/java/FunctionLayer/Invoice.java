@@ -1,18 +1,25 @@
 package FunctionLayer;
 
+import com.itextpdf.io.font.constants.StandardFonts;
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.IBlockElement;
+import com.itextpdf.layout.element.Image;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Text;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
-import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -65,40 +72,59 @@ public class Invoice {
         }
         return true;
     }
-
-    public Document makeInvoice(Customer customer, Construction order) {
-        FileOutputStream out = null;
-        Document invoice = new Document(PageSize.A4, 36, 36, 90, 36);
+    
+    public Document makeInvoiceTemplate() throws MalformedURLException {
+        Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
+        Font fontBold = FontFactory.getFont(FontFactory.COURIER_BOLD, 16, BaseColor.BLACK);
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+        String dest = customer.getName().toLowerCase() + date.format(dateFormatter) + ".pdf";
+        Document invoice = null;
         try {
-            LocalDate date = LocalDate.now();
-            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("ddMMyyyy");
-            //File file = new File(customer.getName().toLowerCase()+date.format(dateFormatter)+".pdf");
-            PdfWriter.getInstance(invoice, new FileOutputStream(customer.getName().toLowerCase() + date.format(dateFormatter) + ".pdf"));
-            Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
-            invoice.open();
-            //invoice.newPage();
-            invoice.addTitle("Fog faktura");
-            Paragraph p1 = new Paragraph();
-            Chunk name = new Chunk(customer.getName(), font);
-            Chunk email = new Chunk(customer.getEmail(), font);
-            Chunk phone = new Chunk(customer.getPhoneNumber(), font);
-            Chunk address = new Chunk(customer.getAddress(), font);
-            Chunk zip = new Chunk(customer.getZipcode(), font);
-            p1.add(name);
-            p1.add(email);
-            p1.add(phone);
-            p1.add(address);
-            p1.add(zip);
-            invoice.add(p1);
-            for (Material m : order.getMaterials()) {
-                invoice.add(new Paragraph(m.getName() + " : " + m.getQty(), font));
-            }
-        } catch (FileNotFoundException | DocumentException ex) {
-            Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            invoice.close();
+            PdfWriter writer = new PdfWriter(dest);
+            PdfDocument pdfDoc = new PdfDocument(writer);
+            invoice = new Document(pdfDoc);
+            ImageData data = ImageDataFactory.create("src/main/webapp/img/logo.png");
+            Image image = new Image(data);
+            invoice.add(image);
+        } catch (FileNotFoundException e) {
+            System.out.println(e);
         }
         return invoice;
+    }
+
+    public Document makeInvoice(Customer customer, Construction order, Document template) {
+        try {
+            PdfFont fontBold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
+            PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
+            Paragraph p1 = new Paragraph();
+            Paragraph p2 = new Paragraph();
+            Text name = new Text(customer.getName());
+            Text email = new Text(customer.getEmail());
+            Text phone = new Text(customer.getPhoneNumber());
+            Text address = new Text(customer.getAddress());
+            Text zip = new Text(customer.getZipcode());
+            p1.add(name);
+            p1.add("\n");
+            p1.add(email);
+            p1.add("\n");
+            p1.add(phone);
+            p1.add("\n");
+            p1.add(address);
+            p1.add("\n");
+            p1.add(zip);
+            p1.setFont(fontBold);
+            template.add(p1);
+            for (Material m : order.getMaterials()) {
+                p2.add(m.getName() + " : " +m.getQty());
+                p2.add("\n");
+            }
+            template.add(p2).setFont(font);
+            template.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return template;
     }
 
 }
