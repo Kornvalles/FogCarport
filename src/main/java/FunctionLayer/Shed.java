@@ -13,12 +13,10 @@ public class Shed {
 
     private final int length; //measured in centimeters.
     private final int width; //measured in centimeters.
-    private final boolean door;
 
-    public Shed(int length, int width, boolean door) {
+    public Shed(int length, int width) {
         this.length = length;
         this.width = width;
-        this.door = door;
     }
 
     public int getLength() {
@@ -29,15 +27,11 @@ public class Shed {
         return width;
     }
 
-    public boolean isDoor() {
-        return door;
-    }
-
     @Override
     public String toString() {
         return "Shed{" + "length=" + length 
                 + ", width=" + width 
-                + ", door=" + door + '}';
+                ;
     }
     
 }

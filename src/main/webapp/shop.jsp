@@ -41,8 +41,8 @@
                         <div class="form-group, fadeIn" id="display">
                             Vælg venligst længden på dit skur:
                             <p><select name="shedWidth" id="widthInput">
-                                    <option value="240">100 cm</option>
-                                    <option value="270">150 cm</option>
+                                    <option value="100">100 cm</option>
+                                    <option value="150">150 cm</option>
                                 </select></p>
                         </div>
                         <br>

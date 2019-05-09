@@ -76,14 +76,15 @@ public class Calculator {
 
             double vinkelA_inRadians = Math.toRadians(vinkelA);
             double vinkelB_inRadians = Math.toRadians(vinkelB);
+            double vinkelC_inRadians = Math.toRadians(vinkelC);
 
-            double a = carport.getWidth() / 2;
-            double b = ((a * Math.sin(vinkelB_inRadians)) / (Math.sin(vinkelA_inRadians)));
-            double c = Math.sqrt(Math.pow(a, 2.00) + Math.pow(b, 2.00)) - 2.00 * a * b * Math.cos(vinkelC);
+            double b = carport.getWidth() / 2;
+            double a = ((b * Math.sin(vinkelA_inRadians)) / (Math.sin(vinkelB_inRadians))); // tagets højde uden carport.
+            double c = ((b * Math.sin(vinkelC_inRadians)) / (Math.sin(vinkelB_inRadians)));
             if (carport.roofType()) {
-                return calcMaterial(carport.getLength(), (int) c, roofTiles, roofTiles);
+                return (int) Math.ceil(calcMaterial(carport.getLength(), (int) c, roofTiles, roofTiles) * 2);
             } else {
-                pointyWithTiles = calcMaterial(carport.getLength(), carport.getWidth(), pvcSheet, pvcSheet);
+                pointyWithTiles = (int) Math.ceil(calcMaterial(carport.getLength(), (int) c, pvcSheet, pvcSheet) * 2);
             }
         }
         return pointyWithTiles;
@@ -106,7 +107,7 @@ public class Calculator {
         /* How many wooden boards can fit in the width? */
         int materialInWidth = input2 / materialWidth;
 
-        int rest = input1 % materialLength;
+        int rest = input2 % materialWidth;
 
         /* The number of wooden boards on a flat roof using as little wood 
             as possible */
@@ -149,7 +150,7 @@ public class Calculator {
          * If the carport doesnt have a toolshed it returns 0, which is the
          * number of wood required to build it.
          */
-        if (!carport.hasToolshed()) {
+        if (carport.hasToolshed()) {
             return 0;
 
             /**
@@ -171,7 +172,7 @@ public class Calculator {
         if(!carport.hasWall() && carport.hasToolshed()) {
             int woodLength = 100;
             int woodWidth = 10;
-            int shedWidth = 2 * calcMaterial(shed.getLength(), carport.getHeight(), woodLength, woodWidth);
+            int shedWidth = 2 * calcMaterial(shed.getWidth(), carport.getHeight(), woodLength, woodWidth);
             int shedLength = 2 * calcMaterial(carport.getWidth(), carport.getHeight(), woodLength, woodWidth);
 
             totalShedMaterials = shedWidth + shedLength;
@@ -217,17 +218,19 @@ public class Calculator {
     /**
      * This method returns a list of all material needed for the input carport.
      */
-    public static Construction constructCarport(Carport carport, LogicFacade logic) throws FogException, SQLException {
+    public static Construction constructCarport(Carport carport,Shed shed, LogicFacade logic) throws FogException, SQLException {
         List<Material> material = new ArrayList<>();
 
         /* Get name and price from sql database */
         Material post = new Material("stolpe(r)", getAllPosts(carport), "stk", logic.getMaterialPrice("stolpe(r)"));
         Material wood = new Material("planke(r) 10x100cm", getSides(carport), "stk", logic.getMaterialPrice("planke(r) 10x100cm"));
+        Material shedWood = new Material("planke(r) 10x100cm (skur)", makeShed(carport, shed), "stk", logic.getMaterialPrice("planke(r) 10x100cm")); // virker ikke endnu.
         Material roofBatten = new Material("taglaegte(r)", getRoofBattens(carport) / 100, "m", logic.getMaterialPrice("taglaegte(r)"));
         Material sideBatten = new Material("sidelaegte(r)", getSideBattens(carport) / 100, "m", logic.getMaterialPrice("sidelaegte(r)"));
         Material screw = new Material("skruer 200 stk", getScrews(carport), "pakker", logic.getMaterialPrice("skruer 200 stk"));
         Material roofTile = new Material("tagsten", getRoof(carport), "stk", logic.getMaterialPrice("tagsten"));
         Material pvcRoofSheet = new Material("tagplade(r)", getRoof(carport), "stk", logic.getMaterialPrice("tagplade(r)"));
+        
 
         material.add(post);
         material.add(wood);
@@ -239,6 +242,7 @@ public class Calculator {
         } else {
             material.add(pvcRoofSheet);
         }
+        material.add(shedWood); // retunere kun 0...
 
         double totalPrice = 0;
         double totalItemPrice;
