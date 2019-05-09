@@ -3,6 +3,7 @@
     Created on : Apr 25, 2019, 12:14:20 PM
     Author     : ibenk
 --%>
+<%@page import="FunctionLayer.SVGDraw"%>
 <%@page import="FunctionLayer.Customer"%>
 <%@page import="FunctionLayer.Construction"%>
 <%@page import="FunctionLayer.Material"%>
@@ -58,10 +59,10 @@
                             <%}%>
                         </tbody>
                     </table>
-                        <form method="POST" action="FrontController">
-                            <input type="hidden" name="command" value="invoice">
-                            <input type="submit" value="Lav faktura">
-                        </form>
+                    <form method="POST" action="FrontController">
+                        <input type="hidden" name="command" value="invoice">
+                        <input type="submit" value="Lav faktura">
+                    </form>
                 </div>
             </div>
             <div class="row">
@@ -71,12 +72,24 @@
 
                     <%
                         // SVGCarport svg = new SVGCarport();
-                       // String drawing = svg.drawCarport(new Dimension(construction.getCarport().getWidth(), construction.getCarport().getWidth()));
-                    %>
+                        // String drawing = svg.drawCarport(new Dimension(construction.getCarport().getWidth(), construction.getCarport().getWidth()));
+%>
 
                     <p>SVGCarport <%= construction.getCarport().getLength()%> cm lang og <%= construction.getCarport().getWidth()%> cm bred</p>
 
                     <p><%//= drawing%></p>
+
+                    <svg height="1200mm" width="5000mm">
+                    <%
+                        SVGDraw svg = new SVGDraw();
+                        for (int i = 0; i <= 150; i += 11) {
+                            out.println(svg.makePost(i, 0, 100, 10, "#a68064"));
+
+                        }
+                        out.println(svg.makePost(0, 0, 10, 150, "#C0C0C0"));
+                        out.println(svg.makePost(0, 90, 10, 150, "#C0C0C0"));
+                    %>
+                    </svg>
                 </div>
             </div>
         </div>
