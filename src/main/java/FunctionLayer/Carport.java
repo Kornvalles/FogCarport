@@ -7,11 +7,12 @@ public class Carport {
     private final int width; //measured in centimeters.
     private final boolean toolshed; //false when toolshed is not opted
     private final boolean pointyRoof; //false when roof is not pointy
+    private final boolean roofType;
     private final int roofAngle;
     private final boolean wall; //false when there are only posts on wall
     private final String details; //details on carport
 
-    public Carport( int height, int length, int width, boolean toolshed, boolean pointyRoof,int roofAngle, 
+    public Carport( int height, int length, int width, boolean toolshed, boolean pointyRoof, boolean roofType,int roofAngle, 
                     boolean wall, String details) 
     {
         this.height = height;
@@ -19,6 +20,7 @@ public class Carport {
         this.width = width;
         this.toolshed = toolshed;
         this.pointyRoof = pointyRoof;
+        this.roofType = roofType;
         this.roofAngle = roofAngle;
         this.wall = wall;
         this.details = details;
@@ -55,14 +57,24 @@ public class Carport {
     public int getRoofAngle() {
         return roofAngle;
     }
-    
-    
+
+    public boolean roofType() {
+        return roofType;
+    }
 
     @Override
     public String toString() {
-        return "Længde: " + length + " cm\n\nBredde: " + width + " cm\n\nHøjde: " + height
-                + " cm\n\n Skur: " + toolshed + "\n\n Høj rejsning: " + pointyRoof
-                + "\n\nVægbeklædning: " + wall + "\n\nEvt kommentar: " + details;
+        return "Carport{" + "height=" + height 
+                + ", length=" + length 
+                + ", width=" + width 
+                + ", toolshed=" + toolshed 
+                + ", pointyRoof=" + pointyRoof 
+                + ", roofType=" + roofType 
+                + ", roofAngle=" + roofAngle 
+                + ", wall=" + wall 
+                + ", details=" + details + '}';
     }
+    
+    
 
 }
