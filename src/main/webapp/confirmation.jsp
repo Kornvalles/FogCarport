@@ -62,7 +62,8 @@
                         </tbody>
                     </table>
                         <form method="POST" action="FrontController">
-                            
+                            <input type="hidden" name="command" value="invoice">
+                            <input type="submit" value="Lav faktura">
                         </form>
                 </div>
             </div>
