@@ -45,7 +45,6 @@
 
                             <th style="text-align:center" colspan="2" >Antal</th>
                             <th style="text-align:left">Navn</th>
-                            <th style="text-align:left">PPU</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -54,7 +53,6 @@
                                 <td style="text-align:right"><%=m.getQty()%></td>
                                 <td style="text-align:left"><%=m.getUnit()%></td>
                                 <td style="text-align:left"><%=m.getName()%></td>
-                                <td style="text-align:left"><%=String.format("%.2f", m.getPrice())%></td>
                             </tr>    
                             <%}%>
                         </tbody>
@@ -70,24 +68,17 @@
 
                     <br><p>Totalpris: <%=String.format("%.2f", construction.getTotalPrice())%> kr. inkl. moms</p>
 
-                    <%
-                        // SVGCarport svg = new SVGCarport();
-                        // String drawing = svg.drawCarport(new Dimension(construction.getCarport().getWidth(), construction.getCarport().getWidth()));
-%>
-
                     <p>SVGCarport <%= construction.getCarport().getLength()%> cm lang og <%= construction.getCarport().getWidth()%> cm bred</p>
-
-                    <p><%//= drawing%></p>
 
                     <svg height="1200mm" width="5000mm">
                     <%
                         SVGDraw svg = new SVGDraw();
-                        for (int i = 0; i <= 150; i += 11) {
-                            out.println(svg.makePost(i, 0, 100, 10, "#a68064"));
+                        for (int i = 0; i <= construction.getCarport().getLength(); i += 11) {
+                            out.println(svg.makePost(i, 0, construction.getCarport().getWidth()+10, 10, "#a68064"));
 
                         }
-                        out.println(svg.makePost(0, 0, 10, 150, "#C0C0C0"));
-                        out.println(svg.makePost(0, 90, 10, 150, "#C0C0C0"));
+                        out.println(svg.makePost(0, 0, 10, construction.getCarport().getLength(), "#C0C0C0"));
+                        out.println(svg.makePost(0,construction.getCarport().getWidth(), 10, construction.getCarport().getLength(), "#C0C0C0"));
                     %>
                     </svg>
                 </div>
