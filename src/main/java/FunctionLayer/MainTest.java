@@ -24,7 +24,7 @@ public class MainTest {
         list.add(m2);
         Construction o = new Construction(cp, list, 0);
         Invoice i = new Invoice(c, o);
-        i.makeInvoice(c, o, i.makeInvoiceTemplate());
+        i.makeInvoice(c, o);
         
         /* Test carport with height, length, width */
 //        Carport carport = new Carport(230,400,200,false,false,true,"");

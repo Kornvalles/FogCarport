@@ -2,6 +2,7 @@ package FunctionLayer;
 
 import DataLayer.OrderMapper;
 import DataLayer.UserMapper;
+import com.itextpdf.layout.Document;
 import java.sql.SQLException;
 
 /**
@@ -44,6 +45,11 @@ public class DatabaseLogicFacade implements LogicFacade {
     @Override
     public double getMaterialPrice(String name) throws FogException, SQLException {
         return OrderMapper.getMaterialPrice(name);
+    }
+
+    @Override
+    public Document makeInvoice(Customer customer, Construction costruction) throws FogException {
+        return new Invoice(customer, costruction).makeInvoice(customer, costruction);
     }
     
 }
