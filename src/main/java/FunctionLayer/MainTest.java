@@ -1,5 +1,7 @@
 package FunctionLayer;
 import DataLayer.OrderMapper;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,18 +11,20 @@ import java.util.List;
  */
 public class MainTest {
     
-    public static void main(String[] args) throws FogException {
+    public static void main(String[] args) throws FogException, MalformedURLException, IOException {
         
         OrderMapper mapper = new OrderMapper();
         
-        Customer c = new Customer("Mikkel", "", "", "", "");
+        Customer c = new Customer("Mikkel", "mikkel@mail.dk", "Markvej 8", "3440", "65329298");
         Carport cp = new Carport(300, 200, 500, true, true, 0, true, "");
         Material m = new Material("Screw", 0, "", 10.0);
+        Material m2 = new Material("Wood", 0, "", 14.0);
         List<Material> list = new ArrayList();
         list.add(m);
+        list.add(m2);
         Construction o = new Construction(cp, list, 0);
         Invoice i = new Invoice(c, o);
-        i.makeInvoice(c, o);
+        i.makeInvoice(c, o, i.makeInvoiceTemplate());
         
         /* Test carport with height, length, width */
 //        Carport carport = new Carport(230,400,200,false,false,true,"");

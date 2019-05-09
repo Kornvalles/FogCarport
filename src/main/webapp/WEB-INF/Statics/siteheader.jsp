@@ -96,11 +96,11 @@
     <body>
         <div class="header">
             <a href="index.jsp" class="logo">
-                <img src="https://sgn-assets.imgix.net/resources/1229572831436603912/source.png?max-w=160&max-h=45&auto=format&s=01bc438ae1a10d71a40ce0dcd81cfbbc"class="img-thumbnail" alt="Fog">
+                <img src="img/logo.png"class="img-thumbnail" alt="Fog">
             </a>
             <div class="header-right">
                 <a href="index.jsp">Hjem</a>
-                <a href="shop.jsp">Bestilling af carport</a>
+                <a href="FrontController?command=order">Bestilling af carport</a>
                 <a href="sortiment.jsp">Sortiment</a>
             </div>
         </div>
