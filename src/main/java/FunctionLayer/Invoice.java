@@ -5,6 +5,7 @@ import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -81,8 +82,9 @@ public class Invoice {
         try {
             PdfWriter writer = new PdfWriter(dest);
             PdfDocument pdfDoc = new PdfDocument(writer);
+            pdfDoc.addNewPage(PageSize.A4);
             invoice = new Document(pdfDoc);
-            ImageData data = ImageDataFactory.create("src/main/webapp/img/logo.png");
+            ImageData data = ImageDataFactory.create("http://shop.johannesfog.dk/gfx/foglogok.png");//http://shop.johannesfog.dk/gfx/foglogok.png
             Image image = new Image(data);
             invoice.add(image);
         } catch (FileNotFoundException e) {
@@ -91,28 +93,27 @@ public class Invoice {
         return invoice;
     }
 
-    public Document makeInvoice(Customer customer, Construction order) {
-        Document invoice = null;
+    public Document makeInvoice(Customer customer, Construction order) throws IOException {
+        Document invoice = makeInvoiceTemplate();
         try {
-            invoice = makeInvoiceTemplate();
             PdfFont fontBold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
             PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
             Paragraph p1 = new Paragraph();
             Paragraph p2 = new Paragraph();
             Text name = new Text(customer.getName());
             Text email = new Text(customer.getEmail());
-            Text phone = new Text(customer.getPhoneNumber());
-            Text address = new Text(customer.getAddress());
-            Text zip = new Text(customer.getZipcode());
+            //Text phone = new Text(customer.getPhoneNumber());
+            //Text address = new Text(customer.getAddress());
+            //Text zip = new Text(customer.getZipcode());
             p1.add(name);
             p1.add("\n");
             p1.add(email);
             p1.add("\n");
-            p1.add(phone);
+            //p1.add(phone);
             p1.add("\n");
-            p1.add(address);
+            //p1.add(address);
             p1.add("\n");
-            p1.add(zip);
+            //p1.add(zip);
             p1.setFont(fontBold);
             invoice.add(p1);
             for (Material m : order.getMaterials()) {
@@ -120,7 +121,7 @@ public class Invoice {
                 p2.add("\n");
             }
             invoice.add(p2).setFont(font);
-
+            invoice.close();
         } catch (IOException ex) {
             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
         }

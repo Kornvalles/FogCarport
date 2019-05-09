@@ -4,6 +4,9 @@ import FunctionLayer.Construction;
 import FunctionLayer.Customer;
 import FunctionLayer.FogException;
 import FunctionLayer.LogicFacade;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -18,7 +21,11 @@ public class GetInvoiceCommand extends Command {
         HttpSession session = request.getSession();
         Construction construction = (Construction) session.getAttribute("construction");
         Customer customer = (Customer) session.getAttribute("customer");
-        logic.makeInvoice(customer, construction);
+        try {
+            logic.makeInvoice(customer, construction);
+        } catch (IOException ex) {
+            Logger.getLogger(GetInvoiceCommand.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return "confirmation";
     }
     
