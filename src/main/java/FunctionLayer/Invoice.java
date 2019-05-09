@@ -74,11 +74,11 @@ public class Invoice {
         }
         return true;
     }
-    
-    private void addHeader(PdfWriter writer){
-        
+
+    private void addHeader(PdfWriter writer) {
+
     }
-    
+
     public Document makeInvoiceTemplate() throws MalformedURLException, IOException {
         PdfFont fontBold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
         PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
@@ -99,8 +99,10 @@ public class Invoice {
         return invoice;
     }
 
-    public Document makeInvoice(Customer customer, Construction order, Document template) {
+    public Document makeInvoice(Customer customer, Construction order) {
+        Document invoice = null;
         try {
+            invoice = makeInvoiceTemplate();
             PdfFont fontBold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
             PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
             Paragraph p1 = new Paragraph();
@@ -120,17 +122,17 @@ public class Invoice {
             p1.add("\n");
             p1.add(zip);
             p1.setFont(fontBold);
-            template.add(p1);
+            invoice.add(p1);
             for (Material m : order.getMaterials()) {
-                p2.add(m.getName() + " : " +m.getQty());
+                p2.add(m.getName() + " : " + m.getQty());
                 p2.add("\n");
             }
-            template.add(p2).setFont(font);
-            template.close();
+            invoice.add(p2).setFont(font);
+
         } catch (IOException ex) {
             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return template;
+        return invoice;
     }
 
 }

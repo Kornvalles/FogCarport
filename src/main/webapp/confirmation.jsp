@@ -3,6 +3,7 @@
     Created on : Apr 25, 2019, 12:14:20 PM
     Author     : ibenk
 --%>
+<%@page import="FunctionLayer.Customer"%>
 <%@page import="FunctionLayer.SVGFog"%>
 <%@page import="FunctionLayer.Dimension"%>
 <%@page import="FunctionLayer.SVGCarport"%>
@@ -27,7 +28,8 @@
                 <div class="col-sm-6">
                     <h1>Tak for din bestilling!</h1>
 
-                        <p><%Construction construction = (Construction) session.getAttribute("construction");
+                    <p><%Customer customer = (Customer) session.getAttribute("customer");
+                        Construction construction = (Construction) session.getAttribute("construction");
                         out.print(construction.getCarport().toString());%></p>
 
 
@@ -59,27 +61,31 @@
                             <%}%>
                         </tbody>
                     </table>
+                        <form method="POST" action="FrontController">
+                            
+                        </form>
                 </div>
             </div>
-                    
+            <div class="row">
+                <div class="col-sm-6">
 
-        <br><p>Totalpris: <%=String.format("%.2f", construction.getTotalPrice())%> kr. inkl. moms</p>
+                    <br><p>Totalpris: <%=String.format("%.2f", construction.getTotalPrice())%> kr. inkl. moms</p>
 
-        <%
-            SVGCarport svg = new SVGCarport();
-            String drawing = svg.drawCarport(new Dimension(construction.getCarport().getWidth(), construction.getCarport().getWidth()));
-        %>
+                    <%
+                        SVGCarport svg = new SVGCarport();
+                        String drawing = svg.drawCarport(new Dimension(construction.getCarport().getWidth(), construction.getCarport().getWidth()));
+                    %>
 
-        <p>SVGCarport <%= construction.getCarport().getLength()%> cm lang og <%= construction.getCarport().getWidth()%> cm bred</p>
+                    <p>SVGCarport <%= construction.getCarport().getLength()%> cm lang og <%= construction.getCarport().getWidth()%> cm bred</p>
 
-        <p><%= drawing%></p>
+                    <p><%= drawing%></p>
+                </div>
+            </div>
+        </div>
 
+
+        <div class="#footer">
+            <p><p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p></p>
     </div>
-
-
-
-    <div class="#footer">
-        <p><p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p></p>
-</div>
 </body>
 </html>
