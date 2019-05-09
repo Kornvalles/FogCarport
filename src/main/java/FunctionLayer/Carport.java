@@ -64,20 +64,10 @@ public class Carport {
 
     @Override
     public String toString() {
-        Shed shed = null;
-        Carport carport = null;
-        String shedHieght = Integer.toString(carport.height);
-        String shedLength = Integer.toString(shed.getLength());
-        String shedWidth = Integer.toString(shed.getWidth());
-        if(toolshed == true) { System.out.println("højde : " + shedHieght 
-                                                + " Længde : " + shedLength 
-                                                + " Bredde : " + shedWidth);
-        } else {
-            System.out.println("Redskabsskur ikke tilvalgt.");
-        }
-        return "Din carports specifikationer kan ses herunder\n" 
-                + "højde : " + height + " længde : " + length + " bredde : " + width 
-                + " Redskabsskur : " + toolshed 
+        return "Carport{" + "height=" + height 
+                + ", length=" + length 
+                + ", width=" + width 
+                + ", toolshed=" + toolshed 
                 + ", pointyRoof=" + pointyRoof 
                 + ", roofType=" + roofType 
                 + ", roofAngle=" + roofAngle 
