@@ -4,9 +4,6 @@
     Author     : ibenk
 --%>
 <%@page import="FunctionLayer.Customer"%>
-<%@page import="FunctionLayer.SVGFog"%>
-<%@page import="FunctionLayer.Dimension"%>
-<%@page import="FunctionLayer.SVGCarport"%>
 <%@page import="FunctionLayer.Construction"%>
 <%@page import="FunctionLayer.Material"%>
 <%@page import="FunctionLayer.Carport"%>
@@ -73,13 +70,13 @@
                     <br><p>Totalpris: <%=String.format("%.2f", construction.getTotalPrice())%> kr. inkl. moms</p>
 
                     <%
-                        SVGCarport svg = new SVGCarport();
-                        String drawing = svg.drawCarport(new Dimension(construction.getCarport().getWidth(), construction.getCarport().getWidth()));
+                        // SVGCarport svg = new SVGCarport();
+                       // String drawing = svg.drawCarport(new Dimension(construction.getCarport().getWidth(), construction.getCarport().getWidth()));
                     %>
 
                     <p>SVGCarport <%= construction.getCarport().getLength()%> cm lang og <%= construction.getCarport().getWidth()%> cm bred</p>
 
-                    <p><%= drawing%></p>
+                    <p><%//= drawing%></p>
                 </div>
             </div>
         </div>
