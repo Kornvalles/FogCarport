@@ -46,6 +46,16 @@
                                 </select></p>
                         </div>
                         <br>
+                        
+                        <input type="checkbox" name="roofType" value="true" id="roofTypeInput">
+                        <label for="shedInput">Vil du udskifte taplader med en anden tag type?</label>
+                        <div class="form-group, fadeIn" id="display2">
+                            Alle Fogs carporte bliver som standard monteret med tagplader:
+                            <p><select name="roofType" id="roofType">
+                                    <option value="rooftiles">Tagsten</option>
+                                </select></p>
+                        </div>
+                        <br>
 
                         <input type="checkbox" name="roof" value="true" id="roofInput">
                         <label for="roofInput">Tilføj taghældning?</label>
@@ -119,6 +129,19 @@
             }
             if (document.getElementById("roofInput").checked === true) {
                 $('#display1').fadeIn(200);
+
+            }
+        };
+    </script>
+        <script>
+        document.getElementById("roofTypeInput").checked = false;
+        document.getElementById('roofTypeInput').onclick = function () {
+
+            if (document.getElementById("roofTypeInput").checked === false) {
+                $('#display2').fadeOut(200);
+            }
+            if (document.getElementById("roofTypeInput").checked === true) {
+                $('#display2').fadeIn(200);
 
             }
         };
