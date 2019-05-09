@@ -70,7 +70,7 @@
 
                     <p>SVGCarport <%= construction.getCarport().getLength()%> cm lang og <%= construction.getCarport().getWidth()%> cm bred</p>
 
-                    <svg height="1200mm" width="5000mm">
+                    <svg height="300mm" width="1250mm" viewBox="0 0 1200 5000">
                     <%
                         SVGDraw svg = new SVGDraw();
                         for (int i = 0; i <= construction.getCarport().getLength(); i += 11) {
