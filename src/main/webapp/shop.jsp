@@ -36,17 +36,16 @@
                             <p> ${widthSelect}</p>
                         </div>
 
-                        <input type="checkbox" name="shedInput" id="shedInput">
-                        <label for="shedInput">Tilføj redskabsskur?</label>
-                        <div class="form-group, fadeIn" id="display">
-                            Vælg venligst længden på dit skur:
-                            <p><select name="shedWidth" id="widthInput">
-                                    <option value="240">100 cm</option>
-                                    <option value="270">150 cm</option>
+                        <input type="checkbox" name="roofType" value="true" id="roofTypeInput">
+                        <label for="roofTypeInput">Udskift tagplader med anden tag type?</label>
+                        <div class="form-group, fadeIn" id="display2">
+                            Som standard kommer alle carporte med tagplader:
+                            <p><select name="roofType" id="roofType">
+                                    <option value="tagsten">Tagsten</option>
                                 </select></p>
                         </div>
                         <br>
-
+                        
                         <input type="checkbox" name="roof" value="true" id="roofInput">
                         <label for="roofInput">Tilføj taghældning?</label>
                         <div class="form-group, fadeIn" id="display1">
@@ -61,6 +60,19 @@
                                     <option value="45">45°</option>
                                 </select></p>
                         </div>
+                        <br>
+                        
+                        <input type="checkbox" name="shedInput" id="shedInput">
+                        <label for="shedInput">Tilføj redskabsskur?</label>
+                        <div class="form-group, fadeIn" id="display">
+                            Vælg venligst længden på dit skur:
+                            <p><select name="shedWidth" id="widthInput">
+                                    <option value="240">100 cm</option>
+                                    <option value="270">150 cm</option>
+                                </select></p>
+                        </div>
+                        <br>
+                        
                         <div class="form-group">
                             <input type="checkbox" name="wall" value="true" id="wallsInput">
                             <label for="wallsInput">Tilføj vægge?</label>
@@ -121,6 +133,21 @@
                 $('#display1').fadeIn(200);
 
             }
+            
+        };
+    </script>
+    <script>
+        document.getElementById("roofTypeInput").checked = false;
+        document.getElementById('roofTypeInput').onclick = function () {
+
+            if (document.getElementById("roofTypeInput").checked === false) {
+                $('#display2').fadeOut(200);
+            }
+            if (document.getElementById("roofTypeInput").checked === true) {
+                $('#display2').fadeIn(200);
+
+            }
+            
         };
     </script>
     <!-- Latest compiled and minified CSS -->

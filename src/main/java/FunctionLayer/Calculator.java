@@ -65,9 +65,9 @@ public class Calculator {
 
         if (!carport.hasPointyRoof()) {
             if (carport.roofType()) {
-                return calcMaterial(carport.getLength(), carport.getWidth(), pvcSheet, pvcSheet);
-            } else {
                 return calcMaterial(carport.getLength(), carport.getWidth(), roofTiles, roofTiles);
+            } else {
+                return calcMaterial(carport.getLength(), carport.getWidth(), pvcSheet, pvcSheet);
             }
         } else {
             double vinkelC = 90; // statisk fordi denne vinkel altid er 90 grader.
@@ -81,9 +81,9 @@ public class Calculator {
             double b = ((a * Math.sin(vinkelB_inRadians)) / (Math.sin(vinkelA_inRadians)));
             double c = Math.sqrt(Math.pow(a, 2.00) + Math.pow(b, 2.00)) - 2.00 * a * b * Math.cos(vinkelC);
             if (carport.roofType()) {
-                return calcMaterial(carport.getLength(), (int) c, pvcSheet, pvcSheet);
+                return calcMaterial(carport.getLength(), (int) c, roofTiles, roofTiles);
             } else {
-                pointyWithTiles = calcMaterial(carport.getLength(), carport.getWidth(), roofTiles, roofTiles);
+                pointyWithTiles = calcMaterial(carport.getLength(), carport.getWidth(), pvcSheet, pvcSheet);
             }
         }
         return pointyWithTiles;
@@ -221,20 +221,24 @@ public class Calculator {
         List<Material> material = new ArrayList<>();
 
         /* Get name and price from sql database */
-        Material post = new Material("stolpe(r)", getAllPosts(carport), "pcs", logic.getMaterialPrice("stolpe(r)"));
-        Material wood = new Material("planke(r) 10x100cm", getSides(carport), "pcs", logic.getMaterialPrice("planke(r) 10x100cm"));
+        Material post = new Material("stolpe(r)", getAllPosts(carport), "stk", logic.getMaterialPrice("stolpe(r)"));
+        Material wood = new Material("planke(r) 10x100cm", getSides(carport), "stk", logic.getMaterialPrice("planke(r) 10x100cm"));
         Material roofBatten = new Material("taglaegte(r)", getRoofBattens(carport) / 100, "m", logic.getMaterialPrice("taglaegte(r)"));
         Material sideBatten = new Material("sidelaegte(r)", getSideBattens(carport) / 100, "m", logic.getMaterialPrice("sidelaegte(r)"));
         Material screw = new Material("skruer 200 stk", getScrews(carport), "pakker", logic.getMaterialPrice("skruer 200 stk"));
-        Material roofTile = new Material("tagsten", getRoof(carport), "pcs", logic.getMaterialPrice("tagsten"));
-        Material pvcRoofSheet = new Material("tagplade(r)", getRoof(carport), "pcs", logic.getMaterialPrice("tagplade(r)"));
+        Material roofTile = new Material("tagsten", getRoof(carport), "stk", logic.getMaterialPrice("tagsten"));
+        Material pvcRoofSheet = new Material("tagplade(r)", getRoof(carport), "stk", logic.getMaterialPrice("tagplade(r)"));
 
         material.add(post);
         material.add(wood);
         material.add(roofBatten);
         material.add(sideBatten);
         material.add(screw);
-        material.add(pvcRoofSheet);
+        if(carport.roofType()) {
+            material.add(roofTile);
+        } else {
+            material.add(pvcRoofSheet);
+        }
 
         double totalPrice = 0;
         double totalItemPrice;
