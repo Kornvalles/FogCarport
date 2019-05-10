@@ -49,8 +49,10 @@ public class DatabaseLogicFacade implements LogicFacade {
     }
 
     @Override
-    public Document makeInvoice(Customer customer, Construction costruction) throws FogException, IOException {
-        return new Invoice(customer, costruction).makeInvoice(customer, costruction);
+    public Invoice makeInvoice(Customer customer, Construction costruction) throws FogException, IOException {
+        Invoice invoice = new Invoice(customer, costruction);
+        invoice.makeInvoice(customer, costruction);
+        return invoice;
     }
     
 }

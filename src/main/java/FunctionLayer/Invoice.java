@@ -25,6 +25,7 @@ public class Invoice {
 
     private final Customer customer;
     private final Construction order;
+    private String fileName;
 
     public Invoice(Customer customer, Construction order) {
         this.customer = customer;
@@ -37,6 +38,14 @@ public class Invoice {
 
     public Construction getOrder() {
         return order;
+    }
+    
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getFileName() {
+        return fileName;
     }
 
     @Override
@@ -78,6 +87,7 @@ public class Invoice {
         LocalDate date = LocalDate.now();
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("ddMMyyyy");
         String dest = customer.getName().toLowerCase() + date.format(dateFormatter) + ".pdf";
+        setFileName(fileName);
         Document invoice = null;
         try {
             PdfWriter writer = new PdfWriter(dest);

@@ -3,6 +3,7 @@
     Created on : Apr 25, 2019, 12:14:20 PM
     Author     : ibenk
 --%>
+<%@page import="FunctionLayer.Invoice"%>
 <%@page import="FunctionLayer.Customer"%>
 <%@page import="FunctionLayer.SVGFog"%>
 <%@page import="FunctionLayer.Dimension"%>
@@ -30,6 +31,7 @@
 
                     <p><%Customer customer = (Customer) session.getAttribute("customer");
                         Construction construction = (Construction) session.getAttribute("construction");
+                        Invoice invoice = (Invoice) session.getAttribute("invoice");
                         out.print(construction.getCarport().toString());%></p>
 
 
@@ -63,7 +65,8 @@
                     </table>
                         <form method="POST" action="FrontController">
                             <input type="hidden" name="command" value="invoice">
-                            <input type="submit" value="Lav faktura">
+                            <a href="<%=invoice.getFileName()%>">
+                                <input type="submit" value="Lav faktura"></a>
                         </form>
                 </div>
             </div>
