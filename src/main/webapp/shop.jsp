@@ -41,14 +41,17 @@
                         <div class="form-group, fadeIn" id="display">
                             Vælg venligst længden på dit skur:
                             <p><select name="shedWidth" id="widthInput">
-                                    <option value="100">100 cm</option>
                                     <option value="150">150 cm</option>
+                                    <option value="200">200 cm</option>
+                                    <option value="220">220 cm</option>
+                                    <option value="250">250 cm</option>
+                                    
                                 </select></p>
                         </div>
                         <br>
                         
                         <input type="checkbox" name="roofType" value="true" id="roofTypeInput">
-                        <label for="shedInput">Vil du udskifte taplader med en anden tag type?</label>
+                        <label for="shedInput">Vil du udskifte tagplader med en anden tag type?</label>
                         <div class="form-group, fadeIn" id="display2">
                             Alle Fogs carporte bliver som standard monteret med tagplader:
                             <p><select name="roofType" id="roofType">

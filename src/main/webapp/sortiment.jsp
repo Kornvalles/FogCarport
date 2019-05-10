@@ -43,7 +43,7 @@
                                     <input type="hidden" name="length" value="720" />
                                     <input type="hidden" name="shedWidth" value="225" />
                                     <input type="hidden" name="shedLenght" value="320" />
-                                    <input type="hidden" name="shedInput" value="checked"/>
+                                    <input type="hidden" name="shedInput" value="220" checked="checked" id="shedInput"/>
 
                                     <button name="command" value="order">Bestil!</button>
                             </div>          
@@ -182,5 +182,6 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-</body>
+    <script>$('#shedInput').prop('checked', true);</script>
+    </body>
 </html>
