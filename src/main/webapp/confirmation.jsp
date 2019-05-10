@@ -29,7 +29,6 @@
 
                     <p><%Customer customer = (Customer) session.getAttribute("customer");
                         Construction construction = (Construction) session.getAttribute("construction");
-                        //Invoice invoice = (Invoice) session.getAttribute("invoice");
                         out.print(construction.getCarport().toString());%></p>
 
 
