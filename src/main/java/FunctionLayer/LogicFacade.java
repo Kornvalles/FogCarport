@@ -1,7 +1,6 @@
 package FunctionLayer;
 
 import java.sql.SQLException;
-import com.itextpdf.layout.Document;
 import java.io.IOException;
 
 /**
