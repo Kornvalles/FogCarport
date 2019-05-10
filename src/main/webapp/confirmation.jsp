@@ -65,8 +65,7 @@
                     </table>
                         <form method="POST" action="FrontController">
                             <input type="hidden" name="command" value="invoice">
-                            <a href="<%=invoice.getFileName()%>">
-                                <input type="submit" value="Lav faktura"></a>
+                            <input type="submit" value="Lav faktura">
                         </form>
                 </div>
             </div>
