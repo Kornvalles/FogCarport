@@ -77,8 +77,9 @@
                     
                     <%
                         SVGDraw svg = new SVGDraw();
-                        for (int i = 0; i <= construction.getCarport().getLength(); i += 11) {
+                        for (int i = 0; i <= construction.getCarport().getLength(); i += 31) {
                             out.println(svg.makePost(i, 0, construction.getCarport().getWidth()+10, 10, "#a68064"));
+                            out.println(svg.makePost(construction.getCarport().getLength()-10, 0, construction.getCarport().getWidth()+10, 10, "#a68064"));
 
                         }
                         out.println(svg.makePost(0, 0, 10, construction.getCarport().getLength(), "#C0C0C0"));
