@@ -10,25 +10,19 @@ package FunctionLayer;
  * @author Benjamin
  */
 public class Employee {
-    private int employeeID;
+
     private String username;
     private String password;
 
-    public Employee(int employeeID, String name, String password) {
-        this.employeeID = employeeID;
+    public Employee(String name, String password) {
+
         this.username = name;
         this.password = password;
     }
 
     @Override
     public String toString() {
-        return "Employee{" + "employeeID=" + employeeID + ", name=" + username + ", password=" + password + '}';
-    }
-
-    
-    
-    public int getEmployeeID() {
-        return employeeID;
+        return "Employee{" + "username=" + username + ", password=" + password + '}';
     }
 
     public String getUsername() {
