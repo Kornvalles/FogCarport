@@ -26,32 +26,36 @@ public class EmployeeCommand extends Command {
 
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
-        HttpSession session = request.getSession();
-        /* Get Parameters from the URL. (From the HTTP request) */
-        String reqUsername = (String) request.getParameter("username");
-        String reqPassword = (String) request.getParameter("password");
-        
-        boolean valid = false;
-        if (!StringUtils.isNullOrEmpty(reqPassword)
-                && !StringUtils.isNullOrEmpty(reqUsername)) {
         try {
-            Employee employee = new UserMapper().getEmployee(reqUsername);
-            if(reqPassword.equals(employee.getPassword())) {
-                valid = true;
-            session.setAttribute("employee", employee);
-            logic.getEmployee(employee);
+            HttpSession session = request.getSession();
+            /* Get Parameters from the URL. (From the HTTP request) */
+            String reqUsername = (String) request.getParameter("username");
+            String reqPassword = (String) request.getParameter("password");
+            
+            boolean validation = new FunctionLayer.DatabaseLogicFacade().checkEmployee(reqUsername, reqPassword);
+            if (!StringUtils.isNullOrEmpty(reqPassword)
+                    && !StringUtils.isNullOrEmpty(reqUsername)) {
+                try {
+                    Employee employee = new UserMapper().getEmployee(reqUsername);
+                    if(validation == true) {
+                        session.setAttribute("employee", employee);
+                        logic.getEmployee(employee);
+                    }
+                } catch (SQLException ex) {
+                    System.out.println(ex.getLocalizedMessage());
+                    System.out.println(ex.getMessage());
+                }
+                if (validation == false) {
+                    /* If User is not in Database send him back to LoginPage */
+                    session.setAttribute("errormessage", "You have entered an invalid username or password");
+                    return "employeePage";
+                }
             }
+            return "employeePage";
         } catch (SQLException ex) {
-            System.out.println(ex.getLocalizedMessage());
-            System.out.println(ex.getMessage());
+            Logger.getLogger(EmployeeCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (valid == false) {
-            /* If User is not in Database send him back to LoginPage */
-            session.setAttribute("errormessage", "You have entered an invalid username or password");
-            return "login";
-        }
-        }
-        return "backDoor";
+        return "EmployeeePage";
 
     }
 }

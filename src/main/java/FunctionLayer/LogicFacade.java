@@ -17,6 +17,8 @@ public interface LogicFacade {
     
     void getEmployee( Employee employee ) throws FogException, SQLException ;
     
+    boolean checkEmployee(String username, String password) throws FogException, SQLException ;
+    
     Invoice makeInvoice( Customer customer, Construction costruction ) throws FogException, IOException ;
     
 }

@@ -1,9 +1,13 @@
 package FunctionLayer;
 
+import DataLayer.Connector;
 import DataLayer.OrderMapper;
 import DataLayer.UserMapper;
 import com.itextpdf.layout.Document;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -58,6 +62,26 @@ public class DatabaseLogicFacade implements LogicFacade {
     @Override
     public void getEmployee(Employee employee) throws FogException, SQLException {
         UserMapper.getEmployee(employee);
+    }
+
+    @Override
+    public boolean checkEmployee(String username, String password) throws FogException, SQLException {
+        boolean st =false;
+      try{
+
+	 Connection con = Connector.connection();
+         PreparedStatement ps =con.prepareStatement
+                             ("select * from emplyee where name=? and password=?");
+         ps.setString(1, username);
+         ps.setString(2, password);
+         ResultSet rs =ps.executeQuery();
+         st = rs.next();
+        
+      }catch(Exception e)
+      {
+          e.printStackTrace();
+      }
+         return st;     
     }
     
 }
