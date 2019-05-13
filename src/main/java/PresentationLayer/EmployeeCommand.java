@@ -30,14 +30,26 @@ public class EmployeeCommand extends Command {
         /* Get Parameters from the URL. (From the HTTP request) */
         String reqUsername = (String) request.getParameter("username");
         String reqPassword = (String) request.getParameter("password");
-
+        
+        boolean valid = false;
+        if (!StringUtils.isNullOrEmpty(reqPassword)
+                && !StringUtils.isNullOrEmpty(reqUsername)) {
         try {
-            Employee employee = new Employee(reqUsername, reqPassword);
+            Employee employee = new UserMapper().getEmployee(reqUsername);
+            if(reqPassword.equals(employee.getPassword())) {
+                valid = true;
             session.setAttribute("employee", employee);
             logic.getEmployee(employee);
+            }
         } catch (SQLException ex) {
             System.out.println(ex.getLocalizedMessage());
             System.out.println(ex.getMessage());
+        }
+        if (valid == false) {
+            /* If User is not in Database send him back to LoginPage */
+            session.setAttribute("errormessage", "You have entered an invalid username or password");
+            return "login";
+        }
         }
         return "employeePage";
 
