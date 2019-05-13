@@ -9,6 +9,7 @@ import FunctionLayer.FogException;
 import FunctionLayer.LogicFacade;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -18,7 +19,11 @@ public class UserCommand extends Command {
 
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+          
+        HttpSession session = request.getSession();
+        
+          String reqUsername = request.getParameter("username");
+          String reqPassword = request.getParameter("password");
+   
     
 }
