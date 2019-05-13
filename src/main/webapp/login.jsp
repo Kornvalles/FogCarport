@@ -20,7 +20,8 @@
             <div class="col-4">
                 <div class="card">
                     <div class="card-body">
-                        <form action="" autocomplete="off">
+                        <form method="POST" action="FrontController">
+                        <input type="hidden" name="command" value="CreateOrder">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="username">
                             </div>
