@@ -1,5 +1,8 @@
 # FogCarport
 
+## LINK TIL PROJECT
+http://165.227.175.89/FogCarport-1.0/
+
 **Collaborators**
 - [Nicklas Dupont](https://github.com/TheDanishWonder)
 - [Benjamin Bajrami](https://github.com/Aeydin24)
