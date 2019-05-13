@@ -11,18 +11,18 @@ package FunctionLayer;
  */
 public class Employee {
     private int employeeID;
-    private String name;
+    private String username;
     private String password;
 
     public Employee(int employeeID, String name, String password) {
         this.employeeID = employeeID;
-        this.name = name;
+        this.username = name;
         this.password = password;
     }
 
     @Override
     public String toString() {
-        return "Employee{" + "employeeID=" + employeeID + ", name=" + name + ", password=" + password + '}';
+        return "Employee{" + "employeeID=" + employeeID + ", name=" + username + ", password=" + password + '}';
     }
 
     
@@ -31,8 +31,8 @@ public class Employee {
         return employeeID;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
     public String getPassword() {
