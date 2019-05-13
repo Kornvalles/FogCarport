@@ -19,7 +19,11 @@ public class Employee {
         this.username = name;
         this.password = password;
     }
-
+    
+    public Employee() {
+        
+    }
+            
     @Override
     public String toString() {
         return "Employee{" + "username=" + username + ", password=" + password + '}';
@@ -31,6 +35,14 @@ public class Employee {
 
     public String getPassword() {
         return password;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
     
     
