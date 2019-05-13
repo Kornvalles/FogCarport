@@ -21,7 +21,7 @@
                 <div class="card">
                     <div class="card-body">
                         <form method="POST" action="FrontController">
-                        <input type="hidden" name="command" value="getEmployee">
+                        <input type="hidden" name="command" value="Employee">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="username">
                             </div>

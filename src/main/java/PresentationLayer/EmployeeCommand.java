@@ -31,38 +31,15 @@ public class EmployeeCommand extends Command {
         String reqUsername = (String) request.getParameter("username");
         String reqPassword = (String) request.getParameter("password");
 
-try {
-    Employee employee = new Employee (reqUsername, reqPassword);
-    session.setAttribute("employee", employee);
-    logic.getEmployee(employee);
-    } catch (SQLException ex) {
-        System.out.println(ex.getLocalizedMessage());
-        System.out.println(ex.getMessage());
-    }
-
-//        boolean valid = false;
-//        /* Check if User exists in the SQL database */
-//        if (!StringUtils.isNullOrEmpty(password)
-//                && !StringUtils.isNullOrEmpty(username)) { 
-//            /* check if user is valid */
-//            Employee employee = new UserMapper().getEmployee(username);
-//            if (password.equals(employee.getPassword())) {
-//                valid = true;
-//                HttpSession session = request.getSession();
-//                /* Put user on session */
-//                session.setAttribute("employee", employee);
-//            }
-//            return "employee";
-//        }
-//
-//        if (valid == false) {
-//            /* If User is not in Database send him back to LoginPage */
-//            HttpSession session = request.getSession();
-//            session.setAttribute("errormessage", "You have entered an invalid username or password");
-//        }
-//        return "login";
-//    }
+        try {
+            Employee employee = new Employee(reqUsername, reqPassword);
+            session.setAttribute("employee", employee);
+            logic.getEmployee(employee);
+        } catch (SQLException ex) {
+            System.out.println(ex.getLocalizedMessage());
+            System.out.println(ex.getMessage());
+        }
         return "employeePage";
-    
-}
+
+    }
 }
