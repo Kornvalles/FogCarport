@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author mikkel
+ * @author Nicklas og Benjamin
  */
 public class EmployeeCommand extends Command {
 
