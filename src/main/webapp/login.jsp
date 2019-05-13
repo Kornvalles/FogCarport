@@ -21,14 +21,14 @@
                 <div class="card">
                     <div class="card-body">
                         <form method="POST" action="FrontController">
-                        <input type="hidden" name="command" value="CreateOrder">
+                        <input type="hidden" name="command" value="getEmployee">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="username">
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" name="password">
                             </div>
-                            <button type="button" id="sendlogin" class="btn btn-primary">login</button>
+                            <button type="submit" id="sendlogin" class="btn btn-primary" onclick="return empty()">login</button>
                         </form>
                     </div>
                 </div>
