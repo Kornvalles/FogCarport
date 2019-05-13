@@ -57,7 +57,7 @@ public class DatabaseLogicFacade implements LogicFacade {
     
     @Override
     public void getEmployee(Employee employee) throws FogException, SQLException {
-        UserMapper.getEmployee(employee);
+        // UserMapper.getEmployee(employee.getUsername());
     }
     
 }
