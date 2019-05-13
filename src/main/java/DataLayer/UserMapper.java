@@ -37,7 +37,7 @@ public class UserMapper {
             System.out.println(ex.getLocalizedMessage());
         }
     }
-    public static void getEmployee (Employee employee) throws FogException, SQLException {
+    public Employee getEmployee (Employee employee) throws FogException, SQLException {
         try {
             Connection con = Connector.connection();
             String SQL = "SELECT * FROM `FogCarport`.`employee` (username,  password) "
@@ -50,5 +50,6 @@ public class UserMapper {
             System.out.println(ex.getSQLState());
             System.out.println(ex.getLocalizedMessage());
         }
+        return employee;
     }
 }
