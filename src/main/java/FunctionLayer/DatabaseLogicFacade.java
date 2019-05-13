@@ -54,5 +54,10 @@ public class DatabaseLogicFacade implements LogicFacade {
         invoice.makeInvoice(customer, costruction);
         return invoice;
     }
+
+    @Override
+    public void getEmployee(Employee employee) throws FogException, SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
