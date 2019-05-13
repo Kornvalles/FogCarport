@@ -19,8 +19,7 @@ import java.sql.Statement;
  * @authors Iben, Christian, Benjamin, Nicklas, Mikkel
  */
 public class UserMapper {
-    
-    
+
     public static void addCustomer(Customer customer) throws FogException, SQLException {
         try {
             Connection con = Connector.connection();
@@ -38,22 +37,45 @@ public class UserMapper {
             System.out.println(ex.getLocalizedMessage());
         }
     }
-    public Employee getEmployee (String username) throws FogException, SQLException {
-         Employee employee = new Employee();
+
+    public static void getEmployee(Employee employee) throws FogException {
         try {
             Connection con = Connector.connection();
             String SQL = "SELECT * FROM FogCarport.`emplyee` "
-                + "WHERE `username`='" + username + "';";
-            
-        Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery(SQL);
-
-        while (rs.next()) {
-            /* Password */
-            String pass = rs.getString("password");
-            employee.setPassword(pass);
+                    + "WHERE `username`='" + employee.getUsername() + "';";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setString(1, employee.getPassword());
+            ResultSet rs = ps.executeQuery(SQL);
+            while(rs.next()) {
+                /* Password */
+                String username = rs.getString("username");
+                employee = new Employee(username);
+                employee.setUsername(username);
+                ps.executeUpdate();
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getSQLState());
+            System.out.println(ex.getLocalizedMessage());
         }
-        employee.setUsername(username);
+    }
+
+    public Employee getEmployee(String username) throws FogException, SQLException {
+        Employee employee = new Employee();
+        try {
+            Connection con = Connector.connection();
+            String SQL = "SELECT * FROM FogCarport.`emplyee` "
+                    + "WHERE `username`='" + username + "';";
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(SQL);
+
+            while (rs.next()) {
+                /* Password */
+                String pass = rs.getString("password");
+                employee.setPassword(pass);
+            }
+            employee.setUsername(username);
         } catch (SQLException ex) {
             System.out.println(ex.getSQLState());
             System.out.println(ex.getLocalizedMessage());

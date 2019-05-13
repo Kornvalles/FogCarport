@@ -20,6 +20,10 @@ public class Employee {
         this.password = password;
     }
     
+    public Employee(String password) {
+        this.password = password;
+    }
+    
     public Employee() {
         
     }
