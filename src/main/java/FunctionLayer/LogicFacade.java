@@ -15,6 +15,8 @@ public interface LogicFacade {
 
     double getMaterialPrice( String name ) throws FogException, SQLException ;
     
+    void getEmployee( Employee employee ) throws FogException, SQLException ;
+    
     Invoice makeInvoice( Customer customer, Construction costruction ) throws FogException, IOException ;
     
 }
