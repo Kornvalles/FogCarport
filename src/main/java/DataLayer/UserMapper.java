@@ -38,15 +38,16 @@ public class UserMapper {
         }
     }
 
-    public static void getEmployee(Employee employee) throws FogException, SQLException {
+    public static void getEmployee(Employee employee) throws FogException {
         try {
             Connection con = Connector.connection();
+<<<<<<< HEAD
             String SQL = "SELECT * FROM FogCarport.`emplyee` "
                     + "WHERE `username`='" + employee.getUsername() + "';";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setString(1, employee.getPassword());
             ResultSet rs = ps.executeQuery(SQL);
-            while (rs.next()) {
+            while(rs.next()) {
                 /* Password */
                 String username = rs.getString("username");
                 employee = new Employee(username);
@@ -57,6 +58,18 @@ public class UserMapper {
         } catch (SQLException ex) {
             System.out.println(ex.getSQLState());
             System.out.println(ex.getLocalizedMessage());
+=======
+            String SQL = "SELECT * FROM FogCarport.`employee` "
+                + "WHERE `username`='" + username + "';";
+            
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(SQL);
+
+        while (rs.next()) {
+            /* Password */
+            String pass = rs.getString("password");
+            employee.setPassword(pass);
+>>>>>>> dev
         }
     }
 
@@ -74,7 +87,6 @@ public class UserMapper {
                 /* Password */
                 String pass = rs.getString("password");
                 employee.setPassword(pass);
-                stmt.executeUpdate(SQL);
             }
             employee.setUsername(username);
         } catch (SQLException ex) {
