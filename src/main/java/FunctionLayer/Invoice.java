@@ -20,12 +20,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.nio.file.Paths;
 
 public class Invoice {
 
     private final Customer customer;
     private final Construction order;
     private String fileName;
+    private Document invoice;
 
     public Invoice(Customer customer, Construction order) {
         this.customer = customer;
@@ -48,6 +50,14 @@ public class Invoice {
         return fileName;
     }
 
+    public Document getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Document invoice) {
+        this.invoice = invoice;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 3;
@@ -87,7 +97,7 @@ public class Invoice {
         LocalDate date = LocalDate.now();
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("ddMMyyyy");
         String dest = customer.getName().toLowerCase() + date.format(dateFormatter) + ".pdf";
-        setFileName(fileName);
+        setFileName(dest);
         Document invoice = null;
         try {
             PdfWriter writer = new PdfWriter(dest);

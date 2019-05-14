@@ -28,7 +28,7 @@ public class GetInvoiceCommand extends Command {
         } catch (IOException ex) {
             Logger.getLogger(GetInvoiceCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "confirmation";
+        return "invoicePdf";
     }
     
 }
