@@ -36,7 +36,7 @@
                             <p> ${widthSelect}</p>
                         </div>
 
-                        <input type="checkbox" name="shed" value="true" id="shedInput">
+                        <input type="checkbox" name="shed" value="true" ${shedChecked} id="shedInput">
                         <label for="shedInput">Tilføj redskabsskur?</label>
                         <div class="form-group, fadeIn" id="display">
                             Vælg venligst længden på dit skur:
@@ -45,11 +45,11 @@
                                     <option value="200">200 cm</option>
                                     <option value="220">220 cm</option>
                                     <option value="250">250 cm</option>
-                                    
+
                                 </select></p>
                         </div>
                         <br>
-                        
+
                         <input type="checkbox" name="roofType" value="true" id="roofTypeInput">
                         <label for="shedInput">Vil du udskifte tagplader med en anden tag type?</label>
                         <div class="form-group, fadeIn" id="display2">
@@ -111,43 +111,41 @@
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
     <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
-                        document.getElementById("shedInput").checked = false;
-                        document.getElementById('shedInput').onclick = function () {
-
+                        function shedvisibility() {
                             if (document.getElementById("shedInput").checked === false) {
                                 $('#display').fadeOut(200);
                             }
                             if (document.getElementById("shedInput").checked === true) {
                                 $('#display').fadeIn(200);
+                            }
+                        }
+                        shedvisibility();
+                        document.getElementById('shedInput').onclick = shedvisibility;
+
+
+                        
+                        //document.getElementById("roofInput").checked = false;
+                        document.getElementById('roofInput').onclick = function () {
+
+                            if (document.getElementById("roofInput").checked === false) {
+                                $('#display1').fadeOut(200);
+                            }
+                            if (document.getElementById("roofInput").checked === true) {
+                                $('#display1').fadeIn(200);
 
                             }
                         };
-    </script>
-    <script>
-        document.getElementById("roofInput").checked = false;
-        document.getElementById('roofInput').onclick = function () {
+                        //document.getElementById("roofTypeInput").checked = false;
+                        document.getElementById('roofTypeInput').onclick = function () {
 
-            if (document.getElementById("roofInput").checked === false) {
-                $('#display1').fadeOut(200);
-            }
-            if (document.getElementById("roofInput").checked === true) {
-                $('#display1').fadeIn(200);
+                            if (document.getElementById("roofTypeInput").checked === false) {
+                                $('#display2').fadeOut(200);
+                            }
+                            if (document.getElementById("roofTypeInput").checked === true) {
+                                $('#display2').fadeIn(200);
 
-            }
-        };
-    </script>
-        <script>
-        document.getElementById("roofTypeInput").checked = false;
-        document.getElementById('roofTypeInput').onclick = function () {
-
-            if (document.getElementById("roofTypeInput").checked === false) {
-                $('#display2').fadeOut(200);
-            }
-            if (document.getElementById("roofTypeInput").checked === true) {
-                $('#display2').fadeIn(200);
-
-            }
-        };
+                            }
+                        };
     </script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">

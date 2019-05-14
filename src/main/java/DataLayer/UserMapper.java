@@ -42,7 +42,7 @@ public class UserMapper {
         try {
             Connection con = Connector.connection();
 
-            String SQL = "SELECT * FROM FogCarport.`emplyee` "
+            String SQL = "SELECT * FROM FogCarport.`employee` "
                     + "WHERE `username`='" + employee.getUsername() + "';";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setString(1, employee.getPassword());
