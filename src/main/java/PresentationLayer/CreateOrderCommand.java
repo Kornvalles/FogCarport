@@ -61,8 +61,7 @@ public class CreateOrderCommand extends Command {
             logic.addCustomer(customer);
             logic.createOrder(carport, customer);
         } catch (SQLException ex) {
-            System.out.println(ex.getLocalizedMessage());
-            System.out.println(ex.getMessage());
+            throw new FogException(ex.getMessage());
         }
 
         //Sender en String tilbage til Frontcontrolleren om hvilken jsp side vi skal omdirigeres til.
