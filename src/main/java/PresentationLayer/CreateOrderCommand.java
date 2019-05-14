@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
  * @author mikkel & benni & nicklas
  */
 public class CreateOrderCommand extends Command {
-
+    
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
 
@@ -34,11 +34,14 @@ public class CreateOrderCommand extends Command {
         String reqRoofType = request.getParameter("roofType");
         String reqWall = request.getParameter("wall");
         String reqRoofAngle = request.getParameter("roofAngle");
-        String reqName = request.getParameter("name");
-        String reqEmail = request.getParameter("email");
-        String reqAddress = request.getParameter("address");
-        String reqZipcode = request.getParameter("zipcode");
-        String reqPhonenumber = request.getParameter("phonenumber");
+        
+        /* Gets input from parameter and validates input */
+        Validate validate = new Validate();
+        String name = validate.validateString(request.getParameter("name"), "Navn");
+        String email = validate.validateString(request.getParameter("email"), "Email");
+        String address = validate.validateString(request.getParameter("address"), "Adresse");
+        int zip = validate.validateInteger(request.getParameter("zipcode"), "Postnummer");
+        int phone = validate.validateInteger(request.getParameter("phonenumber"), "Telefonnummer");
 
         //Konveterer inputs som ikke skal være String.
         boolean toolShed = Boolean.parseBoolean(reqShed);
@@ -53,7 +56,7 @@ public class CreateOrderCommand extends Command {
         //Instancerer objekter og putter dem på session
         //Kører logikken. Forsøger at putte ting i database.
         try {
-            Customer customer = new Customer(reqName, reqEmail, reqAddress, reqZipcode, reqPhonenumber);
+            Customer customer = new Customer(name, email, address, zip, phone);
             Carport carport = new Carport(230, length, width, toolShed, shedWidth, roof, roofType, roofAngle, wall, "");
             Construction construction = Calculator.constructCarport(carport, logic);
             session.setAttribute("construction", construction);

@@ -12,10 +12,10 @@ public class Customer {
     private String name;
     private String email;
     private String address;
-    private String zipcode;
-    private String phoneNumber;
+    private int zipcode;
+    private int phoneNumber;
 
-    public Customer(String name, String email, String address, String zipcode, String phoneNumber) {
+    public Customer(String name, String email, String address, int zipcode, int phoneNumber) {
         this.name = name;
         this.email = email;
         this.address = address;
@@ -55,19 +55,19 @@ public class Customer {
         this.address = address;
     }
 
-    public String getZipcode() {
+    public int getZipcode() {
         return zipcode;
     }
 
-    public void setZipcode(String zipcode) {
+    public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
     }
 
-    public String getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

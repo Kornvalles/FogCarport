@@ -29,8 +29,8 @@ public class UserMapper {
             ps.setString(1, customer.getName());
             ps.setString(2, customer.getEmail());
             ps.setString(3, customer.getAddress());
-            ps.setString(4, customer.getZipcode());
-            ps.setString(5, customer.getPhoneNumber());
+            ps.setInt(4, customer.getZipcode());
+            ps.setInt(5, customer.getPhoneNumber());
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getSQLState());

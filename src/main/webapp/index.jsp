@@ -53,8 +53,8 @@
 
             <div class="col-sm-6">
             <%
-                if (session.getAttribute("error") != null) {
-                    out.print(session.getAttribute("error"));
+                if (request.getAttribute("error") != null) {
+                    out.print(request.getAttribute("error"));
                 }
             %>
         </div>
