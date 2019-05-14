@@ -60,7 +60,7 @@
                         </div>
                         <br>
 
-                        <input type="checkbox" name="roof" value="true" id="roofInput">
+                        <input type="checkbox" name="roof" value="true" ${roofChecked} id="roofInput">
                         <label for="roofInput">Tilføj taghældning?</label>
                         <div class="form-group, fadeIn" id="display1">
                             Vælg venligst den ønskede hældning på deres tag:
@@ -123,10 +123,7 @@
                         document.getElementById('shedInput').onclick = shedvisibility;
 
 
-                        
-                        //document.getElementById("roofInput").checked = false;
-                        document.getElementById('roofInput').onclick = function () {
-
+                        function roofvisibility() {
                             if (document.getElementById("roofInput").checked === false) {
                                 $('#display1').fadeOut(200);
                             }
@@ -134,10 +131,12 @@
                                 $('#display1').fadeIn(200);
 
                             }
-                        };
-                        //document.getElementById("roofTypeInput").checked = false;
-                        document.getElementById('roofTypeInput').onclick = function () {
-
+                        }
+                        roofvisibility();
+                        document.getElementById('roofInput').onclick = roofvisibility;
+                                
+                        
+                        function rooftypevisibility() {
                             if (document.getElementById("roofTypeInput").checked === false) {
                                 $('#display2').fadeOut(200);
                             }
@@ -145,7 +144,9 @@
                                 $('#display2').fadeIn(200);
 
                             }
-                        };
+                        }
+                        rooftypevisibility();
+                        document.getElementById('roofTypeInput').onclick = rooftypevisibility;
     </script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">

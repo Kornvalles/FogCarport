@@ -20,6 +20,9 @@ public class OrderCarportCommand extends Command {
         
         String hasShed = request.getParameter("hasShed");
         if ("true".equals(hasShed)) request.setAttribute("shedChecked", "checked='checked'");
+        
+        String hasPointyRoof = request.getParameter("hasPointyRoof");
+        if ("true".equals(hasPointyRoof)) request.setAttribute("roofChecked", "checked='checked'");
 
         /* Set attributes for the chosen carport */
         request.setAttribute("lengthSelect", lengthSelect);

@@ -1,8 +1,3 @@
-<%-- 
-    Document   : sortiment
-    Created on : Apr 24, 2019, 3:28:19 PM
-    Author     : ndupo
---%>
 <jsp:include page='/WEB-INF/Statics/siteheader.jsp'></jsp:include>
 <jsp:include page='/WEB-INF/Statics/sitefooter.jsp'></jsp:include>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -39,13 +34,15 @@
                                     Betontagsten i sort med 30 års garanti.
                                     NB! Leveres som Byg-selv sæt - usamlet og ubehandlet!  Pr. stk. 21.498,-</p>
 
-                                    <input type="hidden" name="width" value="360" />
-                                    <input type="hidden" name="length" value="720" />
-                                    <input type="hidden" name="shedWidth" value="225" />
-                                    <input type="hidden" name="shedLenght" value="320" />
-                                    <input type="hidden" name="hasShed" value="true" />
+                                <input type="hidden" name="width" value="360" />
+                                <input type="hidden" name="length" value="720" />
+                                <input type="hidden" name="shedWidth" value="225" />
+                                <input type="hidden" name="shedLenght" value="320" />
+                                <input type="hidden" name="hasShed" value="true" />
+                                <input type="hidden" name="hasPointyRoof" value="true" />
 
-                                    <button name="command" value="order">Bestil!</button>
+
+                                <button name="command" value="order">Bestil!</button>
                             </div>          
                         </form>
 
@@ -66,11 +63,12 @@
                                     Udførlig byggevejledning til carport og spær medfølger.
                                     Betontagsten i sort med 30 års garanti.
                                     NB! Leveres som Byg-selv sæt - usamlet og ubehandlet! Pr. stk. 13.998,-</p>
-                                    
-                                    <input type="hidden" name="width" value="360" />
-                                    <input type="hidden" name="length" value="540" />
 
-                                    <button name="command" value="order">Bestil!</button>
+                                <input type="hidden" name="width" value="360" />
+                                <input type="hidden" name="length" value="540" />
+                                <input type="hidden" name="hasPointyRoof" value="true" />
+
+                                <button name="command" value="order">Bestil!</button>
                             </div>          
                         </form>
                     </div>
@@ -92,10 +90,12 @@
                                     Betontagsten i sort med 30 års garanti.
                                     NB! Leveres som Byg-selv sæt - usamlet og ubehandlet! Pr. stk. 23.498,-</p>
 
-                                    <input type="hidden" name="width" value="390" />
-                                    <input type="hidden" name="length" value="780" />
+                                <input type="hidden" name="width" value="390" />
+                                <input type="hidden" name="length" value="780" />
+                                <input type="hidden" name="hasShed" value="true" />
+                                <input type="hidden" name="hasPointyRoof" value="true" />
 
-                                    <button name="command" value="order">Bestil!</button>
+                                <button name="command" value="order">Bestil!</button>
                             </div>          
                         </form>
                     </div>
@@ -115,10 +115,12 @@
                                     Betontagsten i sort med 30 års garanti.
                                     NB! Leveres som Byg-selv sæt - usamlet og ubehandlet! Pr. stk. 22.998,-</p>
 
-                                    <input type="hidden" name="width" value="360" />
-                                    <input type="hidden" name="length" value="810" />
+                                <input type="hidden" name="width" value="360" />
+                                <input type="hidden" name="length" value="810" />
+                                <input type="hidden" name="hasShed" value="true" />
+                                <input type="hidden" name="hasPointyRoof" value="true" />
 
-                                    <button name="command" value="order">Bestil!</button>
+                                <button name="command" value="order">Bestil!</button>
                             </div>          
                         </form>
                     </div>
@@ -126,19 +128,19 @@
                 <div class="col-lg-4 col-sm-6 mb-4">
                     <div class="card h-100">
                         <form action="FrontController">
-                        <a href="#"><img class="card-img-top" src="img/5.png" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">CARPORT ENKELT 3,00X4,80M CAR01 FLADT TAG</a>
-                            </h4>
-                            <p class="card-text">3,00 x 4,80 mtr. Højde; 2,30 mtr. Trykimprægnerede stolper og stern. 
-                                Leveres med: søm, skruer, beslag og plasttrapez tag m/bundskruer.
-                                NB! Leveres som Byg-selv sæt - usamlet, umalet og ubehandlet! Pr. stk. 3.998,-</p>
-                                
-                                    <input type="hidden" name="width" value="300" />
-                                    <input type="hidden" name="length" value="480" />
+                            <a href="#"><img class="card-img-top" src="img/5.png" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="#">CARPORT ENKELT 3,00X4,80M CAR01 FLADT TAG</a>
+                                </h4>
+                                <p class="card-text">3,00 x 4,80 mtr. Højde; 2,30 mtr. Trykimprægnerede stolper og stern. 
+                                    Leveres med: søm, skruer, beslag og plasttrapez tag m/bundskruer.
+                                    NB! Leveres som Byg-selv sæt - usamlet, umalet og ubehandlet! Pr. stk. 3.998,-</p>
 
-                                    <button name="command" value="order">Bestil!</button>
+                                <input type="hidden" name="width" value="300" />
+                                <input type="hidden" name="length" value="480" />
+
+                                <button name="command" value="order">Bestil!</button>
                             </div>          
                         </form>
                     </div>
@@ -146,21 +148,23 @@
                 <div class="col-lg-4 col-sm-6 mb-4">
                     <div class="card h-100">
                         <form action="FrontController">
-                        <a href="#"><img class="card-img-top" src="img/6.png" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">CARPORT ENKELT 3,00X6,00 M CAR01R FLADT TAG MED REDSKABSRUM 1,50X2,70 M</a>
-                            </h4>
-                            <p class="card-text">3,00 x 6,00 mtr. incl. 1,50 x 2,70 mtr. redskabsrum. Højde; 2,30 mtr.
-                                Trykimprægnerede stolper, stern og beklædning.
-                                Leveres med: søm, skruer, beslag og plasttrapez tag m/bundskruer.
-                                Udførlig byggevejledning medfølger.
-                                NB! Leveres som Byg-selv sæt - usamlet og ubehandlet! Pr. stk. 9.498,-</p>
-                                
-                                    <input type="hidden" name="width" value="300" />
-                                    <input type="hidden" name="length" value="600" />
+                            <a href="#"><img class="card-img-top" src="img/6.png" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="#">CARPORT ENKELT 3,00X6,00 M CAR01R FLADT TAG MED REDSKABSRUM 1,50X2,70 M</a>
+                                </h4>
+                                <p class="card-text">3,00 x 6,00 mtr. incl. 1,50 x 2,70 mtr. redskabsrum. Højde; 2,30 mtr.
+                                    Trykimprægnerede stolper, stern og beklædning.
+                                    Leveres med: søm, skruer, beslag og plasttrapez tag m/bundskruer.
+                                    Udførlig byggevejledning medfølger.
+                                    NB! Leveres som Byg-selv sæt - usamlet og ubehandlet! Pr. stk. 9.498,-</p>
 
-                                    <button name="command" value="order">Bestil!</button>
+                                <input type="hidden" name="width" value="300" />
+                                <input type="hidden" name="length" value="600" />
+                                <input type="hidden" name="hasShed" value="true" />
+
+
+                                <button name="command" value="order">Bestil!</button>
                             </div>          
                         </form>
                     </div>
@@ -182,5 +186,5 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-    </body>
+</body>
 </html>
