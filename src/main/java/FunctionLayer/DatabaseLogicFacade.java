@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 /**
  * The purpose of LogicFacade is to...
- * 
+ *
  * @authors Iben, Christian, Benjamin, Nicklas, Mikkel
  */
 public class DatabaseLogicFacade implements LogicFacade {
@@ -20,7 +20,7 @@ public class DatabaseLogicFacade implements LogicFacade {
      * @throws SQLException
      */
     @Override
-    public void addCustomer( Customer customer ) throws FogException, SQLException {
+    public void addCustomer(Customer customer) throws FogException, SQLException {
         UserMapper.addCustomer(customer);
     }
 
@@ -32,7 +32,7 @@ public class DatabaseLogicFacade implements LogicFacade {
      * @throws SQLException
      */
     @Override
-    public void createOrder( Carport carport, Customer customer ) throws FogException, SQLException {
+    public void createOrder(Carport carport, Customer customer) throws FogException, SQLException {
         OrderMapper.makeOrder(carport, customer);
     }
 
@@ -47,10 +47,17 @@ public class DatabaseLogicFacade implements LogicFacade {
     public double getMaterialPrice(String name) throws FogException, SQLException {
         return OrderMapper.getMaterialPrice(name);
     }
-
+    
     @Override
-    public Document makeInvoice(Customer customer, Construction costruction) throws FogException, IOException {
-        return new Invoice(customer, costruction).makeInvoice(customer, costruction);
+    public Invoice makeInvoice(Customer customer, Construction costruction) throws FogException, IOException {
+        Invoice invoice = new Invoice(customer, costruction);
+        invoice.makeInvoice(customer, costruction);
+        return invoice;
+    }
+    
+    @Override
+    public void getEmployee(Employee employee) throws FogException, SQLException {
+        UserMapper.getEmployee(employee);
     }
     
 }

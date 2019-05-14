@@ -36,7 +36,7 @@
                             <p> ${widthSelect}</p>
                         </div>
 
-                        <input type="checkbox" name="shedInput" id="shedInput">
+                        <input type="checkbox" name="shed" value="true" id="shedInput">
                         <label for="shedInput">Tilføj redskabsskur?</label>
                         <div class="form-group, fadeIn" id="display">
                             Vælg venligst længden på dit skur:

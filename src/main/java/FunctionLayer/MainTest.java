@@ -16,7 +16,7 @@ public class MainTest {
         OrderMapper mapper = new OrderMapper();
         
         Customer c = new Customer("Mikkel", "mikkel@mail.dk", "Markvej 8", "3440", "65329298");
-        Carport cp = new Carport(300, 200, 500, true, true, true, 0, true, "");
+        Carport cp = new Carport(300, 200, 500, true, 150, true, true, 0, true, "");
         Material m = new Material("Screw", 0, "", 10.0);
         Material m2 = new Material("Wood", 0, "", 14.0);
         List<Material> list = new ArrayList();

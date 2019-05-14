@@ -143,42 +143,33 @@ public class Calculator {
      * wall or the remaining of a shed if the carport do have walls, or returns
      * nothing if the carport is without one.
      */
-    public static int makeShed(Carport carport, Shed shed) {
-        int totalShedMaterials = 0;
-
+    public static int makeShed(Carport carport) {
         /**
-         * If the carport doesnt have a toolshed it returns 0, which is the
-         * number of wood required to build it.
+         * If the carport have walls the first part of the if-statement returns
+         * the remaining sides to complete a fully functional shed.
          */
-        if (carport.hasToolshed()) {
-            return 0;
-
-            /**
-             * If the carport have walls the first part of the if-statement
-             * returns the remaining sides to complete a fully functional shed.
-             */
-        }
-        if (carport.hasWall() && carport.hasToolshed()) {
+        if (carport.hasToolshed() && carport.hasWall()) {
             int woodLength = 100;
             int woodWidth = 10;
-            int shedInnerSide = calcMaterial(shed.getLength(), carport.getHeight(), woodLength, woodWidth);
-            int shedInnerBackSide = calcMaterial(carport.getWidth(), carport.getHeight(), woodLength, woodWidth);
+            int shedInnerWidth = calcMaterial(carport.getShedWidth(), carport.getHeight(), woodLength, woodWidth);
+            int shedInnerLength = calcMaterial(carport.getWidth(), carport.getHeight(), woodLength, woodWidth);
 
-            return shedInnerSide + shedInnerBackSide;
-        } /**
+            return shedInnerWidth + shedInnerLength;
+        }
+        /**
          * If the carport doesnt have walls the second part of this if-statement
          * returns all four sides of a fully functional shed.
          */
-        if(!carport.hasWall() && carport.hasToolshed()) {
+        if (carport.hasToolshed() && !carport.hasWall()) {
             int woodLength = 100;
             int woodWidth = 10;
-            int shedWidth = 2 * calcMaterial(shed.getWidth(), carport.getHeight(), woodLength, woodWidth);
+            int shedWidth = 2 * calcMaterial(carport.getShedWidth(), carport.getHeight(), woodLength, woodWidth);
             int shedLength = 2 * calcMaterial(carport.getWidth(), carport.getHeight(), woodLength, woodWidth);
 
-            totalShedMaterials = shedWidth + shedLength;
+            return shedWidth + shedLength;
+        } else {
+            return 100;
         }
-        return totalShedMaterials;
-
     }
 
     /**
@@ -218,31 +209,35 @@ public class Calculator {
     /**
      * This method returns a list of all material needed for the input carport.
      */
-    public static Construction constructCarport(Carport carport,Shed shed, LogicFacade logic) throws FogException, SQLException {
+    public static Construction constructCarport(Carport carport, LogicFacade logic) throws FogException, SQLException {
         List<Material> material = new ArrayList<>();
 
         /* Get name and price from sql database */
         Material post = new Material("stolpe(r)", getAllPosts(carport), "stk", logic.getMaterialPrice("stolpe(r)"));
         Material wood = new Material("planke(r) 10x100cm", getSides(carport), "stk", logic.getMaterialPrice("planke(r) 10x100cm"));
-        Material shedWood = new Material("planke(r) 10x100cm (skur)", makeShed(carport, shed), "stk", logic.getMaterialPrice("planke(r) 10x100cm")); // virker ikke endnu.
+        Material shedWood = new Material("planke(r) 10x100cm (skur)", makeShed(carport), "stk", logic.getMaterialPrice("planke(r) 10x100cm")); // virker ikke endnu.
+        Material noShed = new Material("planke(r) 10x100cm (skur)", 0, "stk", logic.getMaterialPrice("planke(r) 10x100cm"));
         Material roofBatten = new Material("taglaegte(r)", getRoofBattens(carport) / 100, "m", logic.getMaterialPrice("taglaegte(r)"));
         Material sideBatten = new Material("sidelaegte(r)", getSideBattens(carport) / 100, "m", logic.getMaterialPrice("sidelaegte(r)"));
         Material screw = new Material("skruer 200 stk", getScrews(carport), "pakker", logic.getMaterialPrice("skruer 200 stk"));
         Material roofTile = new Material("tagsten", getRoof(carport), "stk", logic.getMaterialPrice("tagsten"));
         Material pvcRoofSheet = new Material("tagplade(r)", getRoof(carport), "stk", logic.getMaterialPrice("tagplade(r)"));
-        
 
         material.add(post);
-        material.add(wood);
+        if(carport.hasWall()){
+            material.add(wood);
+        }
         material.add(roofBatten);
         material.add(sideBatten);
         material.add(screw);
-        if(carport.roofType()) {
+        if (carport.roofType()) {
             material.add(roofTile);
         } else {
             material.add(pvcRoofSheet);
         }
-        material.add(shedWood); // retunere kun 0...
+        if (carport.hasToolshed()) {
+            material.add(shedWood);
+        }
 
         double totalPrice = 0;
         double totalItemPrice;

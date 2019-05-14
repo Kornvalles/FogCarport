@@ -42,8 +42,12 @@
                                     <input type="hidden" name="width" value="360" />
                                     <input type="hidden" name="length" value="720" />
                                     <input type="hidden" name="shedWidth" value="225" />
+<<<<<<< HEAD
                                     <input type="hidden" name="shedLenght" value="320" />
                                     <input type="hidden" name="shedInput" value="220" checked="checked"/>
+=======
+                                    <input type="hidden" name="shed" checked="checked" value="220" id="shedInput"/>
+>>>>>>> 4e15af3dae88d8d324fe8687ac3ab49b27f2d982
 
                                     <button name="command" value="order">Bestil!</button>
                             </div>          

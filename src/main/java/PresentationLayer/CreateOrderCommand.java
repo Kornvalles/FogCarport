@@ -41,7 +41,7 @@ public class CreateOrderCommand extends Command {
         String reqPhonenumber = request.getParameter("phonenumber");
 
         //Konveterer inputs som ikke skal være String.
-        boolean shed = Boolean.parseBoolean(reqShed);
+        boolean toolShed = Boolean.parseBoolean(reqShed);
         boolean roof = Boolean.parseBoolean(reqRoof);
         boolean roofType = Boolean.parseBoolean(reqRoofType);
         boolean wall = Boolean.parseBoolean(reqWall);
@@ -54,9 +54,8 @@ public class CreateOrderCommand extends Command {
         //Kører logikken. Forsøger at putte ting i database.
         try {
             Customer customer = new Customer(reqName, reqEmail, reqAddress, reqZipcode, reqPhonenumber);
-            Carport carport = new Carport(230, length, width, shed, roof, roofType, roofAngle, wall, "");
-            Shed shed1 = new Shed(width, shedWidth);
-            Construction construction = Calculator.constructCarport(carport, shed1, logic);
+            Carport carport = new Carport(230, length, width, toolShed, shedWidth, roof, roofType, roofAngle, wall, "");
+            Construction construction = Calculator.constructCarport(carport, logic);
             session.setAttribute("construction", construction);
             session.setAttribute("customer", customer);
             logic.addCustomer(customer);

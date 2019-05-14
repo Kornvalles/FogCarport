@@ -3,6 +3,7 @@ package PresentationLayer;
 import FunctionLayer.Construction;
 import FunctionLayer.Customer;
 import FunctionLayer.FogException;
+import FunctionLayer.Invoice;
 import FunctionLayer.LogicFacade;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -22,7 +23,8 @@ public class GetInvoiceCommand extends Command {
         Construction construction = (Construction) session.getAttribute("construction");
         Customer customer = (Customer) session.getAttribute("customer");
         try {
-            logic.makeInvoice(customer, construction);
+            Invoice invoice = logic.makeInvoice(customer, construction);
+            session.setAttribute("invoice", invoice);
         } catch (IOException ex) {
             Logger.getLogger(GetInvoiceCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
