@@ -62,7 +62,8 @@ public class Invoice {
         pdfDoc.addNewPage(PageSize.A4);
         Document invoice = new Document(pdfDoc);
         ImageData data = ImageDataFactory.create("http://shop.johannesfog.dk/gfx/foglogok.png");//http://shop.johannesfog.dk/gfx/foglogok.png
-        Image image = new Image(data).setHeight(100).setWidth(100);
+        Image image = new Image(data).scale(0.5f, 0.5f);
+        image.setFixedPosition(PageSize.A4.getRight()-(image.getImageWidth()*0.5f), PageSize.A4.getHeight()-(image.getImageHeight()*0.5f));
         invoice.add(image);
         return invoice;
     }
@@ -101,7 +102,7 @@ public class Invoice {
         p1.add(phone);
         p1.add("\n");
         p1.add(zip);
-        invoice.add(p1).setFont(fontBold);
+        invoice.add(p1).setFont(fontBold).setTopMargin(PageSize.A4.getHeight());
         invoice.add(p2).setFont(font);
         invoice.add(p3).setFont(font);
         invoice.add(p4).setFont(font);
