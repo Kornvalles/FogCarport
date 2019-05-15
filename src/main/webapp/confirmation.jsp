@@ -40,15 +40,14 @@
                         <col width="250">
                         <col width="60">
                         <col width="60">
-                        <col width="80">
+                        <col width="70">
                         <col width="750">
 
                         <tr>
-                            <th style="text-align:left">Navn</th>
+                            <th style="text-align:left">Materiale</th>
                             <th style="text-align:left"></th>
                             <th style="text-align:center" colspan="2" >Antal</th>
-
-                            <th style="text-align:left"></th>
+                            <th style="text-align:left">Beskrivelse</th>
                         </tr>
                         </thead>
                         <tbody>
