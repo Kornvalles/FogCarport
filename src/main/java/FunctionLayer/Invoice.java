@@ -85,10 +85,10 @@ public class Invoice {
         Table materials = new Table(5);
         for (Material m : order.getMaterials()) {
             materials.addCell(m.getName());
-            //materials.addCell(m.getId);
+            materials.addCell(Integer.toString(m.getId()));
             materials.addCell(Integer.toString(m.getQty()));
             materials.addCell(m.getUnit());
-            //materials.addCell(m.getDescription);
+            materials.addCell(m.getDescription());
         }
         p2.add(materials);
         Text totalPrice = new Text(Double.toString(order.getTotalPrice()));
@@ -102,7 +102,7 @@ public class Invoice {
         p1.add(phone);
         p1.add("\n");
         p1.add(zip);
-        invoice.add(p1).setFont(fontBold).setTopMargin(PageSize.A4.getHeight());
+        invoice.add(p1).setFont(font);
         invoice.add(p2).setFont(font);
         invoice.add(p3).setFont(font);
         invoice.add(p4).setFont(font);
