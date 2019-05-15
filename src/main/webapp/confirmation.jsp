@@ -24,7 +24,7 @@
         </style>
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm">
                     <h1>Tak for din bestilling!</h1>
 
                     <p><%Customer customer = (Customer) session.getAttribute("customer");
@@ -41,7 +41,7 @@
                         <col width="60">
                         <col width="60">
                         <col width="80">
-                        <col width="200">
+                        <col width="400">
 
                         <tr>
                             <th style="text-align:left">Navn</th>
