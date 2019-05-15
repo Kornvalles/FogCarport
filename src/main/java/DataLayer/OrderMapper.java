@@ -64,4 +64,52 @@ public class OrderMapper {
             System.out.println(ex.getLocalizedMessage());
         }
     }
+
+    public static int getMaterialId(String name) throws FogException {
+        try {
+            String query = "SELECT materialID FROM `FogCarport`.`material` "
+                    + "WHERE `material`.`name` = '" + name + "';";
+
+            Connection con = Connector.connection();
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            int id = 0;
+
+            while (rs.next()) {
+                id = rs.getInt("materialID");
+            }
+            return id;
+            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return 0;
+        
+        
+    }
+
+    public static String getMaterialDescription(String name) throws FogException {
+        
+        try {
+            String query = "SELECT description FROM `FogCarport`.`material` "
+                    + "WHERE `material`.`name` = '" + name + "';";
+
+            Connection con = Connector.connection();
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            String desc = "";
+
+            while (rs.next()) {
+                desc = rs.getString("description");
+            }
+            return desc;
+            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return "";
+        
+    }
 }

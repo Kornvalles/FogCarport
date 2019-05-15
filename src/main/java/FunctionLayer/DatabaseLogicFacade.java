@@ -72,5 +72,15 @@ public class DatabaseLogicFacade implements LogicFacade {
     public void getEmployee(Employee employee) throws FogException, SQLException {
         UserMapper.getEmployee(employee);
     }
+
+    @Override
+    public int getMaterialId(String name) throws FogException, SQLException {
+        return OrderMapper.getMaterialId(name);
+    }
+
+    @Override
+    public String getMaterialDescription(String name) throws FogException, SQLException {
+        return OrderMapper.getMaterialDescription(name);
+    }
     
 }

@@ -46,6 +46,7 @@
 
                             <th style="text-align:center" colspan="2" >Antal</th>
                             <th style="text-align:left">Navn</th>
+                            <th style="text-align:left"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -54,6 +55,8 @@
                                 <td style="text-align:right"><%=m.getQty()%></td>
                                 <td style="text-align:left"><%=m.getUnit()%></td>
                                 <td style="text-align:left"><%=m.getName()%></td>
+                                <td style="text-align:left"><%=m.getDescription()%></td>
+                                <td style="text-align:left"><%=m.getId()%></td>
                             </tr>    
                             <%}%>
                         </tbody>

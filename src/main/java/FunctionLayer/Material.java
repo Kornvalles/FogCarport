@@ -2,8 +2,8 @@ package FunctionLayer;
 
 public class Material {
     
-    private int id;
     private String name;
+    private int id;
     private int qty;
     private String unit;
     private double price;
@@ -18,14 +18,23 @@ public class Material {
         this.totalprice = qty*price;
     }
 
+    public Material(String name, int id, int qty, String unit, double price, String description) {
+        this.name = name;
+        this.id = id;
+        this.qty = qty;
+        this.unit = unit;
+        this.price = price;
+        this.description = description;
+    }
+
+    public String getName() {
+        return name;
+    }
+    
     public int getId() {
         return id;
     }
     
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
