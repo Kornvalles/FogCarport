@@ -1,5 +1,6 @@
 package FunctionLayer;
 
+import com.itextpdf.layout.Document;
 import java.sql.SQLException;
 import java.io.IOException;
 
@@ -17,6 +18,6 @@ public interface LogicFacade {
     
     void getEmployee( Employee employee ) throws FogException, SQLException ;
     
-    Invoice makeInvoice( Customer customer, Construction costruction ) throws FogException, IOException ;
+    //Document makeInvoice( Customer customer, Construction costruction ) throws FogException, IOException ;
     
 }
