@@ -62,7 +62,7 @@ public class Invoice {
         pdfDoc.addNewPage(PageSize.A4);
         Document invoice = new Document(pdfDoc);
         ImageData data = ImageDataFactory.create("http://shop.johannesfog.dk/gfx/foglogok.png");//http://shop.johannesfog.dk/gfx/foglogok.png
-        Image image = new Image(data);
+        Image image = new Image(data).setHeight(100).setWidth(100);
         invoice.add(image);
         return invoice;
     }
@@ -81,11 +81,13 @@ public class Invoice {
         Text address = new Text(customer.getAddress());
         Text phone = new Text(Integer.toString(customer.getPhoneNumber()));
         Text zip = new Text(Integer.toString(customer.getZipcode()));
-        Table materials = new Table(2);
+        Table materials = new Table(5);
         for (Material m : order.getMaterials()) {
             materials.addCell(m.getName());
-//            p2.add(m.getName() + " : " + m.getQty());
-//            p2.add("\n");
+            //materials.addCell(m.getId);
+            materials.addCell(Integer.toString(m.getQty()));
+            materials.addCell(m.getUnit());
+            //materials.addCell(m.getDescription);
         }
         p2.add(materials);
         Text totalPrice = new Text(Double.toString(order.getTotalPrice()));
