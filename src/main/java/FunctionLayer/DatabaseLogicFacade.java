@@ -48,6 +48,14 @@ public class DatabaseLogicFacade implements LogicFacade {
         return OrderMapper.getMaterialPrice(name);
     }
     
+    /**
+     *
+     * @param customer
+     * @param costruction
+     * @return
+     * @throws FogException
+     * @throws IOException
+     */
     @Override
     public Invoice makeInvoice(Customer customer, Construction costruction) throws FogException, IOException {
         Invoice invoice = new Invoice(customer, costruction);
@@ -55,6 +63,12 @@ public class DatabaseLogicFacade implements LogicFacade {
         return invoice;
     }
     
+    /**
+     *
+     * @param employee
+     * @throws FogException
+     * @throws SQLException
+     */
     @Override
     public void getEmployee(Employee employee) throws FogException, SQLException {
         UserMapper.getEmployee(employee);

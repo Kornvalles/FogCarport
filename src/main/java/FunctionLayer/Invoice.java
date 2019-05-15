@@ -80,27 +80,30 @@ public class Invoice {
             PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
             Paragraph p1 = new Paragraph();
             Paragraph p2 = new Paragraph();
+            Paragraph p3 = new Paragraph();
             Text name = new Text(customer.getName());
             Text email = new Text(customer.getEmail());
             Text address = new Text(customer.getAddress());
-            //Text phone = new Text(customer.getPhoneNumber());
-            //Text zip = new Text(customer.getZipcode());
+            Text phone = new Text(Integer.toString(customer.getPhoneNumber()));
+            Text zip = new Text(Integer.toString(customer.getZipcode()));
+            for (Material m : order.getMaterials()) {
+                p2.add(m.getName() + " : " + m.getQty());
+                p2.add("\n");
+            }
+            Text totalPrice = new Text(Double.toString(order.getTotalPrice()));
+            p3.add(totalPrice);
             p1.add(name);
             p1.add("\n");
             p1.add(email);
             p1.add("\n");
             p1.add(address);
             p1.add("\n");
-            //p1.add(phone);
+            p1.add(phone);
             p1.add("\n");
-            //p1.add(zip);
-            p1.setFont(fontBold);
-            invoice.add(p1);
-            for (Material m : order.getMaterials()) {
-                p2.add(m.getName() + " : " + m.getQty());
-                p2.add("\n");
-            }
+            p1.add(zip);
+            invoice.add(p1).setFont(fontBold);
             invoice.add(p2).setFont(font);
+            invoice.add(p3).setFont(font);
             invoice.close();
         } catch (IOException ex) {
             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
