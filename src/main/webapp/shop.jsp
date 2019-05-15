@@ -90,7 +90,7 @@
                     </div>
                     <div class="form-group">
                         <label for="addressInput">Adresse</label>
-                        <p><input type="text" name="adresse" placeholder="Indtast din adresse" id="adresseInput" value="Test"></p>
+                        <p><input type="text" name="address" placeholder="Indtast din adresse" id="adresseInput" value="Test"></p>
                     </div>
                     <div class="form-group">
                         <label for="zipcodeInput">Postnummer</label>
@@ -98,7 +98,7 @@
                     </div>
                     <div class="form-group">
                         <label for="telInput">Telefon</label>
-                        <p><input type="tel" name="telephone" placeholder="Indtast tlf nr" id="telInput" value="1234 1234"></p>
+                        <p><input type="tel" name="telephone" pattern="[0-9]{8}" placeholder="Indtast tlf nr" id="telInput" value="12345678"></p>
                     </div>
                     <input type="submit" name="order" value="Bestil" onclick="return empty()">
                 </div>

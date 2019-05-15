@@ -37,7 +37,7 @@ public class CreateOrderCommand extends Command {
         String email = validate.validateString(request.getParameter("email"), "Email");
         String address = validate.validateString(request.getParameter("address"), "Adresse");
         int zip = validate.validateInteger(request.getParameter("zipcode"), "Postnummer");
-        int phone = validate.validateInteger(request.getParameter("phonenumber"), "Telefonnummer");
+        int phone = validate.validateInteger(request.getParameter("telephone"), "Telefonnummer");
 
         //Konveterer inputs som ikke skal være String.
         boolean toolShed = Boolean.parseBoolean(reqShed);
