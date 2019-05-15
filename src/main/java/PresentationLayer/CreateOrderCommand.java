@@ -10,10 +10,6 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author mikkel & benni & nicklas
- */
 public class CreateOrderCommand extends Command {
     
     @Override
