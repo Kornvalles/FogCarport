@@ -41,7 +41,7 @@
                         <col width="60">
                         <col width="60">
                         <col width="80">
-                        <col width="400">
+                        <col width="750">
 
                         <tr>
                             <th style="text-align:left">Navn</th>
