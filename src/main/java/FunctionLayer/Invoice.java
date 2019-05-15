@@ -11,7 +11,9 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.element.Text;
+import com.itextpdf.text.pdf.PdfPTable;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -67,20 +69,25 @@ public class Invoice {
 
     public static Document makeInvoice(Customer customer, Construction order, OutputStream dest) throws IOException {
         Document invoice = makeInvoiceTemplate(dest);
+        Manual manual = new Manual();
         PdfFont fontBold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
         PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
         Paragraph p1 = new Paragraph();
         Paragraph p2 = new Paragraph();
         Paragraph p3 = new Paragraph();
+        Paragraph p4 = new Paragraph(manual.toString());
         Text name = new Text(customer.getName());
         Text email = new Text(customer.getEmail());
         Text address = new Text(customer.getAddress());
         Text phone = new Text(Integer.toString(customer.getPhoneNumber()));
         Text zip = new Text(Integer.toString(customer.getZipcode()));
+        Table materials = new Table(2);
         for (Material m : order.getMaterials()) {
-            p2.add(m.getName() + " : " + m.getQty());
-            p2.add("\n");
+            materials.addCell(m.getName());
+//            p2.add(m.getName() + " : " + m.getQty());
+//            p2.add("\n");
         }
+        p2.add(materials);
         Text totalPrice = new Text(Double.toString(order.getTotalPrice()));
         p3.add(totalPrice);
         p1.add(name);
@@ -95,6 +102,7 @@ public class Invoice {
         invoice.add(p1).setFont(fontBold);
         invoice.add(p2).setFont(font);
         invoice.add(p3).setFont(font);
+        invoice.add(p4).setFont(font);
         invoice.close();
         return invoice;
     }

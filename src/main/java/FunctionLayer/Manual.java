@@ -2,16 +2,9 @@ package FunctionLayer;
 
 public class Manual {
 
-    private Invoice invoice;
-
-    public Manual(Invoice invoice) {
-        this.invoice = invoice;
+    public Manual() {
     }
 
-    public Invoice getInvoice() {
-        return invoice;
-    }
-    
     @Override
     public String toString() {
         return "Byggevejledning til carport\n\n"
