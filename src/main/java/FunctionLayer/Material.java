@@ -1,16 +1,14 @@
 package FunctionLayer;
 
-/**
- *
- * @author ibenk
- */
 public class Material {
     
+    private int id;
     private String name;
     private int qty;
     private String unit;
     private double price;
     private double totalprice;
+    private String description;
 
     public Material(String name, int qty, String unit, double price) {
         this.name = name;
@@ -20,6 +18,10 @@ public class Material {
         this.totalprice = qty*price;
     }
 
+    public int getId() {
+        return id;
+    }
+    
     public String getName() {
         return name;
     }
@@ -55,8 +57,10 @@ public class Material {
     public double getTotalprice() {
         return price*qty;
     }
-    
-    
+
+    public String getDescription() {
+        return description;
+    }
 
     @Override
     public String toString() {
