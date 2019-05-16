@@ -11,7 +11,7 @@ import java.sql.SQLException;
  *
  * @authors Iben, Christian, Benjamin, Nicklas, Mikkel
  */
-public abstract class DatabaseLogicFacade implements LogicFacade {
+public class DatabaseLogicFacade implements LogicFacade {
 
     /**
      *
