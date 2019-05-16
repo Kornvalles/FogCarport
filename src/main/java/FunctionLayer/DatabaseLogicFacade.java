@@ -11,7 +11,7 @@ import java.sql.SQLException;
  *
  * @authors Iben, Christian, Benjamin, Nicklas, Mikkel
  */
-public class DatabaseLogicFacade implements LogicFacade {
+public abstract class DatabaseLogicFacade implements LogicFacade {
 
     /**
      *
@@ -82,5 +82,4 @@ public class DatabaseLogicFacade implements LogicFacade {
     public Employee login(String username) throws FogException {
         return UserMapper.login(username);
     }
-    
 }
