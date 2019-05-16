@@ -8,6 +8,7 @@ package PresentationLayer;
 import FunctionLayer.Construction;
 import FunctionLayer.Customer;
 import FunctionLayer.Invoice;
+import FunctionLayer.SVGDraw;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -50,7 +51,7 @@ public class InvoiceServlet extends HttpServlet {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("ddMMyyyy");
         String dest = customer.getName().toLowerCase() + date.format(dateFormatter) + ".pdf";
         response.addHeader("filename", dest);
-        Invoice.makeInvoice(customer, construction, response.getOutputStream());
+        Invoice.makeInvoice(customer, construction, response.getOutputStream(), (SVGDraw) request.getAttribute("svg"));
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
