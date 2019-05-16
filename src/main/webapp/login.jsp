@@ -46,7 +46,7 @@
                                     <div class="form-group">
                                         <input type="password" class="form-control" name="password">
                                     </div>
-                                    <button type="submit" id="sendlogin" class="btn btn-primary" onclick="location.href = 'employeePage.jsp">login</button>
+                                    <button type="submit" id="sendlogin" class="btn btn-primary" >login</button>
                                 </form>
                             </div>
                         </div>

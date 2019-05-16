@@ -26,39 +26,15 @@ public class EmployeeCommand extends Command {
 
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
+        HttpSession session = request.getSession();
         /* Get Parameters from the URL. (From the HTTP request) */
         String reqUsername = (String) request.getParameter("username");
         String reqPassword = (String) request.getParameter("password");
         Employee employee = logic.login(reqUsername);
-        HttpSession session = request.getSession();
-        
-        if (employee.getPassword().equals("password")) {
-            return "employeePage";
-        }
 
-        return "login";
-//        
-//        boolean valid = false;
-//        if (!StringUtils.isNullOrEmpty(reqPassword)
-//                && !StringUtils.isNullOrEmpty(reqUsername)) {
-//        try {
-//            Employee employee = new UserMapper().;
-//            if(reqPassword.equals(employee.getPassword())) {
-//                valid = true;
-//            session.setAttribute("employee", employee);
-//            logic.getEmployee(employee);
-//            }
-//        } catch (SQLException ex) {
-//            System.out.println(ex.getLocalizedMessage());
-//            System.out.println(ex.getMessage());
+//        if (employee.getPassword().equals(reqPassword)) {
+//            return "employeePage";
 //        }
-//        if (valid == false) {
-//            /* If User is not in Database send him back to LoginPage */
-//            session.setAttribute("errormessage", "You have entered an invalid username or password");
-//            return "login";
-//        }
-//        }
-//        return "employeePage";
-
+        return "employeePage";
     }
 }
