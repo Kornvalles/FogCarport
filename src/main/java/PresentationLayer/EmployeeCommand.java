@@ -30,10 +30,11 @@ public class EmployeeCommand extends Command {
         /* Get Parameters from the URL. (From the HTTP request) */
         String reqUsername = (String) request.getParameter("username");
         String reqPassword = (String) request.getParameter("password");
-        Employee employee = logic.login(reqPassword);
+        Employee employee = logic.login(reqUsername, reqPassword);
         session.setAttribute("employee", employee);
 
-        if (!employee.getPassword().equals(reqPassword)) {
+        if (!employee.getPassword().equals(reqPassword) 
+           && employee.getUsername().equals(reqUsername)) {
             return "login";
         }
         return "employeePage";

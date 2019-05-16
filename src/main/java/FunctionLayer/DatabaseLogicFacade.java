@@ -78,8 +78,7 @@ public class DatabaseLogicFacade implements LogicFacade {
         return OrderMapper.getMaterialDescription(name);
     }
 
-    @Override
-    public Employee login(String username) throws FogException {
-        return UserMapper.login(username);
+    public Employee login(String username, String password) throws FogException {
+        return UserMapper.login(username, password);
     }
 }
