@@ -62,6 +62,16 @@ public class DatabaseLogicFacade implements LogicFacade {
 //        return invoice.makeInvoice(customer, costruction, );
 //    }
     
+    /**
+     *
+     * @param employee
+     * @throws FogException
+     * @throws SQLException
+     */
+    @Override
+    public void getEmployee(Employee employee) throws FogException, SQLException {
+        UserMapper.getEmployee(employee);
+    }
 
     @Override
     public int getMaterialId(String name) throws FogException, SQLException {
@@ -77,6 +87,5 @@ public class DatabaseLogicFacade implements LogicFacade {
     public Employee login(String username) throws FogException {
         return UserMapper.login(username);
     }
-
     
 }
