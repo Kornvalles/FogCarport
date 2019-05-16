@@ -69,10 +69,4 @@ public class HTMLSelect {
         
     }
     
-    public static void main(String[] args) {
-        HTMLSelect select = new HTMLSelect("width","300","210","240","270","300","330");
-        System.out.println(select);
-        HTMLSelect select2 = new HTMLSelect("width","300"," cm",240,540);
-        System.out.println(select2);
-    }
 }
