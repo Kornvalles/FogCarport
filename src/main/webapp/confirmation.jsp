@@ -3,6 +3,7 @@
     Created on : Apr 25, 2019, 12:14:20 PM
     Author     : ibenk
 --%>
+<%@page import="java.io.File"%>
 <%@page import="FunctionLayer.Invoice"%>
 <%@page import="FunctionLayer.SVGDraw"%>
 <%@page import="FunctionLayer.Customer"%>
@@ -87,7 +88,7 @@
                             out.println(svg.makePost(i, 0, construction.getCarport().getWidth() + 10, 10, "#a68064"));
                             //out.println(svg.makePost(construction.getCarport().getLength()-10, 0, construction.getCarport().getWidth()+10, 10, "#a68064"));
                         }
-
+                        session.setAttribute("svgText", "");
                     %>
                     </svg>
                 </div>

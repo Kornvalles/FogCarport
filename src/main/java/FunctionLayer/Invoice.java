@@ -13,15 +13,10 @@ import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.element.Text;
-import com.itextpdf.text.pdf.PdfPTable;
-import java.io.FileNotFoundException;
+import static com.itextpdf.svg.SvgTagConstants.SVG;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Invoice {
 
@@ -50,10 +45,6 @@ public class Invoice {
         return fileName;
     }
 
-    private void addHeader(PdfWriter writer) {
-
-    }
-
     private static Document makeInvoiceTemplate(OutputStream dest) throws MalformedURLException, IOException {
         PdfFont fontBold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
         PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
@@ -63,12 +54,12 @@ public class Invoice {
         Document invoice = new Document(pdfDoc);
         ImageData data = ImageDataFactory.create("http://shop.johannesfog.dk/gfx/foglogok.png");//http://shop.johannesfog.dk/gfx/foglogok.png
         Image image = new Image(data).scale(0.5f, 0.5f);
-        image.setFixedPosition(PageSize.A4.getRight()-(image.getImageWidth()*0.5f), PageSize.A4.getHeight()-(image.getImageHeight()*0.5f));
+        image.setFixedPosition(PageSize.A4.getRight() - (image.getImageWidth() * 0.5f), PageSize.A4.getHeight() - (image.getImageHeight() * 0.5f));
         invoice.add(image);
         return invoice;
     }
 
-    public static Document makeInvoice(Customer customer, Construction order, OutputStream dest) throws IOException {
+    public static Document makeInvoice(Customer customer, Construction order, OutputStream dest, SVGDraw svgDrawing) throws IOException {
         Document invoice = makeInvoiceTemplate(dest);
         Manual manual = new Manual();
         PdfFont fontBold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
