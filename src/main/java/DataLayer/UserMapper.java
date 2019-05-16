@@ -61,26 +61,46 @@ public class UserMapper {
         }
     }
 
-    public Employee getEmployee(String username) throws FogException, SQLException {
-        Employee employee = new Employee();
+//    public Employee getEmployee(String username) throws FogException, SQLException {
+//        Employee employee = new Employee();
+//        try {
+//            Connection con = Connector.connection();
+//            String SQL = "SELECT * FROM FogCarport.`emplyee` "
+//                    + "WHERE `username`='" + username + "';";
+//
+//            Statement stmt = con.createStatement();
+//            ResultSet rs = stmt.executeQuery(SQL);
+//
+//            while (rs.next()) {
+//                /* Password */
+//                String pass = rs.getString("password");
+//                employee.setPassword(pass);
+//            }
+//            employee.setUsername(username);
+//        } catch (SQLException ex) {
+//            System.out.println(ex.getSQLState());
+//            System.out.println(ex.getLocalizedMessage());
+//        }
+//        return employee;
+//    }
+    
+    public static Employee login(String username) throws FogException {
         try {
             Connection con = Connector.connection();
-            String SQL = "SELECT * FROM FogCarport.`emplyee` "
-                    + "WHERE `username`='" + username + "';";
-
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(SQL);
-
-            while (rs.next()) {
-                /* Password */
-                String pass = rs.getString("password");
-                employee.setPassword(pass);
+            String SQL = "SELECT name FROM employee "
+                    + "WHERE name=? AND password=?";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String password = rs.getString("password");
+                Employee employee = new Employee(username, password);
+                return employee;
+            } else {
+                throw new FogException("Could not validate user");
             }
-            employee.setUsername(username);
         } catch (SQLException ex) {
-            System.out.println(ex.getSQLState());
-            System.out.println(ex.getLocalizedMessage());
+            throw new FogException(ex.getMessage());
         }
-        return employee;
     }
 }

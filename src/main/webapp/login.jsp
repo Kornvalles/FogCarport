@@ -54,5 +54,12 @@
                 </div>
             </div>
         </div>
+        <div class="col-sm-6">
+            <%
+                if (request.getAttribute("error") != null) {
+                    out.print(request.getAttribute("error"));
+                }
+            %>
+        </div>
     </body>
 </html>
