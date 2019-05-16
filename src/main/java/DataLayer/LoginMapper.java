@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PresentationLayer;
+package DataLayer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,13 +11,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import FunctionLayer.Employee;
 import FunctionLayer.FogException;
-import DataLayer.Connector;
 
 /**
  *
  * @author benjaminbajrami
  */
-public class login {
+public class LoginMapper {
+    
     public static Employee login(String username, String password) throws FogException {
         try {
             Connection con = Connector.connection();
@@ -31,7 +31,7 @@ public class login {
                 Employee emp = new Employee(username, password);
                 return emp;
             } else {
-                throw new FogException("Could not validate user");
+                throw new FogException("Could not find user");
             }
         } catch (SQLException ex) {
             throw new FogException(ex.getMessage());
