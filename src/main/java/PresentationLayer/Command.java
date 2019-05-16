@@ -12,7 +12,7 @@ abstract class Command {
     private static void initCommands() {
         commands = new HashMap<>();
         commands.put( "CreateOrder", new CreateOrderCommand() );
-        commands.put( "order", new OrderCarportCommand());
+        commands.put( "order", new SortimentCommand());
         commands.put( "invoice", new GetInvoiceCommand());
         commands.put( "Employee", new EmployeeCommand());
     }

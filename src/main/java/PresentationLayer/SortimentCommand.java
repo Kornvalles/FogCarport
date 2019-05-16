@@ -4,7 +4,7 @@ import FunctionLayer.FogException;
 import FunctionLayer.LogicFacade;
 import javax.servlet.http.HttpServletRequest;
 
-public class OrderCarportCommand extends Command {
+public class SortimentCommand extends Command {
 
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
