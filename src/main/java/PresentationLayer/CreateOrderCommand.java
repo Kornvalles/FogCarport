@@ -7,10 +7,15 @@ import FunctionLayer.Customer;
 import FunctionLayer.FogException;
 import FunctionLayer.LogicFacade;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 public class CreateOrderCommand extends Command {
+    
+    /* Creating a Logger to log from catch clause when creating order */
+    private static final Logger logger = Logger.getLogger(CreateOrderCommand.class.getName());
     
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
@@ -55,8 +60,9 @@ public class CreateOrderCommand extends Command {
             session.setAttribute("customer", customer);
             logic.addCustomer(customer);
             logic.createOrder(carport, customer);
-        } catch (SQLException ex) {
-            throw new FogException(ex.getMessage());
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error creating a carport order.", e);
+            throw new FogException(e.getMessage());
         }
 
         //Sender en String tilbage til Frontcontrolleren om hvilken jsp side vi skal omdirigeres til.
