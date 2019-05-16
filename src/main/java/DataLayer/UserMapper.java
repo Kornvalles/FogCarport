@@ -38,16 +38,16 @@ public class UserMapper {
         }
     }
     
-    public static Employee login(String username) throws FogException {
+    public static Employee login(String password) throws FogException {
         try {
             Connection con = Connector.connection();
             String SQL = "SELECT name FROM employee "
-                    + "WHERE name=? AND password=?";
+                    + "WHERE password=?";
             PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setString(1, username);
+            ps.setString(1, password);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                String password = rs.getString("password");
+                String username = rs.getString("name");
                 Employee employee = new Employee(username, password);
                 return employee;
             } else {
