@@ -1,16 +1,8 @@
 package PresentationLayer;
 
-import FunctionLayer.Construction;
-import FunctionLayer.Customer;
 import FunctionLayer.FogException;
-import FunctionLayer.Invoice;
 import FunctionLayer.LogicFacade;
-import com.itextpdf.layout.Document;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 /**
  *
