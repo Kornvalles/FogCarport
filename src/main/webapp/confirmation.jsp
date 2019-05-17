@@ -3,9 +3,10 @@
     Created on : Apr 25, 2019, 12:14:20 PM
     Author     : ibenk
 --%>
+<%@page import="FunctionLayer.SVGText"%>
+<%@page import="FunctionLayer.SVGRectangle"%>
 <%@page import="java.io.File"%>
 <%@page import="FunctionLayer.Invoice"%>
-<%@page import="FunctionLayer.SVGDraw"%>
 <%@page import="FunctionLayer.Customer"%>
 <%@page import="FunctionLayer.Construction"%>
 <%@page import="FunctionLayer.Material"%>
@@ -76,21 +77,30 @@
 
                     <p>SVGCarport <%= construction.getCarport().getLength()%> cm lang og <%= construction.getCarport().getWidth()%> cm bred</p>
 
-                    <svg height="3000" width="4000" viewBox="0 0 <%construction.getCarport().getWidth();%> <%construction.getCarport().getLength();%>">
-
-                    <%
-                        SVGDraw svg = new SVGDraw();
-
-                        out.println(svg.makePost(0, 0, 10, construction.getCarport().getLength(), "#C0C0C0"));
-                        out.println(svg.makePost(0, construction.getCarport().getWidth(), 10, construction.getCarport().getLength(), "#C0C0C0"));
-
-                        for (int i = 0; i <= construction.getCarport().getLength(); i += 31) {
-                            out.println(svg.makePost(i, 0, construction.getCarport().getWidth() + 10, 10, "#a68064"));
-                            //out.println(svg.makePost(construction.getCarport().getLength()-10, 0, construction.getCarport().getWidth()+10, 10, "#a68064"));
+                    <!-- SVG-drawing for a longside on a carport (Not done yet)  -->
+                    <svg width="1000" height="400" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+                    <%  /* Making the posts on the longside */
+                        for (int i = 50; i <= construction.getCarport().getLength(); i = i + 100) {
+                            SVGRectangle posts = new SVGRectangle("230", "1", "10", String.valueOf(i), "25");
+                            out.println(posts.toString());
                         }
-                        session.setAttribute("svgText", "");
+
+                        /* Making the walls of the longside with wooden boards */
+                        for (int i = 55; i <= construction.getCarport().getLength(); i = i + 100) {
+                            for (int j = 25; j < 255; j = j + 10) {
+                                SVGRectangle boards = new SVGRectangle("10", "0.25", "100", String.valueOf(i), String.valueOf(j));
+                                out.println(boards.toString());
+                            }
+                        }
+
+                        SVGText text = new SVGText("100", "280", "100 cm");
+                        out.println(text.toString());
+
                     %>
                     </svg>
+                    
+                    
+                    
                 </div>
             </div>
         </div>
