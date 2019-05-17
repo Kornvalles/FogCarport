@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DataLayer;
+package TestDataLayer;
 
+import DataLayer.OrderMapper;
 import FunctionLayer.Carport;
 import FunctionLayer.Customer;
 import org.junit.After;
