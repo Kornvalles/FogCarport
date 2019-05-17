@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet( name = "FrontController", urlPatterns = { "/FrontController" } )
 public class FrontController extends HttpServlet {
 
-    private LogicFacade logic = new DatabaseLogicFacade();
+    private final LogicFacade logic = new DatabaseLogicFacade();
     
     /**
      Processes requests for both HTTP <code>GET</code> and <code>POST</code>
