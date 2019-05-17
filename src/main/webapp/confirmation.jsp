@@ -79,17 +79,42 @@
 
                     <!-- SVG-drawing for a longside on a carport (Not done yet)  -->
                     <svg width="1000" height="400" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-                    <%  /* Making the posts on the longside */
-                        for (int i = 50; i <= construction.getCarport().getLength(); i = i + 100) {
-                            SVGRectangle posts = new SVGRectangle("230", "1", "10", String.valueOf(i), "25");
+                    <%  int length = construction.getCarport().getLength();
+                        int heigth = 230;
+                        int boardLength = 100;
+                        int start = 0;
+
+                        /* Making the posts on the longside */
+                        for (int i = start; i < length; i = i + boardLength) {
+                            SVGRectangle posts = new SVGRectangle(String.valueOf(heigth), "1", "10", String.valueOf(i), "0");
                             out.println(posts.toString());
                         }
 
-                        /* Making the walls of the longside with wooden boards */
-                        for (int i = 55; i <= construction.getCarport().getLength(); i = i + 100) {
-                            for (int j = 25; j < 255; j = j + 10) {
-                                SVGRectangle boards = new SVGRectangle("10", "0.25", "100", String.valueOf(i), String.valueOf(j));
-                                out.println(boards.toString());
+                        /* In case that the length is not dividable with 100 (boardLength), then you need to make an extra post in the end */
+                        if (length % boardLength !=100) {
+                            SVGRectangle lastPost = new SVGRectangle(String.valueOf(heigth), "1", "10", String.valueOf(length), "0");
+                            out.println(lastPost.toString());
+                        }
+
+                        /* Making the walls of the longside with wooden boards
+                        - the method stops making whole boards, when the rest of the length is less than 100 (the length of 1 board) */
+                        for (int i = start + 5; i <= length; i = i + boardLength) {
+                            for (int j = 0; j < heigth; j = j + 10) {
+                                SVGRectangle boards = new SVGRectangle("10", "0.20", String.valueOf(boardLength), String.valueOf(i), String.valueOf(j));
+                                if (length % boardLength != 0) {
+
+                                    /* In case that the placing of the last board and 1 whole board is longer than the full length
+                                    - place a shorter board */
+                                    if ((i + boardLength) > length) {
+                                        SVGRectangle lastBoard = new SVGRectangle("10", "0.20", String.valueOf(length % boardLength), String.valueOf(length - (length % boardLength) + 5), String.valueOf(j));
+                                        out.println(lastBoard.toString());
+                                    } else {
+                                        out.println(boards.toString());
+                                    }
+
+                                } else {
+                                    out.println(boards.toString());
+                                }
                             }
                         }
 
@@ -98,9 +123,9 @@
 
                     %>
                     </svg>
-                    
-                    
-                    
+
+
+
                 </div>
             </div>
         </div>
