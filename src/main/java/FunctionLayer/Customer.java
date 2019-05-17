@@ -2,10 +2,6 @@ package FunctionLayer;
 
 import java.util.Objects;
 
-/**
- *
- * @author mikkel
- */
 public class Customer {
     
     private int id;
@@ -76,34 +72,4 @@ public class Customer {
         return "Customer{" + "id=" + id + ", name=" + name + ", email=" + email + ", address=" + address + ", zipcode=" + zipcode + ", phoneNumber=" + phoneNumber + '}';
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Customer other = (Customer) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (!Objects.equals(this.email, other.email)) {
-            return false;
-        }
-        if (!Objects.equals(this.phoneNumber, other.phoneNumber)) {
-            return false;
-        }
-        return true;
-    }
-    
 }
