@@ -35,6 +35,13 @@ public class Invoice {
         return order;
     }
 
+    /**
+     * 
+     * @param dest
+     * @return
+     * @throws MalformedURLException
+     * @throws IOException 
+     */
     private static Document makeInvoiceTemplate(OutputStream dest) throws MalformedURLException, IOException {
         PdfWriter writer = new PdfWriter(dest);
         PdfDocument pdfDoc = new PdfDocument(writer);
@@ -47,6 +54,14 @@ public class Invoice {
         return invoice;
     }
 
+    /**
+     *
+     * @param customer
+     * @param order
+     * @param dest
+     * @return
+     * @throws IOException
+     */
     public static Document makeInvoice(Customer customer, Construction order, OutputStream dest) throws IOException {
         Document invoice = makeInvoiceTemplate(dest);
         Manual manual = new Manual();
