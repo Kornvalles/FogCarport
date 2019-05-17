@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DataLayer;
+package TestDataLayer;
 
 import FunctionLayer.Customer;
 import FunctionLayer.Employee;
@@ -14,6 +14,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import DataLayer.Connector;
+import DataLayer.UserMapper;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
