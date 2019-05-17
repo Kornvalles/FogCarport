@@ -85,7 +85,7 @@
                         int start = 0;
 
                         /* Making the posts on the longside */
-                        for (int i = start; i < length; i .= i + boardLength) {
+                        for (int i = start; i < length; i = i + boardLength) {
                             SVGRectangle posts = new SVGRectangle(String.valueOf(heigth), "1", "10", String.valueOf(i), "0");
                             out.println(posts.toString());
                         }
