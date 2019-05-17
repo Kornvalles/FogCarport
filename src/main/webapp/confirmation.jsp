@@ -79,22 +79,26 @@
 
                     <!-- SVG-drawing for a longside on a carport (Not done yet)  -->
                     <svg width="1000" height="400" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-                    <%  /* Making the posts on the longside */
-                        int length = construction.getCarport().getLength();
+                    <%  int length = construction.getCarport().getLength();
                         int heigth = 230;
                         int boardLength = 100;
                         int start = 0;
 
-                        for (int i = start; i <= length; i = i + boardLength) {
+                        /* Making the posts on the longside */
+                        for (int i = start; i < length; i = i + boardLength) {
                             SVGRectangle posts = new SVGRectangle(String.valueOf(heigth), "1", "10", String.valueOf(i), "0");
                             out.println(posts.toString());
                         }
-                        SVGRectangle lastPost = new SVGRectangle(String.valueOf(heigth), "1", "10", String.valueOf(length), "0");
-                        out.println(lastPost.toString());
+
+                        /* In case that the length is not dividable with 100 (boardLength), then you need to make an extra post in the end */
+                        if (length % boardLength !=100) {
+                            SVGRectangle lastPost = new SVGRectangle(String.valueOf(heigth), "1", "10", String.valueOf(length), "0");
+                            out.println(lastPost.toString());
+                        }
 
                         /* Making the walls of the longside with wooden boards
                         - the method stops making whole boards, when the rest of the length is less than 100 (the length of 1 board) */
-                        for (int i = start + 5; i <= length + 5; i = i + boardLength) {
+                        for (int i = start + 5; i <= length; i = i + boardLength) {
                             for (int j = 0; j < heigth; j = j + 10) {
                                 SVGRectangle boards = new SVGRectangle("10", "0.20", String.valueOf(boardLength), String.valueOf(i), String.valueOf(j));
                                 if (length % boardLength != 0) {
