@@ -4,15 +4,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author iben
- */
 public class Calculator {
 
     /**
      * This method returns the number of posts needed to make the input carport.
      * Calculates for 1 longside, multiplies in the end and adds backside.
+     *
+     * @param carport
+     * @return
      */
     public static int getAllPosts(Carport carport) {
         /* One side of the carport automatically has 1 post at each end */
@@ -24,6 +23,9 @@ public class Calculator {
     /**
      * This method returns the number of posts on 1 longside of the input
      * carport.
+     *
+     * @param carport
+     * @return
      */
     public static int getPostsOnLongside(Carport carport) {
         /* Dividing by 100 gives the number of spaces, by substracting 1 you get
@@ -38,6 +40,9 @@ public class Calculator {
     /**
      * This method returns the number of posts on 1 backside of the input
      * carport.
+     *
+     * @param carport
+     * @return
      */
     public static int getPostsOnBackside(Carport carport) {
         /* Dividing by 100 gives the number of spaces, by substracting 1 you get
@@ -53,6 +58,9 @@ public class Calculator {
      * This method returns the number of wooden boards needed to make the roof
      * of the input carport. For each post on 1 side there has to be on wooden
      * board across the roof.
+     *
+     * @param carport
+     * @return
      */
     public static int getRoof(Carport carport) {
 
@@ -96,6 +104,12 @@ public class Calculator {
      * At the roof input1 is the length and input2 is the width -- At the two
      * sides input1 is the length and input2 is the height -- At the backside
      * input1 is the width and input2 is the height
+     *
+     * @param input1
+     * @param input2
+     * @param materialLength
+     * @param materialWidth
+     * @return
      */
     public static int calcMaterial(int input1, int input2, int materialLength, int materialWidth) {
         int totalMaterial;
@@ -127,6 +141,9 @@ public class Calculator {
     /**
      * This method returns the number of wooden boards needed to make all sides
      * of the input carport.
+     *
+     * @param carport
+     * @return
      */
     public static int getSides(Carport carport) {
 
@@ -142,6 +159,9 @@ public class Calculator {
      * This method either returns all sides of a shed if the carport doesnt have
      * wall or the remaining of a shed if the carport do have walls, or returns
      * nothing if the carport is without one.
+     *
+     * @param carport
+     * @return
      */
     public static int makeShed(Carport carport) {
         /**
@@ -176,6 +196,9 @@ public class Calculator {
      * This method returns the number of centimeters in wooden battens needed
      * across the roof. We put the battens where the posts is on the longside of
      * the carport.
+     *
+     * @param carport
+     * @return
      */
     public static int getRoofBattens(Carport carport) {
         return getPostsOnLongside(carport) * carport.getWidth();
@@ -184,6 +207,9 @@ public class Calculator {
     /**
      * This method returns the number of centimeters in wooden battens needed
      * along the 2 sides of the roof.
+     *
+     * @param carport
+     * @return
      */
     public static int getSideBattens(Carport carport) {
         return 2 * carport.getLength();
@@ -191,8 +217,12 @@ public class Calculator {
 
     /**
      * This method returns the number of screws needed for 1 wooden board.
+     *
+     * @param carport
+     * @return
      */
     public static int getScrews(Carport carport) {
+
         double totalScrewPacks = 0;
         double screwsOnSides = Math.ceil(getSides(carport) * 6);
 
@@ -208,23 +238,28 @@ public class Calculator {
 
     /**
      * This method returns a list of all material needed for the input carport.
+     * @param carport
+     * @param logic
+     * @return 
+     * @throws FunctionLayer.FogException
+     * @throws java.sql.SQLException
      */
     public static Construction constructCarport(Carport carport, LogicFacade logic) throws FogException, SQLException {
         List<Material> material = new ArrayList<>();
 
         /* Get name and price from sql database */
         Material post = new Material("stolpe(r)", logic.getMaterialId("stolpe(r)"), getAllPosts(carport), "stk", logic.getMaterialPrice("stolpe(r)"), logic.getMaterialDescription("stolpe(r)"));
-        Material wood = new Material("planke(r) 10x100cm", logic.getMaterialId("planke(r) 10x100cm") ,getSides(carport), "stk", logic.getMaterialPrice("planke(r) 10x100cm"), logic.getMaterialDescription("planke(r) 10x100cm"));
-        Material shedWood = new Material("planke(r) 10x100cm (skur)", logic.getMaterialId("planke(r) 10x100cm") ,makeShed(carport), "stk", logic.getMaterialPrice("planke(r) 10x100cm"), logic.getMaterialDescription("planke(r) 10x100cm")); // virker ikke endnu.
+        Material wood = new Material("planke(r) 10x100cm", logic.getMaterialId("planke(r) 10x100cm"), getSides(carport), "stk", logic.getMaterialPrice("planke(r) 10x100cm"), logic.getMaterialDescription("planke(r) 10x100cm"));
+        Material shedWood = new Material("planke(r) 10x100cm (skur)", logic.getMaterialId("planke(r) 10x100cm"), makeShed(carport), "stk", logic.getMaterialPrice("planke(r) 10x100cm"), logic.getMaterialDescription("planke(r) 10x100cm")); // virker ikke endnu.
         Material noShed = new Material("planke(r) 10x100cm (skur)", logic.getMaterialId("planke(r) 10x100cm"), 0, "stk", logic.getMaterialPrice("planke(r) 10x100cm"), logic.getMaterialDescription("planke(r) 10x100cm"));
-        Material roofBatten = new Material("taglaegte(r)", logic.getMaterialId("taglaegte(r)") , getRoofBattens(carport) / 100, "m", logic.getMaterialPrice("taglaegte(r)"), logic.getMaterialDescription("taglaegte(r)"));
-        Material sideBatten = new Material("sidelaegte(r)", logic.getMaterialId("sidelaegte(r)") , getSideBattens(carport) / 100, "m", logic.getMaterialPrice("sidelaegte(r)"), logic.getMaterialDescription("sidelaegte(r)"));
-        Material screw = new Material("skruer 200 stk", logic.getMaterialId("skruer 200 stk") ,getScrews(carport), "pakker", logic.getMaterialPrice("skruer 200 stk"), logic.getMaterialDescription("skruer 200 stk"));
-        Material roofTile = new Material("tagsten", logic.getMaterialId("tagsten") ,getRoof(carport), "stk", logic.getMaterialPrice("tagsten"), logic.getMaterialDescription("tagsten"));
-        Material pvcRoofSheet = new Material("tagplade(r)", logic.getMaterialId("tagplade(r)") ,getRoof(carport), "stk", logic.getMaterialPrice("tagplade(r)"), logic.getMaterialDescription("tagplade(r)"));
+        Material roofBatten = new Material("taglaegte(r)", logic.getMaterialId("taglaegte(r)"), getRoofBattens(carport) / 100, "m", logic.getMaterialPrice("taglaegte(r)"), logic.getMaterialDescription("taglaegte(r)"));
+        Material sideBatten = new Material("sidelaegte(r)", logic.getMaterialId("sidelaegte(r)"), getSideBattens(carport) / 100, "m", logic.getMaterialPrice("sidelaegte(r)"), logic.getMaterialDescription("sidelaegte(r)"));
+        Material screw = new Material("skruer 200 stk", logic.getMaterialId("skruer 200 stk"), getScrews(carport), "pakker", logic.getMaterialPrice("skruer 200 stk"), logic.getMaterialDescription("skruer 200 stk"));
+        Material roofTile = new Material("tagsten", logic.getMaterialId("tagsten"), getRoof(carport), "stk", logic.getMaterialPrice("tagsten"), logic.getMaterialDescription("tagsten"));
+        Material pvcRoofSheet = new Material("tagplade(r)", logic.getMaterialId("tagplade(r)"), getRoof(carport), "stk", logic.getMaterialPrice("tagplade(r)"), logic.getMaterialDescription("tagplade(r)"));
 
         material.add(post);
-        if(carport.hasWall()){
+        if (carport.hasWall()) {
             material.add(wood);
         }
         material.add(roofBatten);

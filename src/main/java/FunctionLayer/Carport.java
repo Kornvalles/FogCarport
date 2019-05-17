@@ -72,15 +72,15 @@ public class Carport {
 
     @Override
     public String toString() {
-        return "Carport{" + "height=" + height 
-                + ", length=" + length 
-                + ", width=" + width 
-                + ", toolshed=" + toolshed 
-                + ", pointyRoof=" + pointyRoof 
-                + ", roofType=" + roofType 
-                + ", roofAngle=" + roofAngle 
-                + ", wall=" + wall 
-                + ", details=" + details + '}';
+        return "Carport:" + " height= " + height 
+                         + ", length= " + length 
+                         + ", width= " + width 
+                         + ", toolshed= " + toolshed 
+                         + ", pointyRoof= " + pointyRoof 
+                         + ", roofType= " + roofType 
+                         + ", roofAngle= " + roofAngle 
+                         + ", wall= " + wall 
+                         + ", details= " + details;
     }
     
     

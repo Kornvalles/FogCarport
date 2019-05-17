@@ -6,11 +6,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-/**
- * The purpose of Connector is to...
- *
- * @authors Iben, Christian, Benjamin, Nicklas, Mikkel
- */
 public class Connector {
 
     //Constants
