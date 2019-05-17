@@ -13,7 +13,6 @@ import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.element.Text;
-import static com.itextpdf.svg.SvgTagConstants.SVG;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
@@ -22,7 +21,6 @@ public class Invoice {
 
     private final Customer customer;
     private final Construction order;
-    private String fileName;
 
     public Invoice(Customer customer, Construction order) {
         this.customer = customer;
@@ -37,17 +35,7 @@ public class Invoice {
         return order;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
-
-    public String getFileName() {
-        return fileName;
-    }
-
     private static Document makeInvoiceTemplate(OutputStream dest) throws MalformedURLException, IOException {
-        PdfFont fontBold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
-        PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
         PdfWriter writer = new PdfWriter(dest);
         PdfDocument pdfDoc = new PdfDocument(writer);
         pdfDoc.addNewPage(PageSize.A4);
@@ -59,11 +47,12 @@ public class Invoice {
         return invoice;
     }
 
-    public static Document makeInvoice(Customer customer, Construction order, OutputStream dest, SVGDraw svgDrawing) throws IOException {
+    public static Document makeInvoice(Customer customer, Construction order, OutputStream dest) throws IOException {
         Document invoice = makeInvoiceTemplate(dest);
         Manual manual = new Manual();
         PdfFont fontBold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
         PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
+        PdfFont fontClear = PdfFontFactory.createFont(StandardFonts.HELVETICA);
         Paragraph p1 = new Paragraph();
         Paragraph p2 = new Paragraph();
         Paragraph p3 = new Paragraph();
@@ -73,7 +62,9 @@ public class Invoice {
         Text address = new Text(customer.getAddress());
         Text phone = new Text(Integer.toString(customer.getPhoneNumber()));
         Text zip = new Text(Integer.toString(customer.getZipcode()));
-        Table materials = new Table(5);
+        Table materials = new Table(5).useAllAvailableWidth();
+        materials.startNewRow().addCell("Materialeliste");
+        materials.startNewRow();
         for (Material m : order.getMaterials()) {
             materials.addCell(m.getName());
             materials.addCell(Integer.toString(m.getId()));
@@ -81,8 +72,15 @@ public class Invoice {
             materials.addCell(m.getUnit());
             materials.addCell(m.getDescription());
         }
+        materials.setAutoLayout();
         p2.add(materials);
-        Text totalPrice = new Text(Double.toString(order.getTotalPrice()));
+        Text totalPriceWithotVAT = new Text(String.format("%.2f",order.getTotalPrice()));
+        Text VAT = new Text(String.format("%.2f",order.getTotalPrice()*0.25)).setOpacity(0.6f);
+        Text totalPrice = new Text(String.format("%.2f",order.getTotalPrice()*1.25));
+        p3.add(" "+totalPriceWithotVAT);
+        p3.add("\n");
+        p3.add(VAT);
+        p3.add("\n");
         p3.add(totalPrice);
         p1.add(name);
         p1.add("\n");
