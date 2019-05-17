@@ -112,4 +112,25 @@ public class OrderMapper {
         return "";
         
     }
+    public static double getCostPrice(String name) throws FogException {
+        try {
+            String query = "SELECT costPrice FROM `FogCarport`.`material` "
+                    + "WHERE `material`.`name` = '" + name + "';";
+
+            Connection con = Connector.connection();
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            double price = 0;
+
+            while (rs.next()) {
+                price = rs.getDouble("costPrice");
+            }
+            return price;
+            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return 0;
+    }
 }
