@@ -29,6 +29,6 @@ public class SVGText {
                 + "\">"
                 + text
                 + "</text>";
-
     }
+    
 }
