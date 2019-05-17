@@ -98,7 +98,7 @@
 
                         /* Making the walls of the longside with wooden boards
                         - the method stops making whole boards, when the rest of the length is less than 100 (the length of 1 board) */
-                        for (int i = start + 5; i <= length; i = i + boardLength) {
+                        for (int i = start + 5; i < length + 5; i = i + boardLength) {
                             for (int j = 0; j < heigth; j = j + 10) {
                                 SVGRectangle boards = new SVGRectangle("10", "0.20", String.valueOf(boardLength), String.valueOf(i), String.valueOf(j));
                                 if (length % boardLength != 0) {
