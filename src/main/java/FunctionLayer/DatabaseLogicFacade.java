@@ -2,15 +2,8 @@ package FunctionLayer;
 
 import DataLayer.OrderMapper;
 import DataLayer.UserMapper;
-import com.itextpdf.layout.Document;
-import java.io.IOException;
 import java.sql.SQLException;
 
-/**
- * The purpose of LogicFacade is to...
- *
- * @authors Iben, Christian, Benjamin, Nicklas, Mikkel
- */
 public class DatabaseLogicFacade implements LogicFacade {
 
     /**
