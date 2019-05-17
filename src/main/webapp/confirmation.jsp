@@ -77,6 +77,7 @@
 
                     <p>SVGCarport <%= construction.getCarport().getLength()%> cm lang og <%= construction.getCarport().getWidth()%> cm bred</p>
 
+                    <!-- SVG-drawing for a longside on a carport (Not done yet)  -->
                     <svg width="1000" height="400" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
                     <%  /* Making the posts on the longside */
                         for (int i = 50; i <= construction.getCarport().getLength(); i = i + 100) {
@@ -97,6 +98,9 @@
 
                     %>
                     </svg>
+                    
+                    
+                    
                 </div>
             </div>
         </div>
