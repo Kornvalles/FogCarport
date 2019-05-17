@@ -85,7 +85,7 @@
                         int start = 0;
 
                         /* Making the posts on the longside */
-                        for (int i = start; i < length; i .= i + boardLength) {
+                        for (int i = start; i < length; i = i + boardLength) {
                             SVGRectangle posts = new SVGRectangle(String.valueOf(heigth), "1", "10", String.valueOf(i), "0");
                             out.println(posts.toString());
                         }
@@ -98,7 +98,8 @@
 
                         /* Making the walls of the longside with wooden boards.
                         - The method stops making whole boards, when the rest of the length is less than 100 (the length of 1 board).
-                        - Every index is 1 whole row of wooden boards from top to bottom. */
+                        - Every index(i) is 1 whole column of wooden boards from top to bottom. 
+                        - Every index(j) is 1 board in the index(i)-column. */
                         for (int i = start + 5; i < length + 5; i = i + boardLength) {
                             for (int j = 0; j < heigth; j = j + 10) {
                                 SVGRectangle boards = new SVGRectangle("10", "0.20", String.valueOf(boardLength), String.valueOf(i), String.valueOf(j));
