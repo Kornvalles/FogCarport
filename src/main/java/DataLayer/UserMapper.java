@@ -41,8 +41,8 @@ public class UserMapper {
     public static Employee login(String username, String password) throws FogException {
         try {
             Connection con = Connector.connection();
-            String SQL = "SELECT id FROM employee "
-                    + "WHERE name=? password=?";
+            String SQL = "SELECT id FROM `FogCarport`.`employee` "
+                    + "WHERE name=? AND password=?";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setString(1, username);
             ps.setString(2, password);
