@@ -85,26 +85,29 @@
                         int start = 0;
 
                         /* Making the posts on the longside */
-                        for (int i = start; i < length; i = i + boardLength) {
+                        for (int i = start; i < length; i .= i + boardLength) {
                             SVGRectangle posts = new SVGRectangle(String.valueOf(heigth), "1", "10", String.valueOf(i), "0");
                             out.println(posts.toString());
                         }
 
-                        /* In case that the length is not dividable with 100 (boardLength), then you need to make an extra post in the end */
-                        if (length % boardLength !=100) {
+                        /* In case that the length is not dividable with 100 (boardLength), then you need to make an extra post in the end. */
+                        if (length % boardLength != 100) {
                             SVGRectangle lastPost = new SVGRectangle(String.valueOf(heigth), "1", "10", String.valueOf(length), "0");
                             out.println(lastPost.toString());
                         }
 
-                        /* Making the walls of the longside with wooden boards
-                        - the method stops making whole boards, when the rest of the length is less than 100 (the length of 1 board) */
+                        /* Making the walls of the longside with wooden boards.
+                        - The method stops making whole boards, when the rest of the length is less than 100 (the length of 1 board).
+                        - Every index is 1 whole row of wooden boards from top to bottom. */
                         for (int i = start + 5; i < length + 5; i = i + boardLength) {
                             for (int j = 0; j < heigth; j = j + 10) {
                                 SVGRectangle boards = new SVGRectangle("10", "0.20", String.valueOf(boardLength), String.valueOf(i), String.valueOf(j));
+
+                                /* In case the length of the carport is not dividable with 100 (the length of 1 board). */
                                 if (length % boardLength != 0) {
 
-                                    /* In case that the placing of the last board and 1 whole board is longer than the full length
-                                    - place a shorter board */
+                                    /* In case that the placing of the last board and 1 whole board is longer than the full length.
+                                    - It places a shorter board in the end. */
                                     if ((i + boardLength) > length) {
                                         SVGRectangle lastBoard = new SVGRectangle("10", "0.20", String.valueOf(length % boardLength), String.valueOf(length - (length % boardLength) + 5), String.valueOf(j));
                                         out.println(lastBoard.toString());
@@ -112,6 +115,7 @@
                                         out.println(boards.toString());
                                     }
 
+                                    /* In case the length is dividable with 100 (the length of 1 board). */
                                 } else {
                                     out.println(boards.toString());
                                 }
