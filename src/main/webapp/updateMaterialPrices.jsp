@@ -17,6 +17,7 @@
     </head>
     <body>
         <form method="POST" action="FrontController">
+            <input type="hidden" name="command" value="CreateOrder">
         <table class="table table-striped table-dark">
   <thead>
     <tr>

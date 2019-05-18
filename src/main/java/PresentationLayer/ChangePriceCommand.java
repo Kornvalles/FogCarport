@@ -44,7 +44,7 @@ public class ChangePriceCommand {
         
         
 
-
+//TODO få det her til at virke sammen med submit knapperne i jsp side + 
         
     }
         
