@@ -1,7 +1,7 @@
-<<%-- 
+<%-- 
     Document   : updateMaterialPrices
     Created on : May 13, 2019, 6:38:34 PM
-    Author     : ndupo
+    Author     : Benjamin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

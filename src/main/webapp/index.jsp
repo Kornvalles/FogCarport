@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
     Created on : Apr 25, 2019, 9:48:24 AM
-    Author     : ndupo
+    Author     : ndupo & Benjamin
 --%>
 <jsp:include page='/WEB-INF/Statics/siteheader.jsp'></jsp:include>
 <jsp:include page='/WEB-INF/Statics/sitefooter.jsp'></jsp:include>
