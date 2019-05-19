@@ -65,7 +65,7 @@
             });
         </script>
         <div class="footer">
-            <p>� 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk <a href="login.jsp">Medarbejder</a></p>
+            <p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk <a href="login.jsp">Medarbejder</a></p>
         </div>
     </body>
 </html>
