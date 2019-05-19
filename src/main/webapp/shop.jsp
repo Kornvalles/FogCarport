@@ -1,24 +1,21 @@
-<%-- 
-    Document   : shop
-    Created on : 12-04-2019, 11:45:37
-    Author     : mikkel
---%>
-<%@page import="java.util.List"%>
 <jsp:include page='/WEB-INF/Statics/siteheader.jsp'></jsp:include>
 <jsp:include page='/WEB-INF/Statics/sitefooter.jsp'></jsp:include>
 
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
-        <style>.fadeIn {
-                display: none;
-            }</style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="WEB-INF/main.css/main.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <title>Shop</title>
     </head>
     <body>
-
         <div class="text-center">
             <h1>Bestilling af carport</h1>
         </div>
@@ -134,8 +131,8 @@
                         }
                         roofvisibility();
                         document.getElementById('roofInput').onclick = roofvisibility;
-                                
-                        
+
+
                         function rooftypevisibility() {
                             if (document.getElementById("roofTypeInput").checked === false) {
                                 $('#display2').fadeOut(200);
