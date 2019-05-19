@@ -1,36 +1,15 @@
-<%-- 
-    Document   : login
-    Created on : 13-May-2019, 13:36:17
-    Author     : Benjamin & ndupo
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            body {font-family: Arial, Helvetica, sans-serif;}
-            * {box-sizing: border-box;}
-
-            .bg-img {
-                /* The image used */
-                background-image: url("https://images.photowall.com/products/50264/wooden-logs-wall.jpg?h=699&q=85");
-
-                min-height: 380px;
-
-                /* Center and scale the image nicely */
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-            }
-        </style>
+        <link href="WEB-INF/app/app.css" rel="stylesheet" type="text/css"/>
+        <title>Login</title>
     </head>
-
     <body>
         <div class="bg-img">
             <div class="container">
