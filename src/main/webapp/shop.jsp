@@ -10,8 +10,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <link href="WEB-INF/app/Footer_and_Header.css" rel="stylesheet" type="text/css"/>
-        <script src="WEB-INF/app/app.js" type="text/javascript"></script>
+        <link href="app/Footer_and_Header.css" rel="stylesheet" type="text/css"/>
+        <script src="app/app.js" type="text/javascript"></script>
         <title>Shop</title>
     </head>
     <body>
@@ -121,38 +121,10 @@
             <p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p>
         </div>
         <script>
-            function shedvisibility() {
-                if (document.getElementById("shedInput").checked === false) {
-                    $('#display').fadeOut(200);
-                }
-                if (document.getElementById("shedInput").checked === true) {
-                    $('#display').fadeIn(200);
-                }
-            }
             shedvisibility();
             document.getElementById('shedInput').onclick = shedvisibility;
-            
-            function roofvisibility() {
-                if (document.getElementById("roofInput").checked === false) {
-                    $('#display1').fadeOut(200);
-                }
-                if (document.getElementById("roofInput").checked === true) {
-                    $('#display1').fadeIn(200);
-
-                }
-            }
             roofvisibility();
             document.getElementById('roofInput').onclick = roofvisibility;
-
-            function rooftypevisibility() {
-                if (document.getElementById("roofTypeInput").checked === false) {
-                    $('#display2').fadeOut(200);
-                }
-                if (document.getElementById("roofTypeInput").checked === true) {
-                    $('#display2').fadeIn(200);
-
-                }
-            }
             rooftypevisibility();
             document.getElementById('roofTypeInput').onclick = rooftypevisibility;
         </script>
