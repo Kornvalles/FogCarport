@@ -8,6 +8,13 @@
     background-size: cover;
 }
 
+/* Extra small devices (phones, up to 480px) */
+@media screen and (max-width: 767px) {
+    body {
+        font-size: 11px;
+    }
+}
+
 .carousel {
     width: 45%;
     margin: auto;
