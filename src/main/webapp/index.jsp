@@ -26,6 +26,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="sortiment.jsp">Sortiment</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.jsp">Medarbejder</a>
+                </li>
             </ul>
         </nav>
 
@@ -74,25 +77,11 @@
             %>
         </div>
         <div class="footer">
-            <p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk <a href="login.jsp">Medarbejder</a></p>
+            <p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p>
         </div>
         <script>
             $('.carousel').carousel({
                 interval: 2000
-            });
-            window.addEventListener("load", function () {
-                window.cookieconsent.initialise({
-                    "palette": {
-                        "popup": {
-                            "background": "#edeff5",
-                            "text": "#838391"
-                        },
-                        "button": {
-                            "background": "#4b81e8"
-                        }
-                    },
-                    "theme": "classic"
-                });
             });
         </script>
     </body>

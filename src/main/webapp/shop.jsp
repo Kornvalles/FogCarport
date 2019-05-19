@@ -7,10 +7,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <link href="WEB-INF/app/Footer_and_Header.css" rel="stylesheet" type="text/css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link href="WEB-INF/app/Footer_and_Header.css" rel="stylesheet" type="text/css"/>
+        <script src="WEB-INF/app/app.js" type="text/javascript"></script>
         <title>Shop</title>
     </head>
     <body>
@@ -156,24 +157,6 @@
             }
             rooftypevisibility();
             document.getElementById('roofTypeInput').onclick = rooftypevisibility;
-
-            function empty() {
-                var x;
-                var y;
-                var z;
-                var c;
-                var b;
-                x = document.getElementById("nameInput").value;
-                y = document.getElementById("emailInput").value;
-                z = document.getElementById("zipcodeInput").value;
-                c = document.getElementById("telInput").value;
-                b = document.getElementById("adresseInput").value;
-                if (x == "" || y == "" || c == "" || b == "") {
-                    alert("Venligst indtast gyldig information");
-                    return false;
-                }
-                ;
-            }
         </script>
     </body>
 </html>
