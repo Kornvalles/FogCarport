@@ -5,23 +5,29 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <link href='https://fonts.googleapis.com/css?family=Volkhov' rel='stylesheet'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <title>Start side</title>
     </head>
     <body>
-        <div class="header">
+        <nav class="nav-link, bg-light">
             <a href="index.jsp" class="logo">
                 <img src="img/logo.png" class="img-thumbnail" alt="Fog">
             </a>
-            <div class="header-right">
-                <a href="index.jsp">Hjem</a>
-                <a href="FrontController?command=order">Bestilling af carport</a>
-                <a href="sortiment.jsp">Sortiment</a>
-            </div>
-        </div>
+            <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" href="index.jsp">Hjem</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="FrontController?command=order">Bestilling</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="sortiment.jsp">Sortiment</a>
+            </li>
+        </ul>
+        </nav>
+        
         <div class="bd-example">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 700px; margin:0 auto;">
                 <ol class="carousel-indicators">
