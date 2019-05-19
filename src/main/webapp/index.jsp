@@ -1,4 +1,3 @@
-<jsp:include page='/WEB-INF/Statics/siteheader.jsp'></jsp:include>
 <jsp:include page='/WEB-INF/Statics/sitefooter.jsp'></jsp:include>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -7,7 +6,7 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="WEB-INF/main.css/main.css">
+        <link rel="stylesheet" type="text/css" href="WEB-INF/main.css/main.css"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -15,6 +14,16 @@
         <title>Start side</title>
     </head>
     <body>
+        <div class="header">
+            <a href="index.jsp" class="logo">
+                <img src="img/logo.png" class="img-thumbnail" alt="Fog">
+            </a>
+            <div class="header-right">
+                <a href="index.jsp">Hjem</a>
+                <a href="FrontController?command=order">Bestilling af carport</a>
+                <a href="sortiment.jsp">Sortiment</a>
+            </div>
+        </div>
         <div class="bd-example">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 700px; margin:0 auto;">
                 <ol class="carousel-indicators">

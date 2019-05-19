@@ -150,7 +150,7 @@ body {
     font-weight: bold;
 }
 
-.header a:hover {
+.header a.hover {
     background-color: #ddd;
     color: black;
 }

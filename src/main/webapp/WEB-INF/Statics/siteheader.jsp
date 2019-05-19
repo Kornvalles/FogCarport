@@ -1,14 +1,19 @@
-<%-- 
-    Document   : siteheader
-    Created on : Apr 24, 2019, 2:12:24 PM
-    Author     : ibenk
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head></head>
+    <body>
+        <div class="header">
+            <a href="index.jsp" class="logo">
+                <img src="img/logo.png" class="img-thumbnail" alt="Fog">
+            </a>
+            <div class="header-right">
+                <a href="index.jsp">Hjem</a>
+                <a href="FrontController?command=order">Bestilling af carport</a>
+                <a href="sortiment.jsp">Sortiment</a>
+            </div>
+        </div>
         <script>
                     function empty() {
                 var x;
@@ -28,18 +33,5 @@
                 ;
             }
         </script>
-        <title>header</title>
-    </head>
-    <body>
-        <div class="header">
-            <a href="index.jsp" class="logo">
-                <img src="img/logo.png" class="img-thumbnail" alt="Fog">
-            </a>
-            <div class="header-right">
-                <a href="index.jsp">Hjem</a>
-                <a href="FrontController?command=order">Bestilling af carport</a>
-                <a href="sortiment.jsp">Sortiment</a>
-            </div>
-        </div>
     </body>
 </html>
