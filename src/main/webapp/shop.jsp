@@ -1,21 +1,36 @@
-<jsp:include page='/WEB-INF/Statics/siteheader.jsp'></jsp:include>
-<jsp:include page='/WEB-INF/Statics/sitefooter.jsp'></jsp:include>
-
 <%@page import="java.util.List"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="WEB-INF/main.css/main.css" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link href="WEB-INF/app/Footer_and_Header.css" rel="stylesheet" type="text/css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <title>Shop</title>
     </head>
     <body>
+        <nav class="navbar navbar-light bg-light">
+            <a href="index.jsp" class="navbar-brand">
+                <img src="img/logo.png" class="img-thumbnail" alt="Fog">
+            </a>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.jsp">Hjem</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="FrontController?command=order">Bestilling</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sortiment.jsp">Sortiment</a>
+                </li>
+            </ul>
+        </nav>
         <div class="text-center">
             <h1>Bestilling af carport</h1>
         </div>
@@ -103,55 +118,63 @@
             </div>
         </div>
         <div class="footer">
-            <p><p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p></p>
-    </div>
-    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
-    <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script>
-                        function shedvisibility() {
-                            if (document.getElementById("shedInput").checked === false) {
-                                $('#display').fadeOut(200);
-                            }
-                            if (document.getElementById("shedInput").checked === true) {
-                                $('#display').fadeIn(200);
-                            }
-                        }
-                        shedvisibility();
-                        document.getElementById('shedInput').onclick = shedvisibility;
+            <p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p>
+        </div>
+        <script>
+            function shedvisibility() {
+                if (document.getElementById("shedInput").checked === false) {
+                    $('#display').fadeOut(200);
+                }
+                if (document.getElementById("shedInput").checked === true) {
+                    $('#display').fadeIn(200);
+                }
+            }
+            shedvisibility();
+            document.getElementById('shedInput').onclick = shedvisibility;
 
 
-                        function roofvisibility() {
-                            if (document.getElementById("roofInput").checked === false) {
-                                $('#display1').fadeOut(200);
-                            }
-                            if (document.getElementById("roofInput").checked === true) {
-                                $('#display1').fadeIn(200);
+            function roofvisibility() {
+                if (document.getElementById("roofInput").checked === false) {
+                    $('#display1').fadeOut(200);
+                }
+                if (document.getElementById("roofInput").checked === true) {
+                    $('#display1').fadeIn(200);
 
-                            }
-                        }
-                        roofvisibility();
-                        document.getElementById('roofInput').onclick = roofvisibility;
+                }
+            }
+            roofvisibility();
+            document.getElementById('roofInput').onclick = roofvisibility;
 
 
-                        function rooftypevisibility() {
-                            if (document.getElementById("roofTypeInput").checked === false) {
-                                $('#display2').fadeOut(200);
-                            }
-                            if (document.getElementById("roofTypeInput").checked === true) {
-                                $('#display2').fadeIn(200);
+            function rooftypevisibility() {
+                if (document.getElementById("roofTypeInput").checked === false) {
+                    $('#display2').fadeOut(200);
+                }
+                if (document.getElementById("roofTypeInput").checked === true) {
+                    $('#display2').fadeIn(200);
 
-                            }
-                        }
-                        rooftypevisibility();
-                        document.getElementById('roofTypeInput').onclick = rooftypevisibility;
-    </script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+                }
+            }
+            rooftypevisibility();
+            document.getElementById('roofTypeInput').onclick = rooftypevisibility;
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-</body>
+            function empty() {
+                var x;
+                var y;
+                var z;
+                var c;
+                var b;
+                x = document.getElementById("nameInput").value;
+                y = document.getElementById("emailInput").value;
+                z = document.getElementById("zipcodeInput").value;
+                c = document.getElementById("telInput").value;
+                b = document.getElementById("adresseInput").value;
+                if (x == "" || y == "" || c == "" || b == "") {
+                    alert("Venligst indtast gyldig information");
+                    return false;
+                }
+                ;
+            }
+        </script>
+    </body>
 </html>

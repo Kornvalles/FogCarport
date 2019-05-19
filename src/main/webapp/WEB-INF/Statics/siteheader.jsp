@@ -1,86 +1,19 @@
-<%-- 
-    Document   : siteheader
-    Created on : Apr 24, 2019, 2:12:24 PM
-    Author     : ibenk
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            * {box-sizing: border-box;}
-
-            body { 
-                margin: 0;
-                font-family: Volkhov;
-                font-size: 22px;
-            }
-
-            .header {
-                position: relative;
-                width: 100%;
-                overflow: hidden;
-                background-color: #f1f1f1;
-                padding: 20px 10px;
-            }
-
-            .header a {
-                float: left;
-                color: black;
-                text-align: center;
-                padding: 12px;
-                text-decoration: none;
-                font-size: 18px; 
-                line-height: 25px;
-                border-radius: 4px;
-            }
-
-            .header a.logo {
-                font-size: 25px;
-                font-weight: bold;
-            }
-
-            .header a:hover {
-                background-color: #ddd;
-                color: black;
-            }
-
-            .header a.active {
-                background-color: dodgerblue;
-                color: white;
-            }
-
-            .header-right {
-                float: right;
-            }
-
-            @media screen and (max-width: 500px) {
-                .header a {
-                    float: none;
-                    display: block;
-                    text-align: left;
-                }
-
-                .header-right {
-                    float: none;
-                }
-            }
-            .masthead {
-  height: 100vh;
-  min-height: 500px;
-  background-image: url('https://source.unsplash.com/BtbjCFUvBXs/1920x1080');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-        </style>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <link href='https://fonts.googleapis.com/css?family=Volkhov' rel='stylesheet'>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <head></head>
+    <body>
+        <div class="header">
+            <a href="index.jsp" class="logo">
+                <img src="img/logo.png" class="img-thumbnail" alt="Fog">
+            </a>
+            <div class="header-right">
+                <a href="index.jsp">Hjem</a>
+                <a href="FrontController?command=order">Bestilling af carport</a>
+                <a href="sortiment.jsp">Sortiment</a>
+            </div>
+        </div>
         <script>
                     function empty() {
                 var x;
@@ -100,17 +33,5 @@
                 ;
             }
         </script>
-    </head>
-    <body>
-        <div class="header">
-            <a href="index.jsp" class="logo">
-                <img src="img/logo.png"class="img-thumbnail" alt="Fog">
-            </a>
-            <div class="header-right">
-                <a href="index.jsp">Hjem</a>
-                <a href="FrontController?command=order">Bestilling af carport</a>
-                <a href="sortiment.jsp">Sortiment</a>
-            </div>
-        </div>
     </body>
 </html>

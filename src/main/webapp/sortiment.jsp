@@ -1,16 +1,34 @@
-<jsp:include page='/WEB-INF/Statics/siteheader.jsp'></jsp:include>
-<jsp:include page='/WEB-INF/Statics/sitefooter.jsp'></jsp:include>
-    
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" type="text/css" href="WEB-INF/main.css/main.css" />
-    <title>Sortiment</title>
-</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link href="WEB-INF/app/Footer_and_Header.css" rel="stylesheet" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <title>Sortiment</title>
+    </head>
     <body>
+        <nav class="navbar navbar-light bg-light">
+            <a href="index.jsp" class="navbar-brand">
+                <img src="img/logo.png" class="img-thumbnail" alt="Fog">
+            </a>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.jsp">Hjem</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="FrontController?command=order">Bestilling</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sortiment.jsp">Sortiment</a>
+                </li>
+            </ul>
+        </nav>
         <!-- Page Content -->
         <div class="container">
             <!-- Page Heading -->
@@ -174,13 +192,5 @@
         <div class="footer">
             <p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p>
         </div>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
     </body>
 </html>

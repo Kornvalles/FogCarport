@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 <%@page import="FunctionLayer.SVGTriangle"%>
+=======
+>>>>>>> MK
 <%@page import="FunctionLayer.SVGText"%>
 <%@page import="FunctionLayer.SVGRectangle"%>
 <%@page import="java.io.File"%>
@@ -8,23 +11,42 @@
 <%@page import="FunctionLayer.Material"%>
 <%@page import="FunctionLayer.Carport"%>
 <%@page import="FunctionLayer.Calculator"%>
-<jsp:include page='/WEB-INF/Statics/siteheader.jsp'></jsp:include>
-<jsp:include page='/WEB-INF/Statics/sitefooter.jsp'></jsp:include>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link href="WEB-INF/app/Footer_and_Header.css" rel="stylesheet" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <title>Bestilling Godkendt</title>
     </head>
     <body>
-        <style>
-        </style>
+        <nav class="navbar navbar-light bg-light">
+            <a href="index.jsp" class="navbar-brand">
+                <img src="img/logo.png" class="img-thumbnail" alt="Fog">
+            </a>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.jsp">Hjem</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="FrontController?command=order">Bestilling</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sortiment.jsp">Sortiment</a>
+                </li>
+            </ul>
+        </nav>
         <div class="container">
             <div class="row">
                 <div class="col-sm">
                     <h1>Tak for din bestilling!</h1>
-
                     <p><%Customer customer = (Customer) session.getAttribute("customer");
                         Construction construction = (Construction) session.getAttribute("construction");
                         out.print(construction.getCarport().toString());%></p>
@@ -127,6 +149,7 @@
 
                     %>
                     </svg>
+<<<<<<< HEAD
 
                     <!-- SVG-drawing for the front side on a carport (Not done yet)  -->
                     <svg width="1000" height="400" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
@@ -167,13 +190,13 @@
                     </svg>
 
 
+=======
+>>>>>>> MK
                 </div>
             </div>
         </div>
-
-
-        <div class="#footer">
-            <p><p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p></p>
-    </div>
-</body>
+        <div class="footer">
+            <p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p>
+        </div>
+    </body>
 </html>
