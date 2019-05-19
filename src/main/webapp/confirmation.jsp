@@ -143,11 +143,16 @@
                         out.println(leftPost.toString() + rightPost.toString());
 
                         /* Making the roof (flat or pointy) */
-                        /* Making a pointy roof */
-                        SVGTriangle roof = new SVGTriangle(((start+width+10)/2) + "," + start + " " + start + "," + heightPointy + " " + (width+10) + "," + heightPointy);
-                        out.println(roof.toString());
-                        
-                        /* Making a flat roof*/
+                        /* In case the roof is pointy */
+                        if (construction.getCarport().hasPointyRoof()) {
+                            SVGTriangle roof = new SVGTriangle(((start+width+10)/2) + "," + start + " " + start + "," + heightPointy + " " + (width+10) + "," + heightPointy);
+                            out.println(roof.toString());
+                            
+                            /* In case the roof is flat*/
+                        } else {
+                            SVGRectangle roof = new SVGRectangle("10", "1", String.valueOf(width+5), String.valueOf(start), String.valueOf(heightPointy-10));
+                            out.println(roof.toString());
+                        }
 
                     %>  
                     </svg>
