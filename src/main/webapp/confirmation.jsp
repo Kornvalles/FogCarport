@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 <%@page import="FunctionLayer.SVGTriangle"%>
-=======
->>>>>>> MK
 <%@page import="FunctionLayer.SVGText"%>
 <%@page import="FunctionLayer.SVGRectangle"%>
 <%@page import="java.io.File"%>
@@ -149,8 +146,6 @@
 
                     %>
                     </svg>
-<<<<<<< HEAD
-
                     <!-- SVG-drawing for the front side on a carport (Not done yet)  -->
                     <svg width="1000" height="400" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
                     <%  SVGText text3 = new SVGText("10", "380", "Carport fofra");
@@ -188,10 +183,6 @@
 
                     %>  
                     </svg>
-
-
-=======
->>>>>>> MK
                 </div>
             </div>
         </div>
