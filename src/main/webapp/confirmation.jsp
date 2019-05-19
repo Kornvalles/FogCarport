@@ -1,8 +1,3 @@
-<%-- 
-    Document   : confirmation
-    Created on : Apr 25, 2019, 12:14:20 PM
-    Author     : ibenk
---%>
 <%@page import="FunctionLayer.SVGText"%>
 <%@page import="FunctionLayer.SVGRectangle"%>
 <%@page import="java.io.File"%>
@@ -12,23 +7,28 @@
 <%@page import="FunctionLayer.Material"%>
 <%@page import="FunctionLayer.Carport"%>
 <%@page import="FunctionLayer.Calculator"%>
+
 <jsp:include page='/WEB-INF/Statics/siteheader.jsp'></jsp:include>
 <jsp:include page='/WEB-INF/Statics/sitefooter.jsp'></jsp:include>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="WEB-INF/main.css/main.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <title>Bestilling Godkendt</title>
     </head>
     <body>
-        <style>
-        </style>
         <div class="container">
             <div class="row">
                 <div class="col-sm">
                     <h1>Tak for din bestilling!</h1>
-
                     <p><%Customer customer = (Customer) session.getAttribute("customer");
                         Construction construction = (Construction) session.getAttribute("construction");
                         out.print(construction.getCarport().toString());%></p>
@@ -128,16 +128,11 @@
 
                     %>
                     </svg>
-
-
-
                 </div>
             </div>
         </div>
-
-
-        <div class="#footer">
-            <p><p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p></p>
-    </div>
-</body>
+        <div class="footer">
+            <p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p>
+        </div>
+    </body>
 </html>
