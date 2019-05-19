@@ -19,7 +19,7 @@
                         }
                     },
                     "theme": "classic"
-                })
+                });
             });
         </script>
         <title></title>
