@@ -123,14 +123,37 @@
                             }
                         }
 
-                        SVGText text = new SVGText("100", "280", "100 cm");
+                        SVGText text = new SVGText("50", "280", "100 cm");
                         out.println(text.toString());
 
                     %>
                     </svg>
 
+                    <!-- SVG-drawing for the front side on a carport (Not done yet)  -->
+                    <svg width="1000" height="400" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+                    <% int width = construction.getCarport().getWidth();
 
+                    /* Making the ... */
+                    
 
+                    /* Making the ... */
+
+                    %>  
+                    </svg>
+
+                    <!-- SVG-drawing for the top side on a carport (Not done yet)  -->
+                    <svg width="1000" height="400" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+                    <% 
+
+                    /* Making the ... */
+                    
+
+                    /* Making the ... */
+
+                    %>  
+                    </svg>
+
+                    
                 </div>
             </div>
         </div>
