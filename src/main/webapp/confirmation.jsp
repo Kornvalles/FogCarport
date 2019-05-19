@@ -80,7 +80,7 @@
                     </table>
                     <form method="POST" action="FrontController">
                         <input type="hidden" name="command" value="invoice">
-                        <input type="submit" value="Lav faktura">
+                        <input type="submit" value="Print faktura">
                     </form>
                 </div>
             </div>

@@ -10,6 +10,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <link href="app/Footer_and_Header.css" rel="stylesheet" type="text/css"/>
         <script src="app/app.js" type="text/javascript"></script>
+        <link href="app/app.css" rel="stylesheet" type="text/css"/>
         <title>Start side</title>
     </head>
     <body>
@@ -32,33 +33,33 @@
                 </li>
             </ul>
         </nav>
-
-        <div class="bd-example">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 700px; margin:0 auto;">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="img/1.png" class="h-50 d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/2.png" class="h-50 d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/3.png" class="h-50 d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/4.png" class="h-50 d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/5.png" class="h-50 d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/6.png" class="h-50 d-block w-100" alt="...">
-                    </div>
+        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img/1.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/2.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/3.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/4.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/5.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/6.png" class="d-block w-100" alt="...">
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
