@@ -3,24 +3,37 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="WEB-INF/main.css/main.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>.footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: whitesmoke;
+                color: black;
+                text-align: center;
+            }</style>
         <title>Sortiment</title>
     </head>
     <body>
-        <div class="header a">
-            <a href="index.jsp" class="logo">
+        <nav class="navbar navbar-light bg-light">
+            <a href="index.jsp" class="navbar-brand">
                 <img src="img/logo.png" class="img-thumbnail" alt="Fog">
             </a>
-            <div class="header-right">
-                <a href="index.jsp">Hjem</a>
-                <a href="FrontController?command=order">Bestilling af carport</a>
-                <a href="sortiment.jsp">Sortiment</a>
-            </div>
-        </div>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.jsp">Hjem</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="FrontController?command=order">Bestilling</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sortiment.jsp">Sortiment</a>
+                </li>
+            </ul>
+        </nav>
         <!-- Page Content -->
         <div class="container">
             <!-- Page Heading -->

@@ -3,31 +3,38 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>.footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: whitesmoke;
+                color: black;
+                text-align: center;
+            }</style>
         <title>Start side</title>
     </head>
     <body>
-        <nav class="nav-link, bg-light">
-            <a href="index.jsp" class="logo">
+        <nav class="navbar navbar-light bg-light">
+            <a href="index.jsp" class="navbar-brand">
                 <img src="img/logo.png" class="img-thumbnail" alt="Fog">
             </a>
             <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link active" href="index.jsp">Hjem</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="FrontController?command=order">Bestilling</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="sortiment.jsp">Sortiment</a>
-            </li>
-        </ul>
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.jsp">Hjem</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="FrontController?command=order">Bestilling</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sortiment.jsp">Sortiment</a>
+                </li>
+            </ul>
         </nav>
-        
+
         <div class="bd-example">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 700px; margin:0 auto;">
                 <ol class="carousel-indicators">
@@ -72,6 +79,9 @@
                 }
             %>
         </div>
+        <div class="footer">
+            <p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk <a href="login.jsp">Medarbejder</a></p>
+        </div>
         <script>
             $('.carousel').carousel({
                 interval: 2000
@@ -91,8 +101,5 @@
                 });
             });
         </script>
-        <div class="footer">
-            <p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk <a href="login.jsp">Medarbejder</a></p>
-        </div>
     </body>
 </html>
