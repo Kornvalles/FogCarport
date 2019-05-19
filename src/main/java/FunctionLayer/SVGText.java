@@ -6,7 +6,7 @@ public class SVGText {
     private String font = "courier";
     private String size = "18";
     private String stroke = "#000000";
-    private String placing = "middle";
+    private String placing = "left";
     private String x;
     private String y;
     private String text;

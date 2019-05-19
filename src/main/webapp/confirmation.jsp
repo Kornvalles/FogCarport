@@ -1,8 +1,4 @@
-<%-- 
-    Document   : confirmation
-    Created on : Apr 25, 2019, 12:14:20 PM
-    Author     : ibenk
---%>
+<%@page import="FunctionLayer.SVGTriangle"%>
 <%@page import="FunctionLayer.SVGText"%>
 <%@page import="FunctionLayer.SVGRectangle"%>
 <%@page import="java.io.File"%>
@@ -78,21 +74,24 @@
                     <p>SVGCarport <%= construction.getCarport().getLength()%> cm lang og <%= construction.getCarport().getWidth()%> cm bred</p>
 
                     <!-- SVG-drawing for a longside on a carport (Not done yet)  -->
-                    <svg width="1000" height="400" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-                    <%  int length = construction.getCarport().getLength();
-                        int heigth = 230;
+                    <svg width="1000" height="350" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+                    <%  SVGText text1 = new SVGText("10", "280", "Carport fra siden");
+                        out.println(text1.toString());
+                        
+                        int length = construction.getCarport().getLength();
+                        int height = 230;
                         int boardLength = 100;
-                        int start = 0;
+                        int start = 5;
 
                         /* Making the posts on the longside */
                         for (int i = start; i < length; i = i + boardLength) {
-                            SVGRectangle posts = new SVGRectangle(String.valueOf(heigth), "1", "10", String.valueOf(i), "0");
+                            SVGRectangle posts = new SVGRectangle(String.valueOf(height), "1", "10", String.valueOf(i), "0");
                             out.println(posts.toString());
                         }
 
                         /* In case that the length is not dividable with 100 (boardLength), then you need to make an extra post in the end. */
                         if (length % boardLength != 100) {
-                            SVGRectangle lastPost = new SVGRectangle(String.valueOf(heigth), "1", "10", String.valueOf(length), "0");
+                            SVGRectangle lastPost = new SVGRectangle(String.valueOf(height), "1", "10", String.valueOf(length), "0");
                             out.println(lastPost.toString());
                         }
 
@@ -101,7 +100,7 @@
                         - Every index(i) is 1 whole column of wooden boards from top to bottom. 
                         - Every index(j) is 1 board in the index(i)-column. */
                         for (int i = start + 5; i < length + 5; i = i + boardLength) {
-                            for (int j = 0; j < heigth; j = j + 10) {
+                            for (int j = 0; j < height; j = j + 10) {
                                 SVGRectangle boards = new SVGRectangle("10", "0.20", String.valueOf(boardLength), String.valueOf(i), String.valueOf(j));
 
                                 /* In case the length of the carport is not dividable with 100 (the length of 1 board). */
@@ -123,37 +122,46 @@
                             }
                         }
 
-                        SVGText text = new SVGText("50", "280", "100 cm");
-                        out.println(text.toString());
+                        SVGText text2 = new SVGText("25", "250", "100 cm");
+                        out.println(text2.toString());
 
                     %>
                     </svg>
 
                     <!-- SVG-drawing for the front side on a carport (Not done yet)  -->
                     <svg width="1000" height="400" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-                    <% int width = construction.getCarport().getWidth();
+                    <%  SVGText text3 = new SVGText("10", "380", "Carport fofra");
+                        out.println(text3.toString());
+                        
+                        int width = construction.getCarport().getWidth();
+                        int heightPointy = 100;
+                        int topOfLeftPost;
 
-                    /* Making the ... */
-                    
+                        /* Making the two posts in the front corners */
+                        SVGRectangle leftPost = new SVGRectangle(String.valueOf(height), "1", "10", String.valueOf(start), String.valueOf(heightPointy));
+                        SVGRectangle rightPost = new SVGRectangle(String.valueOf(height), "1", "10", String.valueOf(width), String.valueOf(heightPointy));
+                        out.println(leftPost.toString() + rightPost.toString());
 
-                    /* Making the ... */
+                        /* Making the roof (flat or pointy) */
+                        /* Making a pointy roof */
+                        SVGTriangle roof = new SVGTriangle(((start+width+10)/2) + "," + start + " " + start + "," + heightPointy + " " + (width+10) + "," + heightPointy);
+                        out.println(roof.toString());
+                        
+                        /* Making a flat roof*/
 
                     %>  
                     </svg>
 
                     <!-- SVG-drawing for the top side on a carport (Not done yet)  -->
-                    <svg width="1000" height="400" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+                    <svg width="1000" height="350" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
                     <% 
-
-                    /* Making the ... */
-                    
-
-                    /* Making the ... */
+                        /* Making the ... */
+                        /* Making the ... */
 
                     %>  
                     </svg>
 
-                    
+
                 </div>
             </div>
         </div>
