@@ -96,7 +96,7 @@
                     <svg width="1000" height="350" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
                     <%  SVGText text1 = new SVGText("10", "280", "Carport fra siden");
                         out.println(text1.toString());
-                        
+
                         int length = construction.getCarport().getLength();
                         int height = 230;
                         int boardLength = 100;
@@ -150,7 +150,7 @@
                     <svg width="1000" height="400" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
                     <%  SVGText text3 = new SVGText("10", "380", "Carport fofra");
                         out.println(text3.toString());
-                        
+
                         int width = construction.getCarport().getWidth();
                         int heightPointy = 100;
                         int topOfLeftPost;
@@ -161,14 +161,15 @@
                         out.println(leftPost.toString() + rightPost.toString());
 
                         /* Making the roof (flat or pointy) */
+                        
                         /* In case the roof is pointy */
                         if (construction.getCarport().hasPointyRoof()) {
-                            SVGTriangle roof = new SVGTriangle(((start+width+10)/2) + "," + start + " " + start + "," + heightPointy + " " + (width+10) + "," + heightPointy);
+                            SVGTriangle roof = new SVGTriangle(((start + width + 10) / 2) + "," + start + " " + start + "," + heightPointy + " " + (width + 10) + "," + heightPointy);
                             out.println(roof.toString());
-                            
+
                             /* In case the roof is flat*/
                         } else {
-                            SVGRectangle roof = new SVGRectangle("10", "1", String.valueOf(width+5), String.valueOf(start), String.valueOf(heightPointy-10));
+                            SVGRectangle roof = new SVGRectangle("10", "1", String.valueOf(width + 5), String.valueOf(start), String.valueOf(heightPointy - 10));
                             out.println(roof.toString());
                         }
 
@@ -177,7 +178,11 @@
 
                     <!-- SVG-drawing for the top side on a carport (Not done yet)  -->
                     <svg width="1000" height="350" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-                    <% 
+                    <%  SVGText text4 = new SVGText("10", String.valueOf(width+100), "Carport oppefra");
+                        out.println(text3.toString());
+                        
+                        SVGRectangle edge = new SVGRectangle(String.valueOf(width), "1", String.valueOf(length), String.valueOf(start), String.valueOf(start));
+                        
                         /* Making the ... */
                         /* Making the ... */
 
