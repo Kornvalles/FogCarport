@@ -19,14 +19,14 @@ public class DatabaseLogicFacade implements LogicFacade {
 
     /**
      *
-     * @param carport
+     * @param construction
      * @param customer
      * @throws FogException
      * @throws SQLException
      */
     @Override
-    public void createOrder(Carport carport, Customer customer) throws FogException, SQLException {
-        OrderMapper.makeOrder(carport, customer);
+    public void createOrder( Construction construction, Customer customer) throws FogException, SQLException {
+        OrderMapper.makeOrder(construction, customer);
     }
 
     /**

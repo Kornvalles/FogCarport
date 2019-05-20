@@ -59,7 +59,7 @@ public class CreateOrderCommand extends Command {
             session.setAttribute("construction", construction);
             session.setAttribute("customer", customer);
             logic.addCustomer(customer);
-            logic.createOrder(carport, customer);
+            logic.createOrder(construction, customer);
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Error creating a carport order.", e);
             throw new FogException(e.getMessage());

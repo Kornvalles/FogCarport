@@ -1,6 +1,6 @@
 package DataLayer;
 
-import FunctionLayer.Carport;
+import FunctionLayer.Construction;
 import FunctionLayer.Customer;
 import FunctionLayer.FogException;
 import java.sql.Connection;
@@ -42,7 +42,7 @@ public class OrderMapper {
         return 0;
     }
     
-    public static void makeOrder(Carport carport, Customer customer ) throws FogException, SQLException {
+    public static void makeOrder( Construction construction, Customer customer ) throws FogException, SQLException {
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO `FogCarport`.`order` (employeeId, customerEmail, customerName, carportHeight"
@@ -51,13 +51,13 @@ public class OrderMapper {
             ps.setInt( 1 , 1 );
             ps.setString( 2 , customer.getEmail() );
             ps.setString( 3 , customer.getName() );
-            ps.setInt( 4 , carport.getHeight() );
-            ps.setInt( 5 , carport.getWidth() );
-            ps.setInt( 6 , carport.getLength() );
-            ps.setBoolean( 7 , carport.hasPointyRoof() );
-            ps.setBoolean( 8 , carport.hasToolshed() );
-            ps.setBoolean( 9 , carport.hasWall() );
-            ps.setDouble( 10 , 0);
+            ps.setInt( 4 , construction.getCarport().getHeight() );
+            ps.setInt( 5 , construction.getCarport().getWidth() );
+            ps.setInt( 6 , construction.getCarport().getLength() );
+            ps.setBoolean( 7 , construction.getCarport().hasPointyRoof() );
+            ps.setBoolean( 8 , construction.getCarport().hasToolshed() );
+            ps.setBoolean( 9 , construction.getCarport().hasWall() );
+            ps.setDouble( 10 , construction.getTotalPrice());
             ps.executeUpdate();
         } catch ( SQLException ex ) {
             System.out.println(ex.getSQLState());
