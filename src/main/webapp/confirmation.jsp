@@ -49,7 +49,7 @@
                         out.print(construction.getCarport().toString());%></p>
 
 
-                    <p>Her er din stykliste:</p>
+                    <p>Kære <%=customer.getName()%> her er din stykliste:</p>
 
                     <table class="table-hover">
 
