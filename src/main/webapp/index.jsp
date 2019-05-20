@@ -14,7 +14,7 @@
         <title>Start side</title>
     </head>
     <body>
-        <nav class="navbar navbar-light bg-light">
+        <nav class="navbar navbar-light bg-light" style="position: sticky">
             <a href="index.jsp" class="navbar-brand">
                 <img src="img/logo.png" class="img-thumbnail" alt="Fog">
             </a>
@@ -78,8 +78,8 @@
                 }
             %>
         </div>
-        <div class="footer">
-            <p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p>
-        </div>
+            <div class="footer">
+                <p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p>
+            </div>
     </body>
 </html>
