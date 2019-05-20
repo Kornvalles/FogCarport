@@ -3,11 +3,14 @@ package DataLayer;
 import FunctionLayer.Construction;
 import FunctionLayer.Customer;
 import FunctionLayer.FogException;
+import FunctionLayer.Material;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -132,5 +135,23 @@ public class OrderMapper {
             System.out.println(ex);
         }
         return 0;
+    }
+    
+    public static List<Material> getAllMaterials() throws FogException {
+        List<Material> materials = new ArrayList();
+        try {
+            String query = "SELECT * FROM FogCarport.material";
+            
+            Connection con = Connector.connection();
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            
+            while (rs.next()) {
+                materials.add(new Material(rs.getNString(2), rs.getInt(1), rs.getInt(5), "", rs.getDouble(4), rs.getNString(6)));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return materials;
     }
 }

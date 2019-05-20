@@ -1,7 +1,7 @@
+<%@page import="FunctionLayer.Material"%>
+<%@page import="java.util.List"%>
 <%@page import="FunctionLayer.FogException"%>
 <%@page import="ch.qos.logback.core.joran.action.IncludeAction"%>
-<%@page import="DataLayer.OrderMapper"%>
-<%@page import="java.sql.ResultSet"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,9 +15,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <%if (session.getAttribute("employee") == null) {
-                session.setAttribute("error", "Please Login");
+                request.setAttribute("error", "Please Login");
                 response.sendRedirect(response.encodeURL("login.jsp"));
             }
+        List<Material> materials = (List<Material>) session.getAttribute("materials");
         %>
         <title>Ændring af materiale priser!</title>
     </head>
@@ -30,10 +31,9 @@
                 </div>
             </div>
         </div>
-        <%OrderMapper od = new OrderMapper();%>
         <div class="container" style="width: 80%">
             <form method="POST" action="FrontController">
-                <input type="hidden" name="command" value="CreateOrder">
+                <input type="hidden" name="command" value="updatePrice">
                 <table class="table">
                     <thead>
                         <tr>
@@ -50,9 +50,9 @@
                     <div class="form-group">
                         <th scope="row">1000</th>
                         <td>Stolper</td>
-                        <td> <%=od.getMaterialPrice("stolpe(r)")%> </td>
+                        <td><%=materials.get(0).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="MSRP1"></td>
-                        <td><%=od.getCostPrice("stolpe(r)")%></td>
+                        <td><%=materials.get(0).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="KP1"></td>
                     </div>
                     </tr>
@@ -60,9 +60,9 @@
                     <div class="form-group">
                         <th scope="row">1010</th>
                         <td>Planker</td>
-                        <td><%=od.getMaterialPrice("planke(r) 10x100cm")%></td>
+                        <td><%=materials.get(1).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="MSRP2"></td>
-                        <td><%=od.getCostPrice("planke(r) 10x100cm")%></td>
+                        <td><%=materials.get(1).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="KP2"></td>
                     </div>
                     </tr>
@@ -70,9 +70,9 @@
                     <div class="form-group">
                         <th scope="row">1020</th>
                         <td>Taglægter</td>
-                        <td><%=od.getMaterialPrice("taglaegte(r)")%></td>
+                        <td><%=materials.get(2).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="MSRP3"></td>
-                        <td><%=od.getCostPrice("taglaegte(r)")%></td>
+                        <td><%=materials.get(2).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="KP3"></td>
                     </div>
                     </tr>
@@ -80,9 +80,9 @@
                     <div class="form-group">
                         <th scope="row">1030</th>
                         <td>Sidelægter</td>
-                        <td><%=od.getMaterialPrice("sidelaegte(r)")%></td>
+                        <td><%=materials.get(3).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="MSRP4"></td>
-                        <td><%=od.getCostPrice("sidelaegte(r)")%></td>
+                        <td><%=materials.get(3).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="KP4"></td>
                     </div>
                     </tr>
@@ -90,9 +90,9 @@
                     <div class="form-group">
                         <th scope="row">2000</th>
                         <td>Skruer 200 stk</td>
-                        <td><%=od.getMaterialPrice("skruer 200 stk")%></td>
+                        <td><%=materials.get(4).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="MSRP5"></td>
-                        <td><%=od.getCostPrice("skruer 200 stk")%></td>
+                        <td><%=materials.get(4).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="KP5"></td>
                     </div>
                     </tr>
@@ -100,9 +100,9 @@
                     <div class="form-group">
                         <th scope="row">3000</th>
                         <td>Tagsten</td>
-                        <td><%=od.getMaterialPrice("tagsten")%></td>
+                        <td><%=materials.get(5).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="MSRP6"></td>
-                        <td><%=od.getCostPrice("tagsten")%></td>
+                        <td><%=materials.get(5).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="KP6"></td>
                     </div>
                     </tr>
@@ -110,9 +110,9 @@
                     <div class="form-group">
                         <th scope="row">3010</th>
                         <td>Tagplader</td>
-                        <td><%=od.getMaterialPrice("tagplade(r)")%></td>
+                        <td><%=materials.get(6).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="MSRP7"></td>
-                        <td><%=od.getCostPrice("tagplade(r)")%></td>
+                        <td><%=materials.get(6).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="KP7"></td>
                     </div>
                     </tr>

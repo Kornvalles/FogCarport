@@ -26,16 +26,20 @@ public class EmployeeCommand extends Command {
 
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
-        HttpSession session = request.getSession();
-        /* Get Parameters from the URL. (From the HTTP request) */
-        String reqUsername = (String) request.getParameter("username");
-        String reqPassword = (String) request.getParameter("password");
-        Employee employee = logic.login(reqUsername, reqPassword);
-        session.setAttribute("employee", employee);
-
-        if (!employee.getPassword().equals(reqPassword) 
-           && employee.getUsername().equals(reqUsername)) {
-            return "login";
+        try {
+            HttpSession session = request.getSession();
+            /* Get Parameters from the URL. (From the HTTP request) */
+            String reqUsername = (String) request.getParameter("username");
+            String reqPassword = (String) request.getParameter("password");
+            Employee employee = logic.login(reqUsername, reqPassword);
+            session.setAttribute("employee", employee);
+            session.setAttribute("materials", logic.getAllMaterials());
+            if (!employee.getPassword().equals(reqPassword)
+                    && employee.getUsername().equals(reqUsername)) {
+                return "login";
+            }
+        } catch (SQLException ex) {
+            request.setAttribute("error", ex);
         }
         return "employeePage";
     }

@@ -3,6 +3,7 @@ package FunctionLayer;
 import DataLayer.OrderMapper;
 import DataLayer.UserMapper;
 import java.sql.SQLException;
+import java.util.List;
 
 public class DatabaseLogicFacade implements LogicFacade {
 
@@ -13,7 +14,7 @@ public class DatabaseLogicFacade implements LogicFacade {
      * @throws SQLException
      */
     @Override
-    public void addCustomer(Customer customer) throws FogException, SQLException {
+    public void addCustomer( Customer customer ) throws FogException, SQLException {
         UserMapper.addCustomer(customer);
     }
 
@@ -25,7 +26,7 @@ public class DatabaseLogicFacade implements LogicFacade {
      * @throws SQLException
      */
     @Override
-    public void createOrder( Construction construction, Customer customer) throws FogException, SQLException {
+    public void createOrder( Construction construction, Customer customer ) throws FogException, SQLException {
         OrderMapper.makeOrder(construction, customer);
     }
 
@@ -77,6 +78,11 @@ public class DatabaseLogicFacade implements LogicFacade {
     @Override
     public String getMaterialDescription(String name) throws FogException, SQLException {
         return OrderMapper.getMaterialDescription(name);
+    }
+    
+    @Override
+    public List<Material> getAllMaterials() throws FogException, SQLException {
+        return OrderMapper.getAllMaterials();
     }
 
     /**
