@@ -1,19 +1,63 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <link href='https://fonts.googleapis.com/css?family=Volkhov' rel='stylesheet'>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <script src="WEB-INF/app/app.js" type="text/javascript"></script>
-        <script src="WEB-INF/app/app.js" type="text/javascript"></script>
-        <title>Ændre Ordre</title>
-    </head>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .bgimg {
+            background-image: url("https://cdn.dribbble.com/users/233521/screenshots/6095229/edf_cm_chantier.gif");
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            color: white;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 25px;
+        }
+
+        .topleft {
+            position: absolute;
+            top: 0;
+            left: 20px;
+        }
+
+        .bottomleft {
+            position: absolute;
+            bottom: 0;
+            left: 20px;
+        }
+
+        .middle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        hr {
+            margin: auto;
+            width: 40%;
+        }
+    </style>
     <body>
-        <h1>Hello World!</h1>
+
+        <div class="bgimg">
+            <div class="topleft">
+                <img src="https://media.licdn.com/dms/image/C4E0BAQGleVi1XAFxBg/company-logo_200_200/0?e=2159024400&v=beta&t=qQ2ebmGf9u4b45tNF9OyVrcy7NGpnwLXZkLrOky6ibM">
+            </div>
+            <div class="middle">
+                <h1>Siden er under ombygning</h1>
+                <hr>
+                <p>11 dage tilbage</p>
+            </div>
+                <div class="bottomleft">
+                    <a class="bottomleft" href="FrontController?command=goBack">Tilbage</a>
+                </div>
+        </div>
+
     </body>
 </html>
