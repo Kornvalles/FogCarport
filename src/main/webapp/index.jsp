@@ -76,6 +76,9 @@
                 if (request.getAttribute("error") != null) {
                     out.print(request.getAttribute("error"));
                 }
+                if (request.getAttribute("message") != null) {
+                    out.print(request.getAttribute("message"));
+                }
             %>
         </div>
             <div class="footer">

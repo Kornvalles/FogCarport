@@ -28,6 +28,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="viewAllOrders.jsp">Se Alle Ordrer</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="FrontController?command=logout">Log ud</a>
+                </li>
             </ul>
         </nav>
         <header class="masthead">
