@@ -56,12 +56,9 @@
                 <hr>
                 <p>11 dage tilbage</p>
             </div>
-            <form method="POST" action="FrontController">
-                <input type="hidden" name="command" value="goBack">
                 <div class="bottomleft">
                     <a class="bottomleft" href="FrontController?command=goBack">Tilbage</a>
                 </div>
-            </form>
         </div>
 
     </body>
