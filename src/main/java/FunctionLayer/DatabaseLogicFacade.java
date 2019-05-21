@@ -84,6 +84,11 @@ public class DatabaseLogicFacade implements LogicFacade {
     public List<Material> getAllMaterials() throws FogException, SQLException {
         return OrderMapper.getAllMaterials();
     }
+    
+    @Override
+    public void setMaterialPrice(int materialId, double newPrice) throws FogException, SQLException {
+        OrderMapper.setMaterialPrice(materialId, newPrice);
+    }
 
     /**
      *
