@@ -7,17 +7,15 @@ public class Material {
     private int qty;
     private String unit;
     private double price;
-    private double costPrice;
     private double totalprice;
     private String description;
 
-    public Material(String name, int id, int qty, String unit, double price, double costPrice, String description) {
+    public Material(String name, int id, int qty, String unit, double price, String description) {
         this.name = name;
         this.id = id;
         this.qty = qty;
         this.unit = unit;
         this.price = price;
-        this.costPrice = costPrice;
         this.description = description;
     }
 
@@ -58,21 +56,9 @@ public class Material {
     }
 
     public double getTotalprice() {
-        return totalprice;
+        return price*qty;
     }
 
-    public void setTotalprice(double totalprice) {
-        this.totalprice = totalprice;
-    }
-
-    public double getCostPrice() {
-        return costPrice;
-    }
-
-    public void setCostPrice(double costPrice) {
-        this.costPrice = costPrice;
-    }
-    
     public String getDescription() {
         return description;
     }
