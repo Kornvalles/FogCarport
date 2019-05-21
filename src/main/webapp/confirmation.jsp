@@ -147,7 +147,7 @@
                     %>
                     </svg>
                     <!-- SVG-drawing for the front side on a carport (Not done yet)  -->
-                    <svg width="1000" height="400" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+                    <svg width="1000" height="450" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
                     <%  SVGText text3 = new SVGText("10", "380", "Carport fofra");
                         out.println(text3.toString());
 
@@ -177,11 +177,12 @@
                     </svg>
 
                     <!-- SVG-drawing for the top side on a carport (Not done yet)  -->
-                    <svg width="1000" height="350" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-                    <%  SVGText text4 = new SVGText("10", String.valueOf(width+100), "Carport oppefra");
+                    <svg width="1000" height="<% construction.getCarport().getWidth(); %>" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+                    <%  SVGText text4 = new SVGText("10", String.valueOf(width+50), "Carport oppefra");
                         out.println(text3.toString());
                         
                         SVGRectangle edge = new SVGRectangle(String.valueOf(width), "1", String.valueOf(length), String.valueOf(start), String.valueOf(start));
+                        out.println(edge.toString());
                         
                         /* Making the ... */
                         /* Making the ... */
