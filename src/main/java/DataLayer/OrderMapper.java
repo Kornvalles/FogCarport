@@ -17,23 +17,24 @@ import java.util.List;
  * @authors Iben, Christian, Benjamin, Nicklas, Mikkel
  */
 public class OrderMapper {
-
     
     
     /** Returns the price of a material 
     * @param name
     * @return  */
     public static double getMaterialPrice(String name) throws FogException, SQLException {
-            PreparedStatement preparedstatement = null;
             double price = 0;
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            Connection conn = null;
         try {
             String query = "SELECT MSRP FROM `FogCarport`.`material` "
                     + "WHERE `material`.`name` = ?;";
 
-            Connection con = Connector.connection();
-            PreparedStatement ps = con.prepareStatement(query);
+             conn = Connector.connection();
+            ps = conn.prepareStatement(query);
             ps.setString(1, name);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
 
             if (rs.next()) {
                 price = rs.getDouble("MSRP");
@@ -43,10 +44,19 @@ public class OrderMapper {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
+        /*
+        close connection and statements to prevent memoryleak 
+        no need to close resultset since it closes with the preparedstatement
+        */
         finally {
-            if(preparedstatement != null) {
-                preparedstatement.close();
-            }
+                if(ps != null) {
+                    ps.close();
+                }
+                if(conn != null) {
+                    conn.close();
+                }
+                
+                
     }
     return 0;
     }
@@ -73,41 +83,58 @@ public class OrderMapper {
         }
     }
 
-    public static int getMaterialId(String name) throws FogException {
+    public static int getMaterialId(String name) throws FogException, SQLException {
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            Connection conn = null;
+            int id = 0;
         try {
             String query = "SELECT materialID FROM `FogCarport`.`material` "
-                    + "WHERE `material`.`name` = '" + name + "';";
+                    + "WHERE `material`.`name` = ?;";
 
-            Connection con = Connector.connection();
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            conn = Connector.connection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            rs = ps.executeQuery();
 
-            int id = 0;
 
-            while (rs.next()) {
+            if (rs.next()) {
                 id = rs.getInt("materialID");
+                return id;
             }
-            return id;
-            
         } catch (SQLException ex) {
             System.out.println(ex);
         }
+        /*
+        close connection and statements to prevent memoryleak 
+        no need to close resultset since it closes with the preparedstatement
+        */
+        finally {
+            if(ps != null) {
+                ps.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+    }
         return 0;
         
         
     }
 
-    public static String getMaterialDescription(String name) throws FogException {
-        
+    public static String getMaterialDescription(String name) throws FogException, SQLException {
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            Connection conn = null;
+            String desc = "";
         try {
             String query = "SELECT description FROM `FogCarport`.`material` "
-                    + "WHERE `material`.`name` = '" + name + "';";
+                    + "WHERE `material`.`name` = ?;";
 
-            Connection con = Connector.connection();
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-
-            String desc = "";
+            conn = Connector.connection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            rs = ps.executeQuery();
 
             while (rs.next()) {
                 desc = rs.getString("description");
@@ -117,28 +144,56 @@ public class OrderMapper {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
+        /*
+        close connection and statements to prevent memoryleak 
+        no need to close resultset since it closes with the preparedstatement
+        */
+        finally {
+            if(ps != null) {
+                ps.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+    }
         return "";
         
     }
-    public static double getCostPrice(String name) throws FogException {
+    public static double getCostPrice(String name) throws FogException, SQLException {
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            Connection conn = null;
+            double price = 0;
         try {
             String query = "SELECT costPrice FROM `FogCarport`.`material` "
-                    + "WHERE `material`.`name` = '" + name + "';";
+                    + "WHERE `material`.`name` = ?;";
 
-            Connection con = Connector.connection();
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            conn = Connector.connection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            rs = ps.executeQuery();
 
-            double price = 0;
-
-            while (rs.next()) {
+            if (rs.next()) {
                 price = rs.getDouble("costPrice");
+                return price;
             }
-            return price;
+            
             
         } catch (SQLException ex) {
             System.out.println(ex);
         }
+        /*
+        close connection and statements to prevent memoryleak 
+        no need to close ResultSet since it closes with the preparedstatement
+        */
+        finally {
+            if(ps != null) {
+                ps.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+    }
         return 0;
     }
     
@@ -161,14 +216,17 @@ public class OrderMapper {
     }
 
     public static void setMaterialPrice(int materialId, double newPrice) throws FogException {
+        Connection conn = null;
+        PreparedStatement ps = null;
         try {
-            String query = "UPDATE `FogCarport`.`material` SET `MSRP` = '" + newPrice + "' WHERE (`materialID` = '" + materialId + "');";
-            
-            Connection con = Connector.connection();
-            PreparedStatement ps = con.prepareStatement(query);
+            String query = "UPDATE `FogCarport`.`material` SET `MSRP` = ? WHERE (`materialID` = ?);";
+
+            conn = Connector.connection();
+            ps.setDouble(1, newPrice);
+            ps.setInt(2, materialId);
+            ps = conn.prepareStatement(query);
             ps.execute();
-            
-            con.commit();
+            conn.commit();
         } catch (SQLException ex) {
             System.err.println(" Got an exception! ");
             System.err.println(ex.getMessage());

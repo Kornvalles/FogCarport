@@ -6,8 +6,6 @@
 package TestDataLayer;
 
 import DataLayer.OrderMapper;
-import FunctionLayer.Carport;
-import FunctionLayer.Customer;
 import java.sql.SQLException;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -76,23 +74,32 @@ public class OrderMapperTest {
      */
     @Test
     public void testGetMaterialId() throws Exception {
+        try{
         System.out.println("getMaterialId");
         String name = "taglaegte(r)";
         int expResult = 1020;
         int result = OrderMapper.getMaterialId(name);
         assertEquals(expResult, result);
     }
-
+        catch(SQLException ex) {
+            System.out.println(ex);
+        }
+    }
     /**
      * Test of getMaterialDescription method, of class OrderMapper.
      */
     @Test
     public void testGetMaterialDescription() throws Exception {
+        try {
         System.out.println("getMaterialDescription");
         String name = "skruer 200 stk";
         String expResult = "Staal. Kan iskrues uden forboring.";
         String result = OrderMapper.getMaterialDescription(name);
         assertEquals(expResult, result);
+    }
+        catch(SQLException ex) {
+            System.out.println(ex);
+        }
     }
     
 }
