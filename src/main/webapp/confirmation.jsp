@@ -1,3 +1,4 @@
+<%@page import="FunctionLayer.DrawSVG"%>
 <%@page import="FunctionLayer.SVGTriangle"%>
 <%@page import="FunctionLayer.SVGText"%>
 <%@page import="FunctionLayer.SVGRectangle"%>
@@ -92,10 +93,11 @@
 
                     <p>SVGCarport <%= construction.getCarport().getLength()%> cm lang og <%= construction.getCarport().getWidth()%> cm bred</p>
 
+                    <% DrawSVG svg = new DrawSVG(); %>
+                    
                     <!-- SVG-drawing for a longside on a carport (Not done yet)  -->
                     <svg width="1000" height="350" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-                    <%  SVGText text1 = new SVGText("10", "280", "Carport fra siden");
-                        out.println(text1.toString());
+                    <%  out.println(svg.makeText("10", "280", "Carport fra siden"));
 
                         int length = construction.getCarport().getLength();
                         int height = 230;
