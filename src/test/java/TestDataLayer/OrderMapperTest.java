@@ -8,6 +8,7 @@ package TestDataLayer;
 import DataLayer.OrderMapper;
 import FunctionLayer.Carport;
 import FunctionLayer.Customer;
+import java.sql.SQLException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -45,11 +46,16 @@ public class OrderMapperTest {
      */
     @Test
     public void testGetMaterialPrice() throws Exception {
+        try {
         System.out.println("getMaterialPrice");
         String name = "stolpe(r)";
         double expResult = 240.95;
         double result = OrderMapper.getMaterialPrice(name);
         assertEquals(expResult, result, 0.0);
+        }
+        catch(SQLException ex) {
+            System.out.println(ex);
+        }
     }
 
     /**
