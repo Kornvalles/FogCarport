@@ -55,11 +55,9 @@ public class OrderMapper {
                 if(conn != null) {
                     conn.close();
                 }
-                
-                
-    }
+                }
     return 0;
-    }
+}
     public static void createOrder( Construction construction, Customer customer ) throws FogException {
         try {
             Connection con = Connector.connection();

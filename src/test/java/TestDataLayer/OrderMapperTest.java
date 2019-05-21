@@ -71,6 +71,7 @@ public class OrderMapperTest {
 
     /**
      * Test of getMaterialId method, of class OrderMapper.
+     * @throws java.lang.Exception
      */
     @Test
     public void testGetMaterialId() throws Exception {
