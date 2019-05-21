@@ -15,8 +15,6 @@ public interface LogicFacade {
 
     double getMaterialPrice( String name ) throws FogException, SQLException;
     
-    double getMaterialCostPrice( String name ) throws FogException, SQLException;
-    
     int getMaterialId( String name ) throws FogException, SQLException;
     
     String getMaterialDescription( String name ) throws FogException, SQLException;

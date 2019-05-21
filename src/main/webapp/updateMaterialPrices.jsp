@@ -52,7 +52,7 @@
                         <td><%=materials.get(0).getName().substring(0,1).toUpperCase()+materials.get(0).getName().substring(1)%></td>
                         <td><%=materials.get(0).getPrice()%></td>
                         <td><input type="number" name="newPrice"></td>
-                        <td><%=materials.get(0).getCostPrice()%></td>
+                        <td><%=materials.get(0).getPrice()%></td>
                         <td><input type="number" name="newCostPrice"></td>
                     </div>
                     </tr>
@@ -62,7 +62,7 @@
                         <td><%=materials.get(1).getName().substring(0,1).toUpperCase()+materials.get(1).getName().substring(1)%></td>
                         <td><%=materials.get(1).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="MSRP2"></td>
-                        <td><%=materials.get(1).getCostPrice()%></td>
+                        <td><%=materials.get(1).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="KP2"></td>
                     </div>
                     </tr>
@@ -72,7 +72,7 @@
                         <td><%=materials.get(2).getName().substring(0,1).toUpperCase()+materials.get(2).getName().substring(1)%></td>
                         <td><%=materials.get(2).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="MSRP3"></td>
-                        <td><%=materials.get(2).getCostPrice()%></td>
+                        <td><%=materials.get(2).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="KP3"></td>
                     </div>
                     </tr>
@@ -82,7 +82,7 @@
                         <td><%=materials.get(3).getName().substring(0,1).toUpperCase()+materials.get(3).getName().substring(1)%></td>
                         <td><%=materials.get(3).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="MSRP4"></td>
-                        <td><%=materials.get(3).getCostPrice()%></td>
+                        <td><%=materials.get(3).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="KP4"></td>
                     </div>
                     </tr>
@@ -92,7 +92,7 @@
                         <td><%=materials.get(4).getName().substring(0,1).toUpperCase()+materials.get(4).getName().substring(1)%></td>
                         <td><%=materials.get(4).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="MSRP5"></td>
-                        <td><%=materials.get(4).getCostPrice()%></td>
+                        <td><%=materials.get(4).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="KP5"></td>
                     </div>
                     </tr>
@@ -102,7 +102,7 @@
                         <td><%=materials.get(5).getName().substring(0,1).toUpperCase()+materials.get(5).getName().substring(1)%></td>
                         <td><%=materials.get(5).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="MSRP6"></td>
-                        <td><%=materials.get(5).getCostPrice()%></td>
+                        <td><%=materials.get(5).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="KP6"></td>
                     </div>
                     </tr>
@@ -112,7 +112,7 @@
                         <td><%=materials.get(6).getName().substring(0,1).toUpperCase()+materials.get(6).getName().substring(1)%></td>
                         <td><%=materials.get(6).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="MSRP7"></td>
-                        <td><%=materials.get(6).getCostPrice()%></td>
+                        <td><%=materials.get(6).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="KP7"></td>
                     </div>
                     </tr>

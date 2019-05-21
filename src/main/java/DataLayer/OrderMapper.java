@@ -147,7 +147,7 @@ public class OrderMapper {
             ResultSet rs = stmt.executeQuery(query);
             
             while (rs.next()) {
-                materials.add(new Material(rs.getNString(2), rs.getInt(1), rs.getInt(5), "", rs.getDouble(3), rs.getDouble(4), rs.getNString(6)));
+                materials.add(new Material(rs.getNString(2), rs.getInt(1), rs.getInt(5), "", rs.getDouble(4), rs.getNString(6)));
             }
         } catch (SQLException ex) {
             System.out.println(ex);

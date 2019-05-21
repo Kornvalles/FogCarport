@@ -248,15 +248,15 @@ public class Calculator {
         List<Material> material = new ArrayList<>();
 
         /* Get name and price from sql database */
-        Material post = new Material("stolpe(r)", logic.getMaterialId("stolpe(r)"), getAllPosts(carport), "stk", logic.getMaterialPrice("stolpe(r)"), logic.getMaterialCostPrice("stolpe(r)"), logic.getMaterialDescription("stolpe(r)"));
-        Material wood = new Material("planke(r) 10x100cm", logic.getMaterialId("planke(r) 10x100cm"), getSides(carport), "stk", logic.getMaterialPrice("planke(r) 10x100cm"), logic.getMaterialCostPrice("planke(r) 10x100cm"), logic.getMaterialDescription("planke(r) 10x100cm"));
-        Material shedWood = new Material("planke(r) 10x100cm (skur)", logic.getMaterialId("planke(r) 10x100cm"), makeShed(carport), "stk", logic.getMaterialPrice("planke(r) 10x100cm"), logic.getMaterialCostPrice("planke(r) 10x100cm"), logic.getMaterialDescription("planke(r) 10x100cm")); // virker ikke endnu.
-        Material noShed = new Material("planke(r) 10x100cm (skur)", logic.getMaterialId("planke(r) 10x100cm"), 0, "stk", logic.getMaterialPrice("planke(r) 10x100cm"), logic.getMaterialCostPrice("planke(r) 10x100cm"), logic.getMaterialDescription("planke(r) 10x100cm"));
-        Material roofBatten = new Material("taglaegte(r)", logic.getMaterialId("taglaegte(r)"), getRoofBattens(carport) / 100, "m", logic.getMaterialPrice("taglaegte(r)"), logic.getMaterialCostPrice("taglaegte(r)"), logic.getMaterialDescription("taglaegte(r)"));
-        Material sideBatten = new Material("sidelaegte(r)", logic.getMaterialId("sidelaegte(r)"), getSideBattens(carport) / 100, "m", logic.getMaterialPrice("sidelaegte(r)"), logic.getMaterialCostPrice("sidelaegte(r)"),logic.getMaterialDescription("sidelaegte(r)"));
-        Material screw = new Material("skruer 200 stk", logic.getMaterialId("skruer 200 stk"), getScrews(carport), "pakker", logic.getMaterialPrice("skruer 200 stk"),logic.getMaterialCostPrice("skruer 200 stk"), logic.getMaterialDescription("skruer 200 stk"));
-        Material roofTile = new Material("tagsten", logic.getMaterialId("tagsten"), getRoof(carport), "stk", logic.getMaterialPrice("tagsten"), logic.getMaterialCostPrice("tagsten"), logic.getMaterialDescription("tagsten"));
-        Material pvcRoofSheet = new Material("tagplade(r)", logic.getMaterialId("tagplade(r)"), getRoof(carport), "stk", logic.getMaterialPrice("tagplade(r)"), logic.getMaterialCostPrice("tagplade(r)"), logic.getMaterialDescription("tagplade(r)"));
+        Material post = new Material("stolpe(r)", logic.getMaterialId("stolpe(r)"), getAllPosts(carport), "stk", logic.getMaterialPrice("stolpe(r)"), logic.getMaterialDescription("stolpe(r)"));
+        Material wood = new Material("planke(r) 10x100cm", logic.getMaterialId("planke(r) 10x100cm"), getSides(carport), "stk", logic.getMaterialPrice("planke(r) 10x100cm"), logic.getMaterialDescription("planke(r) 10x100cm"));
+        Material shedWood = new Material("planke(r) 10x100cm (skur)", logic.getMaterialId("planke(r) 10x100cm"), makeShed(carport), "stk", logic.getMaterialPrice("planke(r) 10x100cm"), logic.getMaterialDescription("planke(r) 10x100cm")); // virker ikke endnu.
+        Material noShed = new Material("planke(r) 10x100cm (skur)", logic.getMaterialId("planke(r) 10x100cm"), 0, "stk", logic.getMaterialPrice("planke(r) 10x100cm"), logic.getMaterialDescription("planke(r) 10x100cm"));
+        Material roofBatten = new Material("taglaegte(r)", logic.getMaterialId("taglaegte(r)"), getRoofBattens(carport) / 100, "m", logic.getMaterialPrice("taglaegte(r)"), logic.getMaterialDescription("taglaegte(r)"));
+        Material sideBatten = new Material("sidelaegte(r)", logic.getMaterialId("sidelaegte(r)"), getSideBattens(carport) / 100, "m", logic.getMaterialPrice("sidelaegte(r)"), logic.getMaterialDescription("sidelaegte(r)"));
+        Material screw = new Material("skruer 200 stk", logic.getMaterialId("skruer 200 stk"), getScrews(carport), "pakker", logic.getMaterialPrice("skruer 200 stk"), logic.getMaterialDescription("skruer 200 stk"));
+        Material roofTile = new Material("tagsten", logic.getMaterialId("tagsten"), getRoof(carport), "stk", logic.getMaterialPrice("tagsten"), logic.getMaterialDescription("tagsten"));
+        Material pvcRoofSheet = new Material("tagplade(r)", logic.getMaterialId("tagplade(r)"), getRoof(carport), "stk", logic.getMaterialPrice("tagplade(r)"), logic.getMaterialDescription("tagplade(r)"));
 
         material.add(post);
         if (carport.hasWall()) {
