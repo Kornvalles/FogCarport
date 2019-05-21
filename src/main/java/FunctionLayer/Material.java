@@ -10,14 +10,6 @@ public class Material {
     private double totalprice;
     private String description;
 
-    public Material(String name, int qty, String unit, double price) {
-        this.name = name;
-        this.qty = qty;
-        this.unit = unit;
-        this.price = price;
-        this.totalprice = qty*price;
-    }
-
     public Material(String name, int id, int qty, String unit, double price, String description) {
         this.name = name;
         this.id = id;
