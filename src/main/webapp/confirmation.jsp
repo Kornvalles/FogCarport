@@ -122,7 +122,7 @@
                         }
 =======
                         if (construction.getCarport().hasWall()) {
-                            
+
                             /* In case that the length is not dividable with 100 (boardLength), then you need to make an extra post in the end. */
                             if (length % boardLength != 100) {
                                 out.println(svg.makeRectangle(String.valueOf(height), "1", "10", String.valueOf(length), "0"));
