@@ -91,8 +91,8 @@
                     <p>SVGCarport <%= construction.getCarport().getLength()%> cm lang og <%= construction.getCarport().getWidth()%> cm bred</p>
 
                     <% DrawSVG svg = new DrawSVG(); %>
-                    
-                    <!-- SVG-drawing for a longside on a carport (Not done yet)  -->
+
+                    <!-- SVG-drawing for a longside on a carport -->
                     <svg width="1000" height="350" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
                     <%  out.println(svg.makeText("10", "280", "Carport fra siden"));
 
@@ -106,33 +106,36 @@
                             out.println(svg.makeRectangle(String.valueOf(height), "1", "10", String.valueOf(i), "0"));
                         }
 
-                        /* In case that the length is not dividable with 100 (boardLength), then you need to make an extra post in the end. */
-                        if (length % boardLength != 100) {
-                            out.println(svg.makeRectangle(String.valueOf(height), "1", "10", String.valueOf(length), "0"));
-                        }
+                        if (construction.getCarport().hasWall()) {
+                            
+                            /* In case that the length is not dividable with 100 (boardLength), then you need to make an extra post in the end. */
+                            if (length % boardLength != 100) {
+                                out.println(svg.makeRectangle(String.valueOf(height), "1", "10", String.valueOf(length), "0"));
+                            }
 
-                        /* Making the walls of the longside with wooden boards.
+                            /* Making the walls of the longside with wooden boards.
                         - The method stops making whole boards, when the rest of the length is less than 100 (the length of 1 board).
                         - Every index(i) is 1 whole column of wooden boards from top to bottom. 
                         - Every index(j) is 1 board in the index(i)-column. */
-                        for (int i = start + 5; i < length + 5; i = i + boardLength) {
-                            for (int j = 0; j < height; j = j + 10) {
-                                String boards = svg.makeRectangle("10", "0.20", String.valueOf(boardLength), String.valueOf(i), String.valueOf(j));
+                            for (int i = start + 5; i < length + 5; i = i + boardLength) {
+                                for (int j = 0; j < height; j = j + 10) {
+                                    String boards = svg.makeRectangle("10", "0.20", String.valueOf(boardLength), String.valueOf(i), String.valueOf(j));
 
-                                /* In case the length of the carport is not dividable with 100 (the length of 1 board). */
-                                if (length % boardLength != 0) {
+                                    /* In case the length of the carport is not dividable with 100 (the length of 1 board). */
+                                    if (length % boardLength != 0) {
 
-                                    /* In case that the placing of the last board and 1 whole board is longer than the full length.
-                                    - It places a shorter board in the end. */
-                                    if ((i + boardLength) > length) {
-                                        out.println(svg.makeRectangle("10", "0.20", String.valueOf(length % boardLength), String.valueOf(length - (length % boardLength) + 5), String.valueOf(j)));
+                                        /* In case that the placing of the last board and 1 whole board is longer than the full length.
+                                        - It places a shorter board in the end. */
+                                        if ((i + boardLength) > length) {
+                                            out.println(svg.makeRectangle("10", "0.20", String.valueOf(length % boardLength), String.valueOf(length - (length % boardLength) + 5), String.valueOf(j)));
+                                        } else {
+                                            out.println(boards.toString());
+                                        }
+
+                                        /* In case the length is dividable with 100 (the length of 1 board). */
                                     } else {
                                         out.println(boards.toString());
                                     }
-
-                                    /* In case the length is dividable with 100 (the length of 1 board). */
-                                } else {
-                                    out.println(boards.toString());
                                 }
                             }
                         }
@@ -141,7 +144,7 @@
 
                     %>
                     </svg>
-                    <!-- SVG-drawing for the front side on a carport (Not done yet)  -->
+                    <!-- SVG-drawing for the front side on a carport -->
                     <svg width="1000" height="450" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
                     <%  out.println(svg.makeText("10", "380", "Carport fofra"));
 
@@ -166,7 +169,7 @@
                     %>  
                     </svg>
 
-                    <!-- SVG-drawing for the top side on a carport (Not done yet)  -->
+                    <!-- SVG-drawing for the top side on a carport -->
                     <svg width="1000" height="900" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
                     <%  out.println(svg.makeText("10", "15", "Carport oppefra"));
 
@@ -175,7 +178,8 @@
 
                         /* Making the shed inside the carport, if there is a shed */
                         if (construction.getCarport().hasToolshed()) {
-                            out.println(svg.makeRectangle(String.valueOf(construction.getCarport().getShedWidth()), "1",String.valueOf(length) , String.valueOf(start), String.valueOf(start + 50)));
+                            out.println(svg.makeRectangle(String.valueOf(construction.getCarport().getShedWidth()), "1", String.valueOf(length), String.valueOf(start), String.valueOf(start + 50)));
+                            out.println(svg.makeText(String.valueOf(start + 50), String.valueOf(start + 100), "Skur"));
                         }
 
                     %>  
