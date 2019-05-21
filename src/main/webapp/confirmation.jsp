@@ -160,14 +160,13 @@
                         SVGRectangle rightPost = new SVGRectangle(String.valueOf(height), "1", "10", String.valueOf(width), String.valueOf(heightPointy));
                         out.println(leftPost.toString() + rightPost.toString());
 
-                        /* Making the roof (flat or pointy) */
-                        
-                        /* In case the roof is pointy */
+                        /* Making the roof (flat or pointy) 
+                        - In case the roof is pointy */
                         if (construction.getCarport().hasPointyRoof()) {
                             SVGTriangle roof = new SVGTriangle(((start + width + 10) / 2) + "," + start + " " + start + "," + heightPointy + " " + (width + 10) + "," + heightPointy);
                             out.println(roof.toString());
 
-                            /* In case the roof is flat*/
+                            /* - In case the roof is flat*/
                         } else {
                             SVGRectangle roof = new SVGRectangle("10", "1", String.valueOf(width + 5), String.valueOf(start), String.valueOf(heightPointy - 10));
                             out.println(roof.toString());
@@ -177,15 +176,19 @@
                     </svg>
 
                     <!-- SVG-drawing for the top side on a carport (Not done yet)  -->
-                    <svg width="1000" height="<% construction.getCarport().getWidth(); %>" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-                    <%  SVGText text4 = new SVGText("10", String.valueOf(width+50), "Carport oppefra");
-                        out.println(text3.toString());
-                        
-                        SVGRectangle edge = new SVGRectangle(String.valueOf(width), "1", String.valueOf(length), String.valueOf(start), String.valueOf(start));
+                    <svg width="1000" height="900" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+                    <%  SVGText text4 = new SVGText("10", "15", "Carport oppefra");
+                        out.println(text4.toString());
+
+                        /* Making the carport from the top */
+                        SVGRectangle edge = new SVGRectangle(String.valueOf(width), "1", String.valueOf(length), String.valueOf(start), String.valueOf(start + 50));
                         out.println(edge.toString());
-                        
-                        /* Making the ... */
-                        /* Making the ... */
+
+                        /* Making the shed inside the carport, if there is a shed */
+                        if (construction.getCarport().hasToolshed()) {
+                            SVGRectangle shed = new SVGRectangle(String.valueOf(construction.getCarport().getShedWidth()), "1",String.valueOf(length) , String.valueOf(start), String.valueOf(start + 50));
+                            out.println(shed.toString());
+                        }
 
                     %>  
                     </svg>
