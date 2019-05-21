@@ -42,6 +42,11 @@ public class DatabaseLogicFacade implements LogicFacade {
         return OrderMapper.getMaterialPrice(name);
     }
     
+    @Override
+    public double getMaterialCostPrice( String name ) throws FogException, SQLException {
+        return OrderMapper.getCostPrice(name);
+    }
+    
     /**
      *
      * @param customer
