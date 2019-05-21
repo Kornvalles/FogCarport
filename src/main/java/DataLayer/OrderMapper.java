@@ -154,4 +154,19 @@ public class OrderMapper {
         }
         return materials;
     }
+
+    public static void setMaterialPrice(int materialId, double newPrice) throws FogException {
+        try {
+            String query = "UPDATE `FogCarport`.`material` SET `MSRP` = '" + newPrice + "' WHERE (`materialID` = '" + materialId + "');";
+            
+            Connection con = Connector.connection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.execute();
+            
+            con.commit();
+        } catch (SQLException ex) {
+            System.err.println(" Got an exception! ");
+            System.err.println(ex.getMessage());
+        }
+    }
 }
