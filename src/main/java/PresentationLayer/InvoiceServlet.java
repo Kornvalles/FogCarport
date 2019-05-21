@@ -35,10 +35,6 @@ public class InvoiceServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Construction construction = (Construction) session.getAttribute("construction");
         Customer customer = (Customer) session.getAttribute("customer");
-//        LocalDate date = LocalDate.now();
-//        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("ddMMyyyy");
-//        String dest = customer.getName().toLowerCase() + date.format(dateFormatter) + ".pdf";
-//        response.addHeader("filename", dest);
         Invoice.makeInvoice(customer, construction, response.getOutputStream());
     }
 
