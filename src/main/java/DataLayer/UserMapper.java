@@ -20,7 +20,7 @@ import java.sql.Statement;
  */
 public class UserMapper {
 
-    public static void addCustomer(Customer customer) throws FogException, SQLException {
+    public static void addCustomer(Customer customer) throws FogException{
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO `FogCarport`.`customer` ( name, email, address, zipcode, phoneNumber ) "
