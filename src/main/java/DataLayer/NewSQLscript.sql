@@ -24,8 +24,8 @@ USE `FogCarport` ;
 -- Table `FogCarport`.`customer`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `FogCarport`.`customer` (
-`name` VARCHAR(16) NOT NULL,
-`email` VARCHAR(255) NOT NULL,
+`name` VARCHAR(16),
+`email` VARCHAR(255),
 `address` VARCHAR(255),
 `zipcode` INT NOT NULL,
 `phoneNumber` INT NOT NULL,
@@ -81,8 +81,27 @@ CREATE TABLE IF NOT EXISTS `FogCarport`.`order` (
   `hasShed` BOOLEAN,
   `hasWall` BOOLEAN,
   `totalPrice` DOUBLE NOT NULL,
-  PRIMARY KEY (`orderID`));
-  
+  PRIMARY KEY (`orderID`),
+  INDEX `EmployeeID_idx` (`employeeId` ASC) VISIBLE,
+  INDEX `CustomerEmail_idx` (`customerEmail` ASC) VISIBLE,
+  INDEX `CustomerName_idx` (`customerName` ASC) VISIBLE,
+  CONSTRAINT `EmployeeID`
+    FOREIGN KEY (`employeeId`)
+    REFERENCES `fogCarport`.`employee` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `CustomerEmail`
+    FOREIGN KEY (`customerEmail`)
+    REFERENCES `fogCarport`.`customer` (`email`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `CustomerName`
+    FOREIGN KEY (`customerName`)
+    REFERENCES `fogCarport`.`customer` (`name`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET FOREIGN_KEY_CHECKS=1;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
