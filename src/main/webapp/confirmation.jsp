@@ -92,7 +92,7 @@
 
                     <% DrawSVG svg = new DrawSVG(); %>
 
-                    <!-- SVG-drawing for a longside on a carport  -->
+                    <!-- SVG-drawing for a longside on a carport -->
                     <svg width="1000" height="350" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
                     <%  out.println(svg.makeText("10", "280", "Carport fra siden"));
 
