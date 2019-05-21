@@ -18,7 +18,7 @@
                 request.setAttribute("error", "Please Login");
                 response.sendRedirect(response.encodeURL("login.jsp"));
             }
-        List<Material> materials = (List<Material>) session.getAttribute("materials");
+            List<Material> materials = (List<Material>) session.getAttribute("materials");
         %>
         <title>Ændring af materiale priser!</title>
     </head>
@@ -48,18 +48,18 @@
                     <tbody>
                         <tr>
                     <div class="form-group">
-                        <th scope="row">1000</th>
-                        <td>Stolper</td>
+                        <th scope="row"><%=materials.get(0).getId()%></th>
+                        <td><%=materials.get(0).getName().substring(0,1).toUpperCase()%></td>
                         <td><%=materials.get(0).getPrice()%></td>
-                        <td><input type="text"><input type="submit" value="Ændr pris" name="MSRP1"></td>
+                        <td><input type="number" name="newPrice"><input type="submit" value="Ændr pris" name="MSRP1"></td>
                         <td><%=materials.get(0).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="KP1"></td>
                     </div>
                     </tr>
                     <tr>
                     <div class="form-group">
-                        <th scope="row">1010</th>
-                        <td>Planker</td>
+                        <th scope="row"><%=materials.get(1).getId()%></th>
+                        <td><%=materials.get(1).getName().substring(0,1).toUpperCase()%></td>
                         <td><%=materials.get(1).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="MSRP2"></td>
                         <td><%=materials.get(1).getPrice()%></td>
@@ -68,8 +68,8 @@
                     </tr>
                     <tr>
                     <div class="form-group">
-                        <th scope="row">1020</th>
-                        <td>Taglægter</td>
+                        <th scope="row"><%=materials.get(2).getId()%></th>
+                        <td><%=materials.get(2).getName().substring(0,1).toUpperCase()%></td>
                         <td><%=materials.get(2).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="MSRP3"></td>
                         <td><%=materials.get(2).getPrice()%></td>
@@ -78,8 +78,8 @@
                     </tr>
                     <tr>
                     <div class="form-group">
-                        <th scope="row">1030</th>
-                        <td>Sidelægter</td>
+                        <th scope="row"><%=materials.get(3).getId()%></th>
+                        <td><%=materials.get(3).getName().substring(0,1).toUpperCase()%></td>
                         <td><%=materials.get(3).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="MSRP4"></td>
                         <td><%=materials.get(3).getPrice()%></td>
@@ -88,8 +88,8 @@
                     </tr>
                     <tr>
                     <div class="form-group">
-                        <th scope="row">2000</th>
-                        <td>Skruer 200 stk</td>
+                        <th scope="row"><%=materials.get(4).getId()%></th>
+                        <td><%=materials.get(4).getName().substring(0,1).toUpperCase()%></td>
                         <td><%=materials.get(4).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="MSRP5"></td>
                         <td><%=materials.get(4).getPrice()%></td>
@@ -98,8 +98,8 @@
                     </tr>
                     <tr>
                     <div class="form-group">
-                        <th scope="row">3000</th>
-                        <td>Tagsten</td>
+                        <th scope="row"><%=materials.get(5).getId()%></th>
+                        <td><%=materials.get(5).getName().substring(0,1).toUpperCase()%></td>
                         <td><%=materials.get(5).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="MSRP6"></td>
                         <td><%=materials.get(5).getPrice()%></td>
@@ -108,8 +108,8 @@
                     </tr>
                     <tr>
                     <div class="form-group">
-                        <th scope="row">3010</th>
-                        <td>Tagplader</td>
+                        <th scope="row"><%=materials.get(6).getId()%></th>
+                        <td><%=materials.get(6).getName().substring(0,1).toUpperCase()%></td>
                         <td><%=materials.get(6).getPrice()%></td>
                         <td><input type="text"><input type="submit" value="Ændr pris" name="MSRP7"></td>
                         <td><%=materials.get(6).getPrice()%></td>
