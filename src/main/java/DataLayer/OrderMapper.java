@@ -50,7 +50,7 @@ public class OrderMapper {
     }
     return 0;
     }
-    public static void makeOrder( Construction construction, Customer customer ) throws FogException {
+    public static void createOrder( Construction construction, Customer customer ) throws FogException {
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO `FogCarport`.`order` (employeeId, customerEmail, customerName, carportHeight"

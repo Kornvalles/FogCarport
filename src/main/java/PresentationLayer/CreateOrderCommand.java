@@ -54,11 +54,18 @@ public class CreateOrderCommand extends Command {
         //Kører logikken. Forsøger at putte ting i database.
         try {
             Customer customer = new Customer(name, email, address, zip, phone);
+            session.setAttribute("customer", customer);
+            logic.addCustomer(customer);
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error creating customer.", e);
+            throw new FogException(e.getMessage());
+        }
+        try {
+            
+            Customer customer = (Customer) session.getAttribute("customer");         
             Carport carport = new Carport(230, length, width, toolShed, shedWidth, roof, roofType, roofAngle, wall, "");
             Construction construction = Calculator.constructCarport(carport, logic);
             session.setAttribute("construction", construction);
-            session.setAttribute("customer", customer);
-            logic.addCustomer(customer);
             logic.createOrder(construction, customer);
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Error creating a carport order.", e);
