@@ -56,17 +56,19 @@ public class DrawSVG {
                     + "</text>";
         }
 
-        public String makeLine() {
-            String line = "";
-
-            return line;
+        public String makeMarker(int x1, int x2, int y1, int y2) {
+            return "<defs> "
+                    + "<marker id='beginArrow' markerHeight='9' markerWidth='9' orient='auto' refX='0' refY='4'> "
+                    + "<path d='m0,4l8,-4l0,8l-8,-4' fill='#000000s' id='svg_2'/> </marker> "
+                    + "<marker id='endArrow' markerHeight='9' markerWidth='9' orient='auto' refX='8' refY='4'> "
+                    + "<path d='m0,0l8,4l-8,4l0,-8' fill='#000000' id='svg_3'/> </marker> "
+                    + "</defs>"
+                    + "<line marker-end='url(#endArrow)' marker-start='url(#beginArrow)' stroke='#000000' "
+                    + "x1=\'" + x1 
+                    + "\' x2=\'" + x2
+                    + "\' y1=\'" + y1 
+                    + "\' y2=\'" + y2
+                    + "\'/>";
         }
-
-        public String makeMarker() {
-            String marker = "";
-
-            return marker;
-        }
-    
-
+   
 }

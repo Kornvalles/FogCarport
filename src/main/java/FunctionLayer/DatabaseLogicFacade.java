@@ -27,7 +27,7 @@ public class DatabaseLogicFacade implements LogicFacade {
      */
     @Override
     public void createOrder( Construction construction, Customer customer ) throws FogException, SQLException {
-        OrderMapper.makeOrder(construction, customer);
+        OrderMapper.createOrder(construction, customer);
     }
 
     /**
