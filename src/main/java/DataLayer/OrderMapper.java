@@ -158,7 +158,7 @@ public class OrderMapper {
 
     public static void setMaterialPrice(int materialId, double newPrice) throws FogException {
         try {
-            String query = "UPDATE `FogCarport`.`material` SET `costPrice` = '" + newPrice + "' WHERE (`materialID` = '" + materialId + "');";
+            String query = "UPDATE `FogCarport`.`material` SET `MSRP` = '" + newPrice + "' WHERE (`materialID` = '" + materialId + "');";
             
             Connection con = Connector.connection();
             PreparedStatement ps = con.prepareStatement(query);
