@@ -41,7 +41,7 @@ public class OrderMapperTest {
 
     /**
      * Test of getMaterialPrice method, of class OrderMapper.
-     */
+     
     @Test
     public void testGetMaterialPrice() throws Exception {
         try {
@@ -54,7 +54,7 @@ public class OrderMapperTest {
         catch(SQLException ex) {
             System.out.println(ex);
         }
-    }
+    } */
 
     /**
      * Test of makeOrder method, of class OrderMapper.

@@ -25,12 +25,13 @@
     <body>
         <br>
         <%if(request.getAttribute("message") != null) { out.print(request.getAttribute("message")); }%>
+        <div class="col-sm-6">
+                    <button onclick="window.location.href = 'employeePage.jsp';">Tilbage</button>
+                </div>
         <form method="POST" action="FrontController">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
-                    <button onclick="window.location.href = 'employeePage.jsp';">Tilbage</button>
-                </div>
+                
                 <div class="col-sm-6">
                     <button type="submit" style='margin-left: 89%'>Ændr</button>
                 </div>

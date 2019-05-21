@@ -21,7 +21,7 @@ public class Connector {
         singleton = con;
     }
 
-    public static synchronized Connection connection() throws SQLException, FogException {
+    public static Connection connection() throws SQLException, FogException {
         if (singleton == null) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
