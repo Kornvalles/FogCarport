@@ -140,7 +140,8 @@
                             }
                         }
 
-                        out.println(svg.makeText("25", "250", "100 cm"));
+                        out.println(svg.makeText("25", "255", "100 cm"));
+                        out.println(svg.makeMarker(10, 110, 240, 240));
 
                     %>
                     </svg>
