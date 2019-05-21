@@ -24,15 +24,20 @@
     </head>
     <body>
         <br>
+        <%if(request.getAttribute("message") != null) { out.print(request.getAttribute("message")); }%>
+        <form method="POST" action="FrontController">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
                     <button onclick="window.location.href = 'employeePage.jsp';">Tilbage</button>
                 </div>
+                <div class="col-sm-6">
+                    <button type="submit" style='margin-left: 89%'>Ændr</button>
+                </div>
             </div>
         </div>
         <div class="container" style="width: 80%">
-            <form method="POST" action="FrontController">
+            
                 <input type="hidden" name="command" value="updatePrice">
                 <table class="table">
                     <thead>
@@ -51,7 +56,7 @@
                         <th scope="row"><%=materials.get(0).getId()%></th>
                         <td><%=materials.get(0).getName().substring(0,1).toUpperCase()+materials.get(0).getName().substring(1)%></td>
                         <td><%=materials.get(0).getPrice()%></td>
-                        <td><input type="text" name="newPrice"></td>
+                        <td><input type="text" name="<%=materials.get(0).getName()%>"><input type="hidden" name="id" value="<%=materials.get(0).getId()%>"></td>
                         <td><%=materials.get(0).getCostPrice()%></td>
                         <td><input type="text" name="newCostPrice"></td>
                     </div>
@@ -61,7 +66,7 @@
                         <th scope="row"><%=materials.get(1).getId()%></th>
                         <td><%=materials.get(1).getName().substring(0,1).toUpperCase()+materials.get(1).getName().substring(1)%></td>
                         <td><%=materials.get(1).getPrice()%></td>
-                        <td><input type="text" name="newPrice"></td>
+                        <td><input type="text" name="<%=materials.get(1).getName()%>"><input type="hidden" name="id" value="<%=materials.get(1).getId()%>"></td>
                         <td><%=materials.get(1).getCostPrice()%></td>
                         <td><input type="text" name="newCostPrice"></td>
                     </div>

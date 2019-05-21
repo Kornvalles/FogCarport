@@ -23,28 +23,33 @@ public class OrderMapper {
     /** Returns the price of a material 
     * @param name
     * @return  */
-    public static double getMaterialPrice(String name) throws FogException {
+    public static double getMaterialPrice(String name) throws FogException, SQLException {
+            PreparedStatement preparedstatement = null;
+            double price = 0;
         try {
             String query = "SELECT MSRP FROM `FogCarport`.`material` "
-                    + "WHERE `material`.`name` = '" + name + "';";
+                    + "WHERE `material`.`name` = ?;";
 
             Connection con = Connector.connection();
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, name);
+            ResultSet rs = ps.executeQuery();
 
-            double price = 0;
-
-            while (rs.next()) {
+            if (rs.next()) {
                 price = rs.getDouble("MSRP");
+                return price;
             }
-            return price;
             
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        return 0;
+        finally {
+            if(preparedstatement != null) {
+                preparedstatement.close();
+            }
     }
-    
+    return 0;
+    }
     public static void makeOrder( Construction construction, Customer customer ) throws FogException {
         try {
             Connection con = Connector.connection();
