@@ -200,12 +200,13 @@ public class OrderMapper {
         try {
             String query = "SELECT * FROM FogCarport.material";
             
-            Connection con = Connector.connection();
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            
-            while (rs.next()) {
-                materials.add(new Material(rs.getNString(2), rs.getInt(1), rs.getInt(5), "", rs.getDouble(3), rs.getDouble(4), rs.getNString(6)));
+            try (Connection con = Connector.connection()) {
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                
+                while (rs.next()) {
+                    materials.add(new Material(rs.getNString(2), rs.getInt(1), rs.getInt(5), "", rs.getDouble(3), rs.getDouble(4), rs.getNString(6)));
+                }
             }
         } catch (SQLException ex) {
             System.out.println(ex);
@@ -214,17 +215,13 @@ public class OrderMapper {
     }
 
     public static void setMaterialPrice(int materialId, double newPrice) throws FogException {
-        Connection conn = null;
-        PreparedStatement ps = null;
         try {
-            String query = "UPDATE `FogCarport`.`material` SET `MSRP` = ? WHERE (`materialID` = ?);";
-
-            conn = Connector.connection();
-            ps.setDouble(1, newPrice);
-            ps.setInt(2, materialId);
-            ps = conn.prepareStatement(query);
-            ps.execute();
-            conn.commit();
+            String query = "UPDATE `FogCarport`.`material` SET `MSRP` = '" + newPrice + "' WHERE (`materialID` = '" + materialId + "');";
+            
+            try (Connection con = Connector.connection()) {
+                PreparedStatement ps = con.prepareStatement(query);
+                ps.execute();
+            }
         } catch (SQLException ex) {
             System.err.println(" Got an exception! ");
             System.err.println(ex.getMessage());
