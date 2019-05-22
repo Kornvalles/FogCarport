@@ -12,10 +12,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @authors Iben, Christian, Benjamin, Nicklas, Mikkel
- */
 public class OrderMapper {
 
     /**

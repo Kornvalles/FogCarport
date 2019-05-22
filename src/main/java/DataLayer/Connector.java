@@ -34,6 +34,7 @@ public class Connector {
                 props.put("useJDBCCompliantTimezoneShift", true);
                 props.put("useLegacyDatetimeCode", false);
                 props.put("serverTimezone", "CET");
+                props.put("autocommit", true);
                 Connector.singleton = DriverManager.getConnection(url, props);
             } catch (ClassNotFoundException ex) {
                 throw new SQLException(ex.getMessage());
