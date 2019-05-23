@@ -139,13 +139,15 @@ public class OrderMapper {
         return materials;
     }
 
-    public static void setMaterialPrice(int materialId, double newPrice) throws FogException {
+    public static void setMaterialPrice(double newPrice, int materialId) throws FogException {
         try {
-            String query = "UPDATE `FogCarport`.`material` SET `MSRP` = '" + newPrice + "' WHERE (`materialID` = '" + materialId + "');";
+            String query = "UPDATE `FogCarport`.`material` SET `MSRP` = ? WHERE `materialID` = ?;";
 
             Connection conn = Connector.connection();
             PreparedStatement ps = conn.prepareStatement(query);
-            ps.execute();
+            ps.setDouble(1, newPrice);
+            ps.setInt(2, materialId);
+            ps.executeQuery();
         } catch (SQLException ex) {
             System.err.println(" Got an exception! ");
             System.err.println(ex.getMessage());
