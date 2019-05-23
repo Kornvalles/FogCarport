@@ -70,7 +70,7 @@ INSERT INTO FogCarport.material (`materialID`,`name`,`MSRP`, `costPrice`,`quanti
 -- -----------------------------------------------------
 -- Table `FogCarport`.`order`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `FogCarport`.`orders` (
+CREATE TABLE IF NOT EXISTS `FogCarport`.`order` (
   `orderId` INT NOT NULL AUTO_INCREMENT UNIQUE,
   `employeeId` INT NOT NULL,
   `customerId` INT NOT NULL,

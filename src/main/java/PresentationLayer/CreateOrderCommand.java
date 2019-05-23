@@ -52,16 +52,15 @@ public class CreateOrderCommand extends Command {
 
         //Instancerer objekter og putter dem på session
         //Kører logikken. Forsøger at putte ting i database.
+        Customer customer = null;
         try {
-            Customer customer = new Customer(name, email, address, zip, phone);
+            customer = logic.addCustomer(name, email, address, zip, phone);
             session.setAttribute("customer", customer);
-            logic.addCustomer(customer);
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Error creating customer.", e);
             throw new FogException(e.getMessage());
         }
         try {
-            Customer customer = (Customer) session.getAttribute("customer");         
             Carport carport = new Carport(230, length, width, toolShed, shedWidth, roof, roofType, roofAngle, wall, "");
             Construction construction = Calculator.constructCarport(carport, logic);
             session.setAttribute("construction", construction);

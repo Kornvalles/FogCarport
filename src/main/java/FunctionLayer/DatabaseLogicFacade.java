@@ -9,8 +9,8 @@ public class DatabaseLogicFacade implements LogicFacade {
 
     
     @Override
-    public void addCustomer( Customer customer ) throws FogException, SQLException {
-        UserMapper.addCustomer(customer);
+    public Customer addCustomer( String name, String email, String address, int zipcode, int phoneNumber ) throws FogException, SQLException {
+        return UserMapper.addCustomer(name, email, address, zipcode, phoneNumber);
     }
 
     @Override

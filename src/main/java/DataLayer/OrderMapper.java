@@ -43,7 +43,7 @@ public class OrderMapper {
                     + ", carportLength, carportWidth, hasShed, shedWidth, hasRoof, roofType, roofAngle, hasWall, details, totalPrice) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, 1);
-            ps.setInt(2, customer.getId());
+            ps.setInt(2, 1);
             ps.setInt(3, construction.getCarport().getHeight());
             ps.setInt(4, construction.getCarport().getLength());
             ps.setInt(5, construction.getCarport().getWidth());
