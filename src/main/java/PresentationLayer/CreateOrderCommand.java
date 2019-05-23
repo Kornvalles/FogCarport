@@ -21,7 +21,6 @@ public class CreateOrderCommand extends Command {
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
 
         HttpSession session = request.getSession();
-        Validate validate = new Validate();
         
         //Fanger inputs fra jsp som ligger på requestet.
         String reqLength = request.getParameter("length");
@@ -33,13 +32,6 @@ public class CreateOrderCommand extends Command {
         String reqWall = request.getParameter("wall");
         String reqRoofAngle = request.getParameter("roofAngle");
         
-        /* Gets input from parameter and validates input */
-        String name = validate.validateString(request.getParameter("name"), "Navn");
-        String email = validate.validateString(request.getParameter("email"), "Email");
-        String address = validate.validateString(request.getParameter("address"), "Adresse");
-        int zip = validate.validateInteger(request.getParameter("zipcode"), "Postnummer");
-        int phone = validate.validateInteger(request.getParameter("telephone"), "Telefonnummer");
-
         //Konveterer inputs som ikke skal være String.
         boolean toolShed = Boolean.parseBoolean(reqShed);
         boolean roof = Boolean.parseBoolean(reqRoof);
@@ -50,20 +42,13 @@ public class CreateOrderCommand extends Command {
         int width = Integer.parseInt(reqWidth);
         int roofAngle = Integer.parseInt(reqRoofAngle);
 
-        //Instancerer objekter og putter dem på session
-        //Kører logikken. Forsøger at putte ting i database.
-        Customer customer = null;
-        try {
-            customer = logic.addCustomer(name, email, address, zip, phone);
-            session.setAttribute("customer", customer);
-        } catch (SQLException e) {
-            logger.log(Level.SEVERE, "Error creating customer.", e);
-            throw new FogException(e.getMessage());
-        }
         try {
             Carport carport = new Carport(230, length, width, toolShed, shedWidth, roof, roofType, roofAngle, wall, "");
+            Customer customer = (Customer) session.getAttribute("customer");
+            
             Construction construction = Calculator.constructCarport(carport, logic);
             session.setAttribute("construction", construction);
+            
             logic.createOrder(construction, customer);
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Error creating a carport order.", e);

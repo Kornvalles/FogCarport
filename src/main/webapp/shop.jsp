@@ -25,7 +25,7 @@
                     <a class="nav-link active" href="index.jsp">Hjem</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="FrontController?command=order">Bestilling</a>
+                    <a class="nav-link" href="createCustomer.jsp">Bestilling</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="sortiment.jsp">Sortiment</a>
@@ -35,11 +35,11 @@
         <div class="text-center">
             <h1>Bestilling af carport</h1>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col">    
-                    <form method="POST" action="FrontController">
-                        <input type="hidden" name="command" value="CreateOrder">
+        <form method="POST" action="FrontController">
+            <input type="hidden" name="command" value="CreateOrder">
+            <div class="container">
+                <div class="row">
+                    <div class="col">    
                         <div class="form-group">
                             <label for="lengthInput">Carportens længde</label>
                             <p> ${lengthSelect}</p>
@@ -51,21 +51,20 @@
 
                         <input type="checkbox" name="shed" value="true" ${shedChecked} id="shedInput">
                         <label for="shedInput">Tilføj redskabsskur?</label>
-                        <div class="form-group, fadeIn" id="display">
+                        <div class="fadeIn" id="display">
                             Vælg venligst længden på dit skur:
                             <p><select name="shedWidth" id="widthInput">
                                     <option value="150">150 cm</option>
                                     <option value="200">200 cm</option>
                                     <option value="220">220 cm</option>
                                     <option value="250">250 cm</option>
-
                                 </select></p>
                         </div>
                         <br>
 
                         <input type="checkbox" name="roofType" value="true" id="roofTypeInput">
                         <label for="shedInput">Vil du udskifte tagplader med en anden tag type?</label>
-                        <div class="form-group, fadeIn" id="display2">
+                        <div class="fadeIn" id="display2">
                             Alle Fogs carporte bliver som standard monteret med tagplader:
                             <p><select name="roofType" id="roofType">
                                     <option value="rooftiles">Tagsten</option>
@@ -75,7 +74,7 @@
 
                         <input type="checkbox" name="roof" value="true" ${roofChecked} id="roofInput">
                         <label for="roofInput">Tilføj taghældning?</label>
-                        <div class="form-group, fadeIn" id="display1">
+                        <div class="fadeIn" id="display1">
                             Vælg venligst den ønskede hældning på deres tag:
                             <p><select name="roofAngle" id="roofAngle">
                                     <option value="15">15°</option>
@@ -87,40 +86,16 @@
                                     <option value="45">45°</option>
                                 </select></p>
                         </div>
-                        <div class="form-group">
                             <input type="checkbox" name="wall" value="true" id="wallsInput">
                             <label for="wallsInput">Tilføj vægge?</label>
-                        </div>
+                            <p><input type="submit" name="order" value="Bestil"></p>
+                    </div>
                 </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="nameInput">Fulde navn</label>
-                        <p><input type="text" name="name" placeholder="Indtast dit fulde navn" id="nameInput" value="Test"></p>
-                    </div>
-                    <div class="form-group">
-                        <label for="emailInput">Email</label>
-                        <p><input type="email" name="email" placeholder="Indtast din email" id="emailInput" value="Test@Test.dk"></p>
-                    </div>
-                    <div class="form-group">
-                        <label for="addressInput">Adresse</label>
-                        <p><input type="text" name="address" placeholder="Indtast din adresse" id="adresseInput" value="Test"></p>
-                    </div>
-                    <div class="form-group">
-                        <label for="zipcodeInput">Postnummer</label>
-                        <p><input type="number" name="zipcode" placeholder="Indtast dit postnr" id="zipcodeInput" value="1234"></p>
-                    </div>
-                    <div class="form-group">
-                        <label for="telInput">Telefon</label>
-                        <p><input type="tel" name="telephone" pattern="[0-9]{8}" placeholder="Indtast tlf nr" id="telInput" value="12345678"></p>
-                    </div>
-                    <input type="submit" name="order" value="Bestil" onclick="return empty()">
-                </div>
-                </form>
             </div>
+        </form>
+        <div class="footer">
+            <p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p>
         </div>
-            <div class="footer">
-                <p>© 2019 Johannes Fog | Mosevej 9 2750 Ballerup | Tlf: 99998888 | admin@fog.dk</p>
-            </div>
         <script>
             shedvisibility();
             document.getElementById('shedInput').onclick = shedvisibility;
