@@ -40,6 +40,26 @@ public class UserMapper {
         return customer;
     }
     
+    public static Employee addEmployee(String name, String password) throws FogException {
+        Employee employee = null;
+        try {
+            Connection con = Connector.connection();
+            String SQL = "INSERT INTO `FogCarport`.`employee` ( name, password )"
+                    + "VALUES (?, ?);";
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, name);
+            ps.setString(2, password);
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            
+            employee = new Employee(1, name, password);
+        }   catch (SQLException ex) {
+            System.out.println(ex.getSQLState());
+            System.out.println(ex.getLocalizedMessage());
+        }
+        return employee;
+    }
+    
     public static List<Customer> getAllCustomers() throws FogException {
         List<Customer> customers = new ArrayList();
         try {
