@@ -147,7 +147,7 @@ public class OrderMapper {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setDouble(1, newPrice);
             ps.setInt(2, materialId);
-            ps.executeQuery();
+            ps.executeUpdate();
         } catch (SQLException ex) {
             System.err.println(" Got an exception! ");
             System.err.println(ex.getMessage());
