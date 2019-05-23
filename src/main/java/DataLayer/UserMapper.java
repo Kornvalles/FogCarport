@@ -38,24 +38,21 @@ public class UserMapper {
         }
     }
     
-    public static Employee login(String username, String password) throws FogException {
+    public static Employee getEmployee(String username) throws FogException {
+        Employee employee = null;
         try {
             Connection con = Connector.connection();
-            String SQL = "SELECT id FROM `FogCarport`.`employee` "
-                    + "WHERE name=? AND password=?";
+            String SQL = "SELECT * FROM `FogCarport`.`employee` "
+                    + "WHERE name = ? ";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setString(1, username);
-            ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                String id = rs.getString("id");
-                Employee employee = new Employee(id, username, password);
-                return employee;
-            } else {
-                throw new FogException("Could not validate user");
+                employee = new Employee(rs.getNString("id"), rs.getNString("name"), rs.getNString("password"));
             }
         } catch (SQLException ex) {
             throw new FogException(ex.getMessage());
         }
+        return employee;
     }
 }

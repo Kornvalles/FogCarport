@@ -11,19 +11,31 @@ public class EmployeeCommand extends Command {
 
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) {
-        try {
-            HttpSession session = request.getSession();
-            /* Get Parameters from the URL. (From the HTTP request) */
-            String reqUsername = (String) request.getParameter("username");
-            String reqPassword = (String) request.getParameter("password");
-            Employee employee = logic.login(reqUsername, reqPassword);
-            if (!employee.getPassword().equals(reqPassword)
-                    && employee.getUsername().equals(reqUsername)) {
-                session.setAttribute("employee", employee);
-                return "login";
+        HttpSession session = request.getSession();
+        if (session.getAttribute("employee") == null || session.getAttribute("employee") == "") {
+            try {
+                /* Get Parameters from the URL. (From the HTTP request) */
+                String reqUsername = (String) request.getParameter("username");
+                String reqPassword = (String) request.getParameter("password");
+                Employee employee = logic.getEmployee(reqUsername);
+                if (employee != null) {
+                    if (!employee.getPassword().equals(reqPassword) || !employee.getUsername().equals(reqUsername)) {
+                        request.setAttribute("error", "Login mislykkedes, forkert brugernavn eller kodeord");
+                        return "login";
+                    } else {
+                        session.setAttribute("employee", employee);
+                        session.setAttribute("materials", logic.getAllMaterials());
+                    }
+                } else {
+                    request.setAttribute("error", "Login mislykkedes, forkert brugernavn eller kodeord");
+                    return "login";
+                }
+            } catch (FogException ex) {
+                request.setAttribute("error", ex);
+            } catch (SQLException ex) {
+                System.err.println(ex);
             }
-        } catch (FogException ex) {
-            request.setAttribute("error", ex);
+
         }
         return "employeePage";
     }

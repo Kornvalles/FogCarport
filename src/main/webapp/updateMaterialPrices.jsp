@@ -14,7 +14,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <%if (session.getAttribute("employee") == null) {
+        <%if (session.getAttribute("employee") == null || session.getAttribute("employee") == "") {
                 request.setAttribute("error", "Please Login");
                 response.sendRedirect(response.encodeURL("login.jsp"));
             }
@@ -77,7 +77,7 @@
                         <th scope="row"><%=materials.get(2).getId()%></th>
                         <td><%=materials.get(2).getName().substring(0,1).toUpperCase()+materials.get(2).getName().substring(1)%></td>
                         <td><%=materials.get(2).getPrice()%></td>
-                        <td><input type="text" name="newPrice"></td>
+                        <td><input type="text" name="<%=materials.get(2).getName()%>"><input type="hidden" name="id" value="<%=materials.get(2).getId()%>"></td>
                         <td><%=materials.get(2).getCostPrice()%></td>
                         <td><input type="text" name="newCostPrice"></td>
                     </div>
@@ -87,7 +87,7 @@
                         <th scope="row"><%=materials.get(3).getId()%></th>
                         <td><%=materials.get(3).getName().substring(0,1).toUpperCase()+materials.get(3).getName().substring(1)%></td>
                         <td><%=materials.get(3).getPrice()%></td>
-                        <td><input type="text" name="newPrice"></td>
+                        <td><input type="text" name="<%=materials.get(3).getName()%>"><input type="hidden" name="id" value="<%=materials.get(3).getId()%>"></td>
                         <td><%=materials.get(3).getCostPrice()%></td>
                         <td><input type="text" name="newCostPrice"></td>
                     </div>
@@ -97,7 +97,7 @@
                         <th scope="row"><%=materials.get(4).getId()%></th>
                         <td><%=materials.get(4).getName().substring(0,1).toUpperCase()+materials.get(4).getName().substring(1)%></td>
                         <td><%=materials.get(4).getPrice()%></td>
-                        <td><input type="text" name="newPrice"></td>
+                        <td><input type="text" name="<%=materials.get(4).getName()%>"><input type="hidden" name="id" value="<%=materials.get(4).getId()%>"></td>
                         <td><%=materials.get(4).getCostPrice()%></td>
                         <td><input type="text" name="newCostPrice"></td>
                     </div>
@@ -107,7 +107,7 @@
                         <th scope="row"><%=materials.get(5).getId()%></th>
                         <td><%=materials.get(5).getName().substring(0,1).toUpperCase()+materials.get(5).getName().substring(1)%></td>
                         <td><%=materials.get(5).getPrice()%></td>
-                        <td><input type="text" name="newPrice"></td>
+                        <td><input type="text" name="<%=materials.get(5).getName()%>"><input type="hidden" name="id" value="<%=materials.get(5).getId()%>"></td>
                         <td><%=materials.get(5).getCostPrice()%></td>
                         <td><input type="text" name="newCostPrice"></td>
                     </div>
@@ -117,7 +117,7 @@
                         <th scope="row"><%=materials.get(6).getId()%></th>
                         <td><%=materials.get(6).getName().substring(0,1).toUpperCase()+materials.get(6).getName().substring(1)%></td>
                         <td><%=materials.get(6).getPrice()%></td>
-                        <td><input type="text" name="newPrice"></td>
+                        <td><input type="text" name="<%=materials.get(6).getName()%>"><input type="hidden" name="id" value="<%=materials.get(6).getId()%>"></td>
                         <td><%=materials.get(6).getCostPrice()%></td>
                         <td><input type="text" name="newCostPrice"></td>
                     </div>

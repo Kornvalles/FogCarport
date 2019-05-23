@@ -25,20 +25,18 @@
                                     <div class="form-group">
                                         <input type="password" class="form-control" name="password">
                                     </div>
-                                    <button type="submit" id="sendlogin" class="btn btn-primary" >login</button>
+                                    <button type="submit" id="sendlogin" class="btn btn-primary" >Login</button>
                                 </form>
+                                <%
+                                    if (request.getAttribute("error") != null) {
+                                        out.print(request.getAttribute("error"));
+                                    }
+                                %>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-6">
-            <%
-                if (request.getAttribute("error") != null) {
-                    out.print(request.getAttribute("error"));
-                }
-            %>
         </div>
     </body>
 </html>
