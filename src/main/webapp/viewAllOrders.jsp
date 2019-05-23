@@ -46,6 +46,8 @@
             <div class="container">
             <div class="row">
                 <div class="col-sm-12">
+                    <form method="POST" action="FrontController">
+                    <input type="hidden" name="command" value="deleteOrder">
                     <table class="table">
                         <thead>
                             <tr>
