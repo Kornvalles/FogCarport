@@ -26,7 +26,7 @@
                     <a class="nav-link" href="updateMaterialPrices.jsp">Opdater Materialepriser</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="viewAllOrders2.jsp">Se Alle Ordrer</a>
+                    <a class="nav-link" href="viewAllOrders.jsp">Se Alle Ordrer</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="FrontController?command=logout">Log ud</a>
