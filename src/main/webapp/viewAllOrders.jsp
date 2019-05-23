@@ -86,9 +86,11 @@
                                 out.println("<td>" + orders.getCarport().hasWall() + "</td>");
                                 out.println("<td>" + orders.getCarport().getDetails() + "</td>");
                                 out.println("<td>" + orders.getTotalPrice() + "</td>");
-                                out.println("</tr>");
-                                }
-                                %>
+                                out.println("<td>"); 
+                                out.println("<input type ='submit' value ='Slet Ordre'>");
+                                out.println("</td>");
+                                out.println("</tr>");} %> 
+                        
                         </tr>
                         </tbody>
                     </table>
