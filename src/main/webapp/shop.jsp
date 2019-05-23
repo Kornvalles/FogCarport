@@ -42,11 +42,11 @@
                     <div class="col">    
                         <div class="form-group">
                             <label for="lengthInput">Carportens længde</label>
-                            <p> ${lengthSelect}</p>
+                            <p>${lengthSelect}</p>
                         </div>
                         <div class="form-group">
                             <label for="widthInput">Carportens bredde</label>
-                            <p> ${widthSelect}</p>
+                            <p>${widthSelect}</p>
                         </div>
 
                         <input type="checkbox" name="shed" value="true" ${shedChecked} id="shedInput">
@@ -86,8 +86,8 @@
                                     <option value="45">45°</option>
                                 </select></p>
                         </div>
-                            <input type="checkbox" name="wall" value="true" id="wallsInput">
-                            <label for="wallsInput">Tilføj vægge?</label>
+                        <p><input type="checkbox" name="wall" value="true" id="wallsInput">
+                            <label for="wallsInput">Tilføj vægge?</label></p>
                             <p><input type="submit" name="order" value="Bestil"></p>
                     </div>
                 </div>
