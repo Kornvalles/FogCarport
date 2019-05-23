@@ -30,12 +30,12 @@
                 </li>
             </ul>
         </nav>
-        <h1>Bestilling af carport</h1>
         <form method="POST" action="FrontController">
             <input type="hidden" name="command" value="createCustomer">
             <div class="container">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-sm-12">
+                        <h1 style="text-align: center">Bestilling af carport</h1>
                         <label for="nameInput">Fulde navn</label>
                         <p><input type="text" name="name" placeholder="Indtast dit fulde navn" id="nameInput" value="Test"></p>
                         <label for="emailInput">Email</label>
