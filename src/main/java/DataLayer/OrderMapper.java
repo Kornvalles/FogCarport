@@ -35,6 +35,18 @@ public class OrderMapper {
         }
         return price;
     }
+    public static void deleteOrder(int id) throws FogException {
+        try {
+            Connection conn = Connector.connection();
+            String SQL =  "DELETE FROM `FogCarport`.`order` WHERE `order`.`orderId` = ?;";
+            PreparedStatement ps = conn.prepareStatement(SQL);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getLocalizedMessage());
+            System.out.println(ex.getSQLState());
+        }
+    }
 
     public static void createOrder(Construction construction, Customer customer) throws FogException {
         try {
