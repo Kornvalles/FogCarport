@@ -24,25 +24,25 @@ USE `FogCarport` ;
 -- Table `FogCarport`.`customer`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `FogCarport`.`customer` (
-`id` INT NOT NULL AUTO_INCREMENT,
+`id` INT NOT NULL AUTO_INCREMENT UNIQUE,
 `name` VARCHAR(16),
 `email` VARCHAR(255),
 `address` VARCHAR(255),
 `zipcode` INT NOT NULL,
 `phoneNumber` INT NOT NULL,
-  PRIMARY KEY (`id`,`email`));
+  PRIMARY KEY (`id`));
 
 
 -- -----------------------------------------------------
 -- Table `fog`.`employee`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `FogCarport`.`employee` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT UNIQUE,
   `name` VARCHAR(255) NULL,
   `password` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
 
-INSERT INTO `employee` (`id`,`name`,`password`) VALUES (1,'Admin', '1234');
+INSERT INTO `employee` (`name`,`password`) VALUES ('Admin', '1234');
 
 
 -- -----------------------------------------------------
@@ -70,8 +70,8 @@ INSERT INTO FogCarport.material (`materialID`,`name`,`MSRP`, `costPrice`,`quanti
 -- -----------------------------------------------------
 -- Table `FogCarport`.`order`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `FogCarport`.`order` (
-  `orderId` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `FogCarport`.`orders` (
+  `orderId` INT NOT NULL AUTO_INCREMENT UNIQUE,
   `employeeId` INT NOT NULL,
   `customerId` INT NOT NULL,
   `carportHeight` INT NOT NULL,
