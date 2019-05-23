@@ -13,8 +13,7 @@ public class Carport {
     private final boolean wall; //false when there are only posts on wall
     private final String details; //details on carport
 
-    public Carport( int height, int length, int width, boolean toolshed, int shedWidth, boolean pointyRoof, boolean roofType, int roofAngle, 
-                    boolean wall, String details) 
+    public Carport( int height, int length, int width, boolean toolshed, int shedWidth, boolean pointyRoof, boolean roofType, int roofAngle, boolean wall, String details) 
     {
         this.height = height;
         this.length = length;

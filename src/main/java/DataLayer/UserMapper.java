@@ -48,7 +48,7 @@ public class UserMapper {
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                employee = new Employee(rs.getNString("id"), rs.getNString("name"), rs.getNString("password"));
+                employee = new Employee(rs.getInt("id"), rs.getNString("name"), rs.getNString("password"));
             }
         } catch (SQLException ex) {
             throw new FogException(ex.getMessage());

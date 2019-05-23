@@ -24,24 +24,25 @@ USE `FogCarport` ;
 -- Table `FogCarport`.`customer`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `FogCarport`.`customer` (
+`id` INT NOT NULL AUTO_INCREMENT,
 `name` VARCHAR(16),
 `email` VARCHAR(255),
 `address` VARCHAR(255),
 `zipcode` INT NOT NULL,
 `phoneNumber` INT NOT NULL,
-  PRIMARY KEY (`email`));
+  PRIMARY KEY (`id`));
 
 
 -- -----------------------------------------------------
 -- Table `fog`.`employee`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `FogCarport`.`employee` (
-  `id` VARCHAR(16) NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NULL,
   `password` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
 
-INSERT INTO `employee` (`id`,`name`,`password`) VALUES (1,'Martin', '1234');
+INSERT INTO `employee` (`id`,`name`,`password`) VALUES (1,'Admin', '1234');
 
 
 -- -----------------------------------------------------
@@ -72,34 +73,32 @@ INSERT INTO FogCarport.material (`materialID`,`name`,`MSRP`, `costPrice`,`quanti
 CREATE TABLE IF NOT EXISTS `FogCarport`.`order` (
   `orderId` INT NOT NULL AUTO_INCREMENT,
   `employeeId` INT NOT NULL,
-  `customerEmail` VARCHAR(255) NOT NULL,
-  `customerName` VARCHAR(255) NOT NULL,
+  `customerId` INT NOT NULL,
   `carportHeight` INT NOT NULL,
-  `carportWidth` INT NOT NULL,
   `carportLength` INT NOT NULL,
-  `hasRoof` BOOLEAN,
+  `carportWidth` INT NOT NULL,
   `hasShed` BOOLEAN,
+  `shedWidth` INT,
+  `hasRoof` BOOLEAN,
+  `roofType` BOOLEAN,
+  `roofAngle` INT,
   `hasWall` BOOLEAN,
+  `details` VARCHAR(255),
   `totalPrice` DOUBLE NOT NULL,
   PRIMARY KEY (`orderID`),
   INDEX `EmployeeID_idx` (`employeeId` ASC) VISIBLE,
-  INDEX `CustomerEmail_idx` (`customerEmail` ASC) VISIBLE,
-  INDEX `CustomerName_idx` (`customerName` ASC) VISIBLE,
+  INDEX `CustomerID_idx` (`customerId` ASC) VISIBLE,
   CONSTRAINT `EmployeeID`
     FOREIGN KEY (`employeeId`)
-    REFERENCES `fogCarport`.`employee` (`id`)
+    REFERENCES `FogCarport`.`employee` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `CustomerEmail`
-    FOREIGN KEY (`customerEmail`)
-    REFERENCES `fogCarport`.`customer` (`email`)
+  CONSTRAINT `CustomerId`
+    FOREIGN KEY (`customerId`)
+    REFERENCES `FogCarport`.`customer` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `CustomerName`
-    FOREIGN KEY (`customerName`)
-    REFERENCES `fogCarport`.`customer` (`name`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON UPDATE NO ACTION
+    );
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

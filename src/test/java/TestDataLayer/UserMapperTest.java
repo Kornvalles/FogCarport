@@ -69,8 +69,8 @@ public class UserMapperTest {
     @Test
     public void testLogin() throws Exception {
         System.out.println("testingLogin");
-        String username = "Martin";
-        Employee expResult = new Employee("Martin","1234");
+        String username = "Admin";
+        Employee expResult = new Employee("Admin","1234");
         Employee result = UserMapper.getEmployee(username);
         assertEquals(expResult.toString(), result.toString());
     }

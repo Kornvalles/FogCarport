@@ -21,7 +21,8 @@ public class CreateOrderCommand extends Command {
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
 
         HttpSession session = request.getSession();
-
+        Validate validate = new Validate();
+        
         //Fanger inputs fra jsp som ligger på requestet.
         String reqLength = request.getParameter("length");
         String reqWidth = request.getParameter("width");
@@ -33,7 +34,6 @@ public class CreateOrderCommand extends Command {
         String reqRoofAngle = request.getParameter("roofAngle");
         
         /* Gets input from parameter and validates input */
-        Validate validate = new Validate();
         String name = validate.validateString(request.getParameter("name"), "Navn");
         String email = validate.validateString(request.getParameter("email"), "Email");
         String address = validate.validateString(request.getParameter("address"), "Adresse");
@@ -61,7 +61,6 @@ public class CreateOrderCommand extends Command {
             throw new FogException(e.getMessage());
         }
         try {
-            
             Customer customer = (Customer) session.getAttribute("customer");         
             Carport carport = new Carport(230, length, width, toolShed, shedWidth, roof, roofType, roofAngle, wall, "");
             Construction construction = Calculator.constructCarport(carport, logic);

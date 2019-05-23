@@ -24,24 +24,25 @@ USE `FogCarport` ;
 -- Table `FogCarport`.`customer`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `FogCarport`.`customer` (
-`name` VARCHAR(16) NOT NULL,
-`email` VARCHAR(255) NOT NULL,
+`id` INT NOT NULL AUTO_INCREMENT,
+`name` VARCHAR(16),
+`email` VARCHAR(255),
 `address` VARCHAR(255),
 `zipcode` INT NOT NULL,
 `phoneNumber` INT NOT NULL,
-  PRIMARY KEY (`email`));
+  PRIMARY KEY (`id`,`email`));
 
 
 -- -----------------------------------------------------
 -- Table `fog`.`employee`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `FogCarport`.`employee` (
-  `id` VARCHAR(16) NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NULL,
   `password` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
 
-INSERT INTO `employee` (`id`,`name`,`password`) VALUES (1,'Martin', '1234');
+INSERT INTO `employee` (`id`,`name`,`password`) VALUES (1,'Admin', '1234');
 
 
 -- -----------------------------------------------------
@@ -72,18 +73,21 @@ INSERT INTO FogCarport.material (`materialID`,`name`,`MSRP`, `costPrice`,`quanti
 CREATE TABLE IF NOT EXISTS `FogCarport`.`order` (
   `orderId` INT NOT NULL AUTO_INCREMENT,
   `employeeId` INT NOT NULL,
-  `customerEmail` VARCHAR(255) NOT NULL,
-  `customerName` VARCHAR(255) NOT NULL,
+  `customerId` INT NOT NULL,
   `carportHeight` INT NOT NULL,
-  `carportWidth` INT NOT NULL,
   `carportLength` INT NOT NULL,
-  `hasRoof` BOOLEAN,
+  `carportWidth` INT NOT NULL,
   `hasShed` BOOLEAN,
+  `shedWidth` INT,
+  `hasRoof` BOOLEAN,
+  `roofType` BOOLEAN,
+  `roofAngle` INT,
   `hasWall` BOOLEAN,
+  `details` VARCHAR(255),
   `totalPrice` DOUBLE NOT NULL,
   PRIMARY KEY (`orderID`));
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET FOREIGN_KEY_CHECKS=1;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

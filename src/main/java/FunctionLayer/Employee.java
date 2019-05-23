@@ -1,12 +1,12 @@
 package FunctionLayer;
 
 public class Employee {
-
+    
+    private int id;
     private String username;
     private String password;
-    private String id;
 
-    public Employee(String id, String name, String password) {
+    public Employee(int id, String name, String password) {
 
         this.id = id;
         this.username = name;
@@ -44,11 +44,11 @@ public class Employee {
         this.password = password;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
     

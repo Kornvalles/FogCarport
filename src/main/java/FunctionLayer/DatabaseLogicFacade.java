@@ -17,6 +17,11 @@ public class DatabaseLogicFacade implements LogicFacade {
     public void createOrder( Construction construction, Customer customer ) throws FogException, SQLException {
         OrderMapper.createOrder(construction, customer);
     }
+    
+    @Override
+    public List<Order> getAllOrders() throws FogException, SQLException {
+        return OrderMapper.getAllOrders();
+    }
 
     @Override
     public double getMaterialPrice(String name) throws FogException, SQLException {
