@@ -21,13 +21,13 @@
             </a>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.jsp">Hjem</a>
+                    <a class="nav-link" href="index.jsp">Hjem</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="FrontController?command=order">Bestilling</a>
+                    <a class="nav-link" href="createCustomer.jsp">Bestilling</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="sortiment.jsp">Sortiment</a>
+                    <a class="nav-link active" href="sortiment.jsp">Sortiment</a>
                 </li>
             </ul>
         </nav>

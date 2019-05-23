@@ -18,6 +18,7 @@ abstract class Command {
         commands.put( "logout" , new LogoutCommand());
         commands.put( "goBack", new goBackCommand());
         commands.put( "updatePrice" , new ChangePriceCommand());
+        commands.put( "createCustomer", new CreateCustomerCommand());
     }
 
     static Command from( HttpServletRequest request ) {

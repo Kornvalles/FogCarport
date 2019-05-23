@@ -23,7 +23,7 @@
                     <a class="nav-link active" href="index.jsp">Hjem</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="FrontController?command=order">Bestilling</a>
+                    <a class="nav-link" href="createCustomer.jsp">Bestilling</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="sortiment.jsp">Sortiment</a>
