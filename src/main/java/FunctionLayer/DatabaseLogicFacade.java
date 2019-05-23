@@ -50,7 +50,7 @@ public class DatabaseLogicFacade implements LogicFacade {
     
     @Override
     public void setMaterialPrice(int materialId, double newPrice) throws FogException, SQLException {
-        OrderMapper.setMaterialPrice(materialId, newPrice);
+        OrderMapper.setMaterialPrice(newPrice, materialId );
     }
 
     @Override
