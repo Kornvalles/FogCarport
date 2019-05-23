@@ -18,25 +18,23 @@ public class ChangePriceCommand extends Command {
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
         HttpSession session = request.getSession();
         //Fanger inputs fra jsp som ligger på requestet.
-        String reqId = request.getParameter("id");
-        int id = Integer.parseInt(reqId);
+        int id = 0;
+        double newPrice = 0;
             try {
                 for (Material m : logic.getAllMaterials()) {
-                    if (request.getParameter(m.getName()) != null) {
+                    if (request.getAttribute(m.getName()) != null) {
+                        String reqId = request.getParameter(Integer.toString(m.getId()));
                         String reqNewPrice = request.getParameter(m.getName());
-                        double newPrice = Double.parseDouble(reqNewPrice);
-                        if (m.getId() == id) {
-                            logic.setMaterialPrice(id, newPrice);
-                        }
-                        request.setAttribute("message", "Prisen for " + m.getName() + "er ændret til " + newPrice);
+                        id = Integer.parseInt(reqId);
+                        newPrice = Double.parseDouble(reqNewPrice);
+                        System.out.print(id + " " + newPrice);
                     }
-                    //System.err.println("Id findes ikke");
+                    
                 }
-                session.setAttribute("materials", logic.getAllMaterials());
+                logic.setMaterialPrice(id, newPrice);
+                //session.setAttribute("materials", logic.getAllMaterials());
             } catch (SQLException ex) {
                 System.err.print(ex.getMessage());
-            } catch (NumberFormatException ex) {
-                System.err.print(ex);
             }
         return "updateMaterialPrices";
     }
