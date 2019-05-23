@@ -87,34 +87,8 @@
                                 out.println("<td>" + orders.getCarport().getDetails() + "</td>");
                                 out.println("<td>" + orders.getTotalPrice() + "</td>");
                                 out.println("</tr>");
-                                
                                 }
-                                
                                 %>
-                        </tr>
-                        <tr>
-                            <th scope="row"></th>
-                            
-                        </tr>
-                        <tr>
-                            <th scope="row"></th>
-                            
-                        </tr>
-                        <tr>
-                            <th scope="row"></th>
-                            
-                        </tr>
-                        <tr>
-                            <th scope="row"></th>
-                            
-                        </tr>
-                        <tr>
-                            <th scope="row"></th>
-                            
-                        </tr>
-                        <tr>
-                            <th scope="row"></th>
-                            
                         </tr>
                         </tbody>
                     </table>
