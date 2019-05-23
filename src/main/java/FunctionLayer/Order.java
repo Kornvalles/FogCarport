@@ -35,5 +35,10 @@ public class Order {
     public double getTotalPrice() {
         return totalPrice;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" + "id=" + id + ", employeeId=" + employeeId + ", customerId=" + customerId + ", carport=" + carport + ", totalPrice=" + totalPrice + '}';
+    }
     
 }
