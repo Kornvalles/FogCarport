@@ -124,7 +124,7 @@ public class CalculatorTest {
     public void testMakeShed() {
         System.out.println("makeShed");
         Carport carport = new Carport(230, 240, 240, false, 0, true, false, 15, true, "");
-        int expResult = 100;
+        int expResult = 46;
         int result = Calculator.makeShed(carport);
         assertEquals(expResult, result);
     }

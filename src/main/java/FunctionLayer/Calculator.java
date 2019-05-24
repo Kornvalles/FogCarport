@@ -55,7 +55,7 @@ public class Calculator {
     }
 
     /**
-     * This method returns the number of wooden boards needed to make the roof
+     * This method returns the number of roof material needed to make the roof
      * of the input carport. For each post on 1 side there has to be on wooden
      * board across the roof.
      *
@@ -64,13 +64,12 @@ public class Calculator {
      */
     public static int getRoof(Carport carport) {
 
+        int pvcSheet = 100;
+        int roofTiles = 30;
+        int pointyWithTiles;
         /**
          * This if statement checks if the carport has a pointy roof
          */
-        int pvcSheet = 100;
-        int roofTiles = 30;
-        int pointyWithTiles = 0;
-
         if (!carport.hasPointyRoof()) {
             if (carport.roofType()) {
                 return calcMaterial(carport.getLength(), carport.getWidth(), roofTiles, roofTiles);
@@ -85,7 +84,11 @@ public class Calculator {
             double vinkelA_inRadians = Math.toRadians(vinkelA);
             double vinkelB_inRadians = Math.toRadians(vinkelB);
             double vinkelC_inRadians = Math.toRadians(vinkelC);
-
+            /*
+            *    So to calculate the side b we take the width of the carport and divide by 2.
+            *    we then take the width b, and multiply that by the angle of A and divide it by the angle of B.
+            *    we use radians because Java cant calculate actual degrees.
+             */
             double b = carport.getWidth() / 2;
             double a = ((b * Math.sin(vinkelA_inRadians)) / (Math.sin(vinkelB_inRadians))); // tagets højde uden carport.
             double c = ((b * Math.sin(vinkelC_inRadians)) / (Math.sin(vinkelB_inRadians)));
@@ -99,14 +102,14 @@ public class Calculator {
     }
 
     /**
-     * This method returns the number of wooden boards needed to make 1
-     * rectangle of wood. input1 is always the direction of the wooden board. --
-     * At the roof input1 is the length and input2 is the width -- At the two
-     * sides input1 is the length and input2 is the height -- At the backside
-     * input1 is the width and input2 is the height
+     * This method returns the number of material needed to make 1 rectangle of
+     * material. input1 is always the direction of the material. -- On the roof
+     * input1 is the length and input2 is the width -- On the two sides input1
+     * is the length and input2 is the height -- At the backside input1 is the
+     * width and input2 is the height
      *
-     * @param input1
-     * @param input2
+     * @param input1 // length
+     * @param input2 // width
      * @param materialLength
      * @param materialWidth
      * @return
@@ -115,23 +118,23 @@ public class Calculator {
         int totalMaterial;
 
 
-        /* How many wooden boards can fit in the length? */
-        int materialInLength = input1 / materialLength;
+        /* How many material units can fit in the length? */
+        int materialInLength = (int) Math.ceil(input1 / materialLength);
 
-        /* How many wooden boards can fit in the width? */
-        int materialInWidth = input2 / materialWidth;
+        /* How many material units can fit in the width? */
+        int materialInWidth = (int) Math.ceil(input2 / materialWidth);
 
-        int rest = input2 % materialWidth;
+        int rest = (int) Math.ceil(input1 % materialLength);
 
-        /* The number of wooden boards on a flat roof using as little wood 
+        /* The number of material units on a flat surface using as little material 
             as possible */
         if (rest == 0) {
             totalMaterial = materialInWidth * materialInLength;
         } else {
-            /* Making sure that you get a whole wood board even though you 
+            /* Making sure that you get a whole material unit even though you 
                 might only need a fraction of it */
             int reuseBoards = (rest * materialInWidth) / materialLength;
-            int rounded = (int) Math.ceil(reuseBoards);
+            int rounded = (reuseBoards);
 
             totalMaterial = materialInWidth * materialInLength + rounded;
         }
@@ -164,31 +167,26 @@ public class Calculator {
      * @return
      */
     public static int makeShed(Carport carport) {
+        int woodLength = 100;
+        int woodWidth = 10;
         /**
          * If the carport have walls the first part of the if-statement returns
          * the remaining sides to complete a fully functional shed.
          */
-        if (carport.hasToolshed() && carport.hasWall()) {
-            int woodLength = 100;
-            int woodWidth = 10;
-            int shedInnerWidth = calcMaterial(carport.getShedWidth(), carport.getHeight(), woodLength, woodWidth);
+        if (carport.hasWall()) {
+
             int shedInnerLength = calcMaterial(carport.getWidth(), carport.getHeight(), woodLength, woodWidth);
 
-            return shedInnerWidth + shedInnerLength;
-        }
-        /**
+            return shedInnerLength;
+        } /**
          * If the carport doesnt have walls the second part of this if-statement
          * returns all four sides of a fully functional shed.
          */
-        if (carport.hasToolshed() && !carport.hasWall()) {
-            int woodLength = 100;
-            int woodWidth = 10;
+        else {
             int shedWidth = 2 * calcMaterial(carport.getShedWidth(), carport.getHeight(), woodLength, woodWidth);
             int shedLength = 2 * calcMaterial(carport.getWidth(), carport.getHeight(), woodLength, woodWidth);
 
             return shedWidth + shedLength;
-        } else {
-            return 100;
         }
     }
 
@@ -238,9 +236,10 @@ public class Calculator {
 
     /**
      * This method returns a list of all material needed for the input carport.
+     *
      * @param carport
      * @param logic
-     * @return 
+     * @return
      * @throws FunctionLayer.FogException
      * @throws java.sql.SQLException
      */
@@ -251,10 +250,9 @@ public class Calculator {
         Material post = new Material("stolpe(r)", logic.getMaterialId("stolpe(r)"), getAllPosts(carport), "stk", logic.getMaterialPrice("stolpe(r)"), logic.getMaterialCostPrice("stolpe(r)"), logic.getMaterialDescription("stolpe(r)"));
         Material wood = new Material("planke(r) 10x100cm", logic.getMaterialId("planke(r) 10x100cm"), getSides(carport), "stk", logic.getMaterialPrice("planke(r) 10x100cm"), logic.getMaterialCostPrice("planke(r) 10x100cm"), logic.getMaterialDescription("planke(r) 10x100cm"));
         Material shedWood = new Material("planke(r) 10x100cm (skur)", logic.getMaterialId("planke(r) 10x100cm"), makeShed(carport), "stk", logic.getMaterialPrice("planke(r) 10x100cm"), logic.getMaterialCostPrice("planke(r) 10x100cm"), logic.getMaterialDescription("planke(r) 10x100cm")); // virker ikke endnu.
-        Material noShed = new Material("planke(r) 10x100cm (skur)", logic.getMaterialId("planke(r) 10x100cm"), 0, "stk", logic.getMaterialPrice("planke(r) 10x100cm"), logic.getMaterialCostPrice("planke(r) 10x100cm"), logic.getMaterialDescription("planke(r) 10x100cm"));
         Material roofBatten = new Material("taglaegte(r)", logic.getMaterialId("taglaegte(r)"), getRoofBattens(carport) / 100, "m", logic.getMaterialPrice("taglaegte(r)"), logic.getMaterialCostPrice("taglaegte(r)"), logic.getMaterialDescription("taglaegte(r)"));
-        Material sideBatten = new Material("sidelaegte(r)", logic.getMaterialId("sidelaegte(r)"), getSideBattens(carport) / 100, "m", logic.getMaterialPrice("sidelaegte(r)"), logic.getMaterialCostPrice("sidelaegte(r)"),logic.getMaterialDescription("sidelaegte(r)"));
-        Material screw = new Material("skruer 200 stk", logic.getMaterialId("skruer 200 stk"), getScrews(carport), "pakker", logic.getMaterialPrice("skruer 200 stk"),logic.getMaterialCostPrice("skruer 200 stk"), logic.getMaterialDescription("skruer 200 stk"));
+        Material sideBatten = new Material("sidelaegte(r)", logic.getMaterialId("sidelaegte(r)"), getSideBattens(carport) / 100, "m", logic.getMaterialPrice("sidelaegte(r)"), logic.getMaterialCostPrice("sidelaegte(r)"), logic.getMaterialDescription("sidelaegte(r)"));
+        Material screw = new Material("skruer 200 stk", logic.getMaterialId("skruer 200 stk"), getScrews(carport), "pakker", logic.getMaterialPrice("skruer 200 stk"), logic.getMaterialCostPrice("skruer 200 stk"), logic.getMaterialDescription("skruer 200 stk"));
         Material roofTile = new Material("tagsten", logic.getMaterialId("tagsten"), getRoof(carport), "stk", logic.getMaterialPrice("tagsten"), logic.getMaterialCostPrice("tagsten"), logic.getMaterialDescription("tagsten"));
         Material pvcRoofSheet = new Material("tagplade(r)", logic.getMaterialId("tagplade(r)"), getRoof(carport), "stk", logic.getMaterialPrice("tagplade(r)"), logic.getMaterialCostPrice("tagplade(r)"), logic.getMaterialDescription("tagplade(r)"));
 

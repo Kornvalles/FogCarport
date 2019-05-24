@@ -106,12 +106,12 @@
                             out.println(svg.makeRectangle(String.valueOf(height), "1", "10", String.valueOf(i), "0"));
                         }
 
-                        if (construction.getCarport().hasWall()) {
+                        /* In case that the length is not dividable with 100 (boardLength), then you need to make an extra post in the end. */
+                        if (length % boardLength != 100) {
+                            out.println(svg.makeRectangle(String.valueOf(height), "1", "10", String.valueOf(length), "0"));
+                        }
 
-                            /* In case that the length is not dividable with 100 (boardLength), then you need to make an extra post in the end. */
-                            if (length % boardLength != 100) {
-                                out.println(svg.makeRectangle(String.valueOf(height), "1", "10", String.valueOf(length), "0"));
-                            }
+                        if (construction.getCarport().hasWall()) {
 
                             /* Making the walls of the longside with wooden boards.
                         - The method stops making whole boards, when the rest of the length is less than 100 (the length of 1 board).
