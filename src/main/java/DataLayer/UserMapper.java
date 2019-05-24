@@ -21,7 +21,7 @@ public class UserMapper {
         Customer customer = null;
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO `FogCarport`.`customer` ( name, email, address, zipcode, phoneNumber ) "
+            String SQL = "INSERT INTO `FogCarport`.`customers` ( name, email, address, zipcode, phoneNumber ) "
                     + "VALUES (?, ?, ?, ?, ?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, name);
@@ -44,7 +44,7 @@ public class UserMapper {
         Employee employee = null;
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO `FogCarport`.`employee` ( name, password )"
+            String SQL = "INSERT INTO `FogCarport`.`employees` ( name, password )"
                     + "VALUES (?, ?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, name);
@@ -63,7 +63,7 @@ public class UserMapper {
     public static List<Customer> getAllCustomers() throws FogException {
         List<Customer> customers = new ArrayList();
         try {
-            String SQL = "SELECT * FROM FogCarport.customer;";
+            String SQL = "SELECT * FROM FogCarport.customers;";
             
             Connection con = Connector.connection();
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
@@ -82,7 +82,7 @@ public class UserMapper {
     public static Employee getEmployee(String username) throws FogException {
         Employee employee = null;
         try {
-            String SQL = "SELECT * FROM `FogCarport`.`employee` "
+            String SQL = "SELECT * FROM `FogCarport`.`employees` "
                     + "WHERE name = ? ";
             
             Connection con = Connector.connection();

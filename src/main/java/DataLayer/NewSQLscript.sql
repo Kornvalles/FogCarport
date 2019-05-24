@@ -26,7 +26,7 @@ USE `FogCarport` ;
 CREATE TABLE IF NOT EXISTS `FogCarport`.`customer` (
 `id` INT NOT NULL AUTO_INCREMENT,
 `name` VARCHAR(16),
-`email` VARCHAR(255),
+`email` VARCHAR(255) UNIQUE,
 `address` VARCHAR(255),
 `zipcode` INT NOT NULL,
 `phoneNumber` INT NOT NULL,
