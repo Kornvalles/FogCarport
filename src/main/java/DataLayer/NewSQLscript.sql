@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `FogCarport`.`employee` (
   `password` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
 
-INSERT INTO `employee` (`id`,`name`,`password`) VALUES (1,'Admin', '1234');
+INSERT INTO `employee` (`name`,`password`) VALUES ('Admin', '1234');
 
 
 -- -----------------------------------------------------
