@@ -24,7 +24,7 @@ public class DatabaseLogicFacade implements LogicFacade {
     }
 
     @Override
-    public double getMaterialPrice(String name) throws FogException, SQLException {
+    public double getMaterialPrice( String name ) throws FogException, SQLException {
         return OrderMapper.getMaterialPrice(name);
     }
     
@@ -34,12 +34,12 @@ public class DatabaseLogicFacade implements LogicFacade {
     }
     
     @Override
-    public int getMaterialId(String name) throws FogException, SQLException {
+    public int getMaterialId( String name ) throws FogException, SQLException {
         return OrderMapper.getMaterialId(name);
     }
 
     @Override
-    public String getMaterialDescription(String name) throws FogException, SQLException {
+    public String getMaterialDescription( String name ) throws FogException, SQLException {
         return OrderMapper.getMaterialDescription(name);
     }
     
@@ -49,7 +49,7 @@ public class DatabaseLogicFacade implements LogicFacade {
     }
     
     @Override
-    public void setMaterialPrice(int materialId, double newPrice) throws FogException, SQLException {
+    public void setMaterialPrice( int materialId, double newPrice ) throws FogException, SQLException {
         OrderMapper.setMaterialPrice(newPrice, materialId );
     }
 
@@ -58,7 +58,7 @@ public class DatabaseLogicFacade implements LogicFacade {
         return UserMapper.getEmployee(username);
     }
     @Override
-    public void deleteOrder (int id) throws FogException {
+    public void deleteOrder( int id ) throws FogException {
         OrderMapper.deleteOrder(id);
     }
 }
