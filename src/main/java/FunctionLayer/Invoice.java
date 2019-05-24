@@ -89,10 +89,12 @@ public class Invoice {
         }
         materials.setAutoLayout();
         p2.add(materials);
-        Text totalPriceWithotVAT = new Text(String.format("%.2f",order.getTotalPrice()));
+        Text totalPriceWithoutVAT = new Text(String.format("%.2f",order.getTotalPrice()*0.5));
         Text VAT = new Text(String.format("%.2f",order.getTotalPrice()*0.25)).setOpacity(0.6f);
         Text totalPrice = new Text(String.format("%.2f",order.getTotalPrice()*1.25));
-        p3.add(" "+totalPriceWithotVAT);
+
+        p3.add("\n");
+        p3.add(totalPriceWithoutVAT + " kr.");
         p3.add("\n");
         p3.add(VAT);
         p3.add("\n");

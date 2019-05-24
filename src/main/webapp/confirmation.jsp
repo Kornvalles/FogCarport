@@ -86,7 +86,7 @@
             <div class="row">
                 <div class="col-sm-6">
 
-                    <br><p>Totalpris: <%=String.format("%.2f", construction.getTotalPrice())%> kr. inkl. moms</p>
+                    <br><p>Totalpris: <%=String.format("%.2f", construction.getTotalPrice())%> kr. ekskl. moms</p>
 
                     <p>SVGCarport <%= construction.getCarport().getLength()%> cm lang og <%= construction.getCarport().getWidth()%> cm bred</p>
 

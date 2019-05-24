@@ -112,7 +112,7 @@ public class CalculatorTest {
     public void testGetSides() {
         System.out.println("getSides");
         Carport carport = new Carport(230, 240, 240, false, 0, true, false, 15, true, "");
-        int expResult = 138;
+        int expResult = 165;
         int result = Calculator.getSides(carport);
         assertEquals(expResult, result);
     }
@@ -124,7 +124,7 @@ public class CalculatorTest {
     public void testMakeShed() {
         System.out.println("makeShed");
         Carport carport = new Carport(230, 240, 240, false, 0, true, false, 15, true, "");
-        int expResult = 46;
+        int expResult = 55;
         int result = Calculator.makeShed(carport);
         assertEquals(expResult, result);
     }
@@ -160,7 +160,7 @@ public class CalculatorTest {
     public void testGetScrews() {
         System.out.println("getScrews");
         Carport carport = new Carport(230, 240, 240, false, 0, true, false, 15, true, "");
-        int expResult = 4;
+        int expResult = 5;
         int result = Calculator.getScrews(carport);
         assertEquals(expResult, result);
     }
