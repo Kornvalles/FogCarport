@@ -1,6 +1,7 @@
 package FunctionLayer;
 
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -245,7 +246,7 @@ public class Calculator {
      */
     public static Construction constructCarport(Carport carport, LogicFacade logic) throws FogException, SQLException {
         List<Material> material = new ArrayList<>();
-
+        DecimalFormat dF = new DecimalFormat("#.00");
         /* Get name and price from sql database */
         Material post = new Material("stolpe(r)", logic.getMaterialId("stolpe(r)"), getAllPosts(carport), "stk", logic.getMaterialPrice("stolpe(r)"), logic.getMaterialCostPrice("stolpe(r)"), logic.getMaterialDescription("stolpe(r)"));
         Material wood = new Material("planke(r) 10x100cm", logic.getMaterialId("planke(r) 10x100cm"), getSides(carport), "stk", logic.getMaterialPrice("planke(r) 10x100cm"), logic.getMaterialCostPrice("planke(r) 10x100cm"), logic.getMaterialDescription("planke(r) 10x100cm"));
@@ -279,7 +280,6 @@ public class Calculator {
             totalItemPrice = material.get(i).getPrice() * material.get(i).getQty();
             totalPrice += totalItemPrice;
         }
-
-        return new Construction(carport, material, totalPrice);
+        return new Construction(carport, material, Double.parseDouble(dF.format(totalPrice)));
     }
 }
