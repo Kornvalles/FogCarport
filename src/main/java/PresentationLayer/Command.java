@@ -14,7 +14,7 @@ abstract class Command {
         commands.put( "CreateOrder", new CreateOrderCommand() );
         commands.put( "order", new SortimentCommand());
         commands.put( "invoice", new GetInvoiceCommand());
-        commands.put( "Employee", new EmployeeCommand());
+        commands.put( "Employee", new LoginCommand());
         commands.put( "logout" , new LogoutCommand());
         commands.put( "goBack", new goBackCommand());
         commands.put( "updatePrice" , new ChangePriceCommand());

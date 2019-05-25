@@ -48,7 +48,7 @@ public class UserMapper {
                     + "VALUES (?, ?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, newEmployee.getUsername());
-            ps.setString(2, newEmployee.getUsername());
+            ps.setString(2, newEmployee.getPassword());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             
