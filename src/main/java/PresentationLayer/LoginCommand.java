@@ -26,7 +26,6 @@ public class LoginCommand extends Command {
                     } else {
                         session.setAttribute("employee", employee);
                         session.setAttribute("materials", logic.getAllMaterials());
-                        System.out.println(employee.isAdmin());
                         if (employee.isAdmin()) {
                             return "adminPage";
                         }
