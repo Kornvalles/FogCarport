@@ -40,19 +40,19 @@ public class UserMapper {
         return customer;
     }
     
-    public static Employee addEmployee(String name, String password) throws FogException {
+    public static Employee addEmployee(Employee newEmployee) throws FogException {
         Employee employee = null;
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO `FogCarport`.`employees` ( name, password )"
                     + "VALUES (?, ?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, name);
-            ps.setString(2, password);
+            ps.setString(1, newEmployee.getUsername());
+            ps.setString(2, newEmployee.getUsername());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             
-            employee = new Employee(1, name, password);
+            employee = new Employee(rs.getInt(1), newEmployee.getUsername(), newEmployee.getUsername(), rs.getBoolean(4));
         }   catch (SQLException ex) {
             System.out.println(ex.getSQLState());
             System.out.println(ex.getLocalizedMessage());
@@ -91,7 +91,7 @@ public class UserMapper {
             ResultSet rs = ps.executeQuery();
             
             if (rs.next()) {
-                employee = new Employee(rs.getInt("id"), rs.getNString("name"), rs.getNString("password"));
+                employee = new Employee(rs.getInt("id"), rs.getNString("name"), rs.getNString("password"), rs.getBoolean("isAdmin"));
             }
         } catch (SQLException ex) {
             throw new FogException(ex.getMessage());

@@ -27,6 +27,8 @@ public interface LogicFacade {
     
     void setMaterialPrice( int materialId, double newPrice ) throws FogException, SQLException;
     
+    Employee addEmployee( Employee newEmployee ) throws FogException, SQLException;
+    
     Employee getEmployee( String username ) throws FogException;
     
     void deleteOrder (int id) throws FogException;
