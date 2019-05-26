@@ -100,4 +100,37 @@ public class UserMapper {
         }
         return employee;
     }
+    
+    public static void deleteEmployee(String username) throws FogException {
+        try {
+            String SQL = "DELETE FROM `FogCarport`.`employees` WHERE (`name` = ?);";
+            
+            Connection con = Connector.connection();
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setString(1, username);
+            ps.execute();
+            
+        } catch (SQLException ex) {
+            logger.log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static List<Employee> getAllEmployees() throws FogException {
+        List<Employee> employees = new ArrayList();
+        try {
+            String SQL = "SELECT * FROM FogCarport.employees;";
+            
+            Connection con = Connector.connection();
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                employees.add(new Employee(rs.getInt("id"), rs.getNString("name"), rs.getNString("password"), rs.getBoolean("isAdmin")));
+            }
+            
+        } catch (SQLException ex) {
+            logger.log(Level.SEVERE, null, ex);
+        }
+        return employees;
+    }
 }

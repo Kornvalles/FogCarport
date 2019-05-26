@@ -31,6 +31,10 @@ public interface LogicFacade {
     
     Employee getEmployee( String username ) throws FogException;
     
+    List<Employee> getAllEmployees() throws FogException;
+    
+    void deleteEmployee( String username ) throws FogException;
+    
     void deleteOrder (int id) throws FogException;
     
 }
