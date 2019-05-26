@@ -21,6 +21,7 @@ public class CreateOrderCommand extends Command {
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
 
         HttpSession session = request.getSession();
+        Customer customer = (Customer) session.getAttribute("customer");
         
         //Fanger inputs fra jsp som ligger på requestet.
         String reqLength = request.getParameter("length");
@@ -44,12 +45,13 @@ public class CreateOrderCommand extends Command {
 
         try {
             Carport carport = new Carport(230, length, width, toolShed, shedWidth, roof, roofType, roofAngle, wall, "");
-            Customer customer = (Customer) session.getAttribute("customer");
-            
             Construction construction = Calculator.constructCarport(carport, logic);
-            session.setAttribute("construction", construction);
             
-            logic.createOrder(construction, customer);
+            if (construction != null) {
+                session.setAttribute("construction", construction);
+                logic.createOrder(construction, customer);
+            } 
+           
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Error creating a carport order.", e);
             throw new FogException(e.getMessage());

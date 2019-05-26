@@ -2,8 +2,10 @@ package FunctionLayer;
 
 import java.sql.SQLException;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class Calculator {
 
@@ -56,8 +58,8 @@ public class Calculator {
     }
 
     /**
-     * This method returns the number of roof material needed to make the roof
-     * of the input carport. For each post on 1 side there has to be on wooden
+     * This method returns the number of roof materials needed to make the roof
+ of the input carport. For each post on 1 side there has to be on wooden
      * board across the roof.
      *
      * @param carport
@@ -103,11 +105,11 @@ public class Calculator {
     }
 
     /**
-     * This method returns the number of material needed to make 1 rectangle of
-     * material. input1 is always the direction of the material. -- On the roof
-     * input1 is the length and input2 is the width -- On the two sides input1
-     * is the length and input2 is the height -- At the backside input1 is the
-     * width and input2 is the height
+     * This method returns the number of materials needed to make 1 rectangle of
+ materials. input1 is always the direction of the materials. -- On the roof
+ input1 is the length and input2 is the width -- On the two sides input1
+ is the length and input2 is the height -- At the backside input1 is the
+ width and input2 is the height
      *
      * @param input1 // length
      * @param input2 // width
@@ -119,20 +121,20 @@ public class Calculator {
         int totalMaterial;
 
 
-        /* How many material units can fit in the length? */
+        /* How many materials units can fit in the length? */
         int materialInLength = (int) Math.ceil(input1 / materialLength);
 
-        /* How many material units can fit in the width? */
+        /* How many materials units can fit in the width? */
         int materialInWidth = (int) Math.ceil(input2 / materialWidth);
 
         int rest = (int) Math.ceil(input1 % materialLength);
 
-        /* The number of material units on a flat surface using as little material 
+        /* The number of materials units on a flat surface using as little materials 
             as possible */
         if (rest == 0) {
             totalMaterial = materialInWidth * materialInLength;
         } else {
-            /* Making sure that you get a whole material unit even though you 
+            /* Making sure that you get a whole materials unit even though you 
                 might only need a fraction of it */
             int reuseBoards = (rest * materialInWidth) / materialLength;
             int rounded = (reuseBoards);
@@ -236,7 +238,7 @@ public class Calculator {
     }
 
     /**
-     * This method returns a list of all material needed for the input carport.
+     * This method returns a list of all materials needed for the input carport.
      *
      * @param carport
      * @param logic
@@ -245,8 +247,9 @@ public class Calculator {
      * @throws java.sql.SQLException
      */
     public static Construction constructCarport(Carport carport, LogicFacade logic) throws FogException, SQLException {
-        List<Material> material = new ArrayList<>();
-        DecimalFormat dF = new DecimalFormat("#.00");
+        List<Material> materials = new ArrayList<>();
+        DecimalFormat dF = new DecimalFormat("#.##");
+        
         /* Get name and price from sql database */
         Material post = new Material("stolpe(r)", logic.getMaterialId("stolpe(r)"), getAllPosts(carport), "stk", logic.getMaterialPrice("stolpe(r)"), logic.getMaterialCostPrice("stolpe(r)"), logic.getMaterialDescription("stolpe(r)"));
         Material wood = new Material("planke(r) 10x100cm", logic.getMaterialId("planke(r) 10x100cm"), getSides(carport), "stk", logic.getMaterialPrice("planke(r) 10x100cm"), logic.getMaterialCostPrice("planke(r) 10x100cm"), logic.getMaterialDescription("planke(r) 10x100cm"));
@@ -257,29 +260,30 @@ public class Calculator {
         Material roofTile = new Material("tagsten", logic.getMaterialId("tagsten"), getRoof(carport), "stk", logic.getMaterialPrice("tagsten"), logic.getMaterialCostPrice("tagsten"), logic.getMaterialDescription("tagsten"));
         Material pvcRoofSheet = new Material("tagplade(r)", logic.getMaterialId("tagplade(r)"), getRoof(carport), "stk", logic.getMaterialPrice("tagplade(r)"), logic.getMaterialCostPrice("tagplade(r)"), logic.getMaterialDescription("tagplade(r)"));
 
-        material.add(post);
+        materials.add(post);
         if (carport.hasWall()) {
-            material.add(wood);
+            materials.add(wood);
         }
-        material.add(roofBatten);
-        material.add(sideBatten);
-        material.add(screw);
+        materials.add(roofBatten);
+        materials.add(sideBatten);
+        materials.add(screw);
         if (carport.roofType()) {
-            material.add(roofTile);
+            materials.add(roofTile);
         } else {
-            material.add(pvcRoofSheet);
+            materials.add(pvcRoofSheet);
         }
         if (carport.hasToolshed()) {
-            material.add(shedWood);
+            materials.add(shedWood);
         }
 
         double totalPrice = 0;
         double totalItemPrice;
 
-        for (int i = 0; i < material.size(); i++) {
-            totalItemPrice = material.get(i).getPrice() * material.get(i).getQty();
+        for (int i = 0; i < materials.size(); i++) {
+            totalItemPrice = materials.get(i).getPrice() * materials.get(i).getQty();
             totalPrice += totalItemPrice;
         }
-        return new Construction(carport, material, Double.parseDouble(dF.format(totalPrice)));
+        
+        return new Construction(carport, materials, totalPrice);
     }
 }

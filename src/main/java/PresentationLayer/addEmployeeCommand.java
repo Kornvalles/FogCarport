@@ -17,6 +17,7 @@ public class addEmployeeCommand extends Command {
         String username = request.getParameter("username");
         String password = request.getParameter("pwd");
         boolean isAdmin = true;
+        // If switch is off, then we set isAdmin to false
         if (!"on".equals(request.getParameter("isAdmin"))) {
             isAdmin = false;
         }
