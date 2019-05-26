@@ -35,7 +35,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h1 style="text-align: center">Bestilling af carport</h1>
+                        <h1 style="text-align: center">Registrering af kunde</h1>
                         <label for="nameInput">Fulde navn</label>
                         <p><input type="text" name="name" placeholder="Indtast dit fulde navn" id="nameInput" value="Test"></p>
                         <label for="emailInput">Email</label>
