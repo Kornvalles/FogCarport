@@ -1,7 +1,3 @@
-/**
- * Author:  ndupo
- * Created: Apr 24, 2019
- */
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
