@@ -21,9 +21,10 @@ public class Employee {
         this.isAdmin = isAdmin;
     }
     
-    public Employee(String name, String password) {
+    public Employee(String name, String password, boolean isAdmin) {
         this.username = name;
         this.password = password;
+        this.isAdmin = isAdmin;
     }
     
     public Employee(String password) {

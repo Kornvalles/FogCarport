@@ -1,3 +1,4 @@
+<%@page import="FunctionLayer.Employee"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -9,8 +10,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <script src="WEB-INF/app/app.js" type="text/javascript"></script>
-        <%if (session.getAttribute("employee") == null || session.getAttribute("employee") == "") {
+        <script src="app/app.js" type="text/javascript"></script>
+        <%  Employee e = (Employee) session.getAttribute("employee");
+            if (e == null || e.isAdmin() == false) {
                 request.setAttribute("error", "Please Login");
                 response.sendRedirect(response.encodeURL("login.jsp"));
             }
@@ -52,5 +54,46 @@
                 </div>
             </div>
         </header>
+        <div class="container">
+            <!-- Button to Open the Modal, button for Popup -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                Tilføj medarbejder
+            </button>
+            <!-- The Modal, Popupbox for add employee -->
+            <div class="modal" id="myModal">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Ny medarbejder</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <form action="FrontController" method="POST">
+                                <input type="hidden" name="command" value="addEmployee">
+                                <label for="username">Brugernavn:</label>
+                                <input type="text" class="form-control" name="username" id="username" required>
+                                <label for="pwd">Adgangskode:</label>
+                                <input type="password" class="form-control" name="pwd" id="pwd" required>
+                                <input type="checkbox" onclick="showPassword();">Vis adgangskode
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="switch1" name="isAdmin">
+                                    <label class="custom-control-label" for="switch1">Admin rettigheder</label></div>
+                                <br>
+                                <button type="submit" class="btn btn-primary">Opret</button>
+                            </form>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

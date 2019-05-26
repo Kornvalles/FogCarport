@@ -44,15 +44,17 @@ public class UserMapper {
         Employee employee = null;
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO `FogCarport`.`employees` ( name, password )"
-                    + "VALUES (?, ?);";
+            String SQL = "INSERT INTO `FogCarport`.`employees` ( name, password, isAdmin )"
+                    + "VALUES (?, ?, ?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, newEmployee.getUsername());
             ps.setString(2, newEmployee.getPassword());
+            ps.setBoolean(3, newEmployee.isAdmin());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
-            
-            employee = new Employee(rs.getInt(1), newEmployee.getUsername(), newEmployee.getUsername(), rs.getBoolean(4));
+            while (rs.next()) {
+                employee = new Employee(rs.getInt(1), newEmployee.getUsername(), newEmployee.getUsername(), newEmployee.isAdmin());
+            }
         }   catch (SQLException ex) {
             System.out.println(ex.getSQLState());
             System.out.println(ex.getLocalizedMessage());
