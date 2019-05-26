@@ -7,10 +7,6 @@ package PresentationLayer;
 
 import FunctionLayer.FogException;
 import FunctionLayer.LogicFacade;
-import FunctionLayer.Order;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 
 /**

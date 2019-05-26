@@ -1,4 +1,3 @@
-
 <%@page import="FunctionLayer.Employee"%>
 <%@page import="FunctionLayer.Order"%>
 <%@page import="java.util.List"%>
@@ -18,8 +17,8 @@
         <%if (session.getAttribute("employee") == null|| session.getAttribute("employee") == "") {
                 request.setAttribute("error", "Please Login");
                 response.sendRedirect(response.encodeURL("login.jsp"));
-        }
-            List<Order> orderlist = (List<Order>) session.getAttribute("orders");
+        }   
+            List<Order> orderlist = (List<Order>) session.getAttribute("orderlist");
             
             %>
         <title>Se alle ordre</title>
@@ -41,7 +40,7 @@
                 </li>
                 <%
                     Employee e = (Employee) session.getAttribute("employee");
-//                    if (e.isAdmin()) { 
+ //                   if (e.isAdmin()) { 
                 %>
                <li class="nav-item">
                     <a class="nav-link" href="adminPage.jsp">Admin</a>
