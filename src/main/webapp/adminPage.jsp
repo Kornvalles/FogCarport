@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="FunctionLayer.Employee"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +13,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="app/app.js" type="text/javascript"></script>
         <%  Employee e = (Employee) session.getAttribute("employee");
+            List<Employee> employees = (List<Employee>) session.getAttribute("employees");
             if (e == null || e.isAdmin() == false) {
                 request.setAttribute("error", "Please Login");
                 response.sendRedirect(response.encodeURL("login.jsp"));
@@ -42,6 +44,11 @@
                 </li>
             </ul>
         </nav>
+        <%if (request.getAttribute("message") != null) {%>
+        <div class="alert alert-success">
+            <strong>Success!</strong> <%=request.getAttribute("message")%>
+        </div>
+        <%}%>
         <header class="masthead">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
@@ -54,13 +61,21 @@
                 </div>
             </div>
         </header>
-        <div class="container">
-            <!-- Button to Open the Modal, button for Popup -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                Tilføj medarbejder
-            </button>
+        <div class="container mt-3">
+            <div style="text-align: center">
+                <!-- Button to Open the Modal, button for Popup -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEmp">
+                    Tilføj medarbejder
+                </button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteEmp">
+                    Slet medarbejder
+                </button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#allEmployees">
+                    Alle medarbejder
+                </button>
+            </div>
             <!-- The Modal, Popupbox for add employee -->
-            <div class="modal" id="myModal">
+            <div class="modal" id="addEmp">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
 
@@ -84,6 +99,77 @@
                                     <label class="custom-control-label" for="switch1">Admin rettigheder</label></div>
                                 <br>
                                 <button type="submit" class="btn btn-primary">Opret</button>
+                            </form>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="deleteEmp">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Slet medarbejder</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <form action="FrontController" method="POST">
+                                <input type="hidden" name="command" value="deleteEmployee">
+                                <label for="username">Brugernavn:</label>
+                                <input type="text" class="form-control" name="username" id="username" required>
+                                <button type="submit" class="btn btn-danger">Slet</button>
+                            </form>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="allEmployees">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Alle medarbejder</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <form action="FrontController" method="POST">
+                                <input type="hidden" name="command" value="deleteEmployee">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Brugernavn</th>
+                                            <th>Password</th>
+                                            <th>Admin status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%for (Employee e1 : employees) {
+                                                out.println("<tr>");
+                                                out.println("<td>" + e1.getId() + "</td>");
+                                                out.println("<td>" + e1.getUsername() + "</td>");
+                                                out.println("<td>" + e1.getPassword() + "</td>");
+                                                out.println("<td>" + e1.isAdmin() + "</td>");
+                                                out.println("</tr>");
+                                            }%>
+                                    </tbody>
+                                </table>
                             </form>
                         </div>
 
