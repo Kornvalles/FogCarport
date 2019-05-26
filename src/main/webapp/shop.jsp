@@ -42,53 +42,56 @@
                     <div class="col">    
                         <div class="form-group">
                             <label for="lengthInput">Carportens længde</label>
-                            <p>${lengthSelect}</p>
+                            ${lengthSelect}
                         </div>
                         <div class="form-group">
                             <label for="widthInput">Carportens bredde</label>
-                            <p>${widthSelect}</p>
+                            ${widthSelect}
                         </div>
-
-                        <input type="checkbox" name="shed" value="true" ${shedChecked} id="shedInput">
-                        <label for="shedInput">Tilføj redskabsskur?</label>
-                        <div class="fadeIn" id="display">
-                            Vælg venligst længden på dit skur:
-                            <p><select name="shedWidth" id="widthInput">
+                        <div class="form-group">
+                            <input type="checkbox" name="shed" value="true" ${shedChecked} id="shedInput">
+                            <label for="shedInput">Tilføj redskabsskur?</label>
+                            <div class="fadeIn" id="display">
+                                Vælg venligst længden på dit skur:
+                                <select name="shedWidth" id="widthInput">
                                     <option value="150">150 cm</option>
                                     <option value="200">200 cm</option>
                                     <option value="220">220 cm</option>
                                     <option value="250">250 cm</option>
-                                </select></p>
+                                </select>
+                            </div>
                         </div>
-                        <br>
-
-                        <input type="checkbox" name="roofType" value="true" id="roofTypeInput">
-                        <label for="shedInput">Vil du udskifte tagplader med en anden tag type?</label>
-                        <div class="fadeIn" id="display2">
-                            Alle Fogs carporte bliver som standard monteret med tagplader:
-                            <p><select name="roofType" id="roofType">
+                        <div class="form-group">
+                            <input type="checkbox" name="roofType" value="true" id="roofTypeInput">
+                            <label for="shedInput">Vil du udskifte tagplader med en anden tag type?</label>
+                            <div class="fadeIn" id="display2">
+                                Alle Fogs carporte bliver som standard monteret med tagplader:
+                                <select name="roofType" id="roofType">
                                     <option value="rooftiles">Tagsten</option>
-                                </select></p>
+                                </select>
+                            </div>
                         </div>
-                        <br>
-
-                        <input type="checkbox" name="roof" value="true" ${roofChecked} id="roofInput">
-                        <label for="roofInput">Tilføj taghældning?</label>
-                        <div class="fadeIn" id="display1">
+                        <div class="form-group">
+                            <input type="checkbox" name="roof" value="true" ${roofChecked} id="roofInput">
+                            <label for="roofInput">Tilføj taghældning?</label>
+                        </div>
+                        <div class="form-group fadeIn" id="display1">
                             Vælg venligst den ønskede hældning på deres tag:
-                            <p><select name="roofAngle" id="roofAngle">
-                                    <option value="15">15°</option>
-                                    <option value="20">20°</option>
-                                    <option value="25">25°</option>
-                                    <option value="30">30°</option>
-                                    <option value="35">35°</option>
-                                    <option value="40">40°</option>
-                                    <option value="45">45°</option>
-                                </select></p>
+                            <select name="roofAngle" id="roofAngle">
+                                <option value="15">15°</option>
+                                <option value="20">20°</option>
+                                <option value="25">25°</option>
+                                <option value="30">30°</option>
+                                <option value="35">35°</option>
+                                <option value="40">40°</option>
+                                <option value="45">45°</option>
+                            </select>
                         </div>
-                        <p><input type="checkbox" name="wall" value="true" id="wallsInput">
-                            <label for="wallsInput">Tilføj vægge?</label></p>
-                            <p><input type="submit" name="order" value="Bestil"></p>
+                        <div class="form-group">
+                            <input type="checkbox" name="wall" value="true" id="wallsInput">
+                            <label for="wallsInput">Tilføj vægge?</label>
+                        </div>
+                        <input type="submit" name="order" value="Bestil">
                     </div>
                 </div>
             </div>
