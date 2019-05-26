@@ -7,20 +7,22 @@ package PresentationLayer;
 
 import FunctionLayer.FogException;
 import FunctionLayer.LogicFacade;
+import FunctionLayer.Order;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 
 /**
  *
  * @author Benjamin
  */
-//skal fikses
 public class DeleteOrderCommand extends Command {
 
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
-        return null;
+
+        logic.deleteOrder(Integer.parseInt(request.getParameter("orderid")));
+        return "viewAllOrders";
     }
-    
-    
-    
 }
