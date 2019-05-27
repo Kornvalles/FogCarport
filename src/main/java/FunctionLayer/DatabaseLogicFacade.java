@@ -64,8 +64,8 @@ public class DatabaseLogicFacade implements LogicFacade {
     }
     
     @Override
-    public void deleteEmployee(String username) throws FogException {
-        UserMapper.deleteEmployee(username);
+    public void deleteEmployee(int id) throws FogException {
+        UserMapper.deleteEmployee(id);
     }
     
     @Override
