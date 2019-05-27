@@ -123,8 +123,8 @@
                         <div class="modal-body">
                             <form action="FrontController" method="POST">
                                 <input type="hidden" name="command" value="deleteEmployee">
-                                <label for="username">Brugernavn:</label>
-                                <input type="text" class="form-control" name="username" id="username" required>
+                                <label for="id">id:</label>
+                                <input type="text" class="form-control" name="id" id="username" required>
                                 <button type="submit" class="btn btn-danger">Slet</button>
                             </form>
                         </div>

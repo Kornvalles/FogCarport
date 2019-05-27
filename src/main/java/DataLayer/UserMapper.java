@@ -101,13 +101,13 @@ public class UserMapper {
         return employee;
     }
     
-    public static void deleteEmployee(String username) throws FogException {
+    public static void deleteEmployee(int id) throws FogException {
         try {
-            String SQL = "DELETE FROM `FogCarport`.`employees` WHERE (`name` = ?);";
+            String SQL = "DELETE FROM `FogCarport`.`employees` WHERE (`id` = ?);";
             
             Connection con = Connector.connection();
             PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setString(1, username);
+            ps.setInt(1, id);
             ps.execute();
             
         } catch (SQLException ex) {

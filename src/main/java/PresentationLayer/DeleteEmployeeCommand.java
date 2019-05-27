@@ -9,9 +9,9 @@ public class DeleteEmployeeCommand extends Command {
 
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
-        String username = request.getParameter("username");
-        logic.deleteEmployee(username);
-        request.setAttribute("message", "Medarbejder " + username + " er blevet slettet!");
+        int id = (Integer.parseInt(request.getParameter("id")));
+        logic.deleteEmployee(id);
+        request.setAttribute("message", "Medarbejder " + id + " er blevet slettet!");
         return "adminPage";    
     }
     
