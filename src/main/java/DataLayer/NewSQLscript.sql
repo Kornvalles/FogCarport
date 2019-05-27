@@ -21,9 +21,9 @@ USE `FogCarport` ;
 
 
 -- -----------------------------------------------------
--- Table `FogCarport`.`customer`
+-- Table `FogCarport`.`customers`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `FogCarport`.`customer` (
+CREATE TABLE IF NOT EXISTS `FogCarport`.`customers` (
 `id` INT NOT NULL AUTO_INCREMENT,
 `name` VARCHAR(16),
 `email` VARCHAR(255) UNIQUE,
@@ -34,21 +34,21 @@ CREATE TABLE IF NOT EXISTS `FogCarport`.`customer` (
 
 
 -- -----------------------------------------------------
--- Table `fog`.`employee`
+-- Table `fog`.`employees`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `FogCarport`.`employee` (
+CREATE TABLE IF NOT EXISTS `FogCarport`.`employees` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NULL,
   `password` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
 
-INSERT INTO `employee` (`name`,`password`) VALUES ('Admin', '1234');
+INSERT INTO `employees` (`name`,`password`) VALUES ('Admin', '1234');
 
 
 -- -----------------------------------------------------
--- Table `FogCarport`.`material`
+-- Table `FogCarport`.`materials`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `FogCarport`.`material` (
+CREATE TABLE IF NOT EXISTS `FogCarport`.`materials` (
   `materialID` INT NOT NULL,
   `name` VARCHAR(255) NOT NULL,
   `MSRP` DOUBLE NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `FogCarport`.`material` (
   `description` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`materialID`));
 
-INSERT INTO FogCarport.material (`materialID`,`name`,`MSRP`, `costPrice`,`quantity`,`description`) VALUES 
+INSERT INTO FogCarport.materials (`materialID`,`name`,`MSRP`, `costPrice`,`quantity`,`description`) VALUES 
 (1000,'stolpe(r)',240.95,90.50,9999,'Trykimpraegneret stolpe af trae. 100x100mm.'), 
 (1010,'planke(r) 10x100cm',45.50,15.50,9999,'Traeplanke 10x100 cm.'), 
 (1020,'taglaegte(r)', 90.95,30.50,9999,'Trykimpraegneret lagte af trae til tag. 38x73mm.'), 
@@ -68,9 +68,9 @@ INSERT INTO FogCarport.material (`materialID`,`name`,`MSRP`, `costPrice`,`quanti
 
 
 -- -----------------------------------------------------
--- Table `FogCarport`.`order`
+-- Table `FogCarport`.`orders`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `FogCarport`.`order` (
+CREATE TABLE IF NOT EXISTS `FogCarport`.`orders` (
   `orderId` INT NOT NULL AUTO_INCREMENT,
   `employeeId` INT NOT NULL,
   `customerId` INT NOT NULL,
@@ -90,12 +90,12 @@ CREATE TABLE IF NOT EXISTS `FogCarport`.`order` (
   INDEX `CustomerID_idx` (`customerId` ASC) VISIBLE,
   CONSTRAINT `EmployeeID`
     FOREIGN KEY (`employeeId`)
-    REFERENCES `FogCarport`.`employee` (`id`)
+    REFERENCES `FogCarport`.`employees` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `CustomerId`
     FOREIGN KEY (`customerId`)
-    REFERENCES `FogCarport`.`customer` (`id`)
+    REFERENCES `FogCarport`.`customers` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
     );
