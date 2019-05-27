@@ -13,6 +13,10 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="app/app.js" type="text/javascript"></script>
         <%  Employee e = (Employee) session.getAttribute("employee");
+            Employee e2 = null;
+            if (request.getAttribute("employeeToEdit") != null) {
+                e2 = (Employee) request.getAttribute("employeeToEdit");
+            }
             List<Employee> employees = (List<Employee>) session.getAttribute("employees");
             if (e == null || e.isAdmin() == false) {
                 request.setAttribute("error", "Please Login");
@@ -136,8 +140,8 @@
                     </div>
                 </div>
             </div>
-            <div class="modal" id="allEmployees">
-                <div class="modal-dialog modal-dialog-centered">
+            <div class="modal fade" id="allEmployees">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
 
                         <!-- Modal Header -->
@@ -148,28 +152,67 @@
 
                         <!-- Modal body -->
                         <div class="modal-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Brugernavn</th>
+                                        <th>Password</th>
+                                        <th style="width: 150px;">Admin status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <%for (Employee e1 : employees) {
+                                            out.println("<tr>");
+                                            out.println("<td>" + e1.getId() + "</td>");
+                                            out.println("<td>" + e1.getUsername() + "</td>");
+                                            out.println("<td>" + e1.getPassword() + "</td>");
+                                            out.println("<td>" + e1.isAdmin() + "</td>");
+                                            out.println("<td>");
+                                            out.println("<form method=\"POST\" action=\"FrontController\">");
+                                            out.println("<input type=\"hidden\" name=\"employeeId\" value=\"" + e1.getId() + "\">");
+                                            out.println("<input type=\"hidden\" name=\"command\" value=\"showEditEmployee\">");
+                                            out.println("<button type=\"submit\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#allEmployees\">Ændre</button>");
+                                            out.println("</form></td>");
+                                            out.println("</tr>");
+                                        }%>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% if (request.getAttribute("employeeToEdit") != null) {%>                    
+            <div class="modal" id="editEmployee">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Ændre medarbejder</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
                             <form action="FrontController" method="POST">
-                                <input type="hidden" name="command" value="deleteEmployee">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Brugernavn</th>
-                                            <th>Password</th>
-                                            <th>Admin status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <%for (Employee e1 : employees) {
-                                                out.println("<tr>");
-                                                out.println("<td>" + e1.getId() + "</td>");
-                                                out.println("<td>" + e1.getUsername() + "</td>");
-                                                out.println("<td>" + e1.getPassword() + "</td>");
-                                                out.println("<td>" + e1.isAdmin() + "</td>");
-                                                out.println("</tr>");
-                                            }%>
-                                    </tbody>
-                                </table>
+                                <input type="hidden" name="command" value="editEmployee">
+                                <input type="hidden" name="id" value="<%=e2.getId()%>">
+                                <label for="usernameEdit">Brugernavn:</label>
+                                <input type="text" class="form-control" name="username" id="usernameEdit" value="<%=e2.getUsername()%>" required>
+                                <label for="pwdEdit">Adgangskode:</label>
+                                <input type="password" class="form-control" name="pwd" id="pwdEdit" value="<%=e2.getPassword()%>" required>
+                                <input type="checkbox" onclick="showPassword();">Vis adgangskode
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="switch2" name="isAdmin" <%if (e2.isAdmin()) {%> checked <%}%>>
+                                    <label class="custom-control-label" for="switch2">Admin rettigheder</label></div>
+                                <br>
+                                <button type="submit" class="btn btn-primary">Ændr</button>
                             </form>
                         </div>
 
@@ -180,6 +223,21 @@
                     </div>
                 </div>
             </div>
+            <% }%>
         </div>
+        <script>
+            $(function () {
+                $('.btn').click(function (e) {
+                    var link = $(this).attr('href');
+                    if ($(this).attr('id') == 'Buy') {
+                        $.get(link, function (data) {
+                            modal.open({content: data});
+                            $('#transType').val('buy');
+                        });
+                    }
+                    e.preventDefault();
+                });
+            });
+        </script>
     </body>
 </html>

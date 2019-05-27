@@ -29,12 +29,14 @@ public interface LogicFacade {
     
     Employee addEmployee( Employee newEmployee ) throws FogException, SQLException;
     
-    Employee getEmployee( String username ) throws FogException;
+    Employee getEmployee( int id ) throws FogException;
+    
+    Employee setEmployee( int id, String username, String password, boolean isAdmin ) throws FogException;
     
     List<Employee> getAllEmployees() throws FogException;
     
     void deleteEmployee( int id ) throws FogException;
     
-    void deleteOrder (int id) throws FogException;
+    void deleteOrder( int id ) throws FogException;
     
 }

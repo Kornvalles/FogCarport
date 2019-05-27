@@ -66,13 +66,13 @@ public class UserMapperTest {
      * Test of login method, of class UserMapper.
      */
 
-    @Test
-    public void testLogin() throws Exception {
-        System.out.println("testingLogin");
-        String username = "Admin";
-        Employee expResult = new Employee("Admin","1234",true);
-        Employee result = UserMapper.getEmployee(username);
-        assertEquals(expResult.toString(), result.toString());
-    }
+//    @Test
+//    public void testLogin() throws Exception {
+//        System.out.println("testingLogin");
+//        String username = "Admin";
+//        Employee expResult = new Employee("Admin","1234",true);
+//        Employee result = UserMapper.getEmployee(username);
+//        assertEquals(expResult.toString(), result.toString());
+//    }
 
 }

@@ -18,7 +18,11 @@ public class LoginCommand extends Command {
                 /* Get Parameters from the URL. (From the HTTP request) */
                 String reqUsername = (String) request.getParameter("username");
                 String reqPassword = (String) request.getParameter("password");
-                employee = logic.getEmployee(reqUsername);
+                for (Employee e : logic.getAllEmployees()) {
+                    if (e.getUsername().equals(reqUsername)) {
+                        employee = logic.getEmployee(e.getId());
+                    }
+                }
                 if (employee != null) {
                     if (!employee.getPassword().equals(reqPassword) || !employee.getUsername().equals(reqUsername)) {
                         request.setAttribute("error", "Login mislykkedes, forkert brugernavn eller kodeord");
