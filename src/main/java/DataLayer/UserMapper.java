@@ -40,19 +40,21 @@ public class UserMapper {
         return customer;
     }
     
-    public static Employee addEmployee(String name, String password) throws FogException {
+    public static Employee addEmployee(Employee newEmployee) throws FogException {
         Employee employee = null;
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO `FogCarport`.`employees` ( name, password )"
-                    + "VALUES (?, ?);";
+            String SQL = "INSERT INTO `FogCarport`.`employees` ( name, password, isAdmin )"
+                    + "VALUES (?, ?, ?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, name);
-            ps.setString(2, password);
+            ps.setString(1, newEmployee.getUsername());
+            ps.setString(2, newEmployee.getPassword());
+            ps.setBoolean(3, newEmployee.isAdmin());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
-            
-            employee = new Employee(1, name, password);
+            while (rs.next()) {
+                employee = new Employee(rs.getInt(1), newEmployee.getUsername(), newEmployee.getUsername(), newEmployee.isAdmin());
+            }
         }   catch (SQLException ex) {
             System.out.println(ex.getSQLState());
             System.out.println(ex.getLocalizedMessage());
@@ -91,11 +93,44 @@ public class UserMapper {
             ResultSet rs = ps.executeQuery();
             
             if (rs.next()) {
-                employee = new Employee(rs.getInt("id"), rs.getNString("name"), rs.getNString("password"));
+                employee = new Employee(rs.getInt("id"), rs.getNString("name"), rs.getNString("password"), rs.getBoolean("isAdmin"));
             }
         } catch (SQLException ex) {
             throw new FogException(ex.getMessage());
         }
         return employee;
+    }
+    
+    public static void deleteEmployee(String username) throws FogException {
+        try {
+            String SQL = "DELETE FROM `FogCarport`.`employees` WHERE (`name` = ?);";
+            
+            Connection con = Connector.connection();
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setString(1, username);
+            ps.execute();
+            
+        } catch (SQLException ex) {
+            logger.log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static List<Employee> getAllEmployees() throws FogException {
+        List<Employee> employees = new ArrayList();
+        try {
+            String SQL = "SELECT * FROM FogCarport.employees;";
+            
+            Connection con = Connector.connection();
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                employees.add(new Employee(rs.getInt("id"), rs.getNString("name"), rs.getNString("password"), rs.getBoolean("isAdmin")));
+            }
+            
+        } catch (SQLException ex) {
+            logger.log(Level.SEVERE, null, ex);
+        }
+        return employees;
     }
 }

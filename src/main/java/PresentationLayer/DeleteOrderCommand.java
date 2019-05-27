@@ -13,14 +13,12 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author Benjamin
  */
-//skal fikses
 public class DeleteOrderCommand extends Command {
 
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
-        return null;
+
+        logic.deleteOrder(Integer.parseInt(request.getParameter("orderid")));
+        return "viewAllOrders";
     }
-    
-    
-    
 }

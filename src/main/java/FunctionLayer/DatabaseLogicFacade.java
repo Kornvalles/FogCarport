@@ -54,11 +54,29 @@ public class DatabaseLogicFacade implements LogicFacade {
     }
 
     @Override
+    public Employee addEmployee( Employee newEmployee ) throws FogException, SQLException {
+        return UserMapper.addEmployee(newEmployee);
+    }
+    
+    @Override
     public Employee getEmployee( String username ) throws FogException {
         return UserMapper.getEmployee(username);
     }
+    
+    @Override
+    public void deleteEmployee(String username) throws FogException {
+        UserMapper.deleteEmployee(username);
+    }
+    
     @Override
     public void deleteOrder( int id ) throws FogException {
         OrderMapper.deleteOrder(id);
     }
+
+    @Override
+    public List<Employee> getAllEmployees() throws FogException {
+        return UserMapper.getAllEmployees();
+    }
+
+    
 }

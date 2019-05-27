@@ -1,3 +1,4 @@
+<%@page import="FunctionLayer.Employee"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -9,8 +10,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <script src="WEB-INF/app/app.js" type="text/javascript"></script>
-        <script src="WEB-INF/app/app.js" type="text/javascript"></script>
+        <script src="app/app.js" type="text/javascript"></script>
         <title>Medarbejder side</title>
     </head>
     <body>
@@ -28,6 +28,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="viewAllOrders.jsp">Se Alle Ordrer</a>
                 </li>
+                <%
+                    Employee e = (Employee) session.getAttribute("employee");
+                    if (e.isAdmin()) { %>
+                <li class="nav-item">
+                    <a class="nav-link" href="adminPage.jsp">Admin</a>
+                </li> <%
+                    }
+                %>
                 <li class="nav-item">
                     <a class="nav-link" href="FrontController?command=logout">Log ud</a>
                 </li>

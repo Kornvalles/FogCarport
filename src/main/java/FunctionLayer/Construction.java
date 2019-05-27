@@ -30,7 +30,6 @@ public class Construction {
         this.materials = materials;
     }
 
-    //return stringformat
     public double getTotalPrice() {
         return totalPrice;
     }

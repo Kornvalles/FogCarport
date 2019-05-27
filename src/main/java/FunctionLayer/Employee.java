@@ -5,18 +5,26 @@ public class Employee {
     private int id;
     private String username;
     private String password;
+    private boolean isAdmin = false; //no admin right as default
 
-    public Employee(int id, String name, String password) {
-
+    /**
+     * Creates a new employee which doesn't have admin rights as default
+     * @param id
+     * @param name
+     * @param password
+     * @param isAdmin 
+     */
+    public Employee(int id, String name, String password, boolean isAdmin) {
         this.id = id;
         this.username = name;
         this.password = password;
+        this.isAdmin = isAdmin;
     }
     
-    public Employee(String name, String password) {
-
+    public Employee(String name, String password, boolean isAdmin) {
         this.username = name;
         this.password = password;
+        this.isAdmin = isAdmin;
     }
     
     public Employee(String password) {
@@ -52,6 +60,12 @@ public class Employee {
         this.id = id;
     }
     
+    public boolean isAdmin() {
+        return isAdmin;
+    }
     
+    public void setIsAdmin(boolean admin) {
+        this.isAdmin = admin;
+    }
     
 }

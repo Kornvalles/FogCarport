@@ -14,12 +14,14 @@ abstract class Command {
         commands.put( "CreateOrder", new CreateOrderCommand() );
         commands.put( "order", new SortimentCommand());
         commands.put( "invoice", new GetInvoiceCommand());
-        commands.put( "Employee", new EmployeeCommand());
+        commands.put( "Employee", new LoginCommand());
         commands.put( "logout" , new LogoutCommand());
         commands.put( "goBack", new goBackCommand());
         commands.put( "updatePrice" , new ChangePriceCommand());
         commands.put( "createCustomer", new CreateCustomerCommand());
         commands.put( "deleteOrder", new DeleteOrderCommand());
+        commands.put( "addEmployee", new AddEmployeeCommand());
+        commands.put( "deleteEmployee", new DeleteEmployeeCommand());
     }
 
     static Command from( HttpServletRequest request ) {

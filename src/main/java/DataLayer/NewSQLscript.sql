@@ -1,7 +1,3 @@
-/**
- * Author:  ndupo
- * Created: Apr 24, 2019
- */
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -40,9 +36,16 @@ CREATE TABLE IF NOT EXISTS `FogCarport`.`employees` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NULL,
   `password` VARCHAR(45) NULL,
+   `isAdmin` BOOLEAN DEFAULT FALSE,
   PRIMARY KEY (`id`));
 
+
 INSERT INTO `employees` (`name`,`password`) VALUES ('Admin', '1234');
+
+INSERT INTO `employees` (`name`,`password`,`isAdmin`) VALUES 
+('Admin', '1234',true),
+('Emp1','1234', false);
+
 
 
 -- -----------------------------------------------------
@@ -57,7 +60,11 @@ CREATE TABLE IF NOT EXISTS `FogCarport`.`materials` (
   `description` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`materialID`));
 
+
 INSERT INTO FogCarport.materials (`materialID`,`name`,`MSRP`, `costPrice`,`quantity`,`description`) VALUES 
+
+INSERT INTO `FogCarport`.`materials` (`materialID`,`name`,`MSRP`, `costPrice`,`quantity`,`description`) VALUES 
+
 (1000,'stolpe(r)',240.95,90.50,9999,'Trykimpraegneret stolpe af trae. 100x100mm.'), 
 (1010,'planke(r) 10x100cm',45.50,15.50,9999,'Traeplanke 10x100 cm.'), 
 (1020,'taglaegte(r)', 90.95,30.50,9999,'Trykimpraegneret lagte af trae til tag. 38x73mm.'), 

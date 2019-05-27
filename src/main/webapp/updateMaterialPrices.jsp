@@ -1,3 +1,4 @@
+<%@page import="FunctionLayer.Employee"%>
 <%@page import="FunctionLayer.Material"%>
 <%@page import="java.util.List"%>
 <%@page import="FunctionLayer.FogException"%>
@@ -19,6 +20,7 @@
                 response.sendRedirect(response.encodeURL("login.jsp"));
             }
             List<Material> materials = (List<Material>) session.getAttribute("materials");
+            Employee e = (Employee) session.getAttribute("employee");
         %>
         <title>Ændring af materiale priser!</title>
     </head>
@@ -37,6 +39,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="viewAllOrders.jsp">Se Alle Ordrer</a>
                 </li>
+                <%if (e.isAdmin()) {%>
+                <li class="nav-item">
+                    <a class="nav-link" href="adminPage.jsp">Admin</a>
+                </li> <%}%>
                 <li class="nav-item">
                     <a class="nav-link" href="FrontController?command=logout">Log ud</a>
                 </li>

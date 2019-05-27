@@ -9,27 +9,11 @@ function empty() {
     z = document.getElementById("zipcodeInput").value;
     c = document.getElementById("telInput").value;
     b = document.getElementById("adresseInput").value;
-    if (x === "" || y === "" || c === "" || b === "") {
+    if (x === "" || y === "" || z === "" || c === "" || b === "") {
         alert("Venligst indtast gyldig information");
         return false;
     }
-    ;
 }
-
-window.addEventListener("load", function () {
-    window.cookieconsent.initialise({
-        "palette": {
-            "popup": {
-                "background": "#edeff5",
-                "text": "#838391"
-            },
-            "button": {
-                "background": "#4b81e8"
-            }
-        },
-        "theme": "classic"
-    });
-});
 
 $('.carousel').carousel({
     interval: 2000
@@ -61,5 +45,14 @@ function rooftypevisibility() {
     if (document.getElementById("roofTypeInput").checked === true) {
         $('#display2').fadeIn(200);
 
+    }
+}
+
+function showPassword() {
+    var x = document.getElementById("pwd");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
     }
 }
