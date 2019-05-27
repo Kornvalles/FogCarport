@@ -60,9 +60,6 @@ CREATE TABLE IF NOT EXISTS `FogCarport`.`materials` (
   `description` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`materialID`));
 
-
-INSERT INTO FogCarport.materials (`materialID`,`name`,`MSRP`, `costPrice`,`quantity`,`description`) VALUES 
-
 INSERT INTO `FogCarport`.`materials` (`materialID`,`name`,`MSRP`, `costPrice`,`quantity`,`description`) VALUES 
 
 (1000,'stolpe(r)',240.95,90.50,9999,'Trykimpraegneret stolpe af trae. 100x100mm.'), 
