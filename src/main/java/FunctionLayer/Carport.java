@@ -77,7 +77,7 @@ public class Carport {
                           + " | Redskabsskur tilkøbt: " + toolshed 
                           + " | Vinklet tag: " + pointyRoof 
                           + " | Tagbelægning: " + roofType 
-                          + " | Taghældning: " + roofAngle 
+                          + " | Taghældning: " + roofAngle + "°"
                           + " | Vægge: " + wall 
                           + " | Kommentar: " + details;
     }
