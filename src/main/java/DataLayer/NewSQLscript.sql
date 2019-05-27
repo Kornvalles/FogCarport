@@ -37,7 +37,8 @@ CREATE TABLE IF NOT EXISTS `FogCarport`.`employees` (
   `name` VARCHAR(255) NULL,
   `password` VARCHAR(45) NULL,
    `isAdmin` BOOLEAN DEFAULT FALSE,
-  PRIMARY KEY (`id`));
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `unique_name` (`name`));
 
 INSERT INTO `employees` (`name`,`password`,`isAdmin`) VALUES 
 ('Admin', '1234',true),
