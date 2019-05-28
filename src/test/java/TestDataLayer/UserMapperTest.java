@@ -49,7 +49,7 @@ public class UserMapperTest {
      */
 //    @Test
 //    public void testAddCustomer(Customer customer) throws Exception {
-//        Connection con = Connector.connection();
+//        Connection con = TestConnector.connection();
 //            String SQL = "INSERT INTO `FogCarport`.`customer` ( name, email, address, zipcode, phoneNumber ) "
 //                    + "VALUES (?, ?, ?, ?, ?);";
 //            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
@@ -71,7 +71,7 @@ public class UserMapperTest {
 //        System.out.println("testingLogin");
 //        String username = "Admin";
 //        Employee expResult = new Employee("Admin","1234",true);
-//        Employee result = UserMapper.getEmployee(username);
+//        Employee result = TestUserMapper.getEmployee(username);
 //        assertEquals(expResult.toString(), result.toString());
 //    }
 

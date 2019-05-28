@@ -6,6 +6,7 @@
 package TestDataLayer;
 
 import DataLayer.OrderMapper;
+import DataLayer.TestOrderMapper;
 import java.sql.SQLException;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -79,7 +80,7 @@ public class OrderMapperTest {
         System.out.println("getMaterialId");
         String name = "taglaegte(r)";
         int expResult = 1020;
-        int result = OrderMapper.getMaterialId(name);
+        int result = TestOrderMapper.getMaterialId(name);
         assertEquals(expResult, result);
     }
         catch(SQLException ex) {
@@ -95,7 +96,7 @@ public class OrderMapperTest {
         System.out.println("getMaterialDescription");
         String name = "skruer 200 stk";
         String expResult = "Staal. Kan iskrues uden forboring.";
-        String result = OrderMapper.getMaterialDescription(name);
+        String result = TestOrderMapper.getMaterialDescription(name);
         assertEquals(expResult, result);
     }
         catch(SQLException ex) {
