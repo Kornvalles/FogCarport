@@ -8,6 +8,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ *
+ * @author mikkel
+ */
 public class AddEmployeeCommand extends Command {
 
     private static final Logger logger = Logger.getLogger(CreateOrderCommand.class.getName());

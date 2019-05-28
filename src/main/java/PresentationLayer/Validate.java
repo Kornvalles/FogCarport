@@ -2,10 +2,18 @@ package PresentationLayer;
 
 import FunctionLayer.FogException;
 
+/**
+ *
+ * @author mikkel
+ */
 public class Validate {
 
     /**
     * Validates the String-input. A String cannot be empty.
+     * @param input
+     * @param name
+     * @return 
+     * @throws FunctionLayer.FogException 
     */
     public String validateString(String input, String name) throws FogException {
 
@@ -17,6 +25,10 @@ public class Validate {
 
     /**
     * Validates the integer-input. Only integers are allowed as input.
+     * @param input
+     * @param name
+     * @return 
+     * @throws FunctionLayer.FogException
     */
     public int validateInteger(String input, String name) throws FogException {
 

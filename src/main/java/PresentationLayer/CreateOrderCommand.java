@@ -12,6 +12,10 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ *
+ * @author mikkel
+ */
 public class CreateOrderCommand extends Command {
     
     /* Creating a Logger to log from catch clause when creating order */

@@ -4,6 +4,10 @@ import FunctionLayer.FogException;
 import FunctionLayer.LogicFacade;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ *
+ * @author mikkel
+ */
 public class EditEmployeeCommand extends Command {
     
     @Override

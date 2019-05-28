@@ -9,6 +9,10 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ *
+ * @author mikkel
+ */
 public class CreateCustomerCommand extends Command {
 
     private static final Logger logger = Logger.getLogger(CreateOrderCommand.class.getName());

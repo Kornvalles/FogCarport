@@ -5,6 +5,10 @@ import FunctionLayer.LogicFacade;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ *
+ * @author mikkel
+ */
 public class DeleteEmployeeCommand extends Command {
 
     @Override

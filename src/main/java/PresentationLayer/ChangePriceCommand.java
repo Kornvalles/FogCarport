@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 //ikke færdig
+
+/**
+ *
+ * @author mikkel
+ */
 public class ChangePriceCommand extends Command {
     
     /* Creating a Logger to log from catch clause when changing a price */

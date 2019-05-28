@@ -5,6 +5,10 @@ import FunctionLayer.LogicFacade;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ *
+ * @author mikkel
+ */
 public class LogoutCommand extends Command {
 
     @Override

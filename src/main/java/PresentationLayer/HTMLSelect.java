@@ -12,12 +12,24 @@ public class HTMLSelect {
     private String selectedValue = "";
     private final List<HTMLOption> options;
 
+    /**
+     *
+     * @param name
+     * @param selectedValue
+     * @param options
+     */
     public HTMLSelect(String name, String selectedValue, List<HTMLOption> options) {
         this.name = name;
         this.selectedValue = selectedValue;
         this.options = options;
     }
 
+    /**
+     *
+     * @param name
+     * @param selectedValue
+     * @param optionValues
+     */
     public HTMLSelect(String name, String selectedValue, String... optionValues) {
         this.name = name;
         this.selectedValue = selectedValue;
@@ -26,6 +38,14 @@ public class HTMLSelect {
             options.add(new HTMLOption(optionValue,optionValue));
     }
 
+    /**
+     *
+     * @param name
+     * @param selectedValue
+     * @param postfix
+     * @param start
+     * @param end
+     */
     public HTMLSelect(String name, String selectedValue, String postfix, int start, int end) {
         this.name = name;
         this.selectedValue = selectedValue;
@@ -45,12 +65,18 @@ public class HTMLSelect {
         return result+"</select>\n";
     }
     
-    
-    
+    /**
+     *
+     */
     public class HTMLOption {
         private final String value;
         private final String display;
 
+        /**
+         *
+         * @param value
+         * @param display
+         */
         public HTMLOption(String value, String display) {
             this.value = value;
             this.display = display;

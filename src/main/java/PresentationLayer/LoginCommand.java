@@ -7,6 +7,10 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ *
+ * @author mikkel
+ */
 public class LoginCommand extends Command {
 
     @Override
