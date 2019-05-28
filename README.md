@@ -1,7 +1,7 @@
 # FogCarport
 
 ## LINK TIL PROJECT
-http://165.227.175.89/FogCarport-1.0/
+http://165.227.175.89/FogCarport-1.0-SNAPSHOT/
 
 **Collaborators**
 - [Nicklas Dupont](https://github.com/TheDanishWonder)
