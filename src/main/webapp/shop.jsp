@@ -91,6 +91,10 @@
                             <input type="checkbox" name="wall" value="true" id="wallsInput">
                             <label for="wallsInput">Tilføj vægge?</label>
                         </div>
+                        <div class="form-group">
+                            <label for="detailsInput">Kommentar:</label>
+                            <textarea class="form-control" rows="5" name='details' placeholder="Indtast evt. en kommentar til ordren" id="detailsInput"></textarea>
+                        </div>
                         <input type="submit" name="order" value="Bestil">
                     </div>
                 </div>

@@ -10,6 +10,8 @@ import java.util.List;
 public interface LogicFacade {
     
     Customer addCustomer( String name, String email, String address, int zipcode, int phoneNumber ) throws FogException, SQLException;
+    
+    List<Customer> getAllCustomers() throws FogException;
 
     void createOrder( Construction construction, Customer customer ) throws FogException, SQLException;
     

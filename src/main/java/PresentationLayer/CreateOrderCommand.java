@@ -32,6 +32,7 @@ public class CreateOrderCommand extends Command {
         String reqRoofType = request.getParameter("roofType");
         String reqWall = request.getParameter("wall");
         String reqRoofAngle = request.getParameter("roofAngle");
+        String reqDetails = request.getParameter("details");
         
         //Konveterer inputs som ikke skal være String.
         boolean toolShed = Boolean.parseBoolean(reqShed);
@@ -44,7 +45,7 @@ public class CreateOrderCommand extends Command {
         int roofAngle = Integer.parseInt(reqRoofAngle);
 
         try {
-            Carport carport = new Carport(230, length, width, toolShed, shedWidth, roof, roofType, roofAngle, wall, "");
+            Carport carport = new Carport(230, length, width, toolShed, shedWidth, roof, roofType, roofAngle, wall, reqDetails);
             Construction construction = Calculator.constructCarport(carport, logic);
             
             if (construction != null) {

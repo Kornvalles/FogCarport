@@ -72,9 +72,9 @@ public class UserMapper {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                Customer customer = new Customer(rs.getInt("id"), rs.getNString("name"), rs.getNString("email"), rs.getNString("address"), rs.getInt("zipcode"), rs.getInt("phoneNumber"));
-                customers.add(customer);
+                customers.add(new Customer(rs.getInt("id"), rs.getNString("name"), rs.getNString("email"), rs.getNString("address"), rs.getInt("zipcode"), rs.getInt("phoneNumber")));
             }
+            
         } catch (SQLException ex) {
             Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
