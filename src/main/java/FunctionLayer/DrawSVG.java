@@ -1,5 +1,9 @@
 package FunctionLayer;
 
+/**
+ *
+ * @author mikkel
+ */
 public class DrawSVG {
 
         private String filling = "#ffffff";
@@ -18,10 +22,22 @@ public class DrawSVG {
         private String text;
         private String points;
 
-        public DrawSVG() {
+    /**
+     *
+     */
+    public DrawSVG() {
         }
 
-        public String makeRectangle(String height, String opacity, String width, String x, String y) {
+    /**
+     *
+     * @param height
+     * @param opacity
+     * @param width
+     * @param x
+     * @param y
+     * @return
+     */
+    public String makeRectangle(String height, String opacity, String width, String x, String y) {
             return "<rect fill=\"" + filling
                     + "\" height=\"" + height
                     + "\" opacity=\"" + opacity
@@ -33,7 +49,12 @@ public class DrawSVG {
                     + "\"/>";
         }
 
-        public String makeTriangle(String points) {
+    /**
+     *
+     * @param points
+     * @return
+     */
+    public String makeTriangle(String points) {
             return "<polygon fill=\"" + filling
                     + "\" stroke=\"" + stroke
                     + "\" stroke-width=\"" + strokewidth
@@ -43,7 +64,14 @@ public class DrawSVG {
                     + "\"/>";
         }
 
-        public String makeText(String x, String y, String text) {
+    /**
+     *
+     * @param x
+     * @param y
+     * @param text
+     * @return
+     */
+    public String makeText(String x, String y, String text) {
             return "<text fill=\"" + filling
                     + "\" font-family=\"" + font
                     + "\" font-size=\"" + size
@@ -56,7 +84,15 @@ public class DrawSVG {
                     + "</text>";
         }
 
-        public String makeMarker(int x1, int x2, int y1, int y2) {
+    /**
+     *
+     * @param x1
+     * @param x2
+     * @param y1
+     * @param y2
+     * @return
+     */
+    public String makeMarker(int x1, int x2, int y1, int y2) {
             return "<defs> "
                     + "<marker id='beginArrow' markerHeight='9' markerWidth='9' orient='auto' refX='0' refY='4'> "
                     + "<path d='m0,4l8,-4l0,8l-8,-4' fill='#000000s' id='svg_2'/> </marker> "

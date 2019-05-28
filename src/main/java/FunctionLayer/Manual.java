@@ -1,7 +1,14 @@
 package FunctionLayer;
 
+/**
+ *
+ * @author mikkel
+ */
 public class Manual {
 
+    /**
+     *
+     */
     public Manual() {
     }
 

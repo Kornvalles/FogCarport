@@ -17,20 +17,37 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
 
+/**
+ *
+ * @author mikkel
+ */
 public class Invoice {
 
     private final Customer customer;
     private final Construction order;
 
+    /**
+     *
+     * @param customer
+     * @param order
+     */
     public Invoice(Customer customer, Construction order) {
         this.customer = customer;
         this.order = order;
     }
 
+    /**
+     *
+     * @return
+     */
     public Customer getCustomer() {
         return customer;
     }
 
+    /**
+     *
+     * @return
+     */
     public Construction getOrder() {
         return order;
     }

@@ -11,6 +11,13 @@ import java.util.List;
  */
 public class MainTest {
     
+    /**
+     *
+     * @param args
+     * @throws FogException
+     * @throws MalformedURLException
+     * @throws IOException
+     */
     public static void main(String[] args) throws FogException, MalformedURLException, IOException {
         
 //        OrderMapper mapper = new OrderMapper();

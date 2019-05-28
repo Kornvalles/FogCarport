@@ -1,5 +1,9 @@
 package FunctionLayer;
 
+/**
+ *
+ * @author mikkel
+ */
 public class Employee {
     
     private int id;
@@ -21,12 +25,22 @@ public class Employee {
         this.isAdmin = isAdmin;
     }
     
+    /**
+     *
+     * @param name
+     * @param password
+     * @param isAdmin
+     */
     public Employee(String name, String password, boolean isAdmin) {
         this.username = name;
         this.password = password;
         this.isAdmin = isAdmin;
     }
     
+    /**
+     *
+     * @param password
+     */
     public Employee(String password) {
         this.password = password;
     }
@@ -36,34 +50,66 @@ public class Employee {
         return "Employee{" + "username=" + username + ", password=" + password + '}';
     }
 
+    /**
+     *
+     * @return
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     *
+     * @param username
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean isAdmin() {
         return isAdmin;
     }
     
+    /**
+     *
+     * @param admin
+     */
     public void setIsAdmin(boolean admin) {
         this.isAdmin = admin;
     }

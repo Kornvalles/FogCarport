@@ -14,8 +14,19 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author mikkel
+ */
 public class OrderMapper {
 
+    /**
+     * 
+     * @param name
+     * @return
+     * @throws FogException
+     * @throws SQLException 
+     */
     public static double getMaterialPrice(String name) throws FogException, SQLException {
         double price = 0;
         try {
@@ -35,6 +46,12 @@ public class OrderMapper {
         }
         return price;
     }
+    
+    /**
+     * 
+     * @param id
+     * @throws FogException 
+     */
     public static void deleteOrder(int id) throws FogException {
         try {
             Connection conn = Connector.connection();
@@ -48,6 +65,12 @@ public class OrderMapper {
         }
     }
 
+    /**
+     * 
+     * @param construction
+     * @param customer
+     * @throws FogException 
+     */
     public static void createOrder(Construction construction, Customer customer) throws FogException {
         try {
             Connection con = Connector.connection();
@@ -74,6 +97,13 @@ public class OrderMapper {
         }
     }
 
+    /**
+     * 
+     * @param name
+     * @return
+     * @throws FogException
+     * @throws SQLException 
+     */
     public static int getMaterialId(String name) throws FogException, SQLException {
         int id = 0;
         try {
@@ -94,6 +124,13 @@ public class OrderMapper {
         return id;
     }
 
+    /**
+     * 
+     * @param name
+     * @return
+     * @throws FogException
+     * @throws SQLException 
+     */
     public static String getMaterialDescription(String name) throws FogException, SQLException {
         String desc = "";
         try {
@@ -114,6 +151,13 @@ public class OrderMapper {
         return desc;
     }
 
+    /**
+     * 
+     * @param name
+     * @return
+     * @throws FogException
+     * @throws SQLException 
+     */
     public static double getCostPrice(String name) throws FogException, SQLException {
         double price = 0;
         try {
@@ -133,6 +177,11 @@ public class OrderMapper {
         return price;
     }
 
+    /**
+     * 
+     * @return
+     * @throws FogException 
+     */
     public static List<Material> getAllMaterials() throws FogException {
         List<Material> materials = new ArrayList();
         try {
@@ -151,6 +200,12 @@ public class OrderMapper {
         return materials;
     }
 
+    /**
+     * 
+     * @param newPrice
+     * @param materialId
+     * @throws FogException 
+     */
     public static void setMaterialPrice(double newPrice, int materialId) throws FogException {
         try {
             String query = "UPDATE `FogCarport`.`materials` SET `MSRP` = ? WHERE `materialID` = ?;";
@@ -167,6 +222,12 @@ public class OrderMapper {
         }
     }
     
+    /**
+     * 
+     * @param newPrice
+     * @param materialId
+     * @throws FogException 
+     */
     public static void setMaterialCostPrice(double newPrice, int materialId) throws FogException {
         try {
             String query = "UPDATE `FogCarport`.`materials` SET `costPrice` = ? WHERE `materialID` = ?;";
@@ -183,6 +244,11 @@ public class OrderMapper {
         }
     }
 
+    /**
+     * 
+     * @return
+     * @throws FogException 
+     */
     public static List<Order> getAllOrders() throws FogException {
         List<Order> orders = new ArrayList();
         try {
