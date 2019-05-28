@@ -21,9 +21,9 @@ import static org.junit.Assert.*;
  *
  * @author Benjamin
  */
-public class TestOrderMapperTest {
+public class OrderMapperTest {
     
-    public TestOrderMapperTest() {
+    public OrderMapperTest() {
     }
     
     @BeforeClass
