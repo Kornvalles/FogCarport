@@ -28,11 +28,10 @@ CREATE TABLE IF NOT EXISTS `FogCarportTestDB`.`customers` (
 `phoneNumber` INT NOT NULL,
   PRIMARY KEY (`id`));
   
-INSERT INTO `Customers` (`name`,`email`,`address`,`zipcode`,`phoneNumber`) VALUES 
+INSERT INTO `FogCarportTestDB`.`customers` (`name`,`email`,`address`,`zipcode`,`phoneNumber`) VALUES 
 ('Mike', 'MikeTester@test.com','Testgade 1', '1021','20403957'),
 ('Josefine', 'JoseTester@test.com','Void Alle 2', '2057','45683424'),
 ('Torben', 'TorbenTester@test.com','String Boulevard 3', '1021','20403957');
-
 
 -- -----------------------------------------------------
 -- Table `FogCarportTestDB`.`employees`
