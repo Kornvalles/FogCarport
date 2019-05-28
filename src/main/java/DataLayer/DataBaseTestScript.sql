@@ -27,6 +27,11 @@ CREATE TABLE IF NOT EXISTS `FogCarportTestDB`.`customers` (
 `zipcode` INT NOT NULL,
 `phoneNumber` INT NOT NULL,
   PRIMARY KEY (`id`));
+  
+INSERT INTO `Customers` (`name`,`email`,`address`,`zipcode`,`phoneNumber`) VALUES 
+('Mike', 'MikeTester@test.com','Testgade 1', '1021','20403957'),
+('Josefine', 'JoseTester@test.com','Void Alle 2', '2057','45683424'),
+('Torben', 'TorbenTester@test.com','String Boulevard 3', '1021','20403957');
 
 
 -- -----------------------------------------------------
@@ -102,6 +107,14 @@ CREATE TABLE IF NOT EXISTS `FogCarportTestDB`.`orders` (
     ON UPDATE NO ACTION
     );
 
+INSERT INTO `FogCarportTestDB`.`orders` (`employeeId`,`customerId`,`carportHeight`, 
+					`carportLength`,`carportWidth`,`hasShed`,
+                                        `shedWidth`,`hasRoof`, `roofType`,
+                                        `roofAngle`,`details`,`totalPrice`) VALUES 
+
+(1,1,230,240,240, 1, 150, 1, 1, 20,'',13402.90),
+(1,2,230,300,240, 0, 0, 0, 0, 0,'',3628.70),
+(1,1,230,420,300, 1, 200, 1, 1, 30,'',20250.30);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=1;
