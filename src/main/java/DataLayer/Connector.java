@@ -6,21 +6,39 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+/**
+ *
+ * @author mikkel
+ */
 public class Connector {
 
     //Constants
     private static final String IP = "165.227.175.89";
     private static final String PORT = "3306";
+
+    /**
+     *
+     */
     public static final String DATABASE = "FogCarport";
     private static final String USERNAME = "FogGroup";
     private static final String PASSWORD = "FogCarport1234.";
 
     private static Connection singleton;
 
+    /**
+     * 
+     * @param con 
+     */
     public static void setConnection(Connection con) {
         singleton = con;
     }
 
+    /**
+     * 
+     * @return
+     * @throws SQLException
+     * @throws FogException 
+     */
     public static Connection connection() throws SQLException, FogException {
         if (singleton == null) {
             try {

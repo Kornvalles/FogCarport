@@ -13,10 +13,24 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ *
+ * @author mikkel
+ */
 public class TestUserMapper {
 
     private static final Logger logger = Logger.getLogger(TestUserMapper.class.getName());
 
+    /**
+     *
+     * @param name
+     * @param email
+     * @param address
+     * @param zipcode
+     * @param phoneNumber
+     * @return
+     * @throws FogException
+     */
     public static Customer addCustomer(String name, String email, String address, int zipcode, int phoneNumber) throws FogException {
         Customer customer = null;
         try {
@@ -40,6 +54,12 @@ public class TestUserMapper {
         return customer;
     }
 
+    /**
+     *
+     * @param newEmployee
+     * @return
+     * @throws FogException
+     */
     public static Employee addEmployee(Employee newEmployee) throws FogException {
         Employee employee = null;
         try {
@@ -62,6 +82,11 @@ public class TestUserMapper {
         return employee;
     }
 
+    /**
+     *
+     * @return
+     * @throws FogException
+     */
     public static List<Customer> getAllCustomers() throws FogException {
         List<Customer> customers = new ArrayList();
         try {
@@ -81,6 +106,12 @@ public class TestUserMapper {
         return customers;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws FogException
+     */
     public static Employee getEmployee(int id) throws FogException {
         Employee employee = null;
         try {
@@ -101,6 +132,11 @@ public class TestUserMapper {
         return employee;
     }
 
+    /**
+     *
+     * @param id
+     * @throws FogException
+     */
     public static void deleteEmployee(int id) throws FogException {
         try {
             String SQL = "DELETE FROM `FogCarport`.`employees` WHERE (`id` = ?);";
@@ -115,6 +151,11 @@ public class TestUserMapper {
         }
     }
 
+    /**
+     *
+     * @return
+     * @throws FogException
+     */
     public static List<Employee> getAllEmployees() throws FogException {
         List<Employee> employees = new ArrayList();
         try {
@@ -134,6 +175,15 @@ public class TestUserMapper {
         return employees;
     }
 
+    /**
+     *
+     * @param id
+     * @param username
+     * @param password
+     * @param isAdmin
+     * @return
+     * @throws FogException
+     */
     public static Employee setEmployee(int id, String username, String password, boolean isAdmin) throws FogException {
         try {
             Connection con = TestConnector.connection();

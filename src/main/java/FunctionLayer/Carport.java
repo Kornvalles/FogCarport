@@ -1,5 +1,9 @@
 package FunctionLayer;
 
+/**
+ *
+ * @author mikkel
+ */
 public class Carport {
 
     private final int height; //measured in centimeters.
@@ -13,6 +17,19 @@ public class Carport {
     private final boolean wall; //false when there are only posts on wall
     private final String details; //details on carport
 
+    /**
+     *
+     * @param height
+     * @param length
+     * @param width
+     * @param toolshed
+     * @param shedWidth
+     * @param pointyRoof
+     * @param roofType
+     * @param roofAngle
+     * @param wall
+     * @param details
+     */
     public Carport( int height, int length, int width, boolean toolshed, int shedWidth, boolean pointyRoof, boolean roofType, int roofAngle, boolean wall, String details) 
     {
         this.height = height;
@@ -27,42 +44,82 @@ public class Carport {
         this.details = details;
     }    
 
+    /**
+     *
+     * @return
+     */
     public int getHeight() {
         return height;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getLength() {
         return length;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getWidth() {
         return width;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean hasToolshed() {
         return toolshed;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean hasPointyRoof() {
         return pointyRoof;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean hasWall() {
         return wall;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDetails() {
         return details;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getRoofAngle() {
         return roofAngle;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean roofType() {
         return roofType;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getShedWidth() {
         return shedWidth;
     }
