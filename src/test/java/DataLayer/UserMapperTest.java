@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TestDataLayer;
+package DataLayer;
 
-import DataLayer.TestConnector;
-import DataLayer.TestUserMapper;
 import FunctionLayer.Customer;
 import FunctionLayer.Employee;
 import java.sql.Connection;
@@ -70,7 +68,7 @@ public class UserMapperTest {
         System.out.println("addEmployee");
         Employee newEmployee = null;
         Employee expResult = null;
-        Employee result = TestUserMapper.addEmployee(newEmployee);
+        Employee result = UserMapper.addEmployee(newEmployee);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -83,7 +81,7 @@ public class UserMapperTest {
     public void testGetAllCustomers() throws Exception {
         System.out.println("getAllCustomers");
         List<Customer> expResult = null;
-        List<Customer> result = TestUserMapper.getAllCustomers();
+        List<Customer> result = UserMapper.getAllCustomers();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -97,7 +95,7 @@ public class UserMapperTest {
         System.out.println("getEmployee");
         int id = 0;
         Employee expResult = null;
-        Employee result = TestUserMapper.getEmployee(id);
+        Employee result = UserMapper.getEmployee(id);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -110,7 +108,7 @@ public class UserMapperTest {
     public void testDeleteEmployee() throws Exception {
         System.out.println("deleteEmployee");
         int id = 0;
-        TestUserMapper.deleteEmployee(id);
+        UserMapper.deleteEmployee(id);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -122,7 +120,7 @@ public class UserMapperTest {
     public void testGetAllEmployees() throws Exception {
         System.out.println("getAllEmployees");
         List<Employee> expResult = null;
-        List<Employee> result = TestUserMapper.getAllEmployees();
+        List<Employee> result = UserMapper.getAllEmployees();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -139,7 +137,7 @@ public class UserMapperTest {
         String password = "";
         boolean isAdmin = false;
         Employee expResult = null;
-        Employee result = TestUserMapper.setEmployee(id, username, password, isAdmin);
+        Employee result = UserMapper.setEmployee(id, username, password, isAdmin);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
