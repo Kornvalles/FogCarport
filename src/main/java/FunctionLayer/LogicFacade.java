@@ -27,7 +27,7 @@ public interface LogicFacade {
     
     List<Material> getAllMaterials() throws FogException, SQLException;
     
-    void setMaterialPrice( int materialId, double newPrice ) throws FogException, SQLException;
+    void setMaterialPrice( int id, double newPrice ) throws FogException, SQLException;
     
     Employee addEmployee( Employee newEmployee ) throws FogException, SQLException;
     
@@ -40,5 +40,7 @@ public interface LogicFacade {
     void deleteEmployee( int id ) throws FogException;
     
     void deleteOrder( int id ) throws FogException;
+
+    public void setMaterialCostPrice(int id, double newPrice) throws FogException;
     
 }

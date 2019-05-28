@@ -54,8 +54,8 @@ public class DatabaseLogicFacade implements LogicFacade {
     }
     
     @Override
-    public void setMaterialPrice( int materialId, double newPrice ) throws FogException, SQLException {
-        OrderMapper.setMaterialPrice(newPrice, materialId );
+    public void setMaterialPrice( int id, double newPrice ) throws FogException, SQLException {
+        OrderMapper.setMaterialPrice(newPrice, id);
     }
 
     @Override
@@ -86,6 +86,11 @@ public class DatabaseLogicFacade implements LogicFacade {
     @Override
     public Employee setEmployee(int id, String username, String password, boolean isAdmin) throws FogException {
         return UserMapper.setEmployee(id, username, password, isAdmin);
+    }
+
+    @Override
+    public void setMaterialCostPrice(int id, double newPrice) throws FogException {
+        OrderMapper.setMaterialCostPrice(newPrice, id);
     }
 
     

@@ -160,6 +160,23 @@ public class OrderMapper {
             ps.setDouble(1, newPrice);
             ps.setInt(2, materialId);
             ps.executeUpdate();
+            
+        } catch (SQLException ex) {
+            System.err.println(" Got an exception! ");
+            System.err.println(ex.getMessage());
+        }
+    }
+    
+    public static void setMaterialCostPrice(double newPrice, int materialId) throws FogException {
+        try {
+            String query = "UPDATE `FogCarport`.`materials` SET `costPrice` = ? WHERE `materialID` = ?;";
+
+            Connection conn = Connector.connection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setDouble(1, newPrice);
+            ps.setInt(2, materialId);
+            ps.executeUpdate();
+            
         } catch (SQLException ex) {
             System.err.println(" Got an exception! ");
             System.err.println(ex.getMessage());

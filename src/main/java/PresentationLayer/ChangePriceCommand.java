@@ -2,8 +2,8 @@ package PresentationLayer;
 
 import FunctionLayer.FogException;
 import FunctionLayer.LogicFacade;
-import FunctionLayer.Material;
 import java.sql.SQLException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,23 +18,25 @@ public class ChangePriceCommand extends Command {
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
         HttpSession session = request.getSession();
         //Fanger inputs fra jsp som ligger på requestet.
-        int id = 0;
         double newPrice = 0;
+        if (!"".equals(request.getParameter("newPrice"))) {
+            newPrice = Double.parseDouble(request.getParameter("newPrice"));
+        } else if (!"".equals(request.getParameter("newCostPrice"))) {
+            newPrice = Double.parseDouble(request.getParameter("newCostPrice"));
+        } else {
+            request.setAttribute("error", "Fejlede at ændre prisen på materialet");
+            return "employeePage";
+        }
+        int id = Integer.parseInt(request.getParameter("materialId"));
             try {
-                for (Material m : logic.getAllMaterials()) {
-                    if (request.getAttribute(m.getName()) != null) {
-                        String reqId = request.getParameter(Integer.toString(m.getId()));
-                        String reqNewPrice = request.getParameter(m.getName());
-                        id = Integer.parseInt(reqId);
-                        newPrice = Double.parseDouble(reqNewPrice);
-                        System.out.print(id + " " + newPrice);
-                    }
-                    
+                if (!"".equals(request.getParameter("newPrice"))) {
+                    logic.setMaterialPrice(id, newPrice);
+                } else {
+                    logic.setMaterialCostPrice(id, newPrice);
                 }
-                logic.setMaterialPrice(id, newPrice);
-                //session.setAttribute("materials", logic.getAllMaterials());
+                session.setAttribute("materials", logic.getAllMaterials());
             } catch (SQLException ex) {
-                System.err.print(ex.getMessage());
+                logger.log(Level.SEVERE, ex.getMessage());
             }
         return "updateMaterialPrices";
     }
