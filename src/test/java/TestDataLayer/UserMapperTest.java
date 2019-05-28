@@ -39,10 +39,12 @@ public class UserMapperTest {
     
     @Before
     public void setUp() {
+        Employee testEmp = new Employee(99, "testEmp", "1234", false);
     }
     
     @After
     public void tearDown() {
+        
     }
 
     /**
@@ -81,30 +83,28 @@ public class UserMapperTest {
     }
 
     /**
-     * Test of getAllCustomers method, of class UserMapper.
+     * Test of getAllCustomers method, of class UserMapper. 
+     * basically just making sure the right amount of customers are in the database.
+     * This can definitely be better
      */
     @Test
     public void testGetAllCustomers() throws Exception {
-        System.out.println("getAllCustomers");
-        List<Customer> expResult = null;
-        List<Customer> result = TestUserMapper.getAllCustomers();
+        System.out.println("Testing getAllCustomers");
+        int expResult = 3;
+        int result = TestUserMapper.getAllCustomers().size();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of getEmployee method, of class UserMapper.
      */
     @Test
-    public void testGetEmployee() throws Exception {
+    public void testGetEmployee(Employee employee) throws Exception {
         System.out.println("getEmployee");
-        int id = 0;
-        Employee expResult = null;
+        int id = 1;
+        Employee expResult = new Employee(1, "Admin", "1234", true);
         Employee result = TestUserMapper.getEmployee(id);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -112,11 +112,9 @@ public class UserMapperTest {
      */
     @Test
     public void testDeleteEmployee() throws Exception {
-        System.out.println("deleteEmployee");
-        int id = 0;
+        System.out.println("Testing deleteEmployee");
+        int id = 99;
         TestUserMapper.deleteEmployee(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -125,29 +123,27 @@ public class UserMapperTest {
     @Test
     public void testGetAllEmployees() throws Exception {
         System.out.println("getAllEmployees");
-        List<Employee> expResult = null;
-        List<Employee> result = TestUserMapper.getAllEmployees();
+        int expResult = 2;
+        int result = TestUserMapper.getAllEmployees().size();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of setEmployee method, of class UserMapper.
      */
-    @Test
-    public void testSetEmployee() throws Exception {
-        System.out.println("setEmployee");
-        int id = 0;
-        String username = "";
-        String password = "";
-        boolean isAdmin = false;
-        Employee expResult = null;
-        Employee result = TestUserMapper.setEmployee(id, username, password, isAdmin);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testSetEmployee() throws Exception {
+//        System.out.println("Testing setEmployee");
+//        int id = 0;
+//        String username = "";
+//        String password = "";
+//        boolean isAdmin = false;
+//        Employee expResult = null;
+//        Employee result = TestUserMapper.setEmployee(id, username, password, isAdmin);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
     
     @Test
     public void testLogin() throws Exception {
