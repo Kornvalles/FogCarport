@@ -51,6 +51,7 @@ public class UserMapperTest {
 @Test
     public void testAddCustomer(Customer customer) throws Exception {
         Connection con = TestConnector.connection();
+        System.out.println("testing addcustomer");
             String SQL = "INSERT INTO `FogCarport`.`customer` ( name, email, address, zipcode, phoneNumber ) "
                     + "VALUES (?, ?, ?, ?, ?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
@@ -66,14 +67,17 @@ public class UserMapperTest {
      * Test of addEmployee method, of class UserMapper.
      */
     @Test
-    public void testAddEmployee() throws Exception {
-        System.out.println("addEmployee");
-        Employee newEmployee = null;
-        Employee expResult = null;
-        Employee result = TestUserMapper.addEmployee(newEmployee);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testAddEmployee(Employee employee) throws Exception {
+        Connection con = TestConnector.connection();
+        System.out.println("testing addEmployee");
+        String SQL = "INSERT INTO `FogCarport`.`employee` ( name, password, isAdmin) "
+                    + "VALUES (?, ?, ?);";
+        PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+        ps.setString(1, employee.getUsername());
+        ps.setString(2, employee.getPassword());
+        ps.setBoolean(3, employee.isAdmin());
+        ps.executeUpdate();
+        System.out.println("Employee created and added.");
     }
 
     /**

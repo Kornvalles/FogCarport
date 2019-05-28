@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TestDataLayer;
+package DataLayer;
 
-import DataLayer.OrderMapper;
-import DataLayer.TestOrderMapper;
 import FunctionLayer.Construction;
 import FunctionLayer.Customer;
 import FunctionLayer.Material;
 import FunctionLayer.Order;
-import java.sql.SQLException;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -24,9 +21,9 @@ import static org.junit.Assert.*;
  *
  * @author Benjamin
  */
-public class OrderMapperTest {
+public class TestOrderMapperTest {
     
-    public OrderMapperTest() {
+    public TestOrderMapperTest() {
     }
     
     @BeforeClass
@@ -48,19 +45,16 @@ public class OrderMapperTest {
     /**
      * Test of getMaterialPrice method, of class TestOrderMapper.
      */
-   @Test
+    @Test
     public void testGetMaterialPrice() throws Exception {
-        try {
         System.out.println("getMaterialPrice");
-        String name = "stolpe(r)";
-        double expResult = 240.95;
+        String name = "";
+        double expResult = 0.0;
         double result = TestOrderMapper.getMaterialPrice(name);
         assertEquals(expResult, result, 0.0);
-        }
-        catch(SQLException ex) {
-            System.out.println(ex);
-        }
-    } 
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
 
     /**
      * Test of deleteOrder method, of class TestOrderMapper.
@@ -90,18 +84,15 @@ public class OrderMapperTest {
     /**
      * Test of getMaterialId method, of class TestOrderMapper.
      */
- @Test
+    @Test
     public void testGetMaterialId() throws Exception {
-        try{
         System.out.println("getMaterialId");
-        String name = "taglaegte(r)";
-        int expResult = 1020;
+        String name = "";
+        int expResult = 0;
         int result = TestOrderMapper.getMaterialId(name);
         assertEquals(expResult, result);
-    }
-        catch(SQLException ex) {
-            System.out.println(ex);
-        }
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 
     /**
@@ -109,16 +100,13 @@ public class OrderMapperTest {
      */
     @Test
     public void testGetMaterialDescription() throws Exception {
-        try {
         System.out.println("getMaterialDescription");
-        String name = "skruer 200 stk";
-        String expResult = "Staal. Kan iskrues uden forboring.";
+        String name = "";
+        String expResult = "";
         String result = TestOrderMapper.getMaterialDescription(name);
         assertEquals(expResult, result);
-    }
-        catch(SQLException ex) {
-            System.out.println(ex);
-        }
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 
     /**
@@ -175,4 +163,3 @@ public class OrderMapperTest {
     }
     
 }
-
