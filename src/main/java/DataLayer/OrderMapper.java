@@ -1,67 +1,187 @@
 package DataLayer;
 
 import FunctionLayer.Carport;
+import FunctionLayer.Construction;
 import FunctionLayer.Customer;
 import FunctionLayer.FogException;
+import FunctionLayer.Material;
+import FunctionLayer.Order;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- *
- * @authors Iben, Christian, Benjamin, Nicklas, Mikkel
- */
 public class OrderMapper {
 
-    
-    
-    /** Returns the price of a material 
-    * @param name
-    * @return  */
-    public static double getMaterialPrice(String name) throws FogException {
+    public static double getMaterialPrice(String name) throws FogException, SQLException {
+        double price = 0;
         try {
-            String query = "SELECT MSRP FROM `FogCarport`.`material` "
-                    + "WHERE `material`.`name` = '" + name + "';";
+            String query = "SELECT MSRP FROM `FogCarport`.`materials` "
+                    + "WHERE `materials`.`name` = ?;";
 
-            Connection con = Connector.connection();
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            Connection conn = Connector.connection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            ResultSet rs = ps.executeQuery();
 
-            double price = 0;
-
-            while (rs.next()) {
+            if (rs.next()) {
                 price = rs.getDouble("MSRP");
             }
-            return price;
-            
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        return 0;
+        return price;
     }
-    
-    public static void makeOrder(Carport carport, Customer customer ) throws FogException, SQLException {
+    public static void deleteOrder(int id) throws FogException {
+        try {
+            Connection conn = Connector.connection();
+            String SQL =  "DELETE FROM `FogCarport`.`orders` WHERE `orders`.`orderId` = ?;";
+            PreparedStatement ps = conn.prepareStatement(SQL);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getLocalizedMessage());
+            System.out.println(ex.getSQLState());
+        }
+    }
+
+    public static void createOrder(Construction construction, Customer customer) throws FogException {
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO `FogCarport`.`order` (employeeId, customerEmail, customerName, carportHeight"
-                    + ", carportWidth, carportLength, hasRoof, hasShed, hasWall, totalPrice) VALUES (?,?,?,?,?,?,?,?,?,?);";
-            PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
-            ps.setInt( 1 , 1 );
-            ps.setString( 2 , customer.getEmail() );
-            ps.setString( 3 , customer.getName() );
-            ps.setInt( 4 , carport.getHeight() );
-            ps.setInt( 5 , carport.getWidth() );
-            ps.setInt( 6 , carport.getLength() );
-            ps.setBoolean( 7 , carport.hasPointyRoof() );
-            ps.setBoolean( 8 , carport.hasToolshed() );
-            ps.setBoolean( 9 , carport.hasWall() );
-            ps.setDouble( 10 , 0);
+            String SQL = "INSERT INTO `FogCarport`.`orders` (employeeId, customerId, carportHeight"
+                    + ", carportLength, carportWidth, hasShed, shedWidth, hasRoof, roofType, roofAngle, hasWall, details, totalPrice) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);";
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, 1);
+            ps.setInt(2, 1);
+            ps.setInt(3, construction.getCarport().getHeight());
+            ps.setInt(4, construction.getCarport().getLength());
+            ps.setInt(5, construction.getCarport().getWidth());
+            ps.setBoolean(6, construction.getCarport().hasToolshed());
+            ps.setInt(7, construction.getCarport().getShedWidth());
+            ps.setBoolean(8, construction.getCarport().hasPointyRoof());
+            ps.setBoolean(9, construction.getCarport().roofType());
+            ps.setInt(10, construction.getCarport().getRoofAngle());
+            ps.setBoolean(11, construction.getCarport().hasWall());
+            ps.setString(12, construction.getCarport().getDetails());
+            ps.setDouble(13, construction.getTotalPrice());
             ps.executeUpdate();
-        } catch ( SQLException ex ) {
+        } catch (SQLException ex) {
             System.out.println(ex.getSQLState());
             System.out.println(ex.getLocalizedMessage());
         }
+    }
+
+    public static int getMaterialId(String name) throws FogException, SQLException {
+        int id = 0;
+        try {
+            String query = "SELECT materialID FROM `FogCarport`.`materials` "
+                    + "WHERE `materials`.`name` = ?;";
+
+            Connection conn = Connector.connection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                id = rs.getInt("materialID");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return id;
+    }
+
+    public static String getMaterialDescription(String name) throws FogException, SQLException {
+        String desc = "";
+        try {
+            String query = "SELECT description FROM `FogCarport`.`materials` "
+                    + "WHERE `materials`.`name` = ?;";
+
+            Connection conn = Connector.connection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                desc = rs.getString("description");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return desc;
+    }
+
+    public static double getCostPrice(String name) throws FogException, SQLException {
+        double price = 0;
+        try {
+            String query = "SELECT costPrice FROM `FogCarport`.`materials` "
+                    + "WHERE `materials`.`name` = ?;";
+            Connection conn = Connector.connection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                price = rs.getDouble("costPrice");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return price;
+    }
+
+    public static List<Material> getAllMaterials() throws FogException {
+        List<Material> materials = new ArrayList();
+        try {
+            String query = "SELECT * FROM FogCarport.materials";
+
+            Connection con = Connector.connection();
+            Statement ps = con.createStatement();
+            ResultSet rs = ps.executeQuery(query);
+            while (rs.next()) {
+                materials.add(new Material(rs.getNString(2), rs.getInt(1), rs.getInt(5), "", rs.getDouble(3), rs.getDouble(4), rs.getNString(6)));
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return materials;
+    }
+
+    public static void setMaterialPrice(double newPrice, int materialId) throws FogException {
+        try {
+            String query = "UPDATE `FogCarport`.`materials` SET `MSRP` = ? WHERE `materialID` = ?;";
+
+            Connection conn = Connector.connection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setDouble(1, newPrice);
+            ps.setInt(2, materialId);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.err.println(" Got an exception! ");
+            System.err.println(ex.getMessage());
+        }
+    }
+
+    public static List<Order> getAllOrders() throws FogException {
+        List<Order> orders = new ArrayList();
+        try {
+            String query = "SELECT * FROM FogCarport.`orders`;";
+            
+            Connection con = Connector.connection();
+            Statement ps = con.createStatement();
+            ResultSet rs = ps.executeQuery(query);
+            while (rs.next()) {
+                Carport carport = new Carport(rs.getInt("carportHeight"), rs.getInt("carportLength"), rs.getInt("carportWidth"), rs.getBoolean("hasShed"), rs.getInt("shedWidth"), rs.getBoolean("hasRoof"), rs.getBoolean("roofType"), rs.getInt("roofAngle"), rs.getBoolean("hasWall"), rs.getNString("details"));
+                orders.add(new Order(rs.getInt("orderId"), rs.getInt("employeeId"), rs.getInt("customerId"), carport, rs.getDouble("totalPrice")));
+            }
+        } catch (SQLException ex) {
+            System.err.println(" Got an exception! ");
+            System.err.println(ex.getMessage());
+        }
+        return orders;
     }
 }

@@ -2,57 +2,91 @@ package FunctionLayer;
 
 import DataLayer.OrderMapper;
 import DataLayer.UserMapper;
-import com.itextpdf.layout.Document;
-import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
-/**
- * The purpose of LogicFacade is to...
- * 
- * @authors Iben, Christian, Benjamin, Nicklas, Mikkel
- */
 public class DatabaseLogicFacade implements LogicFacade {
 
-    /**
-     *
-     * @param customer
-     * @throws FogException
-     * @throws SQLException
-     */
+    
     @Override
-    public void addCustomer( Customer customer ) throws FogException, SQLException {
-        UserMapper.addCustomer(customer);
+    public Customer addCustomer( String name, String email, String address, int zipcode, int phoneNumber ) throws FogException, SQLException {
+        return UserMapper.addCustomer(name, email, address, zipcode, phoneNumber);
+    }
+    
+    @Override
+    public List<Customer> getAllCustomers() throws FogException {
+        return UserMapper.getAllCustomers();
     }
 
-    /**
-     *
-     * @param carport
-     * @param customer
-     * @throws FogException
-     * @throws SQLException
-     */
     @Override
-    public void createOrder( Carport carport, Customer customer ) throws FogException, SQLException {
-        OrderMapper.makeOrder(carport, customer);
+    public void createOrder( Construction construction, Customer customer ) throws FogException, SQLException {
+        OrderMapper.createOrder(construction, customer);
+    }
+    
+    @Override
+    public List<Order> getAllOrders() throws FogException, SQLException {
+        return OrderMapper.getAllOrders();
     }
 
-    /**
-     *
-     * @param name
-     * @return
-     * @throws FogException
-     * @throws SQLException
-     */
     @Override
-    public double getMaterialPrice(String name) throws FogException, SQLException {
+    public double getMaterialPrice( String name ) throws FogException, SQLException {
         return OrderMapper.getMaterialPrice(name);
     }
+    
+    @Override
+    public double getMaterialCostPrice( String name ) throws FogException, SQLException {
+        return OrderMapper.getCostPrice(name);
+    }
+    
+    @Override
+    public int getMaterialId( String name ) throws FogException, SQLException {
+        return OrderMapper.getMaterialId(name);
+    }
 
     @Override
-    public Invoice makeInvoice(Customer customer, Construction costruction) throws FogException, IOException {
-        Invoice invoice = new Invoice(customer, costruction);
-        invoice.makeInvoice(customer, costruction);
-        return invoice;
+    public String getMaterialDescription( String name ) throws FogException, SQLException {
+        return OrderMapper.getMaterialDescription(name);
     }
+    
+    @Override
+    public List<Material> getAllMaterials() throws FogException, SQLException {
+        return OrderMapper.getAllMaterials();
+    }
+    
+    @Override
+    public void setMaterialPrice( int materialId, double newPrice ) throws FogException, SQLException {
+        OrderMapper.setMaterialPrice(newPrice, materialId );
+    }
+
+    @Override
+    public Employee addEmployee( Employee newEmployee ) throws FogException, SQLException {
+        return UserMapper.addEmployee(newEmployee);
+    }
+    
+    @Override
+    public Employee getEmployee( int id ) throws FogException {
+        return UserMapper.getEmployee(id);
+    }
+    
+    @Override
+    public void deleteEmployee( int id ) throws FogException {
+        UserMapper.deleteEmployee(id);
+    }
+    
+    @Override
+    public void deleteOrder( int id ) throws FogException {
+        OrderMapper.deleteOrder(id);
+    }
+
+    @Override
+    public List<Employee> getAllEmployees() throws FogException {
+        return UserMapper.getAllEmployees();
+    }
+
+    @Override
+    public Employee setEmployee(int id, String username, String password, boolean isAdmin) throws FogException {
+        return UserMapper.setEmployee(id, username, password, isAdmin);
+    }
+
     
 }

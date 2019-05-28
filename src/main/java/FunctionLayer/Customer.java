@@ -1,21 +1,16 @@
 package FunctionLayer;
 
-import java.util.Objects;
-
-/**
- *
- * @author mikkel
- */
 public class Customer {
     
     private int id;
     private String name;
     private String email;
     private String address;
-    private String zipcode;
-    private String phoneNumber;
+    private int zipcode;
+    private int phoneNumber;
 
-    public Customer(String name, String email, String address, String zipcode, String phoneNumber) {
+    public Customer(int id, String name, String email, String address, int zipcode, int phoneNumber) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.address = address;
@@ -55,19 +50,19 @@ public class Customer {
         this.address = address;
     }
 
-    public String getZipcode() {
+    public int getZipcode() {
         return zipcode;
     }
 
-    public void setZipcode(String zipcode) {
+    public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
     }
 
-    public String getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -76,34 +71,4 @@ public class Customer {
         return "Customer{" + "id=" + id + ", name=" + name + ", email=" + email + ", address=" + address + ", zipcode=" + zipcode + ", phoneNumber=" + phoneNumber + '}';
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Customer other = (Customer) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (!Objects.equals(this.email, other.email)) {
-            return false;
-        }
-        if (!Objects.equals(this.phoneNumber, other.phoneNumber)) {
-            return false;
-        }
-        return true;
-    }
-    
 }

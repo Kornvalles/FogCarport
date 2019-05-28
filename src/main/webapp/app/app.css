@@ -1,0 +1,25 @@
+.bg-img {
+    /* The image used */
+    background-image: url("https://images.photowall.com/products/50264/wooden-logs-wall.jpg?h=699&q=85");
+    min-height: 380px;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Extra small devices (phones, up to 480px) */
+@media screen and (max-width: 767px) {
+    body {
+        font-size: 11px;
+    }
+}
+
+.carousel {
+    width: 45%;
+    margin: auto;
+}
+
+.carousel-indicators {
+    height: 30%;
+}

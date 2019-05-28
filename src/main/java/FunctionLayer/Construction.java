@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package FunctionLayer;
 
 import java.util.List;
 
-/**
- *
- * @author ibenk
- */
 public class Construction {
     
     private Carport carport;
@@ -39,7 +30,6 @@ public class Construction {
         this.materials = materials;
     }
 
-    //return stringformat
     public double getTotalPrice() {
         return totalPrice;
     }

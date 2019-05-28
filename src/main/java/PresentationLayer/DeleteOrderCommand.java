@@ -8,17 +8,17 @@ package PresentationLayer;
 import FunctionLayer.FogException;
 import FunctionLayer.LogicFacade;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ibenk
+ * @author Benjamin
  */
-public class GetOrderCommand extends Command {
+public class DeleteOrderCommand extends Command {
 
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
-        return null;
+
+        logic.deleteOrder(Integer.parseInt(request.getParameter("orderid")));
+        return "viewAllOrders";
     }
 }

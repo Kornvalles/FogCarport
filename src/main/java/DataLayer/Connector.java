@@ -6,11 +6,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-/**
- * The purpose of Connector is to...
- *
- * @authors Iben, Christian, Benjamin, Nicklas, Mikkel
- */
 public class Connector {
 
     //Constants
@@ -26,7 +21,7 @@ public class Connector {
         singleton = con;
     }
 
-    public static synchronized Connection connection() throws SQLException, FogException {
+    public static Connection connection() throws SQLException, FogException {
         if (singleton == null) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -39,6 +34,7 @@ public class Connector {
                 props.put("useJDBCCompliantTimezoneShift", true);
                 props.put("useLegacyDatetimeCode", false);
                 props.put("serverTimezone", "CET");
+                props.put("autocommit", true);
                 Connector.singleton = DriverManager.getConnection(url, props);
             } catch (ClassNotFoundException ex) {
                 throw new SQLException(ex.getMessage());

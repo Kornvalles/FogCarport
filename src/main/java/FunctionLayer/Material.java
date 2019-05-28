@@ -1,29 +1,34 @@
 package FunctionLayer;
 
-/**
- *
- * @author ibenk
- */
 public class Material {
     
     private String name;
+    private int id;
     private int qty;
     private String unit;
     private double price;
+    private double costPrice;
     private double totalprice;
+    private String description;
 
-    public Material(String name, int qty, String unit, double price) {
+    public Material(String name, int id, int qty, String unit, double price, double costPrice, String description) {
         this.name = name;
+        this.id = id;
         this.qty = qty;
         this.unit = unit;
         this.price = price;
-        this.totalprice = qty*price;
+        this.costPrice = costPrice;
+        this.description = description;
     }
 
     public String getName() {
         return name;
     }
-
+    
+    public int getId() {
+        return id;
+    }
+    
     public void setName(String name) {
         this.name = name;
     }
@@ -53,10 +58,24 @@ public class Material {
     }
 
     public double getTotalprice() {
-        return price*qty;
+        return totalprice;
+    }
+
+    public void setTotalprice(double totalprice) {
+        this.totalprice = totalprice;
+    }
+
+    public double getCostPrice() {
+        return costPrice;
+    }
+
+    public void setCostPrice(double costPrice) {
+        this.costPrice = costPrice;
     }
     
-    
+    public String getDescription() {
+        return description;
+    }
 
     @Override
     public String toString() {
