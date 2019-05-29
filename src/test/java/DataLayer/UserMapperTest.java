@@ -148,7 +148,7 @@ public class UserMapperTest {
         System.out.println("testingLogin");
         int id = 1;
         Employee expResult = new Employee("Admin","1234",true);
-        Employee result = TestUserMapper.getEmployeeName(id);
+        Employee result = TestUserMapper.getEmployee(id);
         assertEquals(expResult.toString(), result.toString());
     }
 }

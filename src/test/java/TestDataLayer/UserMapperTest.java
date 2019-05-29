@@ -65,11 +65,11 @@ public class UserMapperTest {
 //            ps.setInt(5, customer.getPhoneNumber());
 //            ps.executeUpdate();
 //            System.out.println("Customer Created and added");
-//    } *This test works
-    
-    /**
-     * Test of addEmployee method, of class UserMapper.
-     */
+//    } // This test works.
+//    
+//    /**
+//     * Test of addEmployee method, of class UserMapper.
+//     */
 //    @Test
 //    public void testAddEmployee() throws Exception {
 //        Connection con = TestConnector.connection();
@@ -83,7 +83,7 @@ public class UserMapperTest {
 //        ps.setBoolean(3, employee.isAdmin());
 //        ps.executeUpdate();
 //        System.out.println("Employee created and added.");
-//    } *This test Works
+//    } // This test works.
 
     /**
      * Test of getAllCustomers method, of class UserMapper. 
@@ -124,7 +124,7 @@ public class UserMapperTest {
     @Test
     public void testGetAllEmployees() throws Exception {
         System.out.println("getAllEmployees");
-        int expResult = 2;
+        int expResult = 3;
         int result = TestUserMapper.getAllEmployees().size();
         assertEquals(expResult, result);
     }
@@ -132,19 +132,17 @@ public class UserMapperTest {
     /**
      * Test of setEmployee method, of class UserMapper.
      */
-//    @Test
-//    public void testSetEmployee() throws Exception {
-//        System.out.println("Testing setEmployee");
-//        int id = 0;
-//        String username = "";
-//        String password = "";
-//        boolean isAdmin = false;
-//        Employee expResult = null;
-//        Employee result = TestUserMapper.setEmployee(id, username, password, isAdmin);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testSetEmployeePassword() throws Exception {
+        System.out.println("Testing setEmployee");
+        int id = 2;
+        String username = "Emp2";
+        String password = "123456";
+        Employee expResult = TestUserMapper.setEmployee(id, username, password);
+        assertEquals(expResult.getPassword(), TestUserMapper.getEmployeePassword(2));
+        // TODO review the generated test code and remove the default call to fail.
+        
+    }
     
     @Test
     public void testLogin() throws Exception {
