@@ -62,8 +62,8 @@ public class Calculator {
     }
 
     /**
-     * This method returns the number of roof materials needed to make the roof
- of the input carport. For each post on 1 side there has to be on wooden
+     * <p>This method returns the number of roof materials needed to make the roof
+     * of the input carport. For each post on 1 side there has to be on wooden
      * board across the roof.
      *
      * @param carport
@@ -110,10 +110,10 @@ public class Calculator {
 
     /**
      * This method returns the number of materials needed to make 1 rectangle of
- materials. input1 is always the direction of the materials. -- On the roof
- input1 is the length and input2 is the width -- On the two sides input1
- is the length and input2 is the height -- At the backside input1 is the
- width and input2 is the height
+     * materials. input1 is always the direction of the materials. -- On the roof
+     * input1 is the length and input2 is the width -- On the two sides input1
+     * is the length and input2 is the height -- At the backside input1 is the
+     * width and input2 is the height
      *
      * @param input1 // length
      * @param input2 // width

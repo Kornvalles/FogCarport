@@ -6,23 +6,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-/**
- *
- * @author mikkel
- */
 public class Connector {
 
     //Constants
     private static final String IP = "165.227.175.89";
     private static final String PORT = "3306";
-
-    /**
-     *
-     */
-    public static final String DATABASE = "FogCarport";
+    private static final String DATABASE = "FogCarport";
     private static final String USERNAME = "FogGroup";
     private static final String PASSWORD = "FogCarport1234.";
-
     private static Connection singleton;
 
     /**
@@ -35,7 +26,9 @@ public class Connector {
 
     /**
      * 
-     * @return
+     * <p>This method takes the constants and makes the connection to our database using mySQL JDBC driver.
+     * 
+     * @return A instance of Connection
      * @throws SQLException
      * @throws FogException 
      */

@@ -13,10 +13,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author mikkel
- */
 public class UserMapper {
 
     private static final Logger logger = Logger.getLogger(UserMapper.class.getName());
