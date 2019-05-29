@@ -54,7 +54,7 @@ public class UserMapperTest {
     public void testAddCustomer(Customer customer) throws Exception {
         Connection con = TestConnector.connection();
         System.out.println("testing addcustomer");
-            String SQL = "INSERT INTO `FogCarport`.`customer` ( name, email, address, zipcode, phoneNumber ) "
+            String SQL = "INSERT INTO `FogCarportTestDB`.`customer` ( name, email, address, zipcode, phoneNumber ) "
                     + "VALUES (?, ?, ?, ?, ?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, customer.getName());
@@ -72,7 +72,7 @@ public class UserMapperTest {
     public void testAddEmployee(Employee employee) throws Exception {
         Connection con = TestConnector.connection();
         System.out.println("testing addEmployee");
-        String SQL = "INSERT INTO `FogCarport`.`employee` ( name, password, isAdmin) "
+        String SQL = "INSERT INTO `FogCarportTestDB`.`employee` ( name, password, isAdmin) "
                     + "VALUES (?, ?, ?);";
         PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
         ps.setString(1, employee.getUsername());
