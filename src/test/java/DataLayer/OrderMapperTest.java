@@ -5,10 +5,12 @@
  */
 package DataLayer;
 
+import FunctionLayer.Carport;
 import FunctionLayer.Construction;
 import FunctionLayer.Customer;
 import FunctionLayer.Material;
 import FunctionLayer.Order;
+import java.sql.SQLException;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -35,7 +37,7 @@ public class OrderMapperTest {
     }
     
     @Before
-    public void setUp() {
+    public void setUp() {    
     }
     
     @After
@@ -45,27 +47,30 @@ public class OrderMapperTest {
     /**
      * Test of getMaterialPrice method, of class TestOrderMapper.
      */
-    @Test
+   @Test
     public void testGetMaterialPrice() throws Exception {
-        System.out.println("getMaterialPrice");
-        String name = "";
-        double expResult = 0.0;
-        double result = TestOrderMapper.getMaterialPrice(name);
+        try {
+        System.out.println("Testing getMaterialPrice");
+        String name = "stolpe(r)";
+        double expResult = 240.95;
+        double result = OrderMapper.getMaterialPrice(name);
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        }
+        catch(SQLException ex) {
+            System.out.println(ex);
+        }
+    } 
 
     /**
      * Test of deleteOrder method, of class TestOrderMapper.
      */
     @Test
     public void testDeleteOrder() throws Exception {
-        System.out.println("deleteOrder");
+        System.out.println("Testing deleteOrder");
         int id = 0;
-        TestOrderMapper.deleteOrder(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Carport carport = new Carport(230, 240, 240, false, 0, false, false, 15, false, "");
+        Order order = new Order(id, 99, 99, carport, 2000);
+        OrderMapper.deleteOrder(id);
     }
 
     /**
@@ -73,26 +78,29 @@ public class OrderMapperTest {
      */
     @Test
     public void testCreateOrder() throws Exception {
-        System.out.println("createOrder");
-        Construction construction = null;
-        Customer customer = null;
-        TestOrderMapper.createOrder(construction, customer);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        TestOrderMapper od = new TestOrderMapper();
+        Carport carport = new Carport(230, 240, 240, false, 0, false, false, 15, false, "");
+        System.out.println("Testing createOrder");
+        Construction construction = new Construction(carport, od.getAllMaterials(), 2000.0);
+        Customer customer = new Customer(99, "Mark Test", "Mark@TestMark.dk", "MarkTestVej 59", 2840, 28593458);
+        OrderMapper.createOrder(construction, customer);
     }
 
     /**
      * Test of getMaterialId method, of class TestOrderMapper.
      */
-    @Test
+ @Test
     public void testGetMaterialId() throws Exception {
-        System.out.println("getMaterialId");
-        String name = "";
-        int expResult = 0;
-        int result = TestOrderMapper.getMaterialId(name);
+        try{
+        System.out.println("Testing getMaterialId");
+        String name = "taglaegte(r)";
+        int expResult = 1020;
+        int result = OrderMapper.getMaterialId(name);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+        catch(SQLException ex) {
+            System.out.println(ex);
+        }
     }
 
     /**
@@ -100,13 +108,16 @@ public class OrderMapperTest {
      */
     @Test
     public void testGetMaterialDescription() throws Exception {
-        System.out.println("getMaterialDescription");
-        String name = "";
-        String expResult = "";
-        String result = TestOrderMapper.getMaterialDescription(name);
+        try {
+        System.out.println("Testing getMaterialDescription");
+        String name = "skruer 200 stk";
+        String expResult = "Staal. Kan iskrues uden forboring.";
+        String result = OrderMapper.getMaterialDescription(name);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+        catch(SQLException ex) {
+            System.out.println(ex);
+        }
     }
 
     /**
@@ -114,13 +125,11 @@ public class OrderMapperTest {
      */
     @Test
     public void testGetCostPrice() throws Exception {
-        System.out.println("getCostPrice");
-        String name = "";
-        double expResult = 0.0;
-        double result = TestOrderMapper.getCostPrice(name);
+        System.out.println("Testing getCostPrice");
+        String name = "skruer 200 stk";
+        double expResult = 20.5;
+        double result = OrderMapper.getCostPrice(name);
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -128,12 +137,10 @@ public class OrderMapperTest {
      */
     @Test
     public void testGetAllMaterials() throws Exception {
-        System.out.println("getAllMaterials");
-        List<Material> expResult = null;
-        List<Material> result = TestOrderMapper.getAllMaterials();
+        System.out.println("Testing getAllMaterials");
+        int expResult = 7;
+        int result = OrderMapper.getAllMaterials().size();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -141,12 +148,10 @@ public class OrderMapperTest {
      */
     @Test
     public void testSetMaterialPrice() throws Exception {
-        System.out.println("setMaterialPrice");
-        double newPrice = 0.0;
-        int materialId = 0;
-        TestOrderMapper.setMaterialPrice(newPrice, materialId);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("Testing setMaterialPrice");
+        double newPrice = 20.5;
+        int materialId = 2000;
+        OrderMapper.setMaterialPrice(newPrice, materialId);
     }
 
     /**
@@ -154,12 +159,10 @@ public class OrderMapperTest {
      */
     @Test
     public void testGetAllOrders() throws Exception {
-        System.out.println("getAllOrders");
-        List<Order> expResult = null;
-        List<Order> result = TestOrderMapper.getAllOrders();
+        System.out.println("Testing getAllOrders");
+        int expResult = OrderMapper.getAllOrders().size();
+        int result = OrderMapper.getAllOrders().size();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

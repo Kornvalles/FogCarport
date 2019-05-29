@@ -30,7 +30,7 @@ public class TestOrderMapper {
     public static double getMaterialPrice(String name) throws FogException, SQLException {
         double price = 0;
         try {
-            String query = "SELECT MSRP FROM `FogCarport`.`materials` "
+            String query = "SELECT MSRP FROM `FogCarportTestDB`.`materials` "
                     + "WHERE `materials`.`name` = ?;";
 
             Connection conn = TestConnector.connection();
@@ -55,7 +55,7 @@ public class TestOrderMapper {
     public static void deleteOrder(int id) throws FogException {
         try {
             Connection conn = TestConnector.connection();
-            String SQL =  "DELETE FROM `FogCarport`.`orders` WHERE `orders`.`orderId` = ?;";
+            String SQL =  "DELETE FROM `FogCarportTestDB`.`orders` WHERE `orders`.`orderId` = ?;";
             PreparedStatement ps = conn.prepareStatement(SQL);
             ps.setInt(1, id);
             ps.executeUpdate();
@@ -74,7 +74,7 @@ public class TestOrderMapper {
     public static void createOrder(Construction construction, Customer customer) throws FogException {
         try {
             Connection con = TestConnector.connection();
-            String SQL = "INSERT INTO `FogCarport`.`orders` (employeeId, customerId, carportHeight"
+            String SQL = "INSERT INTO `FogCarportTestDB`.`orders` (employeeId, customerId, carportHeight"
                     + ", carportLength, carportWidth, hasShed, shedWidth, hasRoof, roofType, roofAngle, hasWall, details, totalPrice) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, 1);
@@ -107,7 +107,7 @@ public class TestOrderMapper {
     public static int getMaterialId(String name) throws FogException, SQLException {
         int id = 0;
         try {
-            String query = "SELECT materialID FROM `FogCarport`.`materials` "
+            String query = "SELECT materialID FROM `FogCarportTestDB`.`materials` "
                     + "WHERE `materials`.`name` = ?;";
 
             Connection conn = TestConnector.connection();
@@ -134,7 +134,7 @@ public class TestOrderMapper {
     public static String getMaterialDescription(String name) throws FogException, SQLException {
         String desc = "";
         try {
-            String query = "SELECT description FROM `FogCarport`.`materials` "
+            String query = "SELECT description FROM `FogCarportTestDB`.`materials` "
                     + "WHERE `materials`.`name` = ?;";
 
             Connection conn = TestConnector.connection();
@@ -161,7 +161,7 @@ public class TestOrderMapper {
     public static double getCostPrice(String name) throws FogException, SQLException {
         double price = 0;
         try {
-            String query = "SELECT costPrice FROM `FogCarport`.`materials` "
+            String query = "SELECT costPrice FROM `FogCarportTestDB`.`materials` "
                     + "WHERE `materials`.`name` = ?;";
             Connection conn = TestConnector.connection();
             PreparedStatement ps = conn.prepareStatement(query);
@@ -185,7 +185,7 @@ public class TestOrderMapper {
     public static List<Material> getAllMaterials() throws FogException {
         List<Material> materials = new ArrayList();
         try {
-            String query = "SELECT * FROM FogCarport.materials";
+            String query = "SELECT * FROM FogCarportTestDB.materials";
 
             Connection con = TestConnector.connection();
             Statement ps = con.createStatement();
@@ -208,7 +208,7 @@ public class TestOrderMapper {
      */
     public static void setMaterialPrice(double newPrice, int materialId) throws FogException {
         try {
-            String query = "UPDATE `FogCarport`.`materials` SET `MSRP` = ? WHERE `materialID` = ?;";
+            String query = "UPDATE `FogCarportTestDB`.`materials` SET `MSRP` = ? WHERE `materialID` = ?;";
 
             Connection conn = TestConnector.connection();
             PreparedStatement ps = conn.prepareStatement(query);
@@ -229,7 +229,7 @@ public class TestOrderMapper {
     public static List<Order> getAllOrders() throws FogException {
         List<Order> orders = new ArrayList();
         try {
-            String query = "SELECT * FROM FogCarport.`orders`;";
+            String query = "SELECT * FROM FogCarportTestDB.`orders`;";
             
             Connection con = TestConnector.connection();
             Statement ps = con.createStatement();
