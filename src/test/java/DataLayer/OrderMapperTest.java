@@ -5,6 +5,7 @@
  */
 package DataLayer;
 
+import FunctionLayer.Carport;
 import FunctionLayer.Construction;
 import FunctionLayer.Customer;
 import FunctionLayer.Material;
@@ -52,7 +53,7 @@ public class OrderMapperTest {
         System.out.println("Testing getMaterialPrice");
         String name = "stolpe(r)";
         double expResult = 240.95;
-        double result = TestOrderMapper.getMaterialPrice(name);
+        double result = OrderMapper.getMaterialPrice(name);
         assertEquals(expResult, result, 0.0);
         }
         catch(SQLException ex) {
@@ -60,30 +61,30 @@ public class OrderMapperTest {
         }
     } 
 
-//    /**
-//     * Test of deleteOrder method, of class TestOrderMapper.
-//     */
-//    @Test
-//    public void testDeleteOrder() throws Exception {
-//        System.out.println("Testing deleteOrder");
-//        int id = 0;
-//        Carport carport = new Carport(230, 240, 240, false, 0, false, false, 15, false, "");
-//        Order order = new Order(id, 99, 99, carport, 2000);
-//        TestOrderMapper.deleteOrder(id);
-//    }
+    /**
+     * Test of deleteOrder method, of class TestOrderMapper.
+     */
+    @Test
+    public void testDeleteOrder() throws Exception {
+        System.out.println("Testing deleteOrder");
+        int id = 0;
+        Carport carport = new Carport(230, 240, 240, false, 0, false, false, 15, false, "");
+        Order order = new Order(id, 99, 99, carport, 2000);
+        OrderMapper.deleteOrder(id);
+    }
 
     /**
      * Test of createOrder method, of class TestOrderMapper.
      */
-//    @Test
-//    public void testCreateOrder() throws Exception {
-//        TestOrderMapper od = new TestOrderMapper();
-//        Carport carport = new Carport(230, 240, 240, false, 0, false, false, 15, false, "");
-//        System.out.println("Testing createOrder");
-//        Construction construction = new Construction(carport, od.getAllMaterials(), 2000.0);
-//        Customer customer = new Customer(99, "Mark Test", "Mark@TestMark.dk", "MarkTestVej 59", 2840, 28593458);
-//        TestOrderMapper.createOrder(construction, customer);
-//    }
+    @Test
+    public void testCreateOrder() throws Exception {
+        TestOrderMapper od = new TestOrderMapper();
+        Carport carport = new Carport(230, 240, 240, false, 0, false, false, 15, false, "");
+        System.out.println("Testing createOrder");
+        Construction construction = new Construction(carport, od.getAllMaterials(), 2000.0);
+        Customer customer = new Customer(99, "Mark Test", "Mark@TestMark.dk", "MarkTestVej 59", 2840, 28593458);
+        OrderMapper.createOrder(construction, customer);
+    }
 
     /**
      * Test of getMaterialId method, of class TestOrderMapper.
@@ -94,7 +95,7 @@ public class OrderMapperTest {
         System.out.println("Testing getMaterialId");
         String name = "taglaegte(r)";
         int expResult = 1020;
-        int result = TestOrderMapper.getMaterialId(name);
+        int result = OrderMapper.getMaterialId(name);
         assertEquals(expResult, result);
     }
         catch(SQLException ex) {
@@ -111,7 +112,7 @@ public class OrderMapperTest {
         System.out.println("Testing getMaterialDescription");
         String name = "skruer 200 stk";
         String expResult = "Staal. Kan iskrues uden forboring.";
-        String result = TestOrderMapper.getMaterialDescription(name);
+        String result = OrderMapper.getMaterialDescription(name);
         assertEquals(expResult, result);
     }
         catch(SQLException ex) {
@@ -127,7 +128,7 @@ public class OrderMapperTest {
         System.out.println("Testing getCostPrice");
         String name = "skruer 200 stk";
         double expResult = 20.5;
-        double result = TestOrderMapper.getCostPrice(name);
+        double result = OrderMapper.getCostPrice(name);
         assertEquals(expResult, result, 0.0);
     }
 
@@ -138,7 +139,7 @@ public class OrderMapperTest {
     public void testGetAllMaterials() throws Exception {
         System.out.println("Testing getAllMaterials");
         int expResult = 7;
-        int result = TestOrderMapper.getAllMaterials().size();
+        int result = OrderMapper.getAllMaterials().size();
         assertEquals(expResult, result);
     }
 
@@ -150,7 +151,7 @@ public class OrderMapperTest {
         System.out.println("Testing setMaterialPrice");
         double newPrice = 20.5;
         int materialId = 2000;
-        TestOrderMapper.setMaterialPrice(newPrice, materialId);
+        OrderMapper.setMaterialPrice(newPrice, materialId);
     }
 
     /**
@@ -159,8 +160,8 @@ public class OrderMapperTest {
     @Test
     public void testGetAllOrders() throws Exception {
         System.out.println("Testing getAllOrders");
-        int expResult = 3;
-        int result = TestOrderMapper.getAllOrders().size();
+        int expResult = OrderMapper.getAllOrders().size();
+        int result = OrderMapper.getAllOrders().size();
         assertEquals(expResult, result);
     }
     

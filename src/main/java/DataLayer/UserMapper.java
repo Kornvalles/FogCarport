@@ -131,7 +131,46 @@ public class UserMapper {
         }
         return employee;
     }
+    
+        public static String getEmployeeName(int id) throws FogException {
+        String employeeName = "";
+        try {
+            String SQL = "SELECT name FROM `FogCarport`.`employees` "
+                    + "WHERE id = '" + id + "';";
 
+            Connection con = Connector.connection();
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                employeeName = rs.getString("name");
+            }
+        } catch (SQLException ex) {
+            throw new FogException(ex.getMessage());
+        }
+        return employeeName;
+    }
+    
+            public static String getEmployeePassword(int id) throws FogException {
+
+        String employeePassword = "";
+        try {
+            String SQL = "SELECT password FROM `FogCarport`.`employees` "
+                    + "WHERE id = '" + id + "';";
+
+            Connection con = Connector.connection();
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                employeePassword = rs.getString("password");
+                
+            }
+        } catch (SQLException ex) {
+            throw new FogException(ex.getMessage());
+        }
+        return employeePassword;
+    }
     /**
      * 
      * @param id
@@ -184,20 +223,19 @@ public class UserMapper {
      * @return
      * @throws FogException 
      */
-    public static Employee setEmployee(int id, String username, String password, boolean isAdmin) throws FogException {
+    public static Employee setEmployee(int id, String username, String password) throws FogException {
         try {
             Connection con = Connector.connection();
             String SQL = "UPDATE `FogCarport`.`employees` SET `name` = ?, `password` = ?, `isAdmin` = ? WHERE (`id` = ?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, username);
             ps.setString(2, password);
-            ps.setBoolean(3, isAdmin);
-            ps.setInt(4, id);
+            ps.setInt(3, id);
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getSQLState());
             System.out.println(ex.getLocalizedMessage());
         }
-        return new Employee(id, password, password, isAdmin);
+        return new Employee(id, password, password);
     }
 }

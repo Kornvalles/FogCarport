@@ -192,7 +192,7 @@ public class DatabaseLogicFacade implements LogicFacade {
      */
     @Override
     public Employee setEmployee(int id, String username, String password, boolean isAdmin) throws FogException {
-        return UserMapper.setEmployee(id, username, password, isAdmin);
+        return UserMapper.setEmployee(id, username, password);
     }
 
     /**
