@@ -48,40 +48,40 @@ public class UserMapperTest {
     /**
      * Test of addCustomer method, of class UserMapper.
      */
-@Test
-    public void testAddCustomer() throws Exception {
-        Connection con = Connector.connection();
-        System.out.println("testing addcustomer");
-            String SQL = "INSERT INTO `FogCarport`.`customers` ( name, email, address, zipcode, phoneNumber ) "
-                    + "VALUES (?, ?, ?, ?, ?);";
-            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-            Customer customer = new Customer("Timothy", "tim@test.com", "junkyard avenue", 23143, 23143236);
-            ps.setString(1, customer.getName());
-            ps.setString(2, customer.getEmail());
-            ps.setString(3, customer.getAddress());
-            ps.setInt(4, customer.getZipcode());
-            ps.setInt(5, customer.getPhoneNumber());
-            ps.executeUpdate();
-            System.out.println("Customer Created and added");
-    } // This test works.
+//@Test
+//    public void testAddCustomer() throws Exception {
+//        Connection con = Connector.connection();
+//        System.out.println("testing addcustomer");
+//            String SQL = "INSERT INTO `FogCarport`.`customers` ( name, email, address, zipcode, phoneNumber ) "
+//                    + "VALUES (?, ?, ?, ?, ?);";
+//            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+//            Customer customer = new Customer("Timothy", "tim@test.com", "junkyard avenue", 23143, 23143236);
+//            ps.setString(1, customer.getName());
+//            ps.setString(2, customer.getEmail());
+//            ps.setString(3, customer.getAddress());
+//            ps.setInt(4, customer.getZipcode());
+//            ps.setInt(5, customer.getPhoneNumber());
+//            ps.executeUpdate();
+//            System.out.println("Customer Created and added");
+//    } // This test works.
     
     /**
      * Test of addEmployee method, of class UserMapper.
      */
-    @Test
-    public void testAddEmployee() throws Exception {
-        Connection con = Connector.connection();
-        System.out.println("testing addEmployee");
-        String SQL = "INSERT INTO `FogCarport`.`employees` ( name, password, isAdmin) "
-                    + "VALUES (?, ?, ?);";
-        Employee employee = new Employee("James", "1234", false);
-        PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-        ps.setString(1, employee.getUsername());
-        ps.setString(2, employee.getPassword());
-        ps.setBoolean(3, employee.isAdmin());
-        ps.executeUpdate();
-        System.out.println("Employee created and added.");
-    } // This test works.
+//    @Test
+//    public void testAddEmployee() throws Exception {
+//        Connection con = Connector.connection();
+//        System.out.println("testing addEmployee");
+//        String SQL = "INSERT INTO `FogCarport`.`employees` ( name, password, isAdmin) "
+//                    + "VALUES (?, ?, ?);";
+//        Employee employee = new Employee("James", "1234", false);
+//        PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+//        ps.setString(1, employee.getUsername());
+//        ps.setString(2, employee.getPassword());
+//        ps.setBoolean(3, employee.isAdmin());
+//        ps.executeUpdate();
+//        System.out.println("Employee created and added.");
+//    } // This test works.
 
     /**
      * Test of getAllCustomers method, of class UserMapper. 
