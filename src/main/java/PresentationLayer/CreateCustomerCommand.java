@@ -42,9 +42,9 @@ public class CreateCustomerCommand extends Command {
         int zip = validate.validateInteger(request.getParameter("zipcode"), "Postnummer");
         int phone = validate.validateInteger(request.getParameter("telephone"), "Telefonnummer");
         
-        HTMLSelect lengthSelect = new HTMLSelect("length", "240", " cm", 240, 810);
-        HTMLSelect widthSelect = new HTMLSelect("width", "240", " cm", 240, 600);
-        HTMLSelect shedSelect = new HTMLSelect("shedLength", "150", " cm", 150, 250);
+        HTMLSelect lengthSelect = (HTMLSelect) session.getAttribute("lengthSelect");
+        HTMLSelect widthSelect = (HTMLSelect) session.getAttribute("widthSelect");
+        HTMLSelect shedSelect = (HTMLSelect) session.getAttribute("shedSelect");
         request.setAttribute("lengthSelect", lengthSelect);
         request.setAttribute("widthSelect", widthSelect);
         request.setAttribute("shedSelect", shedSelect);
