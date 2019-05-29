@@ -91,7 +91,7 @@ public class UserMapperTest {
     @Test
     public void testGetAllCustomers() throws Exception {
         System.out.println("Testing getAllCustomers");
-        int expResult = 0;
+        int expResult = 1;
         int result = UserMapper.getAllCustomers().size();
         assertEquals(expResult, result);
     }
