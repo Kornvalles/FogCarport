@@ -31,6 +31,15 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
+    public Customer(String name, String email, String address, int zipcode, int phoneNumber) {
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.zipcode = zipcode;
+        this.phoneNumber = phoneNumber;
+    }
+    
+    
     /**
      *
      * @return

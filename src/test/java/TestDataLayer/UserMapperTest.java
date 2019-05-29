@@ -50,37 +50,40 @@ public class UserMapperTest {
     /**
      * Test of addCustomer method, of class UserMapper.
      */
-@Test
-    public void testAddCustomer(Customer customer) throws Exception {
-        Connection con = TestConnector.connection();
-        System.out.println("testing addcustomer");
-            String SQL = "INSERT INTO `FogCarport`.`customer` ( name, email, address, zipcode, phoneNumber ) "
-                    + "VALUES (?, ?, ?, ?, ?);";
-            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, customer.getName());
-            ps.setString(2, customer.getEmail());
-            ps.setString(3, customer.getAddress());
-            ps.setInt(4, customer.getZipcode());
-            ps.setInt(5, customer.getPhoneNumber());
-            ps.executeUpdate();
-            System.out.println("Customer Created and added");
-    }
+//@Test
+//    public void testAddCustomer() throws Exception {
+//        Connection con = TestConnector.connection();
+//        System.out.println("testing addcustomer");
+//            String SQL = "INSERT INTO `FogCarportTestDB`.`customers` ( name, email, address, zipcode, phoneNumber ) "
+//                    + "VALUES (?, ?, ?, ?, ?);";
+//            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+//            Customer customer = new Customer("Timothy", "tim@test.com", "junkyard avenue", 23143, 23143236);
+//            ps.setString(1, customer.getName());
+//            ps.setString(2, customer.getEmail());
+//            ps.setString(3, customer.getAddress());
+//            ps.setInt(4, customer.getZipcode());
+//            ps.setInt(5, customer.getPhoneNumber());
+//            ps.executeUpdate();
+//            System.out.println("Customer Created and added");
+//    } *This test works
+    
     /**
      * Test of addEmployee method, of class UserMapper.
      */
-    @Test
-    public void testAddEmployee(Employee employee) throws Exception {
-        Connection con = TestConnector.connection();
-        System.out.println("testing addEmployee");
-        String SQL = "INSERT INTO `FogCarport`.`employee` ( name, password, isAdmin) "
-                    + "VALUES (?, ?, ?);";
-        PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-        ps.setString(1, employee.getUsername());
-        ps.setString(2, employee.getPassword());
-        ps.setBoolean(3, employee.isAdmin());
-        ps.executeUpdate();
-        System.out.println("Employee created and added.");
-    }
+//    @Test
+//    public void testAddEmployee() throws Exception {
+//        Connection con = TestConnector.connection();
+//        System.out.println("testing addEmployee");
+//        String SQL = "INSERT INTO `FogCarportTestDB`.`employees` ( name, password, isAdmin) "
+//                    + "VALUES (?, ?, ?);";
+//        Employee employee = new Employee("James", "1234", false);
+//        PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+//        ps.setString(1, employee.getUsername());
+//        ps.setString(2, employee.getPassword());
+//        ps.setBoolean(3, employee.isAdmin());
+//        ps.executeUpdate();
+//        System.out.println("Employee created and added.");
+//    } *This test Works
 
     /**
      * Test of getAllCustomers method, of class UserMapper. 
@@ -90,7 +93,7 @@ public class UserMapperTest {
     @Test
     public void testGetAllCustomers() throws Exception {
         System.out.println("Testing getAllCustomers");
-        int expResult = 3;
+        int expResult = 2;
         int result = TestUserMapper.getAllCustomers().size();
         assertEquals(expResult, result);
     }
@@ -99,12 +102,10 @@ public class UserMapperTest {
      * Test of getEmployee method, of class UserMapper.
      */
     @Test
-    public void testGetEmployee(Employee employee) throws Exception {
+    public void testGetEmployeeName() throws Exception {
         System.out.println("getEmployee");
-        int id = 1;
         Employee expResult = new Employee(1, "Admin", "1234", true);
-        Employee result = TestUserMapper.getEmployee(id);
-        assertEquals(expResult, result);
+        assertEquals(expResult.getUsername(), TestUserMapper.getEmployeeName(1));
     }
 
     /**
@@ -113,7 +114,7 @@ public class UserMapperTest {
     @Test
     public void testDeleteEmployee() throws Exception {
         System.out.println("Testing deleteEmployee");
-        int id = 99;
+        int id = 4;
         TestUserMapper.deleteEmployee(id);
     }
 

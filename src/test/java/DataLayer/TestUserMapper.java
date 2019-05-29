@@ -35,7 +35,7 @@ public class TestUserMapper {
         Customer customer = null;
         try {
             Connection con = TestConnector.connection();
-            String SQL = "INSERT INTO `FogCarport`.`customers` ( name, email, address, zipcode, phoneNumber ) "
+            String SQL = "INSERT INTO `FogCarportTestDB`.`customers` ( name, email, address, zipcode, phoneNumber ) "
                     + "VALUES (?, ?, ?, ?, ?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, name);
@@ -112,10 +112,11 @@ public class TestUserMapper {
      * @return
      * @throws FogException
      */
+    
     public static Employee getEmployee(int id) throws FogException {
         Employee employee = null;
         try {
-            String SQL = "SELECT * FROM `FogCarport`.`employees` "
+            String SQL = "SELECT * FROM `FogCarportTestDB`.`employees` "
                     + "WHERE id = ? ";
 
             Connection con = TestConnector.connection();
@@ -131,7 +132,25 @@ public class TestUserMapper {
         }
         return employee;
     }
+    
+    public static String getEmployeeName(int id) throws FogException {
+        String employeeName = "";
+        try {
+            String SQL = "SELECT name FROM `FogCarportTestDB`.`employees` "
+                    + "WHERE id = '" + id + "';";
 
+            Connection con = TestConnector.connection();
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                employeeName = rs.getString("name");
+            }
+        } catch (SQLException ex) {
+            throw new FogException(ex.getMessage());
+        }
+        return employeeName;
+    }
     /**
      *
      * @param id
@@ -139,7 +158,7 @@ public class TestUserMapper {
      */
     public static void deleteEmployee(int id) throws FogException {
         try {
-            String SQL = "DELETE FROM `FogCarport`.`employees` WHERE (`id` = ?);";
+            String SQL = "DELETE FROM `FogCarportTestDB`.`employees` WHERE (`id` = ?);";
 
             Connection con = TestConnector.connection();
             PreparedStatement ps = con.prepareStatement(SQL);
@@ -159,7 +178,7 @@ public class TestUserMapper {
     public static List<Employee> getAllEmployees() throws FogException {
         List<Employee> employees = new ArrayList();
         try {
-            String SQL = "SELECT * FROM FogCarport.employees;";
+            String SQL = "SELECT * FROM FogCarportTestDB.employees;";
 
             Connection con = TestConnector.connection();
             PreparedStatement ps = con.prepareStatement(SQL);
@@ -187,7 +206,7 @@ public class TestUserMapper {
     public static Employee setEmployee(int id, String username, String password, boolean isAdmin) throws FogException {
         try {
             Connection con = TestConnector.connection();
-            String SQL = "UPDATE `FogCarport`.`employees` SET `name` = ?, `password` = ?, `isAdmin` = ? WHERE (`id` = ?);";
+            String SQL = "UPDATE `FogCarportTestDB`.`employees` SET `name` = ?, `password` = ?, `isAdmin` = ? WHERE (`id` = ?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, username);
             ps.setString(2, password);
