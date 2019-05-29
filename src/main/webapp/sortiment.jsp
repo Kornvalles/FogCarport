@@ -51,7 +51,7 @@
                                     Leveres med: søm, skruer beslag og betontagstens tag.
                                     Udførlig byggevejledning til carport og spær medfølger.
                                     Betontagsten i sort med 30 års garanti.
-                                    NB! Leveres som Byg-selv sæt - usamlet og ubehandlet!  Pr. stk. 21.498,-</p>
+                                    NB! Leveres som Byg-selv sæt - usamlet og ubehandlet!  Pr. stk. 19.546,- eksklusiv moms</p>
 
                                 <input type="hidden" name="width" value="360" />
                                 <input type="hidden" name="length" value="720" />
@@ -80,7 +80,7 @@
                                     Leveres med: Søm, skruer, beslag og betontagstenstag.
                                     Udførlig byggevejledning til carport og spær medfølger.
                                     Betontagsten i sort med 30 års garanti.
-                                    NB! Leveres som Byg-selv sæt - usamlet og ubehandlet! Pr. stk. 13.998,-</p>
+                                    NB! Leveres som Byg-selv sæt - usamlet og ubehandlet! Pr. stk. 17.503,- eksklusiv moms</p>
 
                                 <input type="hidden" name="width" value="360" />
                                 <input type="hidden" name="length" value="540" />
@@ -106,7 +106,7 @@
                                     Leveres med: Søm, skruer, beslag og betontagstenstag.
                                     Udførlig byggevejledning til carport og spær medfølger.
                                     Betontagsten i sort med 30 års garanti.
-                                    NB! Leveres som Byg-selv sæt - usamlet og ubehandlet! Pr. stk. 23.498,-</p>
+                                    NB! Leveres som Byg-selv sæt - usamlet og ubehandlet! Pr. stk. 20.637,- eksklusiv moms</p>
 
                                 <input type="hidden" name="width" value="390" />
                                 <input type="hidden" name="length" value="780" />
@@ -131,7 +131,7 @@
                                     Leveres med: Søm, skruer, beslag og betontagstenstag.
                                     Udførlig byggevejledning til carport og spær medfølger.
                                     Betontagsten i sort med 30 års garanti.
-                                    NB! Leveres som Byg-selv sæt - usamlet og ubehandlet! Pr. stk. 22.998,-</p>
+                                    NB! Leveres som Byg-selv sæt - usamlet og ubehandlet! Pr. stk. 20.545,- eksklusiv moms</p>
 
                                 <input type="hidden" name="width" value="360" />
                                 <input type="hidden" name="length" value="810" />
@@ -153,10 +153,12 @@
                                 </h4>
                                 <p class="card-text">3,00 x 4,80 mtr. Højde; 2,30 mtr. Trykimprægnerede stolper og stern. 
                                     Leveres med: søm, skruer, beslag og plasttrapez tag m/bundskruer.
-                                    NB! Leveres som Byg-selv sæt - usamlet, umalet og ubehandlet! Pr. stk. 3.998,-</p>
+                                    NB! Leveres som Byg-selv sæt - usamlet, umalet og ubehandlet! Pr. stk. 3.998,- eksklusiv moms</p>
 
                                 <input type="hidden" name="width" value="300" />
                                 <input type="hidden" name="length" value="480" />
+                                <input type="hidden" name="hasShed" value="false" />
+                                <input type="hidden" name="hasPointyRoof" value="false" />
 
                                 <button name="command" value="order">Bestil!</button>
                             </div>          
