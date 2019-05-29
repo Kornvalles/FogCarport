@@ -159,7 +159,7 @@ public class OrderMapperTest {
     @Test
     public void testGetAllOrders() throws Exception {
         System.out.println("Testing getAllOrders");
-        int expResult = 5;
+        int expResult = 3;
         int result = TestOrderMapper.getAllOrders().size();
         assertEquals(expResult, result);
     }
