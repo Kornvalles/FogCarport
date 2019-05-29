@@ -10,6 +10,15 @@ import javax.servlet.http.HttpSession;
  * @author mikkel
  */
 public class SortimentCommand extends Command {
+    
+    /**
+     * 
+     * 
+     * @param request
+     * @param logic
+     * @return 
+     * @throws FogException 
+     */
 
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {

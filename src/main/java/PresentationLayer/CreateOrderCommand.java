@@ -18,8 +18,18 @@ import javax.servlet.http.HttpSession;
  */
 public class CreateOrderCommand extends Command {
     
-    /* Creating a Logger to log from catch clause when creating order */
+    /** 
+     * Creating a Logger to log from catch clause when creating order. 
+     */
     private static final Logger logger = Logger.getLogger(CreateOrderCommand.class.getName());
+    
+    /**
+     * 
+     * @param requests
+     * @param logic
+     * @return Sends a String back to the Frontcontroller, about which jsp page we need to redirect to.
+     * @throws FogException 
+     */
     
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
@@ -27,7 +37,7 @@ public class CreateOrderCommand extends Command {
         HttpSession session = request.getSession();
         Customer customer = (Customer) session.getAttribute("customer");
         
-        //Fanger inputs fra jsp som ligger på requestet.
+        //Catches inputs from jsp, which is on the request
         String reqLength = request.getParameter("length");
         String reqWidth = request.getParameter("width");
         String reqShed = request.getParameter("shed");
@@ -38,7 +48,7 @@ public class CreateOrderCommand extends Command {
         String reqRoofAngle = request.getParameter("roofAngle");
         String reqDetails = request.getParameter("details");
         
-        //Konveterer inputs som ikke skal være String.
+        //Converts inputs that may not be String. 
         boolean toolShed = Boolean.parseBoolean(reqShed);
         boolean roof = Boolean.parseBoolean(reqRoof);
         boolean roofType = Boolean.parseBoolean(reqRoofType);
@@ -62,7 +72,7 @@ public class CreateOrderCommand extends Command {
             throw new FogException(e.getMessage());
         }
 
-        //Sender en String tilbage til Frontcontrolleren om hvilken jsp side vi skal omdirigeres til.
+        //Sends a String back to the Frontcontroller, about which jsp page we need to redirect to.
         return "confirmation";
     }
 }

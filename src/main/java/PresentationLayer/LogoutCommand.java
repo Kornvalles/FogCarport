@@ -10,6 +10,15 @@ import javax.servlet.http.HttpSession;
  * @author mikkel
  */
 public class LogoutCommand extends Command {
+    
+    /**
+     * This method makes you Log out, of employee or admin user.
+     * 
+     * @param request
+     * @param logic
+     * @return Returns to index (Home page)
+     * @throws FogException 
+     */
 
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {

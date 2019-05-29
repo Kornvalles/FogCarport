@@ -18,11 +18,20 @@ public class ChangePriceCommand extends Command {
     
     /* Creating a Logger to log from catch clause when changing a price */
     private static final Logger logger = Logger.getLogger(ChangePriceCommand.class.getName());
+    
+    /**
+     * 
+     * 
+     * @param request - catches inputs from jsp.
+     * @param logic
+     * @return returns to updatetMaterialPrices.jsp, when a material price has been changed.
+     * @throws FogException 
+     */
 
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
         HttpSession session = request.getSession();
-        //Fanger inputs fra jsp som ligger på requestet.
+        //Catch inputs from jsp, which is on the request.
         double newPrice = 0;
         if (!"".equals(request.getParameter("newPrice"))) {
             newPrice = Double.parseDouble(request.getParameter("newPrice"));

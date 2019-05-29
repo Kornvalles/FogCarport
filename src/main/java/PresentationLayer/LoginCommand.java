@@ -12,6 +12,15 @@ import javax.servlet.http.HttpSession;
  * @author mikkel
  */
 public class LoginCommand extends Command {
+    
+    /**
+     * This method executes LoginCommand. 
+     * The method checks and validates if username and password inputs appear in the database, for employee and admin logins.
+     * 
+     * @param request
+     * @param logic
+     * @return Returns either adminPage or employeePage. If username and password are wrong the servlet will return you to the login page.
+     */
 
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) {

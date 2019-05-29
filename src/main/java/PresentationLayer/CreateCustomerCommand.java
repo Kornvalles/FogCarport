@@ -15,7 +15,19 @@ import javax.servlet.http.HttpSession;
  */
 public class CreateCustomerCommand extends Command {
 
+    /**
+     * Creating a Logger to log from catch clause when creating order.
+     */
+    
     private static final Logger logger = Logger.getLogger(CreateOrderCommand.class.getName());
+    
+    /**
+     * 
+     * @param request
+     * @param logic
+     * @return returns to shop.jsp when customers inputs are validatet and put into database.
+     * @throws FogException 
+     */
 
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
@@ -44,8 +56,8 @@ public class CreateCustomerCommand extends Command {
             }
         }
 
-        //Instancerer objekter og putter dem på session
-        //Kører logikken. Forsøger at putte ting i database.
+        //Initializes objects and puts them on session.
+        //Runs logic. Tries to put inputs in database.
         try {
             Customer customer = logic.addCustomer(name, email, address, zip, phone);
             session.setAttribute("customer", customer);

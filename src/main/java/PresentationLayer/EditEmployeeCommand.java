@@ -10,6 +10,14 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class EditEmployeeCommand extends Command {
     
+    /**
+     * 
+     * @param request
+     * @param logic
+     * @return returns to adminPage.jsp when you succesfully have edited an Employee.
+     * @throws FogException 
+     */
+    
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
         String username = request.getParameter("usernameEdit");

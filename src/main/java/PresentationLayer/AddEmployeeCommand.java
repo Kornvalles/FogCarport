@@ -11,10 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 /**
  *
  * @author mikkel
+ * 
  */
 public class AddEmployeeCommand extends Command {
 
     private static final Logger logger = Logger.getLogger(CreateOrderCommand.class.getName());
+    
+    /**
+     * String execute HttpServletRequest
+     * 
+     * @param request - gets the parameter of admins username and password.
+     * @param logic
+     * @return returns to adminPage.jsp when admin succesfully has added an Employee. 
+     * @throws FogException 
+     */
 
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {

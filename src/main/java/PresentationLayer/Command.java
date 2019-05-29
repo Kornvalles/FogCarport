@@ -6,8 +6,16 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 
 abstract class Command {
+    
+    /**
+     * Initializes HashMap - commands.
+     */
 
     private static HashMap<String, Command> commands;
+    
+    /**
+     * Puts all commands in HashMap, and specifies each command with a key.
+     */
 
     private static void initCommands() {
         commands = new HashMap<>();
@@ -25,6 +33,12 @@ abstract class Command {
         commands.put( "showEditEmployee", new ShowEditEmployeeCommand());
         commands.put( "editEmployee", new EditEmployeeCommand());
     }
+    
+    /**
+     * 
+     * @param request
+     * @return returns the commandName to which the specified key is mapped, or UnknownCommand if this map contains no mapping for the key.
+     */
 
     static Command from( HttpServletRequest request ) {
         String commandName = request.getParameter( "command" );
