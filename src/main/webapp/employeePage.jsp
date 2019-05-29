@@ -20,9 +20,6 @@
             </a>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link" href="editOrders.jsp">Ændre Ordrer</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="updateMaterialPrices.jsp">Opdater Materialepriser</a>
                 </li>
                 <li class="nav-item">

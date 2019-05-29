@@ -14,16 +14,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author mikkel
- */
 public class OrderMapper {
 
     /**
+     * <p>This method executes a sql query to get the price of a material.
      * 
      * @param name
-     * @return
+     * @return Price of the given material from the database as a double
      * @throws FogException
      * @throws SQLException 
      */
@@ -48,8 +45,9 @@ public class OrderMapper {
     }
     
     /**
+     * <p>Deletes order from database.
      * 
-     * @param id
+     * @param id of the order which is wanted to be deleted.
      * @throws FogException 
      */
     public static void deleteOrder(int id) throws FogException {
@@ -66,9 +64,10 @@ public class OrderMapper {
     }
 
     /**
+     * <p>Creates an order in the database.
      * 
-     * @param construction
-     * @param customer
+     * @param construction which holds the carport and totalprice.
+     * @param customer infomation on customer.
      * @throws FogException 
      */
     public static void createOrder(Construction construction, Customer customer) throws FogException {
@@ -78,7 +77,7 @@ public class OrderMapper {
                     + ", carportLength, carportWidth, hasShed, shedWidth, hasRoof, roofType, roofAngle, hasWall, details, totalPrice) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, 1);
-            ps.setInt(2, 1);
+            ps.setInt(2, customer.getId());
             ps.setInt(3, construction.getCarport().getHeight());
             ps.setInt(4, construction.getCarport().getLength());
             ps.setInt(5, construction.getCarport().getWidth());
@@ -92,15 +91,16 @@ public class OrderMapper {
             ps.setDouble(13, construction.getTotalPrice());
             ps.executeUpdate();
         } catch (SQLException ex) {
-            System.out.println(ex.getSQLState());
-            System.out.println(ex.getLocalizedMessage());
+            System.err.println(" Got an exception! ");
+            System.err.println(ex.getMessage());
         }
     }
 
     /**
+     * Gets an Id that matches a material from the database.
      * 
-     * @param name
-     * @return
+     * @param name Of the material
+     * @return int id
      * @throws FogException
      * @throws SQLException 
      */
@@ -119,15 +119,17 @@ public class OrderMapper {
                 id = rs.getInt("materialID");
             }
         } catch (SQLException ex) {
-            System.out.println(ex);
+            System.err.println(" Got an exception! ");
+            System.err.println(ex.getMessage());
         }
         return id;
     }
 
     /**
+     * <p>Gets the description of a material from the database.
      * 
-     * @param name
-     * @return
+     * @param name Of the material
+     * @return String description of material
      * @throws FogException
      * @throws SQLException 
      */
@@ -146,15 +148,17 @@ public class OrderMapper {
                 desc = rs.getString("description");
             }
         } catch (SQLException ex) {
-            System.out.println(ex);
+            System.err.println(" Got an exception! ");
+            System.err.println(ex.getMessage());
         }
         return desc;
     }
 
     /**
+     * Gets the cost price of a material from the database.
      * 
-     * @param name
-     * @return
+     * @param name Of the material
+     * @return double cost price of material
      * @throws FogException
      * @throws SQLException 
      */
@@ -172,14 +176,16 @@ public class OrderMapper {
                 price = rs.getDouble("costPrice");
             }
         } catch (SQLException ex) {
-            System.out.println(ex);
+            System.err.println(" Got an exception! ");
+            System.err.println(ex.getMessage());
         }
         return price;
     }
 
     /**
+     * Gets a list of all materials in the database.
      * 
-     * @return
+     * @return Arraylist of materials
      * @throws FogException 
      */
     public static List<Material> getAllMaterials() throws FogException {
@@ -195,15 +201,17 @@ public class OrderMapper {
             }
 
         } catch (SQLException ex) {
-            System.out.println(ex);
+            System.err.println(" Got an exception! ");
+            System.err.println(ex.getMessage());
         }
         return materials;
     }
 
     /**
+     * Changes the price of the material with the given material id
      * 
-     * @param newPrice
-     * @param materialId
+     * @param newPrice which is the new value for the material
+     * @param materialId id of the material which is wanted to change the price on.
      * @throws FogException 
      */
     public static void setMaterialPrice(double newPrice, int materialId) throws FogException {
@@ -223,9 +231,10 @@ public class OrderMapper {
     }
     
     /**
+     * Changes the cost price of the material with the given material id
      * 
-     * @param newPrice
-     * @param materialId
+     * @param newPrice which is the new value for the material
+     * @param materialId id of the material which is wanted to change the price on.
      * @throws FogException 
      */
     public static void setMaterialCostPrice(double newPrice, int materialId) throws FogException {
@@ -245,8 +254,9 @@ public class OrderMapper {
     }
 
     /**
+     * Gets a list of all orders in the database.
      * 
-     * @return
+     * @return Arraylist of orders
      * @throws FogException 
      */
     public static List<Order> getAllOrders() throws FogException {
