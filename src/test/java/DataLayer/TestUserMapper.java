@@ -64,7 +64,7 @@ public class TestUserMapper {
         Employee employee = null;
         try {
             Connection con = TestConnector.connection();
-            String SQL = "INSERT INTO `FogCarport`.`employees` ( name, password, isAdmin )"
+            String SQL = "INSERT INTO `FogCarportTestDB`.`employees` ( name, password, isAdmin )"
                     + "VALUES (?, ?, ?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, newEmployee.getUsername());
@@ -90,7 +90,7 @@ public class TestUserMapper {
     public static List<Customer> getAllCustomers() throws FogException {
         List<Customer> customers = new ArrayList();
         try {
-            String SQL = "SELECT * FROM FogCarport.customers;";
+            String SQL = "SELECT * FROM FogCarportTestDB.customers;";
 
             Connection con = TestConnector.connection();
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
@@ -227,7 +227,9 @@ public class TestUserMapper {
     public static Employee setEmployee(int id, String username, String password) throws FogException {
         try {
             Connection con = TestConnector.connection();
+
             String SQL = "UPDATE `FogCarportTestDB`.`employees` SET `name` = ?, `password` = ? WHERE (`id` = ?);";
+
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, username);
             ps.setString(2, password);
