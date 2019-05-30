@@ -42,12 +42,36 @@ public class CreateCustomerCommand extends Command {
         int zip = validate.validateInteger(request.getParameter("zipcode"), "Postnummer");
         int phone = validate.validateInteger(request.getParameter("telephone"), "Telefonnummer");
         
-        HTMLSelect lengthSelect = (HTMLSelect) session.getAttribute("lengthSelect");
-        HTMLSelect widthSelect = (HTMLSelect) session.getAttribute("widthSelect");
-        HTMLSelect shedSelect = (HTMLSelect) session.getAttribute("shedSelect");
-        request.setAttribute("lengthSelect", lengthSelect);
-        request.setAttribute("widthSelect", widthSelect);
-        request.setAttribute("shedSelect", shedSelect);
+        HTMLSelect lengthSelect = null;
+        HTMLSelect widthSelect = null;
+        HTMLSelect shedSelect = null;
+        String hasShed = null;
+        String hasPointyRoof = null;
+        if (request.getAttribute("lengthSelect") != null) {
+            lengthSelect = (HTMLSelect) request.getAttribute("lengthSelect");
+        } else {
+            request.setAttribute("lengthSelect", new HTMLSelect("length","240"," cm",240,810));
+        }
+        if (request.getAttribute("widthSelect") != null) {
+            widthSelect = (HTMLSelect) request.getAttribute("widthSelect");
+        } else {
+            request.setAttribute("widthSelect", new HTMLSelect("width","240"," cm",240,600));
+        }
+        if (request.getAttribute("shedSelect") != null) {
+            shedSelect = (HTMLSelect) session.getAttribute("shedSelect");
+        } else {
+            request.setAttribute("shedSelect", new HTMLSelect("shedLength","150"," cm",150, 250));
+        }
+        if (request.getAttribute("hasShed") != null) {
+            hasShed = (String) request.getAttribute("hasShed");
+        } else {
+            hasShed = "checked='unchecked'";
+        }
+        if (request.getAttribute("hasPointyRoof") != null) {
+            hasPointyRoof = (String) request.getAttribute("hasPointyRoof");
+        } else {
+            hasPointyRoof = "checked='unchecked'";
+        }
         
         for (Customer c : logic.getAllCustomers()) {
             if (c.getEmail().equals(email)) {

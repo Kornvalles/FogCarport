@@ -35,15 +35,15 @@ public class SortimentCommand extends Command {
         HTMLSelect shedSelect = new HTMLSelect("shedLength",shedLength," cm",150, 250);
         
         String hasShed = request.getParameter("hasShed");
-        if ("true".equals(hasShed)) session.setAttribute("shedChecked", "checked='checked'");
+        if ("true".equals(hasShed)) request.setAttribute("shedChecked", "checked='checked'");
         
         String hasPointyRoof = request.getParameter("hasPointyRoof");
-        if ("true".equals(hasPointyRoof)) session.setAttribute("roofChecked", "checked='checked'");
+        if ("true".equals(hasPointyRoof)) request.setAttribute("roofChecked", "checked='checked'");
 
         /* Set attributes for the chosen carport */
-        session.setAttribute("lengthSelect", lengthSelect);
-        session.setAttribute("widthSelect", widthSelect);
-        session.setAttribute("shedSelect", shedSelect);
+        request.setAttribute("lengthSelect", lengthSelect);
+        request.setAttribute("widthSelect", widthSelect);
+        request.setAttribute("shedSelect", shedSelect);
 
         if (session.getAttribute("customer") != null) {
             return "shop";
