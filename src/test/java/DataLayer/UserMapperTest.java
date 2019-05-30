@@ -88,13 +88,13 @@ public class UserMapperTest {
      * basically just making sure the right amount of customers are in the database.
      * This can definitely be better
      */
-    @Test
-    public void testGetAllCustomers() throws Exception {
-        System.out.println("Testing getAllCustomers");
-        int expResult = 1;
-        int result = UserMapper.getAllCustomers().size();
-        assertEquals(expResult, result);
-    }
+//    @Test
+//    public void testGetAllCustomers() throws Exception {
+//        System.out.println("Testing getAllCustomers");
+//        int expResult = 1;
+//        int result = UserMapper.getAllCustomers().size();
+//        assertEquals(expResult, result);
+//    }
 
     /**
      * Test of getEmployee method, of class UserMapper.
