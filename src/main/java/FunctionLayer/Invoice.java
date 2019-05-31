@@ -108,9 +108,9 @@ public class Invoice {
         p2.add(materials);
         Text totalPriceWithoutVAT = new Text(String.format("%.2f",order.getTotalPrice()*0.5));
         Text VAT = new Text(String.format("%.2f",order.getTotalPrice()*0.25)).setOpacity(0.6f);
-        Text totalPrice = new Text(String.format("%.2f",order.getTotalPrice()*1.25));
+        Text totalPrice = new Text(String.format("%.2f",order.getTotalPrice())+" kr. inkl. moms");
 
-        p3.add(totalPrice + "kr. inkl. moms");
+        p3.add(totalPrice);
         p1.add(name);
         p1.add("\n");
         p1.add(email);
