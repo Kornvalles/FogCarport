@@ -225,19 +225,5 @@
             </div>
             <% }%>
         </div>
-        <script>
-            $(function () {
-                $('.btn').click(function (e) {
-                    var link = $(this).attr('href');
-                    if ($(this).attr('id') == 'Buy') {
-                        $.get(link, function (data) {
-                            modal.open({content: data});
-                            $('#transType').val('buy');
-                        });
-                    }
-                    e.preventDefault();
-                });
-            });
-        </script>
     </body>
 </html>
