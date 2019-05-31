@@ -1,7 +1,13 @@
 # FogCarport
 
 ## LINK TIL PROJECT
-http://165.227.175.89/FogCarport-1.0-SNAPSHOT/
+http://165.227.175.89/FogCarport-1.0/
+*Logins*
+-Brugernavn: Admin
+-Adgangskode: 1234
+__________________
+-Brugernavn: Emp1
+-Adgangskode: 1234
 
 
 **Collaborators**
