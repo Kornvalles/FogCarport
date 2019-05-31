@@ -127,8 +127,8 @@
                         <div class="modal-body">
                             <form action="FrontController" method="POST">
                                 <input type="hidden" name="command" value="deleteEmployee">
-                                <label for="id">id:</label>
-                                <input type="text" class="form-control" name="id" id="username" required>
+                                <label for="id">Id:</label>
+                                <input type="text" class="form-control" name="id" id="id" required>
                                 <button type="submit" class="btn btn-danger">Slet</button>
                             </form>
                         </div>
