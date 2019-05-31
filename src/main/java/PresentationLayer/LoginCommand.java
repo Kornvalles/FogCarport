@@ -21,7 +21,6 @@ public class LoginCommand extends Command {
      * @param logic
      * @return Returns either adminPage or employeePage. If username and password are wrong the servlet will return you to the login page.
      */
-
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) {
         HttpSession session = request.getSession();

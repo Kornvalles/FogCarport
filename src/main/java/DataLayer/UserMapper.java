@@ -18,14 +18,14 @@ public class UserMapper {
     private static final Logger logger = Logger.getLogger(UserMapper.class.getName());
 
     /**
-     * 
+     *
      * @param name
      * @param email
      * @param address
      * @param zipcode
      * @param phoneNumber
      * @return
-     * @throws FogException 
+     * @throws FogException
      */
     public static Customer addCustomer(String name, String email, String address, int zipcode, int phoneNumber) throws FogException {
         Customer customer = null;
@@ -51,10 +51,10 @@ public class UserMapper {
     }
 
     /**
-     * 
+     *
      * @param newEmployee
      * @return
-     * @throws FogException 
+     * @throws FogException
      */
     public static Employee addEmployee(Employee newEmployee) throws FogException {
         Employee employee = null;
@@ -79,9 +79,8 @@ public class UserMapper {
     }
 
     /**
-     * 
-     * @return
-     * @throws FogException 
+     *
+     * @return @throws FogException
      */
     public static List<Customer> getAllCustomers() throws FogException {
         List<Customer> customers = new ArrayList();
@@ -95,7 +94,7 @@ public class UserMapper {
             while (rs.next()) {
                 customers.add(new Customer(rs.getInt("id"), rs.getNString("name"), rs.getNString("email"), rs.getNString("address"), rs.getInt("zipcode"), rs.getInt("phoneNumber")));
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -103,10 +102,10 @@ public class UserMapper {
     }
 
     /**
-     * 
+     *
      * @param id
      * @return
-     * @throws FogException 
+     * @throws FogException
      */
     public static Employee getEmployee(int id) throws FogException {
         Employee employee = null;
@@ -127,8 +126,8 @@ public class UserMapper {
         }
         return employee;
     }
-    
-        public static String getEmployeeName(int id) throws FogException {
+
+    public static String getEmployeeName(int id) throws FogException {
         String employeeName = "";
         try {
             String SQL = "SELECT name FROM `FogCarport`.`employees` "
@@ -146,9 +145,8 @@ public class UserMapper {
         }
         return employeeName;
     }
-    
-            public static String getEmployeePassword(int id) throws FogException {
 
+    public static String getEmployeePassword(int id) throws FogException {
         String employeePassword = "";
         try {
             String SQL = "SELECT password FROM `FogCarport`.`employees` "
@@ -160,17 +158,18 @@ public class UserMapper {
 
             while (rs.next()) {
                 employeePassword = rs.getString("password");
-                
+
             }
         } catch (SQLException ex) {
             throw new FogException(ex.getMessage());
         }
         return employeePassword;
     }
+
     /**
-     * 
+     *
      * @param id
-     * @throws FogException 
+     * @throws FogException
      */
     public static void deleteEmployee(int id) throws FogException {
         try {
@@ -187,9 +186,8 @@ public class UserMapper {
     }
 
     /**
-     * 
-     * @return
-     * @throws FogException 
+     *
+     * @return @throws FogException
      */
     public static List<Employee> getAllEmployees() throws FogException {
         List<Employee> employees = new ArrayList();
@@ -211,13 +209,13 @@ public class UserMapper {
     }
 
     /**
-     * 
+     *
      * @param id
      * @param username
      * @param password
      * @param isAdmin
      * @return
-     * @throws FogException 
+     * @throws FogException
      */
     public static Employee setEmployee(int id, String username, String password) throws FogException {
         try {

@@ -14,6 +14,7 @@ public class Connector {
     private static final String DATABASE = "FogCarport";
     private static final String USERNAME = "FogGroup";
     private static final String PASSWORD = "FogCarport1234.";
+    
     private static Connection singleton;
 
     /**
