@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -28,6 +29,7 @@ public class AddEmployeeCommand extends Command {
 
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
+        HttpSession session = request.getSession();
         String username = request.getParameter("username");
         String password = request.getParameter("pwd");
         boolean isAdmin = true;
@@ -38,6 +40,7 @@ public class AddEmployeeCommand extends Command {
         try {
             logic.addEmployee(new Employee(username, password, isAdmin));
             request.setAttribute("message", "Medarbejder " + username + " er blevet oprettet");
+            session.setAttribute("employees", logic.getAllEmployees());
         } catch (SQLException ex) {
             logger.log(Level.SEVERE, null, ex);
         }
