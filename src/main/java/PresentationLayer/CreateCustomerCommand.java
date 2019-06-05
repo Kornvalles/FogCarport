@@ -11,14 +11,13 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author mikkel
+ * @author Iben, Benjamin, Nicklas, Christian og Mikkel
  */
 public class CreateCustomerCommand extends Command {
 
     /**
      * Creating a Logger to log from catch clause when creating order.
      */
-    
     private static final Logger logger = Logger.getLogger(CreateOrderCommand.class.getName());
     
     /**
@@ -28,7 +27,6 @@ public class CreateCustomerCommand extends Command {
      * @return returns to shop.jsp when customers inputs are validatet and put into database.
      * @throws FogException 
      */
-
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
 
@@ -49,26 +47,31 @@ public class CreateCustomerCommand extends Command {
         String hasPointyRoof = null;
         if (request.getAttribute("lengthSelect") != null) {
             lengthSelect = (HTMLSelect) request.getAttribute("lengthSelect");
+            request.setAttribute("lengthSelect", lengthSelect);
         } else {
             request.setAttribute("lengthSelect", new HTMLSelect("length","240"," cm",240,810));
         }
         if (request.getAttribute("widthSelect") != null) {
             widthSelect = (HTMLSelect) request.getAttribute("widthSelect");
+            request.setAttribute("widthSelect", widthSelect);
         } else {
             request.setAttribute("widthSelect", new HTMLSelect("width","240"," cm",240,600));
         }
         if (request.getAttribute("shedSelect") != null) {
             shedSelect = (HTMLSelect) session.getAttribute("shedSelect");
+            request.setAttribute("shedSelect", shedSelect);
         } else {
             request.setAttribute("shedSelect", new HTMLSelect("shedLength","150"," cm",150, 250));
         }
         if (request.getAttribute("hasShed") != null) {
             hasShed = (String) request.getAttribute("hasShed");
+            request.setAttribute("hasShed", hasShed);
         } else {
             hasShed = "checked='unchecked'";
         }
         if (request.getAttribute("hasPointyRoof") != null) {
             hasPointyRoof = (String) request.getAttribute("hasPointyRoof");
+            request.setAttribute("hasPointyRoof", hasPointyRoof);
         } else {
             hasPointyRoof = "checked='unchecked'";
         }
