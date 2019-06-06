@@ -30,11 +30,8 @@ public class DeleteEmployeeCommand extends Command {
                 request.setAttribute("message", "Medarbejder " + id + " er blevet slettet!");
                 session.setAttribute("employees", logic.getAllEmployees());
             }
-            request.setAttribute("errorMessage", "Der findes ingen medarbejder med " + id + ". Se alle medarbejder for at få id");
+            request.setAttribute("errorMessage", "Der findes ingen medarbejder med id: " + id + ". Se alle medarbejder for at få id");
         }
-        
-        
-        
         return "adminPage";    
     }
     

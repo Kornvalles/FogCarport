@@ -52,6 +52,10 @@
         <div class="alert alert-success">
             <strong>Success!</strong> <%=request.getAttribute("message")%>
         </div>
+        <%} else if (request.getAttribute("errorMessage") != null) {%>
+        <div class="alert alert-warning">
+            <strong>Warning!</strong> <%=request.getAttribute("errorMessage")%>
+        </div>
         <%}%>
         <header class="masthead">
             <div class="container h-100">
