@@ -64,8 +64,8 @@
                         <thead>
                             <tr>
                                 <th scope="col">Order ID</th>
-                                <th scope="col">Employee ID</th>
                                 <th scope="col">Customer ID</th>
+                                <th scope="col">Employee ID</th>
                                 <th scope="col">Carport Height</th>
                                 <th scope="col">Carport Length</th>
                                 <th scope="col">Carport Width</th>
@@ -80,33 +80,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <%  for (Order orders : orderlist) {
-                                       out.println("<tr>");
-                                       out.println("<td>" + orders.getId() + "</td>");
-                                       out.println("<td>" + orders.getCustomerId() + "</td>");
-                                       out.println("<td>" + orders.getEmployeeId() + "</td>");
-                                       out.println("<td>" + orders.getCarport().getHeight() + "</td>");
-                                       out.println("<td>" + orders.getCarport().getLength() + "</td>");
-                                       out.println("<td>" + orders.getCarport().getWidth() + "</td>");
-                                       out.println("<td>" + orders.getCarport().hasToolshed() + "</td>");
-                                       out.println("<td>" + orders.getCarport().getShedWidth() + "</td>");
-                                       out.println("<td>" + orders.getCarport().hasPointyRoof() + "</td>");
-                                       out.println("<td>" + orders.getCarport().roofType() + "</td>");
-                                       out.println("<td>" + orders.getCarport().getRoofAngle() + "</td>");
-                                       out.println("<td>" + orders.getCarport().hasWall() + "</td>");
-                                       out.println("<td>" + orders.getCarport().getDetails() + "</td>");
-                                       out.println("<td>" + orders.getTotalPrice() + "</td>");
-                                       out.println("<td>");
-                                       out.println("<form method=\"POST\" action=\"FrontController\">");
-                                       out.println("<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getId() + "\">");
-                                       out.println("<input type=\"hidden\" name=\"command\" value=\"deleteOrder\">");
-                                       out.println("<input type ='submit' value ='Slet Ordre'>");
-                                       out.println("</form></td>");
-                                       out.println("</tr>");
-                                    }
-                                %> 
-                            </tr>
+                            <%  for (Order orders : orderlist) {
+                                    out.println("<tr>");
+                                    out.println("<td>" + orders.getId() + "</td>");
+                                    out.println("<td>" + orders.getCustomerId() + "</td>");
+                                    out.println("<td>" + orders.getEmployeeId() + "</td>");
+                                    out.println("<td>" + orders.getCarport().getHeight() + "</td>");
+                                    out.println("<td>" + orders.getCarport().getLength() + "</td>");
+                                    out.println("<td>" + orders.getCarport().getWidth() + "</td>");
+                                    out.println("<td>" + orders.getCarport().hasToolshed() + "</td>");
+                                    out.println("<td>" + orders.getCarport().getShedWidth() + "</td>");
+                                    out.println("<td>" + orders.getCarport().hasPointyRoof() + "</td>");
+                                    out.println("<td>" + orders.getCarport().roofType() + "</td>");
+                                    out.println("<td>" + orders.getCarport().getRoofAngle() + "</td>");
+                                    out.println("<td>" + orders.getCarport().hasWall() + "</td>");
+                                    out.println("<td>" + orders.getCarport().getDetails() + "</td>");
+                                    out.println("<td>" + orders.getTotalPrice() + "</td>");
+                                    out.println("<td>");
+                                    out.println("<form method=\"POST\" action=\"FrontController\">");
+                                    out.println("<input type=\"hidden\" name=\"orderid\" value=\"" + orders.getId() + "\">");
+                                    out.println("<input type=\"hidden\" name=\"command\" value=\"deleteOrder\">");
+                                    out.println("<input type ='submit' value ='Slet Ordre'>");
+                                    out.println("</form></td>");
+                                    out.println("</tr>");
+                                }
+                            %> 
                         </tbody>
                     </table>
                 </div>
