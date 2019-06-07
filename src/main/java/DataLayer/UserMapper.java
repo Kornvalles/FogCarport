@@ -41,8 +41,9 @@ public class UserMapper {
                 ps.setInt(5, phoneNumber);
                 ps.executeUpdate();
                 ResultSet rs = ps.getGeneratedKeys();
-                
-                customer = new Customer(rs.getInt("id"), name, email, address, zipcode, phoneNumber);
+                while (rs.next()) {
+                customer = new Customer(rs.getInt(1), name, email, address, zipcode, phoneNumber);
+                }
             }
         } catch (SQLException | ClassNotFoundException ex) {
             logger.log(Level.SEVERE, ex.getMessage());
