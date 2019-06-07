@@ -34,13 +34,14 @@ public class OrderMapper {
             String query = "SELECT MSRP FROM `FogCarport`.`materials` "
                     + "WHERE `materials`.`name` = ?;";
 
-            Connection conn = Connector.connection();
-            PreparedStatement ps = conn.prepareStatement(query);
+            try (Connection con = Connector.connection()) {
+            PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
                 price = rs.getDouble("MSRP");
+            }
             }
         } catch (SQLException | ClassNotFoundException ex) {
             logger.log(Level.SEVERE, ex.getMessage());
@@ -57,11 +58,12 @@ public class OrderMapper {
      */
     public static void deleteOrder(int id) throws FogException {
         try {
-            Connection conn = Connector.connection();
+            try (Connection con = Connector.connection()) {
             String SQL =  "DELETE FROM `FogCarport`.`orders` WHERE `orders`.`orderId` = ?;";
-            PreparedStatement ps = conn.prepareStatement(SQL);
+            PreparedStatement ps = con.prepareStatement(SQL);
             ps.setInt(1, id);
             ps.executeUpdate();
+            }
         } catch (SQLException | ClassNotFoundException ex) {
             logger.log(Level.SEVERE, ex.getMessage());
             throw new FogException( ex.getMessage() );
@@ -77,7 +79,7 @@ public class OrderMapper {
      */
     public static void createOrder(Construction construction, Customer customer) throws FogException {
         try {
-            Connection con = Connector.connection();
+            try (Connection con = Connector.connection()) {
             String SQL = "INSERT INTO `FogCarport`.`orders` (employeeId, customerId, carportHeight"
                     + ", carportLength, carportWidth, hasShed, shedWidth, hasRoof, roofType, roofAngle, hasWall, details, totalPrice) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
@@ -95,6 +97,7 @@ public class OrderMapper {
             ps.setString(12, construction.getCarport().getDetails());
             ps.setDouble(13, construction.getTotalPrice());
             ps.executeUpdate();
+            }
         } catch (SQLException | ClassNotFoundException ex) {
             logger.log(Level.SEVERE, ex.getMessage());
             throw new FogException( ex.getMessage() );
@@ -114,13 +117,14 @@ public class OrderMapper {
             String query = "SELECT materialID FROM `FogCarport`.`materials` "
                     + "WHERE `materials`.`name` = ?;";
 
-            Connection conn = Connector.connection();
-            PreparedStatement ps = conn.prepareStatement(query);
+            try (Connection con = Connector.connection()) {
+            PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
                 id = rs.getInt("materialID");
+            }
             }
         } catch (SQLException | ClassNotFoundException ex) {
             logger.log(Level.SEVERE, ex.getMessage());
@@ -142,13 +146,14 @@ public class OrderMapper {
             String query = "SELECT description FROM `FogCarport`.`materials` "
                     + "WHERE `materials`.`name` = ?;";
 
-            Connection conn = Connector.connection();
-            PreparedStatement ps = conn.prepareStatement(query);
+            try (Connection con = Connector.connection()) {
+            PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 desc = rs.getString("description");
+            }
             }
         } catch (SQLException | ClassNotFoundException ex) {
             logger.log(Level.SEVERE, ex.getMessage());
@@ -169,13 +174,14 @@ public class OrderMapper {
         try {
             String query = "SELECT costPrice FROM `FogCarport`.`materials` "
                     + "WHERE `materials`.`name` = ?;";
-            Connection conn = Connector.connection();
-            PreparedStatement ps = conn.prepareStatement(query);
+            try (Connection con = Connector.connection()) {
+            PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
                 price = rs.getDouble("costPrice");
+            }
             }
         } catch (SQLException | ClassNotFoundException ex) {
             logger.log(Level.SEVERE, ex.getMessage());
@@ -195,13 +201,13 @@ public class OrderMapper {
         try {
             String query = "SELECT * FROM FogCarport.materials";
 
-            Connection con = Connector.connection();
+            try (Connection con = Connector.connection()) {
             Statement ps = con.createStatement();
             ResultSet rs = ps.executeQuery(query);
             while (rs.next()) {
                 materials.add(new Material(rs.getNString(2), rs.getInt(1), rs.getInt(5), "", rs.getDouble(3), rs.getDouble(4), rs.getNString(6)));
             }
-
+            }
         } catch (SQLException | ClassNotFoundException ex) {
             logger.log(Level.SEVERE, ex.getMessage());
             throw new FogException( ex.getMessage() );
@@ -220,12 +226,12 @@ public class OrderMapper {
         try {
             String query = "UPDATE `FogCarport`.`materials` SET `MSRP` = ? WHERE `materialID` = ?;";
 
-            Connection conn = Connector.connection();
-            PreparedStatement ps = conn.prepareStatement(query);
+            try (Connection con = Connector.connection()) {
+            PreparedStatement ps = con.prepareStatement(query);
             ps.setDouble(1, newPrice);
             ps.setInt(2, materialId);
             ps.executeUpdate();
-            
+            }
         } catch (SQLException | ClassNotFoundException ex) {
             logger.log(Level.SEVERE, ex.getMessage());
             throw new FogException( ex.getMessage() );
@@ -243,12 +249,12 @@ public class OrderMapper {
         try {
             String query = "UPDATE `FogCarport`.`materials` SET `costPrice` = ? WHERE `materialID` = ?;";
 
-            Connection conn = Connector.connection();
-            PreparedStatement ps = conn.prepareStatement(query);
+            try (Connection con = Connector.connection()) {
+            PreparedStatement ps = con.prepareStatement(query);
             ps.setDouble(1, newPrice);
             ps.setInt(2, materialId);
             ps.executeUpdate();
-            
+            }
         } catch (SQLException | ClassNotFoundException ex) {
             logger.log(Level.SEVERE, ex.getMessage());
             throw new FogException( ex.getMessage() );
@@ -266,12 +272,13 @@ public class OrderMapper {
         try {
             String query = "SELECT * FROM FogCarport.`orders`;";
             
-            Connection con = Connector.connection();
+            try (Connection con = Connector.connection()) {
             Statement ps = con.createStatement();
             ResultSet rs = ps.executeQuery(query);
             while (rs.next()) {
                 Carport carport = new Carport(rs.getInt("carportHeight"), rs.getInt("carportLength"), rs.getInt("carportWidth"), rs.getBoolean("hasShed"), rs.getInt("shedWidth"), rs.getBoolean("hasRoof"), rs.getBoolean("roofType"), rs.getInt("roofAngle"), rs.getBoolean("hasWall"), rs.getNString("details"));
                 orders.add(new Order(rs.getInt("orderId"), rs.getInt("employeeId"), rs.getInt("customerId"), carport, rs.getDouble("totalPrice")));
+            }
             }
         } catch (SQLException | ClassNotFoundException ex) {
             logger.log(Level.SEVERE, ex.getMessage());

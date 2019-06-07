@@ -25,7 +25,7 @@ public class Connector {
         singleton = con;
     }
 
-    /**
+    /** 
      *
      * <p>
      * This method takes the constants and makes the connection to our database

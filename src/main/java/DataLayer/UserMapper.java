@@ -30,19 +30,20 @@ public class UserMapper {
     public static Customer addCustomer(String name, String email, String address, int zipcode, int phoneNumber) throws FogException {
         Customer customer = null;
         try {
-            Connection con = Connector.connection();
-            String SQL = "INSERT INTO `FogCarport`.`customers` ( name, email, address, zipcode, phoneNumber ) "
-                    + "VALUES (?, ?, ?, ?, ?);";
-            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, name);
-            ps.setString(2, email);
-            ps.setString(3, address);
-            ps.setInt(4, zipcode);
-            ps.setInt(5, phoneNumber);
-            ps.executeUpdate();
-            ResultSet rs = ps.getGeneratedKeys();
-
-            customer = new Customer(rs.getInt("id"), name, email, address, zipcode, phoneNumber);
+            try (Connection con = Connector.connection()) {
+                String SQL = "INSERT INTO `FogCarport`.`customers` ( name, email, address, zipcode, phoneNumber ) "
+                        + "VALUES (?, ?, ?, ?, ?);";
+                PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+                ps.setString(1, name);
+                ps.setString(2, email);
+                ps.setString(3, address);
+                ps.setInt(4, zipcode);
+                ps.setInt(5, phoneNumber);
+                ps.executeUpdate();
+                ResultSet rs = ps.getGeneratedKeys();
+                
+                customer = new Customer(rs.getInt("id"), name, email, address, zipcode, phoneNumber);
+            }
         } catch (SQLException | ClassNotFoundException ex) {
             logger.log(Level.SEVERE, ex.getMessage());
             throw new FogException( ex.getMessage() );
@@ -59,17 +60,18 @@ public class UserMapper {
     public static Employee addEmployee(Employee newEmployee) throws FogException {
         Employee employee = null;
         try {
-            Connection con = Connector.connection();
-            String SQL = "INSERT INTO `FogCarport`.`employees` ( name, password, isAdmin )"
-                    + "VALUES (?, ?, ?);";
-            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, newEmployee.getUsername());
-            ps.setString(2, newEmployee.getPassword());
-            ps.setBoolean(3, newEmployee.isAdmin());
-            ps.executeUpdate();
-            ResultSet rs = ps.getGeneratedKeys();
-            while (rs.next()) {
-                employee = new Employee(rs.getInt(1), newEmployee.getUsername(), newEmployee.getPassword(), newEmployee.isAdmin());
+            try (Connection con = Connector.connection()) {
+                String SQL = "INSERT INTO `FogCarport`.`employees` ( name, password, isAdmin )"
+                        + "VALUES (?, ?, ?);";
+                PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+                ps.setString(1, newEmployee.getUsername());
+                ps.setString(2, newEmployee.getPassword());
+                ps.setBoolean(3, newEmployee.isAdmin());
+                ps.executeUpdate();
+                ResultSet rs = ps.getGeneratedKeys();
+                while (rs.next()) {
+                    employee = new Employee(rs.getInt(1), newEmployee.getUsername(), newEmployee.getPassword(), newEmployee.isAdmin());
+                }
             }
         } catch (SQLException | ClassNotFoundException ex) {
             logger.log(Level.SEVERE, ex.getMessage());
@@ -87,14 +89,14 @@ public class UserMapper {
         try {
             String SQL = "SELECT * FROM FogCarport.customers;";
 
-            Connection con = Connector.connection();
+            try (Connection con = Connector.connection()) {
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 customers.add(new Customer(rs.getInt("id"), rs.getNString("name"), rs.getNString("email"), rs.getNString("address"), rs.getInt("zipcode"), rs.getInt("phoneNumber")));
             }
-
+            }
         } catch (SQLException | ClassNotFoundException ex) {
             logger.log(Level.SEVERE, ex.getMessage());
             throw new FogException( ex.getMessage() );
@@ -114,13 +116,14 @@ public class UserMapper {
             String SQL = "SELECT * FROM `FogCarport`.`employees` "
                     + "WHERE id = ? ";
 
-            Connection con = Connector.connection();
+            try (Connection con = Connector.connection()) {
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
                 employee = new Employee(rs.getInt("id"), rs.getNString("name"), rs.getNString("password"), rs.getBoolean("isAdmin"));
+            }
             }
         } catch (SQLException | ClassNotFoundException ex) {
             logger.log(Level.SEVERE, ex.getMessage());
@@ -135,12 +138,13 @@ public class UserMapper {
             String SQL = "SELECT name FROM `FogCarport`.`employees` "
                     + "WHERE id = '" + id + "';";
 
-            Connection con = Connector.connection();
+            try (Connection con = Connector.connection()) {
             PreparedStatement ps = con.prepareStatement(SQL);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 employeeName = rs.getString("name");
+            }
             }
         } catch (SQLException | ClassNotFoundException ex) {
             logger.log(Level.SEVERE, ex.getMessage());
@@ -155,13 +159,14 @@ public class UserMapper {
             String SQL = "SELECT password FROM `FogCarport`.`employees` "
                     + "WHERE id = '" + id + "';";
 
-            Connection con = Connector.connection();
+            try (Connection con = Connector.connection()) {
             PreparedStatement ps = con.prepareStatement(SQL);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 employeePassword = rs.getString("password");
 
+            }
             }
         } catch (SQLException | ClassNotFoundException ex) {
             logger.log(Level.SEVERE, ex.getMessage());
@@ -179,11 +184,11 @@ public class UserMapper {
         try {
             String SQL = "DELETE FROM `FogCarport`.`employees` WHERE (`id` = ?);";
 
-            Connection con = Connector.connection();
+            try (Connection con = Connector.connection()) {
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setInt(1, id);
             ps.execute();
-
+            }
         } catch (SQLException | ClassNotFoundException ex) {
             logger.log(Level.SEVERE, ex.getMessage());
             throw new FogException( ex.getMessage() );
@@ -199,14 +204,14 @@ public class UserMapper {
         try {
             String SQL = "SELECT * FROM FogCarport.employees;";
 
-            Connection con = Connector.connection();
+            try (Connection con = Connector.connection()) {
             PreparedStatement ps = con.prepareStatement(SQL);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 employees.add(new Employee(rs.getInt("id"), rs.getNString("name"), rs.getNString("password"), rs.getBoolean("isAdmin")));
             }
-
+            }
         } catch (SQLException | ClassNotFoundException ex) {
             logger.log(Level.SEVERE, ex.getMessage());
             throw new FogException( ex.getMessage() );
@@ -224,13 +229,14 @@ public class UserMapper {
      */
     public static Employee setEmployee(int id, String username, String password) throws FogException {
         try {
-            Connection con = Connector.connection();
+            try (Connection con = Connector.connection()) {
             String SQL = "UPDATE `FogCarport`.`employees` SET `name` = ?, `password` = ?, `isAdmin` = ? WHERE (`id` = ?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, username);
             ps.setString(2, password);
             ps.setInt(3, id);
             ps.executeUpdate();
+            }
         } catch (SQLException | ClassNotFoundException ex) {
             logger.log(Level.SEVERE, ex.getMessage());
             throw new FogException( ex.getMessage() );
