@@ -34,7 +34,7 @@ public class OrderMapper {
             String query = "SELECT MSRP FROM `FogCarport`.`materials` "
                     + "WHERE `materials`.`name` = ?;";
 
-            try (Connection con = Connector.connection()) {
+            try (Connection con = new Connector().connection()) {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
@@ -58,7 +58,7 @@ public class OrderMapper {
      */
     public static void deleteOrder(int id) throws FogException {
         try {
-            try (Connection con = Connector.connection()) {
+            try (Connection con = new Connector().connection()) {
             String SQL =  "DELETE FROM `FogCarport`.`orders` WHERE `orders`.`orderId` = ?;";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setInt(1, id);
@@ -79,7 +79,7 @@ public class OrderMapper {
      */
     public static void createOrder(Construction construction, Customer customer) throws FogException {
         try {
-            try (Connection con = Connector.connection()) {
+            try (Connection con = new Connector().connection()) {
             String SQL = "INSERT INTO `FogCarport`.`orders` (employeeId, customerId, carportHeight"
                     + ", carportLength, carportWidth, hasShed, shedWidth, hasRoof, roofType, roofAngle, hasWall, details, totalPrice) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
@@ -117,7 +117,7 @@ public class OrderMapper {
             String query = "SELECT materialID FROM `FogCarport`.`materials` "
                     + "WHERE `materials`.`name` = ?;";
 
-            try (Connection con = Connector.connection()) {
+            try (Connection con = new Connector().connection()) {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
@@ -146,7 +146,7 @@ public class OrderMapper {
             String query = "SELECT description FROM `FogCarport`.`materials` "
                     + "WHERE `materials`.`name` = ?;";
 
-            try (Connection con = Connector.connection()) {
+            try (Connection con = new Connector().connection()) {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
@@ -174,7 +174,7 @@ public class OrderMapper {
         try {
             String query = "SELECT costPrice FROM `FogCarport`.`materials` "
                     + "WHERE `materials`.`name` = ?;";
-            try (Connection con = Connector.connection()) {
+            try (Connection con = new Connector().connection()) {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
@@ -201,7 +201,7 @@ public class OrderMapper {
         try {
             String query = "SELECT * FROM FogCarport.materials";
 
-            try (Connection con = Connector.connection()) {
+            try (Connection con = new Connector().connection()) {
             Statement ps = con.createStatement();
             ResultSet rs = ps.executeQuery(query);
             while (rs.next()) {
@@ -226,7 +226,7 @@ public class OrderMapper {
         try {
             String query = "UPDATE `FogCarport`.`materials` SET `MSRP` = ? WHERE `materialID` = ?;";
 
-            try (Connection con = Connector.connection()) {
+            try (Connection con = new Connector().connection()) {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setDouble(1, newPrice);
             ps.setInt(2, materialId);
@@ -249,7 +249,7 @@ public class OrderMapper {
         try {
             String query = "UPDATE `FogCarport`.`materials` SET `costPrice` = ? WHERE `materialID` = ?;";
 
-            try (Connection con = Connector.connection()) {
+            try (Connection con = new Connector().connection()) {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setDouble(1, newPrice);
             ps.setInt(2, materialId);
@@ -272,7 +272,7 @@ public class OrderMapper {
         try {
             String query = "SELECT * FROM FogCarport.`orders`;";
             
-            try (Connection con = Connector.connection()) {
+            try (Connection con = new Connector().connection()) {
             Statement ps = con.createStatement();
             ResultSet rs = ps.executeQuery(query);
             while (rs.next()) {

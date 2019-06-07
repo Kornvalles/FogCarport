@@ -30,7 +30,7 @@ public class UserMapper {
     public static Customer addCustomer(String name, String email, String address, int zipcode, int phoneNumber) throws FogException {
         Customer customer = null;
         try {
-            try (Connection con = Connector.connection()) {
+            try (Connection con = new Connector().connection()) {
                 String SQL = "INSERT INTO `FogCarport`.`customers` ( name, email, address, zipcode, phoneNumber ) "
                         + "VALUES (?, ?, ?, ?, ?);";
                 PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
@@ -60,7 +60,7 @@ public class UserMapper {
     public static Employee addEmployee(Employee newEmployee) throws FogException {
         Employee employee = null;
         try {
-            try (Connection con = Connector.connection()) {
+            try (Connection con = new Connector().connection()) {
                 String SQL = "INSERT INTO `FogCarport`.`employees` ( name, password, isAdmin )"
                         + "VALUES (?, ?, ?);";
                 PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
@@ -89,7 +89,7 @@ public class UserMapper {
         try {
             String SQL = "SELECT * FROM FogCarport.customers;";
 
-            try (Connection con = Connector.connection()) {
+            try (Connection con = new Connector().connection()) {
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = ps.executeQuery();
 
@@ -116,7 +116,7 @@ public class UserMapper {
             String SQL = "SELECT * FROM `FogCarport`.`employees` "
                     + "WHERE id = ? ";
 
-            try (Connection con = Connector.connection()) {
+            try (Connection con = new Connector().connection()) {
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -138,7 +138,7 @@ public class UserMapper {
             String SQL = "SELECT name FROM `FogCarport`.`employees` "
                     + "WHERE id = '" + id + "';";
 
-            try (Connection con = Connector.connection()) {
+            try (Connection con = new Connector().connection()) {
             PreparedStatement ps = con.prepareStatement(SQL);
             ResultSet rs = ps.executeQuery();
 
@@ -159,7 +159,7 @@ public class UserMapper {
             String SQL = "SELECT password FROM `FogCarport`.`employees` "
                     + "WHERE id = '" + id + "';";
 
-            try (Connection con = Connector.connection()) {
+            try (Connection con = new Connector().connection()) {
             PreparedStatement ps = con.prepareStatement(SQL);
             ResultSet rs = ps.executeQuery();
 
@@ -184,7 +184,7 @@ public class UserMapper {
         try {
             String SQL = "DELETE FROM `FogCarport`.`employees` WHERE (`id` = ?);";
 
-            try (Connection con = Connector.connection()) {
+            try (Connection con = new Connector().connection()) {
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setInt(1, id);
             ps.execute();
@@ -204,7 +204,7 @@ public class UserMapper {
         try {
             String SQL = "SELECT * FROM FogCarport.employees;";
 
-            try (Connection con = Connector.connection()) {
+            try (Connection con = new Connector().connection()) {
             PreparedStatement ps = con.prepareStatement(SQL);
             ResultSet rs = ps.executeQuery();
 
@@ -229,8 +229,8 @@ public class UserMapper {
      */
     public static Employee setEmployee(int id, String username, String password) throws FogException {
         try {
-            try (Connection con = Connector.connection()) {
-            String SQL = "UPDATE `FogCarport`.`employees` SET `name` = ?, `password` = ?, `isAdmin` = ? WHERE (`id` = ?);";
+            try (Connection con = new Connector().connection()) {
+            String SQL = "UPDATE `FogCarport`.`employees` SET `name` = ?, `password` = ? WHERE (`id` = ?);";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, username);
             ps.setString(2, password);

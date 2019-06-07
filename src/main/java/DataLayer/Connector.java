@@ -14,13 +14,13 @@ public class Connector {
     private static final String USERNAME = "FogGroup";
     private static final String PASSWORD = "FogCarport1234.";
 
-    private static Connection singleton;
+    private Connection singleton;
 
     /**
      *
      * @param con
      */
-    public static void setConnection( Connection con ) {
+    public void setConnection( Connection con ) {
         singleton = con;
     }
 
@@ -34,7 +34,7 @@ public class Connector {
      * @throws java.lang.ClassNotFoundException
      * @throws SQLException
      */
-    public static Connection connection() throws ClassNotFoundException, SQLException {
+    public Connection connection() throws ClassNotFoundException, SQLException {
         if (singleton == null) {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String url = "jdbc:mysql://" + IP + ":" + PORT + "/" + DATABASE;
@@ -47,7 +47,7 @@ public class Connector {
             props.put("useLegacyDatetimeCode", false);
             props.put("serverTimezone", "CET");
             props.put("autocommit", true);
-            Connector.singleton = DriverManager.getConnection(url, props);
+            this.singleton = DriverManager.getConnection(url, props);
         }
         return singleton;
     }
