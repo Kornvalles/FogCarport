@@ -13,8 +13,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class OrderMapper {
+    
+    private static final Logger logger = Logger.getLogger(UserMapper.class.getName());
 
     /**
      * <p>This method executes a sql query to get the price of a material.
@@ -38,8 +42,9 @@ public class OrderMapper {
             if (rs.next()) {
                 price = rs.getDouble("MSRP");
             }
-        } catch (SQLException ex) {
-            System.out.println(ex);
+        } catch (SQLException | ClassNotFoundException ex) {
+            logger.log(Level.SEVERE, ex.getMessage());
+            throw new FogException( ex.getMessage() );
         }
         return price;
     }
@@ -57,9 +62,9 @@ public class OrderMapper {
             PreparedStatement ps = conn.prepareStatement(SQL);
             ps.setInt(1, id);
             ps.executeUpdate();
-        } catch (SQLException ex) {
-            System.out.println(ex.getLocalizedMessage());
-            System.out.println(ex.getSQLState());
+        } catch (SQLException | ClassNotFoundException ex) {
+            logger.log(Level.SEVERE, ex.getMessage());
+            throw new FogException( ex.getMessage() );
         }
     }
 
@@ -90,9 +95,9 @@ public class OrderMapper {
             ps.setString(12, construction.getCarport().getDetails());
             ps.setDouble(13, construction.getTotalPrice());
             ps.executeUpdate();
-        } catch (SQLException ex) {
-            System.err.println(" Got an exception! ");
-            System.err.println(ex.getMessage());
+        } catch (SQLException | ClassNotFoundException ex) {
+            logger.log(Level.SEVERE, ex.getMessage());
+            throw new FogException( ex.getMessage() );
         }
     }
 
@@ -101,10 +106,9 @@ public class OrderMapper {
      * 
      * @param name Of the material
      * @return int id
-     * @throws FogException
-     * @throws SQLException 
+     * @throws FogException 
      */
-    public static int getMaterialId(String name) throws FogException, SQLException {
+    public static int getMaterialId(String name) throws FogException {
         int id = 0;
         try {
             String query = "SELECT materialID FROM `FogCarport`.`materials` "
@@ -118,9 +122,9 @@ public class OrderMapper {
             if (rs.next()) {
                 id = rs.getInt("materialID");
             }
-        } catch (SQLException ex) {
-            System.err.println(" Got an exception! ");
-            System.err.println(ex.getMessage());
+        } catch (SQLException | ClassNotFoundException ex) {
+            logger.log(Level.SEVERE, ex.getMessage());
+            throw new FogException( ex.getMessage() );
         }
         return id;
     }
@@ -130,10 +134,9 @@ public class OrderMapper {
      * 
      * @param name Of the material
      * @return String description of material
-     * @throws FogException
-     * @throws SQLException 
+     * @throws FogException 
      */
-    public static String getMaterialDescription(String name) throws FogException, SQLException {
+    public static String getMaterialDescription(String name) throws FogException {
         String desc = "";
         try {
             String query = "SELECT description FROM `FogCarport`.`materials` "
@@ -147,9 +150,9 @@ public class OrderMapper {
             while (rs.next()) {
                 desc = rs.getString("description");
             }
-        } catch (SQLException ex) {
-            System.err.println(" Got an exception! ");
-            System.err.println(ex.getMessage());
+        } catch (SQLException | ClassNotFoundException ex) {
+            logger.log(Level.SEVERE, ex.getMessage());
+            throw new FogException( ex.getMessage() );
         }
         return desc;
     }
@@ -159,10 +162,9 @@ public class OrderMapper {
      * 
      * @param name Of the material
      * @return double cost price of material
-     * @throws FogException
-     * @throws SQLException 
+     * @throws FogException 
      */
-    public static double getCostPrice(String name) throws FogException, SQLException {
+    public static double getCostPrice(String name) throws FogException {
         double price = 0;
         try {
             String query = "SELECT costPrice FROM `FogCarport`.`materials` "
@@ -175,9 +177,9 @@ public class OrderMapper {
             if (rs.next()) {
                 price = rs.getDouble("costPrice");
             }
-        } catch (SQLException ex) {
-            System.err.println(" Got an exception! ");
-            System.err.println(ex.getMessage());
+        } catch (SQLException | ClassNotFoundException ex) {
+            logger.log(Level.SEVERE, ex.getMessage());
+            throw new FogException( ex.getMessage() );
         }
         return price;
     }
@@ -200,9 +202,9 @@ public class OrderMapper {
                 materials.add(new Material(rs.getNString(2), rs.getInt(1), rs.getInt(5), "", rs.getDouble(3), rs.getDouble(4), rs.getNString(6)));
             }
 
-        } catch (SQLException ex) {
-            System.err.println(" Got an exception! ");
-            System.err.println(ex.getMessage());
+        } catch (SQLException | ClassNotFoundException ex) {
+            logger.log(Level.SEVERE, ex.getMessage());
+            throw new FogException( ex.getMessage() );
         }
         return materials;
     }
@@ -224,9 +226,9 @@ public class OrderMapper {
             ps.setInt(2, materialId);
             ps.executeUpdate();
             
-        } catch (SQLException ex) {
-            System.err.println(" Got an exception! ");
-            System.err.println(ex.getMessage());
+        } catch (SQLException | ClassNotFoundException ex) {
+            logger.log(Level.SEVERE, ex.getMessage());
+            throw new FogException( ex.getMessage() );
         }
     }
     
@@ -247,9 +249,9 @@ public class OrderMapper {
             ps.setInt(2, materialId);
             ps.executeUpdate();
             
-        } catch (SQLException ex) {
-            System.err.println(" Got an exception! ");
-            System.err.println(ex.getMessage());
+        } catch (SQLException | ClassNotFoundException ex) {
+            logger.log(Level.SEVERE, ex.getMessage());
+            throw new FogException( ex.getMessage() );
         }
     }
 
@@ -271,9 +273,9 @@ public class OrderMapper {
                 Carport carport = new Carport(rs.getInt("carportHeight"), rs.getInt("carportLength"), rs.getInt("carportWidth"), rs.getBoolean("hasShed"), rs.getInt("shedWidth"), rs.getBoolean("hasRoof"), rs.getBoolean("roofType"), rs.getInt("roofAngle"), rs.getBoolean("hasWall"), rs.getNString("details"));
                 orders.add(new Order(rs.getInt("orderId"), rs.getInt("employeeId"), rs.getInt("customerId"), carport, rs.getDouble("totalPrice")));
             }
-        } catch (SQLException ex) {
-            System.err.println(" Got an exception! ");
-            System.err.println(ex.getMessage());
+        } catch (SQLException | ClassNotFoundException ex) {
+            logger.log(Level.SEVERE, ex.getMessage());
+            throw new FogException( ex.getMessage() );
         }
         return orders;
     }

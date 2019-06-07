@@ -42,10 +42,10 @@ public class UserMapper {
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
 
-            customer = new Customer(1, name, email, address, zipcode, phoneNumber);
-        } catch (SQLException ex) {
-            System.out.println(ex.getSQLState());
-            System.out.println(ex.getLocalizedMessage());
+            customer = new Customer(rs.getInt("id"), name, email, address, zipcode, phoneNumber);
+        } catch (SQLException | ClassNotFoundException ex) {
+            logger.log(Level.SEVERE, ex.getMessage());
+            throw new FogException( ex.getMessage() );
         }
         return customer;
     }
@@ -71,9 +71,9 @@ public class UserMapper {
             while (rs.next()) {
                 employee = new Employee(rs.getInt(1), newEmployee.getUsername(), newEmployee.getPassword(), newEmployee.isAdmin());
             }
-        } catch (SQLException ex) {
-            System.out.println(ex.getSQLState());
-            System.out.println(ex.getLocalizedMessage());
+        } catch (SQLException | ClassNotFoundException ex) {
+            logger.log(Level.SEVERE, ex.getMessage());
+            throw new FogException( ex.getMessage() );
         }
         return employee;
     }
@@ -95,8 +95,9 @@ public class UserMapper {
                 customers.add(new Customer(rs.getInt("id"), rs.getNString("name"), rs.getNString("email"), rs.getNString("address"), rs.getInt("zipcode"), rs.getInt("phoneNumber")));
             }
 
-        } catch (SQLException ex) {
-            Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException | ClassNotFoundException ex) {
+            logger.log(Level.SEVERE, ex.getMessage());
+            throw new FogException( ex.getMessage() );
         }
         return customers;
     }
@@ -121,8 +122,9 @@ public class UserMapper {
             if (rs.next()) {
                 employee = new Employee(rs.getInt("id"), rs.getNString("name"), rs.getNString("password"), rs.getBoolean("isAdmin"));
             }
-        } catch (SQLException ex) {
-            throw new FogException(ex.getMessage());
+        } catch (SQLException | ClassNotFoundException ex) {
+            logger.log(Level.SEVERE, ex.getMessage());
+            throw new FogException( ex.getMessage() );
         }
         return employee;
     }
@@ -140,8 +142,9 @@ public class UserMapper {
             while (rs.next()) {
                 employeeName = rs.getString("name");
             }
-        } catch (SQLException ex) {
-            throw new FogException(ex.getMessage());
+        } catch (SQLException | ClassNotFoundException ex) {
+            logger.log(Level.SEVERE, ex.getMessage());
+            throw new FogException( ex.getMessage() );
         }
         return employeeName;
     }
@@ -160,8 +163,9 @@ public class UserMapper {
                 employeePassword = rs.getString("password");
 
             }
-        } catch (SQLException ex) {
-            throw new FogException(ex.getMessage());
+        } catch (SQLException | ClassNotFoundException ex) {
+            logger.log(Level.SEVERE, ex.getMessage());
+            throw new FogException( ex.getMessage() );
         }
         return employeePassword;
     }
@@ -180,8 +184,9 @@ public class UserMapper {
             ps.setInt(1, id);
             ps.execute();
 
-        } catch (SQLException ex) {
-            logger.log(Level.SEVERE, null, ex);
+        } catch (SQLException | ClassNotFoundException ex) {
+            logger.log(Level.SEVERE, ex.getMessage());
+            throw new FogException( ex.getMessage() );
         }
     }
 
@@ -202,8 +207,9 @@ public class UserMapper {
                 employees.add(new Employee(rs.getInt("id"), rs.getNString("name"), rs.getNString("password"), rs.getBoolean("isAdmin")));
             }
 
-        } catch (SQLException ex) {
-            logger.log(Level.SEVERE, null, ex);
+        } catch (SQLException | ClassNotFoundException ex) {
+            logger.log(Level.SEVERE, ex.getMessage());
+            throw new FogException( ex.getMessage() );
         }
         return employees;
     }
@@ -213,7 +219,6 @@ public class UserMapper {
      * @param id
      * @param username
      * @param password
-     * @param isAdmin
      * @return
      * @throws FogException
      */
@@ -226,9 +231,9 @@ public class UserMapper {
             ps.setString(2, password);
             ps.setInt(3, id);
             ps.executeUpdate();
-        } catch (SQLException ex) {
-            System.out.println(ex.getSQLState());
-            System.out.println(ex.getLocalizedMessage());
+        } catch (SQLException | ClassNotFoundException ex) {
+            logger.log(Level.SEVERE, ex.getMessage());
+            throw new FogException( ex.getMessage() );
         }
         return new Employee(id, password, password);
     }
