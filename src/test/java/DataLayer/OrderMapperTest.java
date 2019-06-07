@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DataLayer;
 
 import FunctionLayer.Carport;
 import FunctionLayer.Construction;
 import FunctionLayer.Customer;
-import FunctionLayer.Material;
 import FunctionLayer.Order;
 import java.sql.SQLException;
-import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -46,6 +39,7 @@ public class OrderMapperTest {
 
     /**
      * Test of getMaterialPrice method, of class TestOrderMapper.
+     * @throws java.lang.Exception
      */
    @Test
     public void testGetMaterialPrice() throws Exception {
@@ -63,6 +57,7 @@ public class OrderMapperTest {
 
     /**
      * Test of deleteOrder method, of class TestOrderMapper.
+     * @throws java.lang.Exception
      */
     @Test
     public void testDeleteOrder() throws Exception {
@@ -75,53 +70,47 @@ public class OrderMapperTest {
 
     /**
      * Test of createOrder method, of class TestOrderMapper.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreateOrder() throws Exception {
         TestOrderMapper od = new TestOrderMapper();
         Carport carport = new Carport(230, 240, 240, false, 0, false, false, 15, false, "");
         System.out.println("Testing createOrder");
-        Construction construction = new Construction(carport, od.getAllMaterials(), 2000.0);
+        Construction construction = new Construction(carport, TestOrderMapper.getAllMaterials(), 2000.0);
         Customer customer = new Customer(99, "Mark Test", "Mark@TestMark.dk", "MarkTestVej 59", 2840, 28593458);
         OrderMapper.createOrder(construction, customer);
     }
 
     /**
      * Test of getMaterialId method, of class TestOrderMapper.
+     * @throws java.lang.Exception
      */
  @Test
     public void testGetMaterialId() throws Exception {
-        try{
         System.out.println("Testing getMaterialId");
         String name = "taglaegte(r)";
         int expResult = 1020;
         int result = OrderMapper.getMaterialId(name);
         assertEquals(expResult, result);
     }
-        catch(SQLException ex) {
-            System.out.println(ex);
-        }
-    }
 
     /**
      * Test of getMaterialDescription method, of class TestOrderMapper.
+     * @throws java.lang.Exception
      */
     @Test
     public void testGetMaterialDescription() throws Exception {
-        try {
         System.out.println("Testing getMaterialDescription");
         String name = "skruer 200 stk";
         String expResult = "Staal. Kan iskrues uden forboring.";
         String result = OrderMapper.getMaterialDescription(name);
         assertEquals(expResult, result);
     }
-        catch(SQLException ex) {
-            System.out.println(ex);
-        }
-    }
 
     /**
      * Test of getCostPrice method, of class TestOrderMapper.
+     * @throws java.lang.Exception
      */
     @Test
     public void testGetCostPrice() throws Exception {
@@ -134,6 +123,7 @@ public class OrderMapperTest {
 
     /**
      * Test of getAllMaterials method, of class TestOrderMapper.
+     * @throws java.lang.Exception
      */
     @Test
     public void testGetAllMaterials() throws Exception {
@@ -145,6 +135,7 @@ public class OrderMapperTest {
 
     /**
      * Test of setMaterialPrice method, of class TestOrderMapper.
+     * @throws java.lang.Exception
      */
     @Test
     public void testSetMaterialPrice() throws Exception {
@@ -156,6 +147,7 @@ public class OrderMapperTest {
 
     /**
      * Test of getAllOrders method, of class TestOrderMapper.
+     * @throws java.lang.Exception
      */
     @Test
     public void testGetAllOrders() throws Exception {
