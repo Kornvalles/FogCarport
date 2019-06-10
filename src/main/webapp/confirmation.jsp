@@ -179,7 +179,7 @@
 
                         /* Making the shed inside the carport, if there is a shed */
                         if (construction.getCarport().hasToolshed()) {
-                            out.println(svg.makeRectangle(String.valueOf(construction.getCarport().getShedWidth()), "1", String.valueOf(length), String.valueOf(start), String.valueOf(start + 50)));
+                            out.println(svg.makeRectangle(String.valueOf(width), "1", String.valueOf(construction.getCarport().getShedWidth()), String.valueOf(start), String.valueOf(start + 50)));
                             out.println(svg.makeText(String.valueOf(start + 50), String.valueOf(start + 100), "Skur"));
                         }
 
