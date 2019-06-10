@@ -49,9 +49,15 @@
             </ul>
         </nav>
         <br>
-        <%if (request.getAttribute("message") != null) {
-                out.print(request.getAttribute("message"));
-            }%>
+        <%if (request.getAttribute("message") != null) {%>
+        <div class="alert alert-success">
+            <strong>Success!</strong> <%=request.getAttribute("message")%>
+        </div>
+        <%} else if (request.getAttribute("errorMessage") != null) {%>
+        <div class="alert alert-warning">
+            <strong>Warning!</strong> <%=request.getAttribute("errorMessage")%>
+        </div>
+        <%}%>
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
