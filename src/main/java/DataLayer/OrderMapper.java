@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 public class OrderMapper {
     
-    private static final Logger logger = Logger.getLogger(UserMapper.class.getName());
+    private static final Logger logger = Logger.getLogger(OrderMapper.class.getName());
 
     /**
      * <p>This method executes a sql query to get the price of a material.
