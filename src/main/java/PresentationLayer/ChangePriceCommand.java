@@ -38,8 +38,8 @@ public class ChangePriceCommand extends Command {
         } else if (!"".equals(request.getParameter("newCostPrice"))) {
             newPrice = Double.parseDouble(request.getParameter("newCostPrice"));
         } else {
-            request.setAttribute("error", "Fejlede at ændre prisen på materialet");
-            return "employeePage";
+            request.setAttribute("errorMessage", "Fejlede at ændre prisen på materialet");
+            return "updateMaterialPrices";
         }
         int id = Integer.parseInt(request.getParameter("materialId"));
             try {
