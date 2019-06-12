@@ -170,7 +170,7 @@
                                             out.println("<tr>");
                                             out.println("<td>" + e1.getId() + "</td>");
                                             out.println("<td>" + e1.getUsername() + "</td>");
-                                            out.println("<td>" + "<input type=\"password\" value=\"" + e1.getPassword() + "\" id=\"hashedPassword"+ e1.getId() +"\" readonly>" + " <input type=\"checkbox\" onclick=\"showPassword();\">" + "Vis" + "</td>");
+                                            out.println("<td>" + "<input type=\"password\" value=\"" + e1.getPassword() + "\" id=\"hashedPassword" + e1.getId() + "\" readonly>" + " <input type=\"checkbox\" onclick=\"showPassword();\">" + "Vis" + "</td>");
                                             out.println("<td>" + e1.isAdmin() + "</td>");
                                             out.println("<td>");
                                             out.println("<form method=\"POST\" action=\"FrontController\">");
