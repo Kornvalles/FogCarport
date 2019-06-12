@@ -50,6 +50,12 @@ function rooftypevisibility() {
 
 function showPassword() {
     var x = document.getElementById("pwd");
+    var y = document.getElementById("hashedPassword1");
+    if (y.type === "password") {
+        y.type = "text";
+    } else {
+        y.type = "password";
+    }
     if (x.type === "password") {
         x.type = "text";
     } else {

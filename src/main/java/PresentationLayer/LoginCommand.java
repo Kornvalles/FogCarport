@@ -3,6 +3,7 @@ package PresentationLayer;
 import FunctionLayer.Employee;
 import FunctionLayer.FogException;
 import FunctionLayer.LogicFacade;
+import FunctionLayer.PasswordHashing;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,19 +25,22 @@ public class LoginCommand extends Command {
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) {
         HttpSession session = request.getSession();
+        PasswordHashing ph = new PasswordHashing();
         Employee employee = null;
         if (session.getAttribute("employee") == null || session.getAttribute("employee") == "") {
             try {
                 /* Get Parameters from the URL. (From the HTTP request) */
                 String reqUsername = (String) request.getParameter("username");
                 String reqPassword = (String) request.getParameter("password");
+                String hashedPassword = ph.makeHash(reqPassword);
+                
                 for (Employee e : logic.getAllEmployees()) {
                     if (e.getUsername().equals(reqUsername)) {
                         employee = logic.getEmployee(e.getId());
                     }
                 }
                 if (employee != null) {
-                    if (!employee.getPassword().equals(reqPassword) || !employee.getUsername().equals(reqUsername)) {
+                    if (!employee.getPassword().equals(hashedPassword) || !employee.getUsername().equals(reqUsername)) {
                         request.setAttribute("error", "Login mislykkedes, forkert brugernavn eller kodeord");
                         return "login";
                     } else {

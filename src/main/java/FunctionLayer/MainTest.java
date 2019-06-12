@@ -20,6 +20,10 @@ public class MainTest {
      */
     public static void main(String[] args) throws FogException, MalformedURLException, IOException {
         
+        PasswordHashing ph = new PasswordHashing();
+        System.out.println(ph.makeHash("kornval1234"));
+        System.out.println(ph.makeHash("kornval1234"));
+        
 //        OrderMapper mapper = new OrderMapper();
 ////        
 ////        Customer c = new Customer("Mikkel", "mikkel@mail.dk", "Markvej 8", 3440, 65329298);

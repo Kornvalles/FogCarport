@@ -3,6 +3,7 @@ package PresentationLayer;
 import FunctionLayer.Employee;
 import FunctionLayer.FogException;
 import FunctionLayer.LogicFacade;
+import FunctionLayer.PasswordHashing;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,8 +31,9 @@ public class AddEmployeeCommand extends Command {
     @Override
     String execute(HttpServletRequest request, LogicFacade logic) throws FogException {
         HttpSession session = request.getSession();
+        PasswordHashing ph = new PasswordHashing();
         String username = request.getParameter("username");
-        String password = request.getParameter("pwd");
+        String password = ph.makeHash(request.getParameter("pwd"));
         boolean isAdmin = true;
         // If switch is off, then we set isAdmin to false.
         if (!"on".equals(request.getParameter("isAdmin"))) {
